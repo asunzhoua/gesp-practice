@@ -178,7 +178,7 @@ async function renderDashboard() {
     const done = kpStat ? kpStat.answered : 0;
     const correct = kpStat ? kpStat.correct : 0;
     const total = stats.kpCounts?.[k] || 15;
-    const pct = done > 0 ? Math.round(correct / done * 100) : 0;
+    const pct = total > 0 ? Math.round(done / total * 100) : 0;
     kpCards += `
       <div class="kp-card animate-in" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
         <div class="kp-card-header">
