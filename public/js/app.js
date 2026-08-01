@@ -180,10 +180,10 @@ async function renderDashboard() {
     const total = stats.kpCounts?.[k] || 15;
     const pct = total > 0 ? Math.round(done / total * 100) : 0;
     kpCards += `
-      <div class="kp-card animate-in" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
+      <div class="kp-card animate-in ${pct >= 100 ? 'completed' : ''}" data-kp="${k}" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
         <div class="kp-card-header">
           <span class="kp-num">${KP_LABELS[k]}</span>
-          <span class="kp-progress-text">${pct}%</span>
+          ${pct >= 100 ? '<span class="kp-star">⭐</span>' : `<span class="kp-progress-text">${pct}%</span>`}
         </div>
         <div class="kp-card-title">${KP_NAMES[k]}</div>
         <div class="kp-progress-bar"><div class="kp-progress-fill" style="width:${pct}%"></div></div>
@@ -257,8 +257,14 @@ async function renderDashboard() {
   app.innerHTML = `
     <div class="dashboard-hero animate-in">
       <div class="dashboard-hero-text">
-        <h1>GESP 一级 C++ 练习</h1>
-        <p class="subtitle">${escapeHtml(user?.nickname || '同学')}的学习空间 ${streakBadge}</p>
+        <h1>Hi, ${escapeHtml(user?.nickname || '同学')}！👋</h1>
+        <p class="subtitle">今天继续挑战吧 ${streakBadge}</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="hero-stat-val">${stats.totalAnswered}</span><span class="hero-stat-lbl">已做题</span></div>
+          <div class="hero-stat"><span class="hero-stat-val">${progressPct}%</span><span class="hero-stat-lbl">正确率</span></div>
+          <div class="hero-stat"><span class="hero-stat-val">${stats.totalWrong}</span><span class="hero-stat-lbl">待复习</span></div>
+          <div class="hero-stat"><span class="hero-stat-val">${stats.todayAnswered}</span><span class="hero-stat-lbl">今日已做</span></div>
+        </div>
         <div class="tags">
           <span class="tag tag-primary">CCF 认证</span>
           <span class="tag tag-accent">${stats.totalAnswered}/${stats.totalQuestions} 题</span>
@@ -269,15 +275,6 @@ async function renderDashboard() {
         ${goalRing}
         <span class="ring-label">今日目标</span>
       </div>
-    </div>
-
-    <div class="stats-grid animate-in">
-      <div class="stat-card"><div class="stat-icon">📝</div><div class="stat-value">${stats.totalAnswered}</div><div class="stat-label">已做题数</div></div>
-      <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-value">${progressPct}%</div><div class="stat-label">正确率</div></div>
-      <div class="stat-card"><div class="stat-icon">❌</div><div class="stat-value">${stats.totalWrong}</div><div class="stat-label">待复习</div></div>
-      <div class="stat-card"><div class="stat-icon">📅</div><div class="stat-value">${stats.todayAnswered}</div><div class="stat-label">今日已做</div></div>
-      <div class="stat-card"><div class="stat-icon">🎯</div><div class="stat-value">${stats.todayCorrect}/${stats.todayAnswered}</div><div class="stat-label">今日正确</div></div>
-      ${examHtml}
     </div>
 
     ${reviewCard}
@@ -650,7 +647,7 @@ async function renderCodingHome() {
   try { kps = await API.getCodingKPs(); } catch {}
 
   const grid = kps.map((kp, i) => `
-    <div class="kp-card animate-in" onclick="navigate('#/coding/${kp.id}')" style="animation-delay:${i * 0.05}s">
+    <div class="kp-card animate-in" data-kp="${kp.id}" onclick="navigate('#/coding/${kp.id}')" style="animation-delay:${i * 0.05}s">
       <div class="kp-card-header">
         <span class="kp-num">${KP_LABELS[kp.id] || ''}</span>
         <span class="kp-progress-text">💻</span>
