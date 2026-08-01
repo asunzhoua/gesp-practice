@@ -1704,6 +1704,54 @@ ul, ol { list-style: none; }
 }
 .coding-hint { font-size: .78em; color: #64748b; }
 
+/* ---------- Coding Problem (Exam Format) ---------- */
+.coding-problem {
+  padding: 16px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.coding-problem-desc {
+  font-size: .95em; line-height: 1.8; color: var(--text);
+  margin-bottom: 14px;
+}
+.coding-problem-desc p { margin-bottom: 6px; }
+.coding-problem-io { margin-top: 12px; }
+.coding-io-section { margin-bottom: 10px; }
+.coding-io-label {
+  font-size: .85em; font-weight: 700; color: var(--text);
+  margin-bottom: 4px;
+}
+.coding-io-example {
+  background: var(--bg-secondary); padding: 10px 14px;
+  border-radius: var(--radius-sm); font-family: var(--font-code);
+  font-size: .88em; line-height: 1.6; white-space: pre-wrap;
+  word-break: break-all; border: 1px solid var(--border);
+}
+.coding-sample { margin-bottom: 6px; }
+.coding-sample-label {
+  font-size: .78em; font-weight: 600; color: var(--text-secondary);
+  margin-bottom: 2px; text-transform: uppercase; letter-spacing: .5px;
+}
+.coding-sample pre {
+  background: var(--bg-secondary); padding: 8px 12px;
+  border-radius: var(--radius-sm); font-family: var(--font-code);
+  font-size: .88em; line-height: 1.5; margin: 0;
+  border: 1px solid var(--border);
+}
+.coding-answer-reveal {
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+.coding-answer-reveal .explanation {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  margin-bottom: 10px; font-size: .9em;
+}
+.coding-answer-reveal .coding-solution {
+  background: #eff6ff; border: 1px solid #bfdbfe;
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  font-size: .9em;
+}
+
 .palette-item.coding-q {
   position: relative;
 }

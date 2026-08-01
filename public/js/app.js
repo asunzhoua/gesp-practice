@@ -688,6 +688,26 @@ async function renderCodingPractice(kp) {
   renderCodingQuestion();
 }
 
+function parseCodingTitle(rawTitle) {
+  // Parse HTML title into structured parts: description, input, output
+  if (!rawTitle) return { description: '', inputExample: '', outputExample: '' };
+  // Split on <p> tags
+  const parts = rawTitle.split(/<p>/);
+  let description = parts[0].trim();
+  let inputExample = '', outputExample = '';
+  for (let i = 1; i < parts.length; i++) {
+    const p = parts[i].replace(/<\/p>/g, '').trim();
+    if (/^输入|^测试输入|^输入格式/.test(p)) {
+      const m = p.match(/<code>([\s\S]*?)<\/code>/);
+      inputExample = m ? m[1] : p.replace(/^[^：:]*[：:]/, '').trim();
+    } else if (/^输出|^预期输出|^输出格式/.test(p)) {
+      const m = p.match(/<code>([\s\S]*?)<\/code>/);
+      outputExample = m ? m[1] : p.replace(/^[^：:]*[：:]/, '').trim();
+    }
+  }
+  return { description, inputExample, outputExample };
+}
+
 function renderCodingQuestion() {
   const { questions, current, kp, result } = codingState;
   if (current >= questions.length) { renderCodingComplete(); return; }
@@ -701,6 +721,46 @@ function renderCodingQuestion() {
   const savedCode = codingState.code || q.starter_code || defaultCode;
   const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
 
+  // Parse title into exam-style sections
+  const parsed = parseCodingTitle(q.title);
+
+  // Build problem statement HTML (exam format)
+  let problemHtml = '';
+  if (parsed.description) {
+    problemHtml += `<div class="coding-problem-desc">${parsed.description}</div>`;
+  }
+  if (parsed.inputExample || parsed.outputExample) {
+    problemHtml += `<div class="coding-problem-io">`;
+    if (parsed.inputExample) {
+      problemHtml += `<div class="coding-io-section"><div class="coding-io-label">输入格式</div><pre class="coding-io-example">${escapeHtml(parsed.inputExample)}</pre></div>`;
+    }
+    if (parsed.outputExample) {
+      problemHtml += `<div class="coding-io-section"><div class="coding-io-label">输出格式</div><pre class="coding-io-example">${escapeHtml(parsed.outputExample)}</pre></div>`;
+    }
+    problemHtml += `</div>`;
+  }
+  // Show test case sample if available
+  if (testCases.length > 0 && testCases[0].input !== undefined) {
+    problemHtml += `<div class="coding-problem-io">`;
+    problemHtml += `<div class="coding-io-section"><div class="coding-io-label">样例</div>`;
+    problemHtml += `<div class="coding-sample"><div class="coding-sample-label">输入</div><pre>${escapeHtml(testCases[0].input || '(无输入)')}</pre></div>`;
+    problemHtml += `<div class="coding-sample"><div class="coding-sample-label">输出</div><pre>${escapeHtml(testCases[0].expectedOutput || '')}</pre></div>`;
+    problemHtml += `</div></div>`;
+  }
+
+  // Answer section: only show AFTER code has been run
+  let answerHtml = '';
+  if (result) {
+    answerHtml = `<div class="coding-answer-reveal animate-in">`;
+    if (q.explanation) {
+      answerHtml += `<div class="explanation"><strong>解析：</strong>${escapeHtml(q.explanation)}</div>`;
+    }
+    if (q.answer_text) {
+      answerHtml += `<div class="coding-solution"><strong>参考代码：</strong>${formatCodingAnswer(q.answer_text)}</div>`;
+    }
+    answerHtml += `</div>`;
+  }
+
   const app = document.getElementById('app');
   app.innerHTML = `
     <div class="practice-nav">
@@ -711,15 +771,19 @@ function renderCodingQuestion() {
     <div class="q-progress"><div class="q-progress-bar"><div class="q-progress-fill" style="width:${progressPct}%"></div></div></div>
     <div class="question-card animate-in">
       <div class="question-header">
+        <span class="q-num">${current + 1}</span>
         <span class="q-type">编程题</span>
         <span class="q-diff ${diffClass[q.difficulty] || ''}">${diffLabel[q.difficulty] || ''}</span>
         ${q.source ? `<span class="q-source">真题</span>` : ''}
       </div>
-      <div class="question-title">${escapeHtml(q.title)}</div>
 
+      <!-- Problem Statement (exam format) -->
+      <div class="coding-problem">${problemHtml}</div>
+
+      <!-- Code Editor -->
       <div class="coding-editor-section">
         <div class="coding-editor-header">
-          <span class="coding-editor-title">📝 C++ 代码编辑器</span>
+          <span class="coding-editor-title">📝 代码</span>
           <button class="btn btn-run" onclick="runCodingCode()" id="btnCodingRun">
             <span class="run-icon">▶</span> 运行代码
           </button>
@@ -731,17 +795,6 @@ function renderCodingQuestion() {
             oninput="onCodingCodeChange(this)"
             onscroll="syncCodingLineNumbers(this)">${escapeHtml(savedCode)}</textarea>
         </div>
-        ${testCases.length > 0 ? `
-        <div class="test-cases-info">
-          <div class="test-cases-title">测试用例</div>
-          ${testCases.map((tc, i) => `
-            <div class="test-case-item">
-              <span class="test-case-num">用例 ${i + 1}</span>
-              <span class="test-case-desc">${escapeHtml(tc.description || '')}</span>
-              ${tc.input ? `<span class="test-case-input">输入: <code>${escapeHtml(tc.input)}</code></span>` : ''}
-            </div>
-          `).join('')}
-        </div>` : ''}
         ${result ? `
         <div class="run-result ${result.error ? 'error' : (result.passed ? 'success' : 'fail')}">
           <div class="run-result-header">
@@ -756,29 +809,29 @@ function renderCodingQuestion() {
           ${result.stderr ? `<pre class="run-stderr">${escapeHtml(result.stderr)}</pre>` : ''}
           ${result.stdout !== undefined ? `
             <div class="run-io-row">
-              <span class="run-io-label">输出：</span>
+              <span class="run-io-label">你的输出：</span>
               <pre class="run-stdout">${escapeHtml(result.stdout) || '(无输出)'}</pre>
             </div>` : ''}
           ${result.passed === false && result.expected ? `
             <div class="run-io-row">
-              <span class="run-io-label">期望：</span>
+              <span class="run-io-label">正确输出：</span>
               <pre class="run-expected">${escapeHtml(result.expected)}</pre>
             </div>` : ''}
           ${result.results ? result.results.map((r, i) => `
             <div class="tc-result ${r.passed ? 'pass' : 'fail'}">
               <span class="tc-result-icon">${r.passed ? '✅' : '❌'}</span>
               <span class="tc-result-desc">用例 ${i + 1}: ${escapeHtml(r.description || '')}</span>
-              ${!r.passed ? `<span class="tc-result-detail">输出: ${escapeHtml(r.stdout || '(空)')}</span>` : ''}
+              ${!r.passed ? `<span class="tc-result-detail">你的输出: ${escapeHtml(r.stdout || '(空)')}</span>` : ''}
             </div>
           `).join('') : ''}
-        </div>` : ''}
+        </div>` : `
         <div class="coding-editor-footer">
-          <span class="coding-hint">💡 写好代码后点击"运行代码"测试</span>
-        </div>
+          <span class="coding-hint">💡 编写代码后点击"运行代码"测试，运行后可查看解析和参考代码</span>
+        </div>`}
       </div>
 
-      ${q.explanation ? `<div class="explanation" style="margin-top:12px"><strong>解析：</strong>${escapeHtml(q.explanation)}</div>` : ''}
-      ${q.answer_text ? `<div class="coding-solution" style="margin-top:8px"><strong>参考代码：</strong>${formatCodingAnswer(q.answer_text)}</div>` : ''}
+      <!-- Answer reveal (only after running code) -->
+      ${answerHtml}
 
       <div class="question-nav">
         <button class="btn btn-secondary" onclick="codingPrev()" ${current === 0 ? 'disabled' : ''}>上一题</button>
