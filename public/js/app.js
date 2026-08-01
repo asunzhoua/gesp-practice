@@ -56,6 +56,7 @@ function handleRoute() {
   switch (path) {
     case '': renderDashboard(); break;
     case 'practice': renderPractice(rest[0] || 'kp01'); break;
+    case 'coding': rest[0] ? renderCodingPractice(rest[0]) : renderCodingHome(); break;
     case 'mock': renderMock(); break;
     case 'review': renderReview(); break;
     case 'teacher': renderTeacher(); break;
@@ -304,6 +305,7 @@ async function renderDashboard() {
     <div class="section animate-in">
       <div class="quick-actions">
         <a href="#/mock" class="action-card"><div class="action-icon">🎓</div><div class="action-title">模拟考试</div><div class="action-desc">30题 · 45分钟</div></a>
+        <a href="#/coding" class="action-card"><div class="action-icon">💻</div><div class="action-title">编程练习</div><div class="action-desc">8个模块 · 在线编译</div></a>
         <a href="#/review" class="action-card"><div class="action-icon">📖</div><div class="action-title">错题复习</div><div class="action-desc">${stats.totalWrong} 题待复习</div></a>
         ${user?.role === 'teacher' ? '<a href="#/teacher" class="action-card"><div class="action-icon">👩‍🏫</div><div class="action-title">教师面板</div><div class="action-desc">查看学生进度</div></a>' : ''}
       </div>
@@ -630,6 +632,239 @@ function renderPracticeComplete() {
           <div class="stat-card"><div class="stat-value">${Math.round(correct / questions.length * 100)}%</div><div class="stat-label">正确率</div></div>
         </div>
         <button class="btn btn-primary" onclick="navigate('#/practice/${practiceState.kp}')">再练一次</button>
+        <button class="btn btn-secondary" onclick="navigate('#/')" style="margin-left:8px">返回首页</button>
+      </div>
+    </div>`;
+}
+
+/* ============================================================
+   Coding Practice (编程题专项)
+   ============================================================ */
+let codingState = { questions: [], current: 0, kp: '', code: '', result: null };
+
+async function renderCodingHome() {
+  const app = document.getElementById('app');
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">编程题练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+
+  let kps = [];
+  try { kps = await API.getCodingKPs(); } catch {}
+
+  const grid = kps.map((kp, i) => `
+    <div class="kp-card animate-in" onclick="navigate('#/coding/${kp.id}')" style="animation-delay:${i * 0.05}s">
+      <div class="kp-card-header">
+        <span class="kp-num">${KP_LABELS[kp.id] || ''}</span>
+        <span class="kp-progress-text">💻</span>
+      </div>
+      <div class="kp-card-title">${kp.title}</div>
+      <div class="kp-card-stats">${kp.count} 道编程题</div>
+    </div>
+  `).join('');
+
+  app.innerHTML = `
+    <div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">编程题练习</span></div>
+    <div class="section animate-in">
+      <h2 class="section-title">选择知识点</h2>
+      <p class="text-muted" style="margin-bottom:16px">每个模块精选编程题，编写代码后在线编译运行</p>
+      <div class="kp-grid">${grid}</div>
+    </div>`;
+  setActiveNav('practice');
+  renderBottomTab('practice');
+}
+
+async function renderCodingPractice(kp) {
+  const app = document.getElementById('app');
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+
+  let questions = [];
+  try { questions = await API.getCodingQuestions(kp); } catch {}
+
+  if (questions.length === 0) {
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">编程题练习</span></div>
+      <div class="review-empty"><div class="empty-icon">📝</div><h3>暂无编程题</h3><p class="text-muted">该模块暂无编程题目</p></div>`;
+    return;
+  }
+
+  codingState = { questions, current: 0, kp, code: '', result: null };
+  renderCodingQuestion();
+}
+
+function renderCodingQuestion() {
+  const { questions, current, kp, result } = codingState;
+  if (current >= questions.length) { renderCodingComplete(); return; }
+
+  const q = questions[current];
+  const diffLabel = { 1: '基础', 2: '进阶', 3: '挑战' };
+  const diffClass = { 1: 'easy', 2: 'medium', 3: 'hard' };
+  const progressPct = Math.round((current / questions.length) * 100);
+
+  const defaultCode = '#include <iostream>\nusing namespace std;\n\nint main() {\n    // 在这里编写代码\n    \n    return 0;\n}';
+  const savedCode = codingState.code || q.starter_code || defaultCode;
+  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="practice-nav">
+      <a class="back-btn" href="#/coding" onclick="if(!confirm('确定退出练习？'))return false">← 退出</a>
+      <span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span>
+      <span class="practice-count">${current + 1}/${questions.length}</span>
+    </div>
+    <div class="q-progress"><div class="q-progress-bar"><div class="q-progress-fill" style="width:${progressPct}%"></div></div></div>
+    <div class="question-card animate-in">
+      <div class="question-header">
+        <span class="q-type">编程题</span>
+        <span class="q-diff ${diffClass[q.difficulty] || ''}">${diffLabel[q.difficulty] || ''}</span>
+        ${q.source ? `<span class="q-source">真题</span>` : ''}
+      </div>
+      <div class="question-title">${escapeHtml(q.title)}</div>
+
+      <div class="coding-editor-section">
+        <div class="coding-editor-header">
+          <span class="coding-editor-title">📝 C++ 代码编辑器</span>
+          <button class="btn btn-run" onclick="runCodingCode()" id="btnCodingRun">
+            <span class="run-icon">▶</span> 运行代码
+          </button>
+        </div>
+        <div class="code-editor-wrap">
+          <div class="line-numbers" id="codingLineNumbers"></div>
+          <textarea class="code-editor" id="codingCodeEditor"
+            spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"
+            oninput="onCodingCodeChange(this)"
+            onscroll="syncCodingLineNumbers(this)">${escapeHtml(savedCode)}</textarea>
+        </div>
+        ${testCases.length > 0 ? `
+        <div class="test-cases-info">
+          <div class="test-cases-title">测试用例</div>
+          ${testCases.map((tc, i) => `
+            <div class="test-case-item">
+              <span class="test-case-num">用例 ${i + 1}</span>
+              <span class="test-case-desc">${escapeHtml(tc.description || '')}</span>
+              ${tc.input ? `<span class="test-case-input">输入: <code>${escapeHtml(tc.input)}</code></span>` : ''}
+            </div>
+          `).join('')}
+        </div>` : ''}
+        ${result ? `
+        <div class="run-result ${result.error ? 'error' : (result.passed ? 'success' : 'fail')}">
+          <div class="run-result-header">
+            ${result.error === 'compile' ? '❌ 编译错误' :
+              result.error === 'timeout' ? '⏰ 运行超时' :
+              result.error === 'runtime' ? '⚠️ 运行时错误' :
+              result.passed === true ? '✅ 测试通过！' :
+              result.passed === false ? '❌ 输出不匹配' :
+              '✅ 运行完成'}
+            ${result.timeMs ? `<span class="run-time">耗时 ${result.timeMs}ms</span>` : ''}
+          </div>
+          ${result.stderr ? `<pre class="run-stderr">${escapeHtml(result.stderr)}</pre>` : ''}
+          ${result.stdout !== undefined ? `
+            <div class="run-io-row">
+              <span class="run-io-label">输出：</span>
+              <pre class="run-stdout">${escapeHtml(result.stdout) || '(无输出)'}</pre>
+            </div>` : ''}
+          ${result.passed === false && result.expected ? `
+            <div class="run-io-row">
+              <span class="run-io-label">期望：</span>
+              <pre class="run-expected">${escapeHtml(result.expected)}</pre>
+            </div>` : ''}
+          ${result.results ? result.results.map((r, i) => `
+            <div class="tc-result ${r.passed ? 'pass' : 'fail'}">
+              <span class="tc-result-icon">${r.passed ? '✅' : '❌'}</span>
+              <span class="tc-result-desc">用例 ${i + 1}: ${escapeHtml(r.description || '')}</span>
+              ${!r.passed ? `<span class="tc-result-detail">输出: ${escapeHtml(r.stdout || '(空)')}</span>` : ''}
+            </div>
+          `).join('') : ''}
+        </div>` : ''}
+        <div class="coding-editor-footer">
+          <span class="coding-hint">💡 写好代码后点击"运行代码"测试</span>
+        </div>
+      </div>
+
+      ${q.explanation ? `<div class="explanation" style="margin-top:12px"><strong>解析：</strong>${escapeHtml(q.explanation)}</div>` : ''}
+      ${q.answer_text ? `<div class="coding-solution" style="margin-top:8px"><strong>参考代码：</strong>${formatCodingAnswer(q.answer_text)}</div>` : ''}
+
+      <div class="question-nav">
+        <button class="btn btn-secondary" onclick="codingPrev()" ${current === 0 ? 'disabled' : ''}>上一题</button>
+        <button class="btn btn-primary" onclick="codingNext()">${current < questions.length - 1 ? '下一题' : '完成'}</button>
+      </div>
+    </div>`;
+
+  requestAnimationFrame(() => updateCodingLineNumbers());
+}
+
+function onCodingCodeChange(textarea) {
+  codingState.code = textarea.value;
+  updateCodingLineNumbers();
+}
+
+function updateCodingLineNumbers() {
+  const editor = document.getElementById('codingCodeEditor');
+  const ln = document.getElementById('codingLineNumbers');
+  if (!editor || !ln) return;
+  const lines = editor.value.split('\n').length;
+  ln.innerHTML = Array.from({ length: lines }, (_, i) => `<div>${i + 1}</div>`).join('');
+}
+
+function syncCodingLineNumbers(textarea) {
+  const ln = document.getElementById('codingLineNumbers');
+  if (ln) ln.scrollTop = textarea.scrollTop;
+}
+
+async function runCodingCode() {
+  const editor = document.getElementById('codingCodeEditor');
+  if (!editor) return;
+  const code = editor.value.trim();
+  if (!code) { alert('请先编写代码'); return; }
+
+  const btn = document.getElementById('btnCodingRun');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="run-icon">⏳</span> 运行中...'; }
+
+  const q = codingState.questions[codingState.current];
+  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
+
+  try {
+    if (testCases.length > 0) {
+      codingState.result = await API.compileAndRunTestCases(code, testCases);
+    } else {
+      codingState.result = await API.compileAndRun(code, '', undefined);
+    }
+    renderCodingQuestion();
+  } catch (e) {
+    alert('运行失败: ' + e.message);
+  } finally {
+    codingState.code = editor.value; // preserve code across re-render
+    if (btn) { btn.disabled = false; btn.innerHTML = '<span class="run-icon">▶</span> 运行代码'; }
+  }
+}
+
+function codingPrev() {
+  if (codingState.current > 0) {
+    codingState.code = '';
+    codingState.result = null;
+    codingState.current--;
+    renderCodingQuestion();
+  }
+}
+
+function codingNext() {
+  codingState.code = '';
+  codingState.result = null;
+  if (codingState.current < codingState.questions.length - 1) {
+    codingState.current++;
+    renderCodingQuestion();
+  } else {
+    codingState.current = codingState.questions.length;
+    renderCodingComplete();
+  }
+}
+
+function renderCodingComplete() {
+  const { questions, kp } = codingState;
+  document.getElementById('app').innerHTML = `
+    <div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div>
+    <div class="start-screen animate-in">
+      <div class="card">
+        <h2>🎉 编程练习完成！</h2>
+        <p class="text-muted" style="margin:12px 0">共完成 ${questions.length} 道编程题</p>
+        <button class="btn btn-primary" onclick="navigate('#/coding/${kp}')">再练一次</button>
+        <button class="btn btn-secondary" onclick="navigate('#/coding')" style="margin-left:8px">换个模块</button>
         <button class="btn btn-secondary" onclick="navigate('#/')" style="margin-left:8px">返回首页</button>
       </div>
     </div>`;

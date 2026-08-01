@@ -96,6 +96,39 @@ router.get('/stats', authMiddleware, (req, res) => {
   });
 });
 
+// Get KPs that have coding questions (for coding practice grid)
+router.get('/coding-kps', authMiddleware, (req, res) => {
+  const labels = {
+    kp01: '变量与数据类型', kp02: '基本运算', kp03: '输入输出',
+    kp04: '条件语句', kp05: '循环语句', kp06: '数组基础',
+    kp07: '字符与字符串', kp08: '函数基础'
+  };
+  const rows = db.prepare(`
+    SELECT kp, COUNT(*) as count FROM questions
+    WHERE type = 'coding' AND kp LIKE 'kp%'
+    GROUP BY kp ORDER BY kp
+  `).all();
+  res.json(rows.map(r => ({ id: r.kp, title: labels[r.kp] || r.kp, count: r.count })));
+});
+
+// Get coding questions for a specific KP
+router.get('/coding/:kp', authMiddleware, (req, res) => {
+  const kp = req.params.kp;
+  const rows = db.prepare(`
+    SELECT * FROM questions WHERE kp = ? AND type = 'coding' ORDER BY difficulty, id
+  `).all(kp);
+  const questions = rows.map(q => ({
+    id: q.id, type: q.type, difficulty: q.difficulty,
+    title: q.title, options: q.options ? JSON.parse(q.options) : null,
+    answer: q.answer, explanation: q.explanation,
+    answer_text: q.answer_text || null,
+    starter_code: q.starter_code || null,
+    test_cases: q.test_cases ? JSON.parse(q.test_cases) : null,
+    source: q.source, isJudge: q.is_judge === 1
+  }));
+  res.json(questions);
+});
+
 router.get('/:kp', authMiddleware, (req, res) => {
   const kp = req.params.kp;
   const rows = db.prepare('SELECT * FROM questions WHERE kp = ? ORDER BY id').all(kp);

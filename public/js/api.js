@@ -54,6 +54,8 @@ const API = (() => {
 
     async getKnowledgePoints() { return request('/questions/knowledge-points'); },
     async getQuestions(kp) { return request('/questions/' + kp); },
+    async getCodingKPs() { return request('/questions/coding-kps'); },
+    async getCodingQuestions(kp) { return request('/questions/coding/' + kp); },
     async getStats() { return request('/questions/stats'); },
     async getExamPaper() { return request('/exam/paper'); },
     async getExamPapers() { return request('/exam/papers'); },
