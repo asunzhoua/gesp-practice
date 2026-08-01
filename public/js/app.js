@@ -689,20 +689,23 @@ async function renderCodingPractice(kp) {
 }
 
 function parseCodingTitle(rawTitle) {
-  // Parse HTML title into structured parts: description, input, output
   if (!rawTitle) return { description: '', inputExample: '', outputExample: '' };
+  // Decode HTML entities first
+  let html = rawTitle
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"');
   // Split on <p> tags
-  const parts = rawTitle.split(/<p>/);
-  let description = parts[0].trim();
+  const parts = html.split(/<p>/);
+  let description = parts[0].replace(/<[^>]+>/g, '').trim();
   let inputExample = '', outputExample = '';
   for (let i = 1; i < parts.length; i++) {
     const p = parts[i].replace(/<\/p>/g, '').trim();
-    if (/^输入|^测试输入|^输入格式/.test(p)) {
-      const m = p.match(/<code>([\s\S]*?)<\/code>/);
-      inputExample = m ? m[1] : p.replace(/^[^：:]*[：:]/, '').trim();
-    } else if (/^输出|^预期输出|^输出格式/.test(p)) {
-      const m = p.match(/<code>([\s\S]*?)<\/code>/);
-      outputExample = m ? m[1] : p.replace(/^[^：:]*[：:]/, '').trim();
+    // Extract text from <pre><code>...</code></pre> or just <code>...</code>
+    const codeMatch = p.match(/<pre><code>([\s\S]*?)<\/code><\/pre>/) || p.match(/<code>([\s\S]*?)<\/code>/);
+    const text = codeMatch ? codeMatch[1].trim() : p.replace(/<[^>]+>/g, '').replace(/^[^：:]*[：:]/, '').trim();
+    if (/^输入|^测试输入|^输入格式|^输入样例/.test(p)) {
+      inputExample = text;
+    } else if (/^输出|^预期输出|^输出格式|^输出样例/.test(p)) {
+      outputExample = text;
     }
   }
   return { description, inputExample, outputExample };
@@ -1130,7 +1133,18 @@ function renderMockExam() {
           <span class="q-diff ${diffClass[q.difficulty] || ''}">${diffLabel[q.difficulty] || ''}</span>
           <span class="q-type">${q.type === 'coding' ? '编程题' : (q.isJudge ? '判断题' : '选择题')}</span>
         </div>
-        <div class="question-title">${escapeHtml(q.title)}</div>
+        ${q.type === 'coding' ? (() => {
+          const p = parseCodingTitle(q.title);
+          let probHtml = '';
+          if (p.description) probHtml += `<div class="coding-problem-desc">${escapeHtml(p.description)}</div>`;
+          if (p.inputExample || p.outputExample) {
+            probHtml += '<div class="coding-problem-io">';
+            if (p.inputExample) probHtml += `<div class="coding-io-section"><div class="coding-io-label">输入格式</div><pre class="coding-io-example">${escapeHtml(p.inputExample)}</pre></div>`;
+            if (p.outputExample) probHtml += `<div class="coding-io-section"><div class="coding-io-label">输出格式</div><pre class="coding-io-example">${escapeHtml(p.outputExample)}</pre></div>`;
+            probHtml += '</div>';
+          }
+          return `<div class="coding-problem">${probHtml}</div>`;
+        })() : `<div class="question-title">${escapeHtml(q.title)}</div>`}
         ${codingEditorHtml}
         ${optionsHtml}
         <div class="exam-nav">
