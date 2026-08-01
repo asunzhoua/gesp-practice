@@ -836,7 +836,7 @@ function renderCodingQuestion() {
 
       <div class="question-nav">
         <button class="btn btn-secondary" onclick="codingPrev()" ${current === 0 ? 'disabled' : ''}>上一题</button>
-        <button class="btn btn-primary" onclick="codingNext()">${current < questions.length - 1 ? '下一题' : '完成'}</button>
+        <button class="btn btn-primary" onclick="codingNext()" ${!result ? 'disabled title="请先运行代码"' : ''}>${current < questions.length - 1 ? '下一题' : '完成'}</button>
       </div>
     </div>`;
 
@@ -898,6 +898,11 @@ function codingPrev() {
 }
 
 function codingNext() {
+  // Must run code at least once before advancing
+  if (!codingState.result) {
+    alert('请先运行代码测试');
+    return;
+  }
   codingState.code = '';
   codingState.result = null;
   if (codingState.current < codingState.questions.length - 1) {
