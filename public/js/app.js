@@ -309,6 +309,7 @@ async function renderDashboard() {
       </div>
     </div>`;
   setActiveNav('');
+  renderBottomTab('');
 }
 
 /* ============================================================
@@ -344,6 +345,7 @@ async function startTodayReview() {
   }
 
   reviewState = { questions: reviewQuestions, current: 0, answers: {}, finished: false };
+  renderBottomTab('review');
   renderReviewQuestion();
 }
 
@@ -493,6 +495,7 @@ async function renderPractice(kp) {
   questions = questions.filter(q => q.type !== 'coding');
 
   practiceState = { questions, current: 0, answers: {}, kp, selectedIdx: -1 };
+  renderBottomTab('practice');
   renderPracticeQuestion();
 }
 
@@ -680,6 +683,7 @@ async function renderMock() {
       </div>
     </div>`;
   setActiveNav('mock');
+  renderBottomTab('mock');
 }
 
 async function selectExamPaper(paperId) {
@@ -712,6 +716,9 @@ async function startMockExam() {
 
   mockState = { ...mockState, questions, paperInfo, answers: {}, codeAnswers: {}, codeResults: {}, current: 0, timer: null, timeLeft: EXAM_TIME, started: true, submitting: false };
   mockState.timer = setInterval(tickTimer, 1000);
+  // Hide bottom tab during exam
+  const bt = document.querySelector('.bottom-tab');
+  if (bt) bt.style.display = 'none';
   renderMockExam();
 }
 
@@ -1082,6 +1089,7 @@ async function submitMockExam() {
       ${detailHtml}
     </div>`;
   setActiveNav('');
+  renderBottomTab('');
 }
 
 /* ============================================================
@@ -1102,6 +1110,7 @@ async function renderReview() {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">错题复习</span></div>
       <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，继续加油！</p></div>`;
     setActiveNav('review');
+    renderBottomTab('review');
     return;
   }
 
@@ -1137,6 +1146,7 @@ async function renderReview() {
     </div>
     <div class="section">${html}</div>`;
   setActiveNav('review');
+  renderBottomTab('review');
 }
 
 async function startWrongPractice() {
@@ -1155,6 +1165,7 @@ async function startWrongPractice() {
   }
 
   wrongPractice = { questions, current: 0, answers: {}, finished: false };
+  renderBottomTab('review');
   renderWrongPracticeQuestion();
 }
 
@@ -1789,6 +1800,40 @@ function hideModal() {
 /* ============================================================
    Navigation
    ============================================================ */
+function renderBottomTab(section) {
+  const isMobile = window.matchMedia('(max-width: 640px)').matches;
+  if (!isMobile) {
+    // Remove bottom tab on desktop
+    const existing = document.querySelector('.bottom-tab');
+    if (existing) existing.remove();
+    document.body.style.paddingBottom = '';
+    return;
+  }
+
+  const tabs = [
+    { id: '', icon: '🏠', label: '首页' },
+    { id: 'practice', icon: '📖', label: '练习' },
+    { id: 'mock', icon: '🎓', label: '考试' },
+    { id: 'review', icon: '📝', label: '错题' },
+  ];
+
+  const html = `<div class="bottom-tab">
+    ${tabs.map(t => `<a href="#/${t.id || ''}" class="${t.id === section ? 'active' : ''}" data-tab="${t.id}">
+      <span class="tab-icon">${t.icon}</span>
+      <span>${t.label}</span>
+    </a>`).join('')}
+  </div>`;
+
+  let el = document.querySelector('.bottom-tab');
+  if (el) {
+    el.innerHTML = tabs.map(t => `<a href="#/${t.id || ''}" class="${t.id === section ? 'active' : ''}" data-tab="${t.id}">
+      <span class="tab-icon">${t.icon}</span>
+      <span>${t.label}</span>
+    </a>`).join('');
+  } else {
+    document.body.insertAdjacentHTML('beforeend', html);
+  }
+}
 function setActiveNav(section) {
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.toggle('active', a.dataset.section === section);

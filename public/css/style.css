@@ -42,6 +42,7 @@
   --font-code: "Cascadia Code", "Fira Code", "Consolas", "Courier New", monospace;
   --max-width: 1080px;
   --nav-height: 60px;
+  --bottom-tab-height: 56px;
 }
 
 /* ---------- Reset ---------- */
@@ -103,6 +104,11 @@ ul, ol { list-style: none; }
   background: rgba(115, 88, 255, .08); color: var(--brand-primary);
   padding: 4px 12px; border-radius: var(--radius-pill);
   font-weight: 700; font-size: .8em;
+}
+
+/* ---------- Bottom Tab Bar (Mobile) ---------- */
+.bottom-tab {
+  display: none; /* hidden on desktop */
 }
 
 /* ---------- Hero / Page Header ---------- */
@@ -1430,14 +1436,47 @@ ul, ol { list-style: none; }
    Three-way Responsive: Mobile (640px)
    ============================================================ */
 @media (max-width: 640px) {
-  /* Nav mobile */
-  .nav { flex-wrap: wrap; padding: 10px 12px; gap: 6px; }
+  /* Nav mobile — compact single-row title bar */
+  .nav { height: 44px; padding: 0 12px; }
+  .nav-brand { margin-right: auto; font-size: 1em; }
   .nav-brand span { display: none; }
-  .nav-links { gap: 2px; width: 100%; justify-content: center; }
-  .nav-links a { padding: 8px 10px; font-size: 13px; min-height: 36px; }
-  .nav-user { font-size: 13px; }
-  .nav-user span { display: none; }
+  .nav-links { display: none; } /* replaced by bottom tab */
+  .nav-user { font-size: 12px; gap: 6px; }
   .nav-user .xp-badge { display: none; }
+  .nav-logout { font-size: 16px; padding: 4px; }
+
+  /* Bottom tab bar */
+  .bottom-tab {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    height: var(--bottom-tab-height);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(228, 233, 240, 0.6);
+    align-items: center; justify-content: space-around;
+    padding: 0 8px; padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  .bottom-tab a {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    color: var(--text-secondary); font-size: 10px; font-weight: 500;
+    padding: 6px 12px; border-radius: var(--radius-sm);
+    transition: color .2s; text-decoration: none; min-width: 52px;
+  }
+  .bottom-tab a .tab-icon { font-size: 20px; line-height: 1; }
+  .bottom-tab a.active { color: var(--brand-primary); font-weight: 700; }
+  .bottom-tab a:active { opacity: 0.7; }
+
+  /* Page body: leave room for bottom tab */
+  .page-body { padding-top: 44px; padding-bottom: calc(var(--bottom-tab-height) + 16px); }
+
+  /* Practice-nav mobile: compact, merge into top bar feel */
+  .practice-nav {
+    margin-bottom: 12px; padding: 0 4px; gap: 8px;
+    position: sticky; top: 44px; z-index: 90;
+    background: var(--bg); padding-top: 8px; padding-bottom: 8px;
+  }
+  .practice-nav .back-btn { padding: 5px 10px; font-size: .82em; }
+  .practice-nav span { font-size: .88em; }
+  .wrong-count { font-size: .78em; }
 
   /* Hero mobile */
   .hero { padding: 24px 16px; }
