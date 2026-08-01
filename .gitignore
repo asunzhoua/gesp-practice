@@ -1,0 +1,6 @@
+node_modules/
+data/gesp.db
+.env
+logs/
+*.log
+.pm2/

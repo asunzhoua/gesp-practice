@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GESP 一级 模拟考试 - 孙老师思维课堂</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/dracula.min.css">
+<style>
+:root {
+  --brand-primary: #1a237e;
+  --brand-accent: #ff6f00;
+  --font-main: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  --shadow-soft: 0 2px 12px rgba(0,0,0,.08);
+  --shadow-card: 0 4px 20px rgba(0,0,0,.06);
+  --max-width: 960px;
+  --correct-green: #43a047;
+  --incorrect-red: #e53935;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); color: #333; background: #f5f7fa; line-height: 1.8; font-size: 16px; }
+
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--brand-primary); color: #fff;
+  padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2); overflow-x: auto; white-space: nowrap;
+}
+.top-nav .brand-title { font-weight: 700; font-size: 1.05em; flex-shrink: 0; }
+.top-nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .82em; padding: 4px 12px; border-radius: 4px; transition: all .2s; flex-shrink: 0; }
+.top-nav a:hover, .top-nav a.active { background: rgba(255,255,255,.15); color: #fff; }
+
+.content-wrap { max-width: var(--max-width); margin: 0 auto; padding: 24px 20px 60px; }
+
+/* Start Screen */
+.start-screen {
+  background: #fff; border-radius: 16px; padding: 48px 40px;
+  text-align: center; box-shadow: var(--shadow-card); max-width: 600px; margin: 40px auto;
+}
+.start-screen h1 { color: var(--brand-primary); font-size: 1.8em; margin-bottom: 8px; }
+.start-screen .subtitle { color: #666; margin-bottom: 24px; }
+.exam-rules { text-align: left; background: #f8f9ff; border-radius: 12px; padding: 24px 28px; margin: 24px 0; border-left: 5px solid var(--brand-primary); }
+.exam-rules h3 { color: var(--brand-primary); margin-bottom: 12px; font-size: 1em; }
+.exam-rules li { margin: 6px 0; font-size: .9em; }
+.btn-start {
+  display: inline-block; background: var(--brand-accent); color: #fff;
+  padding: 14px 48px; border-radius: 8px; font-size: 1.1em; font-weight: 700;
+  border: none; cursor: pointer; transition: all .2s; margin-top: 16px;
+}
+.btn-start:hover { background: #e65100; transform: scale(1.03); }
+
+/* Exam Layout */
+.exam-layout { display: none; gap: 20px; }
+.exam-layout.active { display: grid; grid-template-columns: 1fr 200px; }
+
+/* Timer Bar */
+.timer-bar {
+  position: sticky; top: 48px; z-index: 50;
+  background: #fff; border-radius: 10px; padding: 12px 20px;
+  box-shadow: var(--shadow-soft); display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 16px; grid-column: 1 / -1;
+}
+.timer { font-size: 1.3em; font-weight: 700; color: var(--brand-primary); font-variant-numeric: tabular-nums; }
+.timer.warning { color: var(--incorrect-red); animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: .5; } }
+.timer-label { font-size: .8em; color: #888; margin-left: 4px; }
+.question-counter { font-size: .9em; color: #666; }
+.btn-submit-exam { background: var(--brand-accent); color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+.btn-submit-exam:hover { background: #e65100; }
+
+/* Question Panel */
+.exam-question { min-width: 0; }
+.question-card {
+  background: #fff; border-radius: 12px; padding: 28px 32px;
+  box-shadow: var(--shadow-card); border-top: 4px solid var(--brand-primary);
+}
+.question-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.question-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--brand-primary); color: #fff; font-weight: 700; font-size: .85em; }
+.question-difficulty { font-size: .75em; padding: 2px 10px; border-radius: 10px; color: #fff; }
+.diff-1 { background: #43a047; } .diff-2 { background: var(--brand-accent); } .diff-3 { background: var(--incorrect-red); }
+.question-type { font-size: .75em; padding: 2px 10px; border-radius: 10px; background: #e8eaf6; color: var(--brand-primary); font-weight: 600; }
+.question-body { margin-bottom: 16px; line-height: 1.9; }
+.question-body pre { background: #263238; color: #eeffff; padding: 14px; border-radius: 8px; overflow-x: auto; font-size: .9em; margin: 8px 0; }
+
+/* Options */
+.options { margin: 16px 0; }
+.option-item {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px; margin: 6px 0;
+  border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all .2s;
+}
+.option-item:hover { border-color: var(--brand-primary); background: #f5f7ff; }
+.option-item.selected { border-color: var(--brand-primary); background: #e8eaf6; }
+.option-item input[type="radio"] { display: none; }
+
+/* Code Editor in Exam */
+.editor-toolbar { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.editor-container { border-radius: 8px; overflow: hidden; border: 1px solid #333; }
+.editor-container .CodeMirror { height: 220px; font-size: 13px; }
+.io-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+.io-row label { font-size: .8em; color: #888; display: block; margin-bottom: 4px; }
+.stdin-input { width: 100%; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px; font-family: Consolas, monospace; font-size: .85em; resize: vertical; }
+.output-display { background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 6px; font-family: Consolas, monospace; font-size: .85em; min-height: 60px; white-space: pre-wrap; word-break: break-all; max-height: 150px; overflow-y: auto; }
+.output-display.error { color: var(--incorrect-red); }
+
+/* Navigation */
+.exam-nav { align-self: start; position: sticky; top: 110px; }
+.palette-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: var(--shadow-soft); }
+.palette-card h4 { font-size: .85em; color: #888; margin-bottom: 12px; }
+.palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.palette-btn {
+  width: 100%; aspect-ratio: 1; border: 2px solid #e0e0e0; border-radius: 6px;
+  background: #fff; font-size: .8em; font-weight: 600; cursor: pointer; transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.palette-btn:hover { border-color: var(--brand-primary); }
+.palette-btn.current { border-color: var(--brand-accent); background: #fff3e0; font-weight: 700; }
+.palette-btn.answered { background: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+.palette-btn.answered.correct-palette { background: var(--correct-green); border-color: var(--correct-green); }
+.palette-btn.answered.incorrect-palette { background: var(--incorrect-red); border-color: var(--incorrect-red); }
+
+.nav-arrows { display: flex; gap: 8px; margin-top: 16px; }
+.nav-arrow-btn { flex: 1; padding: 8px; border: 2px solid #ddd; border-radius: 6px; background: #fff; cursor: pointer; font-weight: 600; transition: all .2s; }
+.nav-arrow-btn:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+.nav-arrow-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* Feedback in review */
+.feedback { margin-top: 16px; padding: 16px; border-radius: 8px; display: none; }
+.feedback.show { display: block; }
+.feedback-correct { background: #e8f5e9; border: 1px solid #a5d6a7; }
+.feedback-incorrect { background: #ffebee; border: 1px solid #ef9a9a; }
+.fb-icon { font-size: 1.2em; margin-right: 8px; font-weight: 700; }
+.explanation { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #ccc; color: #555; font-size: .9em; }
+.solution-panel { margin-top: 12px; display: none; }
+.solution-panel.show { display: block; }
+.solution-panel pre { background: #263238; color: #eeffff; padding: 14px; border-radius: 8px; overflow-x: auto; font-size: .85em; }
+
+/* Results Screen */
+.results-screen { display: none; max-width: 700px; margin: 0 auto; }
+.results-screen.active { display: block; }
+.results-header {
+  background: #fff; border-radius: 16px; padding: 40px; text-align: center;
+  box-shadow: var(--shadow-card); margin-bottom: 24px;
+}
+.results-header h2 { color: var(--brand-primary); margin-bottom: 8px; }
+.score-big { font-size: 3em; font-weight: 700; color: var(--brand-primary); margin: 16px 0; }
+.score-detail { color: #666; font-size: .9em; }
+.results-breakdown { background: #fff; border-radius: 12px; padding: 24px; box-shadow: var(--shadow-soft); margin-bottom: 24px; }
+.results-breakdown h3 { color: var(--brand-primary); margin-bottom: 16px; font-size: 1em; }
+.breakdown-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+.breakdown-item:last-child { border-bottom: none; }
+.breakdown-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .75em; font-weight: 700; color: #fff; flex-shrink: 0; }
+.breakdown-correct { background: var(--correct-green); }
+.breakdown-incorrect { background: var(--incorrect-red); }
+.breakdown-unanswered { background: #bbb; }
+.breakdown-text { flex: 1; font-size: .85em; }
+.btn-row { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+.btn { padding: 10px 24px; border: none; border-radius: 8px; font-size: .9em; font-weight: 600; cursor: pointer; transition: all .2s; }
+.btn-primary { background: var(--brand-primary); color: #fff; }
+.btn-primary:hover { background: #0d1642; }
+.btn-accent { background: var(--brand-accent); color: #fff; }
+.btn-accent:hover { background: #e65100; }
+.btn-outline { background: #fff; border: 2px solid #ddd; color: #666; }
+.btn-outline:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+
+/* Detailed Review */
+.review-card {
+  background: #fff; border-radius: 12px; padding: 24px 28px;
+  box-shadow: var(--shadow-card); margin-bottom: 16px;
+  border-left: 5px solid #bbb;
+}
+.review-card.review-correct { border-left-color: var(--correct-green); }
+.review-card.review-incorrect { border-left-color: var(--incorrect-red); }
+.review-card.review-unanswered { border-left-color: #bbb; }
+.review-q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.review-q-num { font-weight: 700; font-size: 1em; }
+.review-q-topic { font-size: .8em; color: #888; }
+.review-answer-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 10px 0; font-size: .9em; }
+.review-answer-row .label { font-weight: 600; }
+.review-your-answer { color: var(--incorrect-red); }
+.review-correct-answer { color: var(--correct-green); }
+.review-explanation {
+  background: #f0f4ff; border-radius: 8px; padding: 14px 18px;
+  margin-top: 12px; font-size: .9em; line-height: 1.8;
+  border-left: 3px solid var(--brand-primary);
+}
+.review-explanation .exp-title { font-weight: 700; color: var(--brand-primary); margin-bottom: 6px; }
+.review-reference {
+  background: #263238; color: #eeffff; padding: 14px; border-radius: 8px;
+  overflow-x: auto; font-size: .85em; margin-top: 10px;
+  font-family: Consolas, "Courier New", monospace; white-space: pre-wrap;
+}
+.review-your-code {
+  background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 8px;
+  overflow-x: auto; font-size: .85em; margin-top: 10px;
+  font-family: Consolas, "Courier New", monospace; white-space: pre-wrap;
+  border: 1px solid #555;
+}
+.review-toggle-btn {
+  background: none; border: 1px solid var(--brand-primary); color: var(--brand-primary);
+  padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: .82em;
+  font-weight: 600; margin-top: 8px; transition: all .2s;
+}
+.review-toggle-btn:hover { background: var(--brand-primary); color: #fff; }
+.review-section { display: none; }
+.review-section.show { display: block; }
+
+/* Set Selection */
+.set-selection { display: none; }
+.set-selection.active { display: block; }
+.set-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.set-card {
+  background: #fff; border-radius: 12px; padding: 28px 24px; text-align: center;
+  box-shadow: var(--shadow-card); cursor: pointer; transition: all .2s;
+  border: 2px solid transparent;
+}
+.set-card:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
+.set-card h3 { color: var(--brand-primary); margin-bottom: 8px; }
+.set-card p { color: #666; font-size: .85em; }
+.set-card .set-badge { display: inline-block; background: var(--brand-accent); color: #fff; padding: 3px 12px; border-radius: 10px; font-size: .75em; font-weight: 600; margin-bottom: 12px; }
+
+.page-footer { text-align: center; padding: 32px 0; color: #aaa; font-size: .82em; }
+
+@media (max-width: 700px) {
+  .exam-layout.active { grid-template-columns: 1fr; }
+  .exam-nav { position: static; }
+  .palette-grid { grid-template-columns: repeat(10, 1fr); }
+  .io-row { grid-template-columns: 1fr; }
+  .question-card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <span class="brand-title">GESP 一级</span>
+  <a href="index.html">首页</a>
+  <a href="mock_exam.html" class="active">模拟考试</a>
+</nav>
+
+<div class="content-wrap">
+
+  <!-- Set Selection Screen -->
+  <div class="start-screen set-selection" id="set-selection">
+    <h1>GESP 一级 模拟考试</h1>
+    <p class="subtitle">编程能力等级认证 &middot; 选择试卷</p>
+    <div class="set-grid">
+      <div class="set-card" onclick="selectSet(1)">
+        <div class="set-badge">第一套</div>
+        <h3>模拟试卷 (一)</h3>
+        <p>基础 + 进阶 + 挑战<br>20 题 &middot; 45 分钟</p>
+      </div>
+      <div class="set-card" onclick="selectSet(2)">
+        <div class="set-badge">第二套</div>
+        <h3>模拟试卷 (二)</h3>
+        <p>综合模拟 &middot; 全新题目<br>20 题 &middot; 45 分钟</p>
+      </div>
+    </div>
+    <div style="margin-top:24px;">
+      <a href="index.html" style="color:var(--brand-primary);font-size:.85em;text-decoration:none;">← 返回首页</a>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div class="start-screen" id="start-screen" style="display:none;">
+    <h1 id="exam-title">GESP 一级 模拟考试</h1>
+    <p class="subtitle" id="exam-subtitle">编程能力等级认证 &middot; 模拟测试</p>
+    <div class="exam-rules">
+      <h3>考试规则</h3>
+      <ul>
+        <li>共 <strong>20 道题</strong>：选择题 + 编程题混合</li>
+        <li>考试时间：<strong>45 分钟</strong>，倒计时结束自动提交</li>
+        <li>选择题：选择一个正确答案后提交</li>
+        <li>编程题：编写代码后点击「运行」验证</li>
+        <li>可通过右侧导航面板跳转到任意题目</li>
+        <li>考试过程中自动保存进度</li>
+      </ul>
+    </div>
+    <button class="btn-start" onclick="startExam()">开始考试</button>
+  </div>
+
+  <!-- Exam Layout -->
+  <div class="exam-layout" id="exam-layout">
+    <div class="timer-bar">
+      <div><span class="timer" id="timer">45:00</span><span class="timer-label">剩余时间</span></div>
+      <span class="question-counter" id="q-counter">第 1 / 20 题</span>
+      <button class="btn-submit-exam" onclick="confirmSubmit()">交卷</button>
+    </div>
+    <div class="exam-question" id="exam-question"></div>
+    <div class="exam-nav">
+      <div class="palette-card">
+        <h4>答题卡</h4>
+        <div class="palette-grid" id="palette"></div>
+        <div class="nav-arrows">
+          <button class="nav-arrow-btn" id="btn-prev" onclick="navigateQuestion(-1)">上一题</button>
+          <button class="nav-arrow-btn" id="btn-next" onclick="navigateQuestion(1)">下一题</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div class="results-screen" id="results-screen"></div>
+
+  <div class="page-footer">孙老师思维课堂 &middot; GESP 一级模拟考试</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/clike/clike.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
+<script>
+// ==================== Exam Question Banks ====================
+const EXAM_SETS = {
+  1: {
+    title: '模拟试卷 (一)',
+    questions: [
+      // --- 15 Choice Questions ---
+      { id:"s1_q01", type:"choice", difficulty:1, topic:"变量与数据类型",
+        question:"sizeof(int) 的结果是？", options:["1","2","4","8"], answer:2,
+        explanation:"int 通常占 4 字节。在大多数现代编译器和操作系统中，sizeof(int) 返回 4。" },
+      { id:"s1_q02", type:"choice", difficulty:1, topic:"变量与数据类型",
+        question:"以下哪个是合法的变量名？", options:["3abc","my-name","_count","class"], answer:2,
+        explanation:"变量名命名规则：必须以字母或下划线开头，不能包含连字符(-)，不能是关键字。_count 以下划线开头，合法。3abc 以数字开头非法，my-name 含连字符非法，class 是关键字非法。" },
+      { id:"s1_q03", type:"choice", difficulty:1, topic:"基本运算",
+        question:"表达式 17 / 5 的结果是？", options:["3.4","3","4","3.0"], answer:1,
+        explanation:"17 和 5 都是整数，整数除法会截断小数部分。17 ÷ 5 = 3.4，截断后为 3。如果写成 17.0 / 5 或 17 / 5.0，结果才是 3.4。" },
+      { id:"s1_q04", type:"choice", difficulty:1, topic:"基本运算",
+        question:"10 % 3 的结果是？", options:["3","1","0","3.33"], answer:1,
+        explanation:"% 是取余（模）运算符。10 ÷ 3 = 3 余 1，所以 10 % 3 = 1。取余运算只对整数有效。" },
+      { id:"s1_q05", type:"choice", difficulty:2, topic:"输入输出",
+        question:"cout << 3 + 4 * 5 的输出是？", options:["35","23","20","7"], answer:1,
+        explanation:"运算符优先级：乘法(*) 高于加法(+)。先算 4*5=20，再算 3+20=23。如果想先算加法，需要加括号：(3+4)*5=35。" },
+      { id:"s1_q06", type:"choice", difficulty:2, topic:"输入输出",
+        question:"关于 endl 和 \"\\n\"，以下哪个说法正确？",
+        options:["完全相同","endl 会刷新缓冲区，\\n 不会","\\n 会刷新缓冲区","两者都不能换行"], answer:1,
+        explanation:"endl 和 \"\\n\" 都能换行，但 endl 还会刷新输出缓冲区（flush），这会带来额外的性能开销。\"\\n\" 只换行不刷新，日常使用推荐用 \"\\n\"，速度更快。" },
+      { id:"s1_q07", type:"choice", difficulty:2, topic:"条件语句",
+        question:"if (a = 5) 这行代码会？", options:["判断 a 是否等于 5","将 a 赋值为 5 且条件为真","编译错误","将 a 赋值为 5 且条件为假"], answer:1,
+        explanation:"= 是赋值运算符，a = 5 会将 5 赋给 a，整个表达式的值就是 5。在 C++ 中，非零值视为 true，所以条件为真。正确判断相等应写 if (a == 5)。" },
+      { id:"s1_q08", type:"choice", difficulty:2, topic:"条件语句",
+        question:"以下代码输出什么？\n<pre><code>int x = 10;\nif (x > 5)\n  if (x > 8)\n    cout &lt;&lt; \"A\";\nelse\n  cout &lt;&lt; \"B\";</code></pre>",
+        options:["A","B","AB","什么都不输出"], answer:0,
+        explanation:"else 的匹配规则：else 总是匹配最近的、未匹配的 if。这里 else 匹配的是 if (x > 8)，而不是 if (x > 5)。x=10，x>5 为真进入内层，x>8 为真输出 A，else 不执行。注意缩进不影响匹配！" },
+      { id:"s1_q09", type:"choice", difficulty:2, topic:"循环语句",
+        question:"do-while 循环与 while 循环的主要区别是？",
+        options:["do-while 更快","do-while 至少执行一次循环体","do-while 不需要条件","while 不能嵌套"], answer:1,
+        explanation:"do-while 先执行循环体，再判断条件，所以循环体至少执行一次。while 先判断条件，如果条件一开始就不满足，循环体一次都不执行。注意 do-while 的 while 后面必须有分号。" },
+      { id:"s1_q10", type:"choice", difficulty:2, topic:"循环语句",
+        question:"以下哪个会导致无限循环？",
+        options:["for(int i=0;i<10;i++)","while(true)","for(int i=10;i>0;i--)","while(0)"],
+        answer:1,
+        explanation:"while(true) 中条件永远为真（true 就是 1，非零即真），循环永不终止。for 循环的 i 会递增到 10 退出。while(0) 中 0 为假，一次都不执行。" },
+      { id:"s1_q11", type:"choice", difficulty:1, topic:"数组基础",
+        question:"int a[5]; 数组 a 的有效下标范围是？",
+        options:["1~5","0~5","0~4","1~4"], answer:2,
+        explanation:"C++ 数组下标从 0 开始。int a[5] 有 5 个元素，下标分别为 0, 1, 2, 3, 4。访问 a[5] 是越界操作，会导致未定义行为。" },
+      { id:"s1_q12", type:"choice", difficulty:2, topic:"字符与字符串",
+        question:"以下哪个表示单个字符？",
+        options:['"A"',"A","'A'","\\t"], answer:2,
+        explanation:"C++ 中单个字符用单引号括起来，如 'A'。双引号 \"A\" 表示字符串（虽然只有一个字符，但它是 string 类型或 char 数组）。\"A\" 包含字符 A 和结尾的空字符 \\0。" },
+      { id:"s1_q13", type:"choice", difficulty:2, topic:"字符与字符串",
+        question:"string s = \"hello\"; s.length() 的结果是？",
+        options:["4","5","6","取决于编译器"], answer:1,
+        explanation:"\"hello\" 有 5 个字符：h, e, l, l, o。string 的 length() 方法返回字符串的字符数，不包含结尾的空字符。所以结果是 5。length() 和 size() 返回值相同。" },
+      { id:"s1_q14", type:"choice", difficulty:3, topic:"函数基础",
+        question:"以下函数声明正确的是？",
+        options:["int max(a, b);","int max(int a, b);","int max(int a, int b);","max(int a, int b);"], answer:2,
+        explanation:"函数声明中每个参数都必须单独指定类型。int max(int a, int b) 正确。int max(int a, b) 中 b 缺少类型，int max(a, b) 中 a 和 b 都缺少类型，max(int a, int b) 缺少返回类型。" },
+      { id:"s1_q15", type:"choice", difficulty:3, topic:"函数基础",
+        question:"关于函数的 return 语句，以下哪个说法正确？",
+        options:["void 函数不能有 return","return 会结束整个程序","return 只能返回一个值","return 会跳回调用处"], answer:3,
+        explanation:"return 将控制权返回给函数调用处，程序从调用的下一行继续执行。void 函数可以用空 return; 提前返回。return 不会终止程序（除非在 main 函数中）。函数通过返回值只能返回一个值。" },
+
+      // --- 5 Coding Questions ---
+      { id:"s1_q16", type:"coding", difficulty:2, topic:"输入输出",
+        question:"读入两个整数，输出它们的和。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 输出 a + b\n    \n    return 0;\n}',
+        testCases:[{input:"3 5", expectedOutput:"8", description:"3+5=8"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}',
+        explanation:"使用 cin 读入两个整数到变量 a 和 b，然后用 cout 输出 a + b 的值。注意需要包含 iostream 头文件并使用 std 命名空间。" },
+      { id:"s1_q17", type:"coding", difficulty:2, topic:"条件语句",
+        question:"读入一个整数，如果是正数输出\"正数\"，如果是负数输出\"负数\"，如果是零输出\"零\"。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // 判断并输出\n    \n    return 0;\n}',
+        testCases:[{input:"-5", expectedOutput:"负数", description:"负数判断"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    if (n > 0) cout << "正数" << endl;\n    else if (n < 0) cout << "负数" << endl;\n    else cout << "零" << endl;\n    return 0;\n}',
+        explanation:"使用 if-else if-else 三分支结构：先判断 n > 0（正数），再判断 n < 0（负数），剩下的就是零。也可以用三元运算符或嵌套 if 实现。" },
+      { id:"s1_q18", type:"coding", difficulty:2, topic:"循环语句",
+        question:"读入一个整数 n，输出 1+2+3+...+n 的和。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // 计算并输出 1 到 n 的和\n    \n    return 0;\n}',
+        testCases:[{input:"10", expectedOutput:"55", description:"1+2+...+10=55"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int sum = 0;\n    for (int i = 1; i <= n; i++) {\n        sum += i;\n    }\n    cout << sum << endl;\n    return 0;\n}',
+        explanation:"用 for 循环从 1 遍历到 n，每次将当前数累加到 sum 变量中。初始 sum=0，循环结束后 sum 就是 1+2+...+n 的结果。也可以用数学公式 n*(n+1)/2 直接计算。" },
+      { id:"s1_q19", type:"coding", difficulty:3, topic:"数组基础",
+        question:"读入 5 个整数，找出其中的最大值并输出。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5];\n    for (int i = 0; i < 5; i++) {\n        cin >> a[i];\n    }\n    // 找最大值并输出\n    \n    return 0;\n}',
+        testCases:[{input:"3 7 2 9 5", expectedOutput:"9", description:"最大值为9"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5];\n    for (int i = 0; i < 5; i++) cin >> a[i];\n    int maxVal = a[0];\n    for (int i = 1; i < 5; i++) {\n        if (a[i] > maxVal) maxVal = a[i];\n    }\n    cout << maxVal << endl;\n    return 0;\n}',
+        explanation:"解题思路：假设第一个元素 a[0] 是最大值，然后用 for 循环遍历剩余元素，逐个与当前最大值比较，如果发现更大的就更新。遍历完成后 maxVal 就是整个数组的最大值。" },
+      { id:"s1_q20", type:"coding", difficulty:3, topic:"函数基础",
+        question:"编写函数 int factorial(int n) 计算 n 的阶乘。在 main 中读入 n 并输出 n!。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\n// 在这里编写 factorial 函数\n\nint main() {\n    int n;\n    cin >> n;\n    cout << factorial(n) << endl;\n    return 0;\n}',
+        testCases:[{input:"5", expectedOutput:"120", description:"5!=120"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << factorial(n) << endl;\n    return 0;\n}',
+        explanation:"阶乘定义：n! = 1 × 2 × 3 × ... × n，其中 0!=1, 1!=1。用 for 循环从 1 乘到 n，初始 result=1，每次 result = result * i。函数返回 result 即为 n! 的值。" }
+    ]
+  },
+  2: {
+    title: '模拟试卷 (二)',
+    questions: [
+      // --- 15 Choice Questions ---
+      { id:"s2_q01", type:"choice", difficulty:1, topic:"变量与数据类型",
+        question:"以下哪个不是 C++ 的基本数据类型？", options:["int","bool","string","char"], answer:2,
+        explanation:"int、bool、char 是 C++ 的基本（内置）数据类型。string 是标准库中定义的类（class），不是基本数据类型，需要 #include <string> 才能使用。" },
+      { id:"s2_q02", type:"choice", difficulty:1, topic:"变量与数据类型",
+        question:"以下代码中变量 b 的值是？\n<pre><code>int a = 3;\nint b = a * 2 + 1;</code></pre>",
+        options:["6","7","8","3"], answer:1,
+        explanation:"a 的值为 3，b = a * 2 + 1 = 3 * 2 + 1 = 6 + 1 = 7。乘法优先于加法。" },
+      { id:"s2_q03", type:"choice", difficulty:1, topic:"基本运算",
+        question:"表达式 5 / 2 + 5 % 2 的结果是？", options:["3","4","2.5","3.5"], answer:1,
+        explanation:"5 和 2 都是整数，5 / 2 是整数除法，结果为 2（截断小数部分）。5 % 2 取余结果为 1。所以 2 + 1 = 3。注意整数除法会截断小数，如果写成 5.0 / 2 结果才是 2.5。" },
+      { id:"s2_q04", type:"choice", difficulty:2, topic:"基本运算",
+        question:"已知 int a = 7; 执行 a += 3; 后 a 的值是？", options:["3","7","10","73"], answer:2,
+        explanation:"a += 3 是复合赋值运算符，等价于 a = a + 3 = 7 + 3 = 10。类似的还有 a -= 3（等价 a=a-3）、a *= 3（等价 a=a*3）等。" },
+      { id:"s2_q05", type:"choice", difficulty:2, topic:"输入输出",
+        question:"以下代码输入 \"Hello World\" 后，s 的值是？\n<pre><code>string s;\ncin >> s;\ncout &lt;&lt; s;</code></pre>",
+        options:["Hello World","Hello","World","H"], answer:1,
+        explanation:"cin >> s 读取字符串时，遇到空格、制表符或换行符就停止。输入 \"Hello World\" 时，cin 读取 \"Hello\" 后遇到空格停止，s 的值为 \"Hello\"。要读取整行需使用 getline(cin, s)。" },
+      { id:"s2_q06", type:"choice", difficulty:2, topic:"输入输出",
+        question:"cout << (2 > 3 ? \"是\" : \"否\") 的输出是？", options:["是","否","2","编译错误"], answer:1,
+        explanation:"三元运算符 条件 ? 值1 : 值2：如果条件为真返回值1，否则返回值2。2 > 3 为假（false），所以返回 \"否\"。等价于 if(2>3) 输出\"是\" else 输出\"否\"。" },
+      { id:"s2_q07", type:"choice", difficulty:2, topic:"条件语句",
+        question:"以下代码输出什么？\n<pre><code>int x = 0;\nif (x)\n  cout &lt;&lt; \"A\";\nelse\n  cout &lt;&lt; \"B\";</code></pre>",
+        options:["A","B","什么都不输出","编译错误"], answer:1,
+        explanation:"在 C++ 中，0 视为 false（假），非零值视为 true（真）。x = 0，所以 if (x) 条件为假，执行 else 分支，输出 B。" },
+      { id:"s2_q08", type:"choice", difficulty:3, topic:"条件语句",
+        question:"以下代码输出什么？\n<pre><code>int a = 1, b = 2, c = 3;\nif (a > b)\n  if (a > c)\n    cout &lt;&lt; \"X\";\nelse\n  cout &lt;&lt; \"Y\";\ncout &lt;&lt; \"Z\";</code></pre>",
+        options:["X","Y","Z","YZ"], answer:2,
+        explanation:"a=1, b=2, c=3。if (a > b) 即 if (1 > 2) 为假，整个 if-else 语句（包括内层的 if 和 else）都不执行。但 cout << \"Z\" 在 if 语句外面，所以会执行，输出 Z。" },
+      { id:"s2_q09", type:"choice", difficulty:2, topic:"循环语句",
+        question:"以下代码的输出是？\n<pre><code>int sum = 0;\nfor (int i = 1; i <= 4; i++) {\n  sum += i;\n}\ncout &lt;&lt; sum;</code></pre>",
+        options:["4","6","10","12"], answer:2,
+        explanation:"循环过程：i=1时sum=1，i=2时sum=3，i=3时sum=6，i=4时sum=10。最终 sum = 1+2+3+4 = 10。循环条件 i<=4，当 i=5 时退出。" },
+      { id:"s2_q10", type:"choice", difficulty:2, topic:"循环语句",
+        question:"break 和 continue 在循环中的区别是？",
+        options:["没有区别","break 跳出整个循环，continue 跳过当前这一次迭代","break 跳过当前迭代，continue 跳出循环","两者都跳出循环"], answer:1,
+        explanation:"break 立即终止整个循环，程序跳到循环后的第一条语句。continue 只跳过本次循环的剩余代码，直接进入下一次循环的判断/更新。例如在 for 循环中，continue 后会执行 i++。" },
+      { id:"s2_q11", type:"choice", difficulty:2, topic:"数组基础",
+        question:"以下代码输出什么？\n<pre><code>int a[5] = {10, 20, 30, 40, 50};\ncout &lt;&lt; a[2];</code></pre>",
+        options:["10","20","30","40"], answer:2,
+        explanation:"数组下标从 0 开始：a[0]=10, a[1]=20, a[2]=30, a[3]=40, a[4]=50。a[2] 是第三个元素，值为 30。" },
+      { id:"s2_q12", type:"choice", difficulty:3, topic:"数组基础",
+        question:"以下代码中 len 的值是？\n<pre><code>int a[] = {1, 2, 3, 4, 5};\nint len = sizeof(a) / sizeof(a[0]);</code></pre>",
+        options:["4","5","20","取决于系统"], answer:1,
+        explanation:"sizeof(a) 返回整个数组占用的字节数（5个int × 4字节 = 20字节），sizeof(a[0]) 返回一个 int 的字节数（4字节）。len = 20 / 4 = 5，即数组有 5 个元素。这是计算数组长度的经典方法。" },
+      { id:"s2_q13", type:"choice", difficulty:2, topic:"字符与字符串",
+        question:"以下哪个表达式的值等于字符 'A' 的 ASCII 码？", options:["'A' - '0'","\"A\"","'a' + 32","'a' - 32"], answer:3,
+        explanation:"'A' 的 ASCII 码是 65，'a' 是 97，大写和小写相差 32。'a' - 32 = 97 - 32 = 65 = 'A' 的 ASCII 码。'A' - '0' = 65 - 48 = 17，不是 'A' 的 ASCII 码。'a' + 32 = 97 + 32 = 129，也不对。" },
+      { id:"s2_q14", type:"choice", difficulty:2, topic:"函数基础",
+        question:"以下关于函数参数的说法，哪个正确？",
+        options:["形参和实参必须同名","值传递会修改实参的值","函数可以没有参数","函数最多只能有两个参数"], answer:2,
+        explanation:"函数可以没有参数，此时括号内写 void 或留空。形参和实参不需要同名。值传递中函数收到的是实参的副本，修改形参不影响实参。函数的参数个数没有限制（受编译器限制）。" },
+      { id:"s2_q15", type:"choice", difficulty:3, topic:"函数基础",
+        question:"以下代码输出什么？\n<pre><code>int add(int a, int b) { return a + b; }\nint main() {\n  int x = 3, y = 4;\n  int z = add(x, y);\n  cout &lt;&lt; z;\n  return 0;\n}</code></pre>",
+        options:["3","4","7","编译错误"], answer:2,
+        explanation:"add 函数接收两个 int 参数，返回它们的和。调用 add(3, 4) 返回 3 + 4 = 7，赋给 z，输出 7。函数调用时实参 x, y 的值传递给形参 a, b。" },
+
+      // --- 5 Coding Questions ---
+      { id:"s2_q16", type:"coding", difficulty:2, topic:"输入输出",
+        question:"读入一个整数 n，输出 n 的绝对值。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // 输出 n 的绝对值\n    \n    return 0;\n}',
+        testCases:[{input:"-7", expectedOutput:"7", description:"|-7|=7"},{input:"5", expectedOutput:"5", description:"|5|=5"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    if (n < 0) cout << -n << endl;\n    else cout << n << endl;\n    return 0;\n}',
+        explanation:"绝对值的定义：正数和零的绝对值是它本身，负数的绝对值是它的相反数。用 if 判断 n < 0 时输出 -n，否则输出 n。也可以用 abs() 函数（需要 cstdlib 头文件）。" },
+      { id:"s2_q17", type:"coding", difficulty:2, topic:"条件语句",
+        question:"读入一个年份，判断是否为闰年。是闰年输出\"是\"，否则输出\"否\"。\n闰年规则：能被 4 整除但不能被 100 整除，或者能被 400 整除。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int year;\n    cin >> year;\n    // 判断闰年并输出\n    \n    return 0;\n}',
+        testCases:[{input:"2024", expectedOutput:"是", description:"2024能被4整除"},{input:"1900", expectedOutput:"否", description:"1900能被100整除但不能被400整除"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int year;\n    cin >> year;\n    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))\n        cout << "是" << endl;\n    else\n        cout << "否" << endl;\n    return 0;\n}',
+        explanation:"闰年条件用逻辑运算符组合：(能被4整除 且 不能被100整除) 或 (能被400整除)。注意 &&（与）优先级高于 ||（或），但为了清晰建议加括号。" },
+      { id:"s2_q18", type:"coding", difficulty:2, topic:"循环语句",
+        question:"读入一个整数 n，输出 n 的各位数字之和。\n例如：输入 1234，输出 10（1+2+3+4）。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // 计算各位数字之和\n    \n    return 0;\n}',
+        testCases:[{input:"1234", expectedOutput:"10", description:"1+2+3+4=10"},{input:"999", expectedOutput:"27", description:"9+9+9=27"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int sum = 0;\n    while (n > 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    cout << sum << endl;\n    return 0;\n}',
+        explanation:"每次用 n % 10 取出最后一位数字，加到 sum 中，然后 n /= 10 去掉最后一位。重复直到 n 变为 0。例如 1234：取 4→sum=4, 取 3→sum=7, 取 2→sum=9, 取 1→sum=10。" },
+      { id:"s2_q19", type:"coding", difficulty:3, topic:"数组基础",
+        question:"读入 5 个整数，按从小到大的顺序输出（冒泡排序）。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5];\n    for (int i = 0; i < 5; i++) {\n        cin >> a[i];\n    }\n    // 冒泡排序并输出\n    \n    return 0;\n}',
+        testCases:[{input:"5 3 1 4 2", expectedOutput:"1 2 3 4 5", description:"排序输出"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5];\n    for (int i = 0; i < 5; i++) cin >> a[i];\n    for (int i = 0; i < 4; i++) {\n        for (int j = 0; j < 4 - i; j++) {\n            if (a[j] > a[j+1]) {\n                int temp = a[j];\n                a[j] = a[j+1];\n                a[j+1] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < 5; i++) {\n        if (i > 0) cout << " ";\n        cout << a[i];\n    }\n    cout << endl;\n    return 0;\n}',
+        explanation:"冒泡排序：外层循环控制轮数（n-1轮），内层循环比较相邻元素，如果前面的比后面大就交换（用 temp 临时变量）。每轮结束后最大的元素\"冒泡\"到末尾。" },
+      { id:"s2_q20", type:"coding", difficulty:3, topic:"函数基础",
+        question:"编写函数 bool isPrime(int n) 判断 n 是否为质数。在 main 中读入 n，如果是质数输出\"是\"，否则输出\"否\"。",
+        starterCode:'#include <iostream>\nusing namespace std;\n\n// 在这里编写 isPrime 函数\n\nint main() {\n    int n;\n    cin >> n;\n    if (isPrime(n)) cout << "是" << endl;\n    else cout << "否" << endl;\n    return 0;\n}',
+        testCases:[{input:"7", expectedOutput:"是", description:"7是质数"},{input:"4", expectedOutput:"否", description:"4不是质数"}],
+        referenceCode:'#include <iostream>\nusing namespace std;\n\nbool isPrime(int n) {\n    if (n < 2) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    if (isPrime(n)) cout << "是" << endl;\n    else cout << "否" << endl;\n    return 0;\n}',
+        explanation:"质数定义：大于 1 且只能被 1 和自身整除的数。先排除 n < 2 的情况，然后从 2 到 √n 检查是否能整除。如果找到因数就不是质数。只需检查到 √n 是因为如果 n = a × b，则 a 和 b 中至少一个 ≤ √n。" }
+    ]
+  }
+};
+
+// Fix s2_q03 answer
+EXAM_SETS[2].questions[2].answer = 0;  // 5/2+5%2 = 2+1 = 3, option A = 3
+
+// ==================== State ====================
+let currentSet = 0;
+let EXAM_QUESTIONS = [];
+let currentIdx = 0;
+let examActive = false;
+let remainingSeconds = 45 * 60;
+let timerInterval = null;
+const answers = {}; // { qId: { selectedOption, code, passed } }
+const editors = {};
+
+// ==================== Set Selection ====================
+function selectSet(setNum) {
+  currentSet = setNum;
+  EXAM_QUESTIONS = EXAM_SETS[setNum].questions;
+  document.getElementById('set-selection').classList.remove('active');
+  document.getElementById('start-screen').style.display = 'block';
+  document.getElementById('exam-title').textContent = 'GESP 一级 ' + EXAM_SETS[setNum].title;
+  document.getElementById('exam-subtitle').textContent = '编程能力等级认证 &middot; ' + EXAM_SETS[setNum].title;
+  // Clear previous answers
+  Object.keys(answers).forEach(k => delete answers[k]);
+}
+
+// ==================== Start Exam ====================
+function startExam() {
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('exam-layout').classList.add('active');
+  examActive = true;
+  currentIdx = 0;
+  remainingSeconds = 45 * 60;
+  renderPalette();
+  renderQuestion(0);
+  timerInterval = setInterval(tick, 1000);
+  saveDraft();
+}
+
+function tick() {
+  remainingSeconds--;
+  updateTimerDisplay();
+  if (remainingSeconds <= 0) { clearInterval(timerInterval); submitExam(); }
+  if (remainingSeconds === 300) document.getElementById('timer').classList.add('warning');
+  if (remainingSeconds % 30 === 0) saveDraft();
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(remainingSeconds / 60);
+  const s = remainingSeconds % 60;
+  document.getElementById('timer').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+// ==================== Rendering ====================
+function renderPalette() {
+  const pal = document.getElementById('palette');
+  pal.innerHTML = '';
+  EXAM_QUESTIONS.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'palette-btn';
+    btn.textContent = i + 1;
+    btn.onclick = () => jumpTo(i);
+    btn.id = 'pal_' + i;
+    pal.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  EXAM_QUESTIONS.forEach((q, i) => {
+    const btn = document.getElementById('pal_' + i);
+    if (!btn) return;
+    btn.className = 'palette-btn';
+    if (i === currentIdx) btn.classList.add('current');
+    const ans = answers[q.id];
+    if (ans && (ans.selectedOption !== undefined || ans.code !== undefined)) {
+      btn.classList.add('answered');
+    }
+  });
+  document.getElementById('q-counter').textContent = `第 ${currentIdx + 1} / ${EXAM_QUESTIONS.length} 题`;
+  document.getElementById('btn-prev').disabled = currentIdx === 0;
+  document.getElementById('btn-next').disabled = currentIdx === EXAM_QUESTIONS.length - 1;
+}
+
+function renderQuestion(idx) {
+  const q = EXAM_QUESTIONS[idx];
+  const wrap = document.getElementById('exam-question');
+  const diffLabel = q.difficulty === 1 ? '基础' : q.difficulty === 2 ? '进阶' : '挑战';
+
+  // Destroy previous editor
+  if (editors['current']) { editors['current'].toTextArea(); editors['current'] = null; }
+
+  if (q.type === 'choice') {
+    const saved = answers[q.id];
+    wrap.innerHTML = `
+      <div class="question-card">
+        <div class="question-header">
+          <span class="question-number">${idx+1}</span>
+          <span class="question-difficulty diff-${q.difficulty}">${diffLabel}</span>
+          <span class="question-type">选择题 &middot; ${q.topic}</span>
+        </div>
+        <div class="question-body"><p>${q.question}</p></div>
+        <div class="options" id="exam-opts">
+          ${q.options.map((opt,i) => `
+            <label class="option-item ${saved && saved.selectedOption===i ? 'selected' : ''}">
+              <input type="radio" name="exam_radio" value="${i}" ${saved && saved.selectedOption===i ? 'checked' : ''}>
+              <span class="option-text">${String.fromCharCode(65+i)}. ${opt}</span>
+            </label>
+          `).join('')}
+        </div>
+      </div>`;
+    wrap.querySelectorAll('.option-item').forEach(item => {
+      item.onclick = () => {
+        wrap.querySelectorAll('.option-item').forEach(x => x.classList.remove('selected'));
+        item.classList.add('selected');
+        item.querySelector('input').checked = true;
+        answers[q.id] = { selectedOption: parseInt(item.querySelector('input').value) };
+        updatePalette();
+      };
+    });
+  } else {
+    const saved = answers[q.id];
+    const savedCode = saved ? saved.code : q.starterCode;
+    wrap.innerHTML = `
+      <div class="question-card">
+        <div class="question-header">
+          <span class="question-number">${idx+1}</span>
+          <span class="question-difficulty diff-${q.difficulty}">${diffLabel}</span>
+          <span class="question-type">编程题 &middot; ${q.topic}</span>
+        </div>
+        <div class="question-body"><p>${q.question}</p></div>
+        <div class="editor-toolbar">
+          <button class="btn btn-primary" style="padding:8px 18px;" onclick="runExamCode('${q.id}')">&#9654; 运行</button>
+        </div>
+        <div class="editor-container"><textarea id="exam-editor">${savedCode}</textarea></div>
+        <div class="io-row">
+          <div><label>输入 (stdin)</label><textarea class="stdin-input" id="exam-stdin" rows="2">${q.testCases[0].input}</textarea></div>
+          <div><label>输出 (stdout)</label><pre class="output-display" id="exam-stdout">点击「运行」查看输出...</pre></div>
+        </div>
+      </div>`;
+    setTimeout(() => {
+      const ta = document.getElementById('exam-editor');
+      if (ta && window.CodeMirror) {
+        editors['current'] = CodeMirror.fromTextArea(ta, {
+          mode:'text/x-c++src', theme:'dracula', lineNumbers:true,
+          matchBrackets:true, autoCloseBrackets:true, indentUnit:4, tabSize:4, indentWithTabs:false
+        });
+        editors['current'].on('change', () => {
+          answers[q.id] = { code: editors['current'].getValue() };
+          updatePalette();
+        });
+      }
+    }, 50);
+  }
+  updatePalette();
+  wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function jumpTo(idx) { currentIdx = idx; renderQuestion(idx); }
+function navigateQuestion(dir) { const n = currentIdx + dir; if (n >= 0 && n < EXAM_QUESTIONS.length) jumpTo(n); }
+
+// ==================== Code Execution ====================
+async function runExamCode(qId) {
+  const code = editors['current'].getValue();
+  const stdin = document.getElementById('exam-stdin').value;
+  const stdout = document.getElementById('exam-stdout');
+  stdout.className = 'output-display'; stdout.style.color = '#ffa726'; stdout.textContent = '编译运行中...';
+  try {
+    const resp = await fetch('https://wandbox.org/api/compile.json', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({compiler:'gcc-head', code, stdin, options:'-std=c++17 -O2 -Wall'})
+    });
+    const result = await resp.json();
+    if (result.status === '0') {
+      stdout.style.color = '#d4d4d4';
+      stdout.textContent = result.output || '(无输出)';
+    } else {
+      stdout.className = 'output-display error';
+      stdout.textContent = result.compiler_message || result.error || '编译失败';
+    }
+  } catch(e) {
+    stdout.className = 'output-display error';
+    stdout.textContent = '编译服务暂不可用: ' + e.message;
+  }
+}
+
+// ==================== Submit & Results ====================
+function confirmSubmit() {
+  const answered = Object.keys(answers).length;
+  if (!confirm(`已答 ${answered}/${EXAM_QUESTIONS.length} 题，确定交卷吗？`)) return;
+  submitExam();
+}
+
+function submitExam() {
+  clearInterval(timerInterval);
+  examActive = false;
+  const timeTaken = 45 * 60 - remainingSeconds;
+  let correct = 0;
+  EXAM_QUESTIONS.forEach(q => {
+    const ans = answers[q.id];
+    if (q.type === 'choice' && ans && ans.selectedOption === q.answer) correct++;
+    else if (q.type === 'coding' && ans && ans.passed) correct++;
+  });
+  showResults(correct, timeTaken);
+  saveExamResult(correct, timeTaken);
+}
+
+function showResults(correct, timeTaken) {
+  document.getElementById('exam-layout').classList.remove('active');
+  const rs = document.getElementById('results-screen');
+  rs.classList.add('active');
+  const m = Math.floor(timeTaken/60), s = timeTaken%60;
+  const pct = Math.round(correct/EXAM_QUESTIONS.length*100);
+  const incorrect = EXAM_QUESTIONS.length - correct;
+
+  let reviewHtml = '';
+  EXAM_QUESTIONS.forEach((q, i) => {
+    const ans = answers[q.id];
+    let statusCls = 'review-unanswered', statusText = '未作答', userAnswerText = '未作答';
+    let correctAnswerText = '';
+
+    if (q.type === 'choice') {
+      correctAnswerText = String.fromCharCode(65 + q.answer) + '. ' + q.options[q.answer];
+      if (ans && ans.selectedOption !== undefined) {
+        const isCorrect = ans.selectedOption === q.answer;
+        statusCls = isCorrect ? 'review-correct' : 'review-incorrect';
+        statusText = isCorrect ? '回答正确' : '回答错误';
+        userAnswerText = String.fromCharCode(65 + ans.selectedOption) + '. ' + q.options[ans.selectedOption];
+      }
+    } else {
+      correctAnswerText = '见参考代码';
+      if (ans && ans.code) {
+        statusCls = 'review-unanswered';
+        statusText = '已提交代码';
+        userAnswerText = '已提交';
+      }
+    }
+
+    let codeSection = '';
+    if (q.type === 'coding') {
+      if (ans && ans.code) {
+        const escapedUserCode = escapeHtml(ans.code);
+        codeSection += `<div style="margin-top:10px;"><div style="font-size:.82em;color:#888;margin-bottom:4px;">你的代码：</div><div class="review-your-code">${escapedUserCode}</div></div>`;
+      }
+      const escapedRefCode = escapeHtml(q.referenceCode);
+      codeSection += `<div style="margin-top:10px;"><div style="font-size:.82em;color:var(--correct-green);font-weight:600;margin-bottom:4px;">参考代码：</div><div class="review-reference">${escapedRefCode}</div></div>`;
+    }
+
+    const diffLabel = q.difficulty === 1 ? '基础' : q.difficulty === 2 ? '进阶' : '挑战';
+    const diffCls = 'diff-' + q.difficulty;
+
+    reviewHtml += `
+      <div class="review-card ${statusCls}">
+        <div class="review-q-header">
+          <span class="question-number" style="background:${statusCls === 'review-correct' ? 'var(--correct-green)' : statusCls === 'review-incorrect' ? 'var(--incorrect-red)' : '#bbb'}">${i+1}</span>
+          <span class="review-q-topic">${q.topic}</span>
+          <span class="question-difficulty ${diffCls}" style="font-size:.7em;">${diffLabel}</span>
+          <span class="question-type" style="font-size:.7em;">${q.type === 'choice' ? '选择题' : '编程题'}</span>
+          <span style="margin-left:auto;font-size:.82em;font-weight:600;color:${statusCls === 'review-correct' ? 'var(--correct-green)' : statusCls === 'review-incorrect' ? 'var(--incorrect-red)' : '#888'}">${statusText}</span>
+        </div>
+        <div class="question-body" style="font-size:.92em;"><p>${q.question}</p></div>
+        ${q.type === 'choice' ? `
+        <div class="review-answer-row">
+          <div><span class="label">你的答案：</span><span class="${statusCls === 'review-incorrect' ? 'review-your-answer' : ''}">${userAnswerText}</span></div>
+          <div><span class="label">正确答案：</span><span class="review-correct-answer">${correctAnswerText}</span></div>
+        </div>
+        ` : ''}
+        ${codeSection}
+        <div class="review-explanation">
+          <div class="exp-title">解析</div>
+          ${q.explanation}
+        </div>
+      </div>`;
+  });
+
+  rs.innerHTML = `
+    <div class="results-header">
+      <h2>${EXAM_SETS[currentSet].title} &middot; 考试结果</h2>
+      <div class="score-big">${correct} / ${EXAM_QUESTIONS.length}</div>
+      <div class="score-detail">正确率 ${pct}% &middot; 用时 ${m}分${s}秒 &middot; 答对 ${correct} 题 &middot; 答错 ${incorrect} 题</div>
+    </div>
+    <div class="results-breakdown">
+      <h3>逐题详细解析</h3>
+      <p style="color:#888;font-size:.82em;margin-bottom:16px;">点击题目可展开/收起查看详情</p>
+      ${reviewHtml}
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="showSetSelection()">选择其他试卷</button>
+      <a href="index.html" class="btn btn-primary" style="text-decoration:none;">返回首页</a>
+      <button class="btn btn-accent" onclick="retryExam()">重新考试</button>
+    </div>`;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function showSetSelection() {
+  document.getElementById('results-screen').classList.remove('active');
+  document.getElementById('results-screen').innerHTML = '';
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('set-selection').classList.add('active');
+  // Clear answers for fresh start
+  Object.keys(answers).forEach(k => delete answers[k]);
+}
+
+function retryExam() {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  document.getElementById('results-screen').classList.remove('active');
+  document.getElementById('results-screen').innerHTML = '';
+  document.getElementById('start-screen').style.display = 'block';
+}
+
+// ==================== localStorage ====================
+const STORAGE_KEY = 'gesp_progress';
+function loadProgress() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'); } catch(e){ return {}; } }
+function saveProgress(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+
+function saveDraft() {
+  const p = loadProgress();
+  p.mockExamDraft = { answers, currentSet, currentIdx, remainingSeconds, timestamp: Date.now() };
+  saveProgress(p);
+}
+
+function saveExamResult(correct, timeTaken) {
+  const p = loadProgress();
+  if (!p.mockExams) p.mockExams = [];
+  p.mockExams.push({ date: new Date().toISOString(), set: currentSet, score: correct, total: EXAM_QUESTIONS.length, timeTaken });
+  p.mockExamDraft = null;
+  if (!p.questionStates) p.questionStates = {};
+  EXAM_QUESTIONS.forEach(q => {
+    const ans = answers[q.id];
+    if (q.type === 'choice' && ans) {
+      p.questionStates[q.id] = { answered: true, correct: ans.selectedOption === q.answer };
+    }
+  });
+  saveProgress(p);
+}
+
+// Check for draft on load
+(function checkDraft() {
+  const p = loadProgress();
+  if (p.mockExamDraft && p.mockExamDraft.timestamp) {
+    const age = Date.now() - p.mockExamDraft.timestamp;
+    if (age < 3600000 && p.mockExamDraft.currentSet && confirm('检测到未完成的考试，是否继续？')) {
+      currentSet = p.mockExamDraft.currentSet;
+      EXAM_QUESTIONS = EXAM_SETS[currentSet].questions;
+      Object.assign(answers, p.mockExamDraft.answers || {});
+      currentIdx = p.mockExamDraft.currentIdx || 0;
+      remainingSeconds = p.mockExamDraft.remainingSeconds || 45*60;
+      document.getElementById('exam-title').textContent = 'GESP 一级 ' + EXAM_SETS[currentSet].title;
+      startExam();
+      return;
+    }
+  }
+  // Show set selection by default
+  document.getElementById('set-selection').classList.add('active');
+})();
+</script>
+</body>
+</html>

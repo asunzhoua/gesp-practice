@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识点练习 - GESP 一级 C++</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="text-center" style="padding:60px 0"><p class="text-muted">加载中...</p></div>
+  </div>
+  <script>
+    // Default to first KP if no hash
+    if (!location.hash || location.hash === '#/') {
+      const params = new URLSearchParams(location.search);
+      const kp = params.get('kp') || 'kp01';
+      location.hash = '#/practice/' + kp;
+    }
+  </script>
+  <script src="js/questions.js"></script>
+  <script src="js/compiler.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

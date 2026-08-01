@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GESP 一级 - 函数基础 - 孙老师思维课堂</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/dracula.min.css">
+<style>
+:root {
+  --brand-primary: #1a237e;
+  --brand-accent: #ff6f00;
+  --font-main: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  --shadow-soft: 0 2px 12px rgba(0,0,0,.08);
+  --shadow-card: 0 4px 20px rgba(0,0,0,.06);
+  --max-width: 960px;
+  --correct-green: #43a047;
+  --incorrect-red: #e53935;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); color: #333; background: #f5f7fa; line-height: 1.8; font-size: 16px; }
+
+/* Top Nav */
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--brand-primary); color: #fff;
+  padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2); overflow-x: auto; white-space: nowrap;
+}
+.top-nav .brand-title { font-weight: 700; font-size: 1.05em; flex-shrink: 0; }
+.top-nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .82em; padding: 4px 12px; border-radius: 4px; transition: all .2s; flex-shrink: 0; }
+.top-nav a:hover, .top-nav a.active { background: rgba(255,255,255,.15); color: #fff; }
+
+/* Content */
+.content-wrap { max-width: var(--max-width); margin: 0 auto; padding: 24px 20px 60px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #e8eaf6 0%, #f5f7fa 100%);
+  border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 32px; border: 1px solid #e0e0e0;
+}
+.hero h1 { color: var(--brand-primary); font-size: 1.8em; margin-bottom: 8px; }
+.hero .subtitle { color: #666; font-size: 1em; margin-top: 8px; }
+.hero .tags { margin-top: 12px; }
+.hero .tag {
+  display: inline-block; padding: 4px 16px; border-radius: 16px;
+  font-size: .8em; margin: 4px; color: #fff;
+}
+.hero .tag-primary { background: var(--brand-primary); }
+.hero .tag-accent { background: var(--brand-accent); }
+
+/* Theory Section */
+.seg { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-soft); }
+.seg-theory { border-left: 7px solid var(--brand-primary); background: #f8f9ff; }
+.seg-title { font-size: 1.1em; font-weight: 700; color: var(--brand-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.seg-title .icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px; color: #fff; font-size: 1em;
+}
+.seg-body h4 { color: var(--brand-primary); margin: 16px 0 8px; font-size: 1em; }
+.seg-body ul { padding-left: 20px; margin: 8px 0; }
+.seg-body li { margin: 4px 0; }
+.seg-body code { background: #263238; color: #eeffff; padding: 2px 6px; border-radius: 3px; font-size: .9em; }
+.seg-body pre { background: #263238; color: #eeffff; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 8px 0; font-size: .9em; line-height: 1.6; }
+.seg-body .warn { color: var(--brand-accent); font-weight: 600; }
+
+/* Question Card */
+.question-card {
+  background: #fff; border-radius: 12px; padding: 28px 32px;
+  margin-bottom: 24px; box-shadow: var(--shadow-card);
+  border-top: 4px solid var(--brand-primary);
+}
+.question-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.question-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--brand-primary); color: #fff; font-weight: 700; font-size: .85em;
+}
+.question-difficulty { font-size: .75em; padding: 2px 10px; border-radius: 10px; color: #fff; }
+.diff-1 { background: #43a047; }
+.diff-2 { background: var(--brand-accent); }
+.diff-3 { background: var(--incorrect-red); }
+.question-type { font-size: .75em; padding: 2px 10px; border-radius: 10px; background: #e8eaf6; color: var(--brand-primary); font-weight: 600; }
+.question-body { margin-bottom: 16px; line-height: 1.9; }
+.question-body p { margin-bottom: 8px; }
+.question-body pre { background: #263238; color: #eeffff; padding: 14px; border-radius: 8px; overflow-x: auto; font-size: .9em; margin: 8px 0; }
+
+/* Options */
+.options { margin: 16px 0; }
+.option-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; margin: 6px 0; border: 2px solid #e0e0e0;
+  border-radius: 8px; cursor: pointer; transition: all .2s;
+}
+.option-item:hover { border-color: var(--brand-primary); background: #f5f7ff; }
+.option-item.selected { border-color: var(--brand-primary); background: #e8eaf6; }
+.option-item.correct { border-color: var(--correct-green); background: #e8f5e9; }
+.option-item.incorrect { border-color: var(--incorrect-red); background: #ffebee; }
+.option-item.disabled { pointer-events: none; opacity: .85; }
+.option-item input[type="radio"] { display: none; }
+.option-text { flex: 1; }
+
+/* Buttons */
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.btn {
+  padding: 10px 24px; border: none; border-radius: 8px;
+  font-size: .9em; font-weight: 600; cursor: pointer; transition: all .2s;
+}
+.btn-primary { background: var(--brand-primary); color: #fff; }
+.btn-primary:hover { background: #0d1642; }
+.btn-primary:disabled { background: #9e9e9e; cursor: not-allowed; }
+.btn-accent { background: var(--brand-accent); color: #fff; }
+.btn-accent:hover { background: #e65100; }
+.btn-outline { background: #fff; border: 2px solid #ddd; color: #666; }
+.btn-outline:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+
+/* Feedback */
+.feedback { margin-top: 16px; padding: 16px; border-radius: 8px; display: none; }
+.feedback.show { display: block; }
+.feedback-correct { background: #e8f5e9; border: 1px solid #a5d6a7; }
+.feedback-correct .fb-icon { color: var(--correct-green); }
+.feedback-incorrect { background: #ffebee; border: 1px solid #ef9a9a; }
+.feedback-incorrect .fb-icon { color: var(--incorrect-red); }
+.fb-icon { font-size: 1.2em; margin-right: 8px; font-weight: 700; }
+.explanation { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #ccc; color: #555; font-size: .9em; }
+
+/* Code Editor */
+.editor-toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+.editor-container { border-radius: 8px; overflow: hidden; border: 1px solid #333; }
+.editor-container .CodeMirror { height: 280px; font-size: 14px; }
+.io-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.io-section label { font-size: .8em; color: #888; margin-bottom: 4px; display: block; }
+.stdin-input {
+  width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px;
+  font-family: "Consolas", "Courier New", monospace; font-size: .9em; resize: vertical;
+}
+.output-display {
+  background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 6px;
+  font-family: "Consolas", "Courier New", monospace; font-size: .85em;
+  min-height: 80px; white-space: pre-wrap; word-break: break-all;
+  overflow-y: auto; max-height: 200px;
+}
+.output-display.error { color: var(--incorrect-red); }
+.output-display.running { color: #ffa726; }
+
+/* Test Cases Table */
+.test-cases { margin-top: 16px; display: none; }
+.test-cases.show { display: block; }
+.test-cases h4 { font-size: .9em; color: var(--brand-primary); margin-bottom: 8px; }
+.test-cases table { width: 100%; border-collapse: collapse; font-size: .85em; }
+.test-cases th, .test-cases td { padding: 8px 12px; border: 1px solid #e0e0e0; text-align: left; }
+.test-cases th { background: #f5f7fa; font-weight: 600; }
+.test-cases .pass { color: var(--correct-green); font-weight: 700; }
+.test-cases .fail { color: var(--incorrect-red); font-weight: 700; }
+
+/* Solution Panel */
+.solution-panel { margin-top: 16px; display: none; }
+.solution-panel.show { display: block; }
+.solution-panel h4 { font-size: .9em; color: var(--brand-primary); margin-bottom: 8px; }
+.solution-panel pre { background: #263238; color: #eeffff; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: .85em; line-height: 1.6; }
+
+/* Score Summary */
+.score-summary {
+  background: #fff; border-radius: 12px; padding: 24px 32px;
+  margin-top: 32px; box-shadow: var(--shadow-soft); text-align: center;
+  border-top: 4px solid var(--correct-green);
+}
+.score-summary .score-value { font-size: 2.5em; font-weight: 700; color: var(--brand-primary); }
+.score-summary .score-label { color: #888; font-size: .9em; }
+
+/* Back to top */
+.back-to-top {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--brand-primary); color: #fff; border: none;
+  font-size: 1.2em; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  display: none; z-index: 99; transition: all .2s;
+}
+.back-to-top:hover { background: #0d1642; transform: scale(1.1); }
+
+/* Footer */
+.page-footer { text-align: center; padding: 32px 0; color: #aaa; font-size: .82em; }
+
+@media (max-width: 700px) {
+  .io-panel { grid-template-columns: 1fr; }
+  .question-card { padding: 20px; }
+  .hero h1 { font-size: 1.4em; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <span class="brand-title">GESP 一级</span>
+  <a href="index.html">首页</a>
+  <a href="kp01_variables.html">变量与数据类型</a>
+  <a href="kp02_operations.html">基本运算</a>
+  <a href="kp03_io.html">输入输出</a>
+  <a href="kp04_conditionals.html">条件语句</a>
+  <a href="kp05_loops.html">循环语句</a>
+  <a href="kp06_arrays.html">数组基础</a>
+  <a href="kp07_strings.html">字符与字符串</a>
+  <a href="kp08_functions.html" class="active">函数基础</a>
+  <a href="mock_exam.html">模拟考试</a>
+</nav>
+
+<div class="content-wrap">
+
+  <div class="hero">
+    <h1>知识点 08：函数基础</h1>
+    <p class="subtitle">掌握函数的声明、定义、参数传递与返回值</p>
+    <div class="tags">
+      <span class="tag tag-primary">声明 / 定义 / 值传递 / return / void</span>
+      <span class="tag tag-accent">8 道练习题</span>
+    </div>
+  </div>
+
+  <!-- Theory Summary -->
+  <div class="seg seg-theory">
+    <div class="seg-title"><span class="icon" style="background:var(--brand-primary);">📖</span> 知识要点</div>
+    <div class="seg-body">
+      <h4>1. 函数的声明与定义</h4>
+      <p>函数由返回类型、函数名和参数列表组成：</p>
+      <pre>int max(int a, int b);          // 函数声明（原型）
+int max(int a, int b) {         // 函数定义
+    return a > b ? a : b;
+}</pre>
+      <h4>2. 函数声明（原型）</h4>
+      <p>函数原型在 main 函数之前声明，告知编译器函数的存在：</p>
+      <pre>int add(int a, int b);  // 声明
+int main() {
+    cout &lt;&lt; add(3, 5);  // 调用
+    return 0;
+}
+int add(int a, int b) {  // 定义
+    return a + b;
+}</pre>
+      <h4>3. 值传递</h4>
+      <p>C++ 默认按值传递参数，函数内修改参数不影响外部变量：</p>
+      <pre>void change(int x) {
+    x = 100;  // 只修改了副本
+}
+int main() {
+    int a = 5;
+    change(a);
+    cout &lt;&lt; a;  // 输出 5，a 没有被改变
+}</pre>
+      <h4>4. return 语句</h4>
+      <p><code>return</code> 语句结束函数并返回值。遇到 return 函数立即退出。</p>
+      <h4>5. void 函数</h4>
+      <p>返回类型为 <code>void</code> 的函数不返回值，不需要 return 语句（或使用空 return）。</p>
+      <pre>void greet() {
+    cout &lt;&lt; "Hello!" &lt;&lt; endl;
+    // 不需要 return
+}</pre>
+      <h4>6. 参数是局部变量</h4>
+      <p class="warn">⚠ 函数的参数和函数内声明的变量都是局部变量，只在函数内部有效。</p>
+    </div>
+  </div>
+
+  <!-- Questions Container -->
+  <div id="questions-container"></div>
+
+  <!-- Score Summary -->
+  <div class="score-summary" id="score-summary" style="display:none;">
+    <div class="score-label">本知识点得分</div>
+    <div class="score-value" id="score-value"></div>
+  </div>
+
+  <div class="page-footer">孙老师思维课堂 &middot; GESP 一级备考系统</div>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/clike/clike.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
+<script>
+// ==================== Question Bank ====================
+const QUESTIONS = [
+  // --- Choice Questions ---
+  {
+    id: "kp08_q01", type: "choice", difficulty: 1,
+    question: "关于 C++ 函数，以下哪个说法是正确的？",
+    options: [
+      "函数可以没有返回类型",
+      "函数必须声明返回类型（即使是 void）",
+      "函数名可以和变量名完全相同",
+      "函数不能有参数"
+    ],
+    answer: 1,
+    explanation: "C++ 中每个函数都必须有返回类型。如果没有返回值，使用 void 关键字。函数名可以和变量名相同（作用域不同），函数也可以有参数。"
+  },
+  {
+    id: "kp08_q02", type: "choice", difficulty: 1,
+    question: "以下代码执行后输出什么？\n<pre><code>int f() {\n    cout &lt;&lt; 1;\n    return 0;\n    cout &lt;&lt; 2;\n}\nint main() {\n    f();\n    return 0;\n}</code></pre>",
+    options: ["12", "1", "2", "什么都不输出"],
+    answer: 1,
+    explanation: "函数中 return 语句会立即结束函数。执行 return 0 后，cout << 2 不会被执行，所以只输出 1。"
+  },
+  {
+    id: "kp08_q03", type: "choice", difficulty: 2,
+    question: "关于 void 函数，以下哪个说法是正确的？",
+    options: [
+      "void 函数不能使用 return 语句",
+      "void 函数的 return 语句后面不能有值",
+      "void 函数必须在末尾写 return;",
+      "void 函数不能调用其他函数"
+    ],
+    answer: 1,
+    explanation: "void 函数可以使用空 return 语句（return;）提前退出，但不能 return 一个值。也可以不写 return，函数执行到末尾自动返回。"
+  },
+  {
+    id: "kp08_q04", type: "choice", difficulty: 2,
+    question: "关于函数参数，以下哪个说法是正确的？",
+    options: [
+      "参数是全局变量",
+      "参数是局部变量，在函数内部有效",
+      "参数可以在函数外部访问",
+      "参数的值不能被修改"
+    ],
+    answer: 1,
+    explanation: "函数的参数是局部变量，只在函数内部有效。在函数内可以修改参数的值（但因为是值传递，不影响外部的实参）。"
+  },
+  {
+    id: "kp08_q05", type: "choice", difficulty: 2,
+    question: "执行以下代码后，a 的值是什么？\n<pre><code>void change(int x) {\n    x = 100;\n}\nint main() {\n    int a = 5;\n    change(a);\n    cout &lt;&lt; a;\n}</code></pre>",
+    options: ["100", "5", "编译错误", "0"],
+    answer: 1,
+    explanation: "C++ 默认是值传递，函数 change 接收到的是 a 的副本。在函数内修改 x 不会影响 main 中的 a，所以 a 仍然是 5。"
+  },
+  {
+    id: "kp08_q06", type: "choice", difficulty: 3,
+    question: "关于函数原型（函数声明），以下哪个说法是正确的？",
+    options: [
+      "函数原型必须写在 main 函数内部",
+      "函数原型告诉编译器函数的名称、参数和返回类型",
+      "函数原型是可选的，不写也可以",
+      "函数原型必须包含函数体"
+    ],
+    answer: 1,
+    explanation: "函数原型（声明）写在 main 函数之前，告诉编译器函数的名称、参数类型和返回类型。虽然现代编译器可能允许省略，但 GESP 考试中建议始终写函数原型。函数原型不包含函数体。"
+  },
+  // --- Coding Questions ---
+  {
+    id: "kp08_q07", type: "coding", difficulty: 2,
+    question: "编写一个函数 <code>int max2(int a, int b)</code>，返回两个整数中的较大值。在 main 函数中读入两个整数，调用该函数并输出结果。\n<p>输入格式：一行，两个以空格分隔的整数</p>\n<p>输出格式：一个整数</p>\n<p>测试输入：<code>5 8</code></p>\n<p>期望输出：<code>8</code></p>",
+    starterCode: '#include <iostream>\nusing namespace std;\n\n// 在此处声明函数原型\n\n// 在此处定义 max2 函数\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    // 调用 max2 函数并输出结果\n\n    return 0;\n}',
+    testCases: [{ input: "5 8", expectedOutput: "8", description: "5 和 8 中的较大值为 8" }],
+    referenceCode: '#include <iostream>\nusing namespace std;\n\nint max2(int a, int b);\n\nint max2(int a, int b) {\n    if (a > b)\n        return a;\n    else\n        return b;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << max2(a, b) << endl;\n    return 0;\n}',
+    explanation: "先在 main 之前声明函数原型 int max2(int a, int b);，然后定义函数体：比较 a 和 b，返回较大的值。在 main 中读入两个整数，调用 max2 并输出返回值。"
+  },
+  {
+    id: "kp08_q08", type: "coding", difficulty: 3,
+    question: "编写一个函数 <code>bool isPrime(int n)</code>，判断 n 是否为质数（素数）。在 main 函数中读入一个整数，调用该函数并输出 \"是质数\" 或 \"不是质数\"。\n<p>注意：质数是大于 1 且只能被 1 和自身整除的自然数。</p>\n<p>输入格式：一个整数</p>\n<p>输出格式：一行文字</p>\n<p>测试输入：<code>7</code></p>\n<p>期望输出：<code>是质数</code></p>",
+    starterCode: '#include <iostream>\nusing namespace std;\n\n// 在此处声明函数原型\n\n// 在此处定义 isPrime 函数\n\nint main() {\n    int n;\n    cin >> n;\n    // 调用 isPrime 函数并输出结果\n\n    return 0;\n}',
+    testCases: [{ input: "7", expectedOutput: "是质数", description: "7 是质数" }],
+    referenceCode: '#include <iostream>\nusing namespace std;\n\nbool isPrime(int n);\n\nbool isPrime(int n) {\n    if (n <= 1) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    if (isPrime(n))\n        cout << "是质数" << endl;\n    else\n        cout << "不是质数" << endl;\n    return 0;\n}',
+    explanation: "isPrime 函数：如果 n 小于等于 1，直接返回 false；然后从 2 开始试除到 sqrt(n)，如果能整除则不是质数；循环结束仍无因子则返回 true。注意不需要 include <string>，因为只输出中文字符串字面量。"
+  }
+];
+
+// ==================== Rendering ====================
+const KP_ID = 'kp08';
+const container = document.getElementById('questions-container');
+const editors = {};
+
+function renderQuestions() {
+  QUESTIONS.forEach((q, idx) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'card_' + q.id;
+
+    const diffLabel = q.difficulty === 1 ? '基础' : q.difficulty === 2 ? '进阶' : '挑战';
+    const diffClass = 'diff-' + q.difficulty;
+    const typeLabel = q.type === 'choice' ? '选择题' : '编程题';
+
+    if (q.type === 'choice') {
+      card.innerHTML = `
+        <div class="question-header">
+          <span class="question-number">${idx + 1}</span>
+          <span class="question-difficulty ${diffClass}">${diffLabel}</span>
+          <span class="question-type">${typeLabel}</span>
+        </div>
+        <div class="question-body"><p>${q.question}</p></div>
+        <div class="options" id="opts_${q.id}">
+          ${q.options.map((opt, i) => `
+            <label class="option-item" data-qi="${q.id}" data-val="${i}">
+              <input type="radio" name="radio_${q.id}" value="${i}">
+              <span class="option-text">${String.fromCharCode(65 + i)}. ${opt}</span>
+            </label>
+          `).join('')}
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="submitChoice('${q.id}')">提交答案</button>
+        </div>
+        <div class="feedback" id="fb_${q.id}">
+          <div id="fb-text_${q.id}"></div>
+          <div class="explanation" id="fb-exp_${q.id}"></div>
+        </div>
+      `;
+    } else {
+      card.innerHTML = `
+        <div class="question-header">
+          <span class="question-number">${idx + 1}</span>
+          <span class="question-difficulty ${diffClass}">${diffLabel}</span>
+          <span class="question-type">${typeLabel}</span>
+        </div>
+        <div class="question-body"><p>${q.question}</p></div>
+        <div class="editor-toolbar">
+          <button class="btn btn-primary" onclick="runCode('${q.id}')">&#9654; 运行代码</button>
+          <button class="btn btn-outline" onclick="showSolution('${q.id}')">查看参考答案</button>
+        </div>
+        <div class="editor-container">
+          <textarea id="editor_${q.id}">${q.starterCode}</textarea>
+        </div>
+        <div class="io-panel">
+          <div class="io-section">
+            <label>标准输入 (stdin)：</label>
+            <textarea class="stdin-input" id="stdin_${q.id}" rows="2" placeholder="如有输入在此填写">${q.testCases[0].input}</textarea>
+          </div>
+          <div class="io-section">
+            <label>程序输出 (stdout)：</label>
+            <pre class="output-display" id="stdout_${q.id}">点击「运行代码」查看输出...</pre>
+          </div>
+        </div>
+        <div class="test-cases" id="tc_${q.id}">
+          <h4>测试用例结果</h4>
+          <table><thead><tr><th>用例</th><th>输入</th><th>期望输出</th><th>你的输出</th><th>结果</th></tr></thead>
+          <tbody id="tc-body_${q.id}"></tbody></table>
+        </div>
+        <div class="solution-panel" id="sol_${q.id}">
+          <h4>参考答案</h4>
+          <pre><code>${q.referenceCode.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>
+        </div>
+        <div class="feedback" id="fb_${q.id}">
+          <div id="fb-text_${q.id}"></div>
+          <div class="explanation" id="fb-exp_${q.id}"></div>
+        </div>
+      `;
+    }
+    container.appendChild(card);
+  });
+
+  // Init CodeMirror editors
+  QUESTIONS.forEach(q => {
+    if (q.type !== 'coding') return;
+    const ta = document.getElementById('editor_' + q.id);
+    if (ta && window.CodeMirror) {
+      editors[q.id] = CodeMirror.fromTextArea(ta, {
+        mode: 'text/x-c++src', theme: 'dracula',
+        lineNumbers: true, matchBrackets: true, autoCloseBrackets: true,
+        indentUnit: 4, tabSize: 4, indentWithTabs: false
+      });
+    }
+  });
+}
+
+// ==================== Choice Interaction ====================
+function submitChoice(qId) {
+  const q = QUESTIONS.find(x => x.id === qId);
+  const opts = document.querySelectorAll(`#opts_${qId} .option-item`);
+  const selected = document.querySelector(`#opts_${qId} input:checked`);
+  if (!selected) { alert('请先选择一个答案'); return; }
+
+  const val = parseInt(selected.value);
+  const isCorrect = val === q.answer;
+
+  opts.forEach((opt, i) => {
+    opt.classList.add('disabled');
+    if (i === q.answer) opt.classList.add('correct');
+    if (i === val && !isCorrect) opt.classList.add('incorrect');
+  });
+
+  const fb = document.getElementById('fb_' + qId);
+  fb.classList.add('show');
+  fb.className = 'feedback show ' + (isCorrect ? 'feedback-correct' : 'feedback-incorrect');
+  document.getElementById('fb-text_' + qId).innerHTML =
+    `<span class="fb-icon">${isCorrect ? '✓' : '✗'}</span> ${isCorrect ? '回答正确！' : '回答错误，正确答案是 ' + String.fromCharCode(65 + q.answer)}`;
+  document.getElementById('fb-exp_' + qId).innerHTML = '<strong>解析：</strong>' + q.explanation;
+
+  saveAnswer(qId, isCorrect);
+  updateScore();
+}
+
+// ==================== Code Execution ====================
+async function runCode(qId) {
+  const q = QUESTIONS.find(x => x.id === qId);
+  const code = editors[qId].getValue();
+  const stdin = document.getElementById('stdin_' + qId).value;
+  const stdout = document.getElementById('stdout_' + qId);
+
+  stdout.className = 'output-display running';
+  stdout.textContent = '正在编译运行...';
+
+  try {
+    const resp = await fetch('https://wandbox.org/api/compile.json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ compiler: 'gcc-head', code: code, stdin: stdin, options: '-std=c++17 -O2 -Wall' })
+    });
+    const result = await resp.json();
+
+    if (result.status === '0') {
+      const output = result.output || '';
+      stdout.className = 'output-display';
+      stdout.textContent = output || '(无输出)';
+      checkTestCases(qId, output);
+    } else {
+      stdout.className = 'output-display error';
+      stdout.textContent = result.compiler_message || result.error || '编译失败';
+    }
+  } catch (e) {
+    stdout.className = 'output-display error';
+    stdout.textContent = '在线编译服务暂时不可用，请查看参考答案进行自我验证。\n错误信息：' + e.message;
+  }
+}
+
+function checkTestCases(qId, actualOutput) {
+  const q = QUESTIONS.find(x => x.id === qId);
+  const tcDiv = document.getElementById('tc_' + qId);
+  const tbody = document.getElementById('tc-body_' + qId);
+  tbody.innerHTML = '';
+  tcDiv.classList.add('show');
+
+  let allPass = true;
+  q.testCases.forEach((tc, i) => {
+    const actual = actualOutput.replace(/\r\n/g, '\n').trimEnd();
+    const expected = tc.expectedOutput.replace(/\r\n/g, '\n').trimEnd();
+    const pass = actual === expected;
+    if (!pass) allPass = false;
+    tbody.innerHTML += `<tr>
+      <td>${i + 1}</td>
+      <td>${tc.input || '(无)'}</td>
+      <td><pre style="margin:0;background:#f5f5f5;padding:4px 8px;border-radius:4px;font-size:.8em;white-space:pre-wrap">${tc.expectedOutput}</pre></td>
+      <td><pre style="margin:0;background:#f5f5f5;padding:4px 8px;border-radius:4px;font-size:.8em;white-space:pre-wrap">${actualOutput}</pre></td>
+      <td class="${pass ? 'pass' : 'fail'}">${pass ? '通过' : '未通过'}</td>
+    </tr>`;
+  });
+
+  const fb = document.getElementById('fb_' + qId);
+  fb.classList.add('show');
+  fb.className = 'feedback show ' + (allPass ? 'feedback-correct' : 'feedback-incorrect');
+  document.getElementById('fb-text_' + qId).innerHTML =
+    `<span class="fb-icon">${allPass ? '✓' : '✗'}</span> ${allPass ? '所有测试用例通过！' : '部分测试用例未通过'}`;
+  document.getElementById('fb-exp_' + qId).innerHTML = '<strong>解析：</strong>' + q.explanation;
+
+  saveAnswer(qId, allPass);
+  updateScore();
+}
+
+function showSolution(qId) {
+  const panel = document.getElementById('sol_' + qId);
+  panel.classList.toggle('show');
+}
+
+// ==================== Progress ====================
+const STORAGE_KEY = 'gesp_progress';
+function loadProgress() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+function saveProgress(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+
+function saveAnswer(qId, isCorrect) {
+  const progress = loadProgress();
+  if (!progress.questionStates) progress.questionStates = {};
+  if (!progress.knowledgePoints) progress.knowledgePoints = {};
+  if (!progress.knowledgePoints[KP_ID]) progress.knowledgePoints[KP_ID] = { attempted: 0, correct: 0 };
+
+  const prev = progress.questionStates[qId];
+  progress.questionStates[qId] = { answered: true, correct: isCorrect };
+
+  if (!prev) {
+    progress.knowledgePoints[KP_ID].attempted++;
+    if (isCorrect) progress.knowledgePoints[KP_ID].correct++;
+  } else if (prev.correct !== isCorrect) {
+    progress.knowledgePoints[KP_ID].correct += isCorrect ? 1 : -1;
+  }
+  saveProgress(progress);
+}
+
+function updateScore() {
+  const progress = loadProgress();
+  const kp = progress.knowledgePoints && progress.knowledgePoints[KP_ID];
+  if (!kp || kp.attempted === 0) return;
+  const summary = document.getElementById('score-summary');
+  summary.style.display = 'block';
+  document.getElementById('score-value').textContent = kp.correct + ' / ' + QUESTIONS.length + ' 正确';
+}
+
+// Back to top
+window.addEventListener('scroll', () => {
+  document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+
+// Init
+renderQuestions();
+updateScore();
+</script>
+</body>
+</html>

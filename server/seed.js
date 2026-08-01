@@ -1,0 +1,57 @@
+require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+const { initDb, db } = require('./db');
+
+async function seed() {
+  await initDb();
+
+  const questionsPath = path.join(__dirname, '..', 'js', 'questions.js');
+  const content = fs.readFileSync(questionsPath, 'utf-8');
+
+  const fn = new Function(content + '; return QUESTION_BANK;');
+  const bank = fn();
+
+  let count = 0;
+
+  for (const [kp, data] of Object.entries(bank.knowledgePoints)) {
+    for (const q of data.questions) {
+      const options = q.options ? JSON.stringify(q.options) : null;
+      db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+        q.id, kp, q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0
+      );
+      count++;
+    }
+  }
+
+  for (const q of bank.mockExam) {
+    const options = q.options ? JSON.stringify(q.options) : null;
+    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+      q.id, 'mock', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0
+    );
+    count++;
+  }
+
+  for (const q of bank.realExam) {
+    const options = q.options ? JSON.stringify(q.options) : null;
+    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+      q.id, 'real', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0
+    );
+    count++;
+  }
+
+  console.log(`Seeded ${count} questions.`);
+
+  const bcrypt = require('bcryptjs');
+  const hash = bcrypt.hashSync('teacher123', 10);
+  db.prepare(`INSERT OR IGNORE INTO users (username, password, nickname, role) VALUES (?, ?, ?, ?)`).run('teacher', hash, '孙老师', 'teacher');
+  console.log('Default teacher account: teacher / teacher123');
+
+  db.save();
+  console.log('Database saved.');
+}
+
+seed().catch(err => {
+  console.error('Seed failed:', err);
+  process.exit(1);
+});
