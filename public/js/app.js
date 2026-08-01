@@ -667,8 +667,8 @@ async function renderCodingHome() {
       <p class="text-muted" style="margin-bottom:16px">每个模块精选编程题，编写代码后在线编译运行</p>
       <div class="kp-grid">${grid}</div>
     </div>`;
-  setActiveNav('practice');
-  renderBottomTab('practice');
+  setActiveNav('coding');
+  renderBottomTab('coding');
 }
 
 async function renderCodingPractice(kp) {
@@ -685,6 +685,7 @@ async function renderCodingPractice(kp) {
   }
 
   codingState = { questions, current: 0, kp, code: '', result: null };
+  renderBottomTab('coding');
   renderCodingQuestion();
 }
 
@@ -913,6 +914,7 @@ function codingNext() {
 
 function renderCodingComplete() {
   const { questions, kp } = codingState;
+  renderBottomTab('coding');
   document.getElementById('app').innerHTML = `
     <div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div>
     <div class="start-screen animate-in">
@@ -2115,6 +2117,7 @@ function renderBottomTab(section) {
   const tabs = [
     { id: '', icon: '🏠', label: '首页' },
     { id: 'practice', icon: '📖', label: '练习' },
+    { id: 'coding', icon: '💻', label: '编程' },
     { id: 'mock', icon: '🎓', label: '考试' },
     { id: 'review', icon: '📝', label: '错题' },
   ];
@@ -2150,6 +2153,7 @@ function renderNav() {
       <div class="nav-links">
         <a href="#/" data-section="">首页</a>
         <a href="#/practice/kp01" data-section="practice">练习</a>
+        <a href="#/coding" data-section="coding">编程</a>
         <a href="#/mock" data-section="mock">考试</a>
         <a href="#/review" data-section="review">错题</a>
         ${user?.role === 'teacher' ? '<a href="#/teacher" data-section="teacher">管理</a>' : ''}
