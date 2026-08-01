@@ -4,9 +4,9 @@
 
 | 项目 | 值 |
 |------|-----|
-| 域名 | gesp.257758.xyz |
-| 服务器IP | 154.9.226.175 |
-| 访问地址 | https://gesp.257758.xyz |
+| 域名 | <YOUR_DOMAIN> |
+| 服务器IP | <YOUR_SERVER_IP> |
+| 访问地址 | https://<YOUR_DOMAIN> |
 | 默认账号 | teacher / teacher123 |
 | 默认学生密码 | 123456 |
 
@@ -29,7 +29,7 @@ bash package-deploy.sh
 
 ```bash
 # 使用 SCP 上传
-scp /tmp/gesp-deploy.tar.gz root@154.9.226.175:/tmp/
+scp /tmp/gesp-deploy.tar.gz root@<YOUR_SERVER_IP>:/tmp/
 ```
 
 ---
@@ -39,7 +39,7 @@ scp /tmp/gesp-deploy.tar.gz root@154.9.226.175:/tmp/
 ### 2.1 SSH 登录服务器
 
 ```bash
-ssh root@154.9.226.175
+ssh root@<YOUR_SERVER_IP>
 ```
 
 ### 2.2 解压项目
@@ -72,7 +72,7 @@ bash deploy-complete.sh
 
 ### 3.1 访问测试
 
-浏览器打开：**https://gesp.257758.xyz**
+浏览器打开：**https://<YOUR_DOMAIN>**
 
 ### 3.2 登录测试
 
@@ -225,7 +225,7 @@ pm2 restart gesp-practice
 certbot certificates
 
 # 重新申请
-certbot --nginx -d gesp.257758.xyz
+certbot --nginx -d <YOUR_DOMAIN>
 
 # 强制续期
 certbot renew --force-renewal

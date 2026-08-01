@@ -4,8 +4,8 @@
 
 set -e
 
-DOMAIN="gesp.257758.xyz"
-EMAIL="admin@257758.xyz"  # 建议修改为真实邮箱
+DOMAIN="<YOUR_DOMAIN>"
+EMAIL="admin@<YOUR_DOMAIN>"  # 建议修改为真实邮箱
 
 echo "=========================================="
 echo "配置 SSL 证书 (Let's Encrypt)"
@@ -31,17 +31,17 @@ echo "[3/3] 更新 Nginx 配置..."
 cat > /etc/nginx/sites-available/gesp << 'NGINX_SSL'
 server {
     listen 80;
-    server_name gesp.257758.xyz;
+    server_name <YOUR_DOMAIN>;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name gesp.257758.xyz;
+    server_name <YOUR_DOMAIN>;
 
     # SSL 证书路径
-    ssl_certificate /etc/letsencrypt/live/gesp.257758.xyz/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/gesp.257758.xyz/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/<YOUR_DOMAIN>/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/<YOUR_DOMAIN>/privkey.pem;
 
     # SSL 优化配置
     ssl_protocols TLSv1.2 TLSv1.3;

@@ -1,11 +1,11 @@
 #!/bin/bash
 # GESP 刷题平台 - 美国服务器一键部署脚本
-# 域名: gesp.257758.xyz
-# 服务器: 154.9.226.175
+# 域名: <YOUR_DOMAIN>
+# 服务器: <YOUR_SERVER_IP>
 
 set -e
 
-DOMAIN="gesp.257758.xyz"
+DOMAIN="<YOUR_DOMAIN>"
 APP_DIR="/opt/gesp"
 NODE_VERSION="20"
 
@@ -51,7 +51,7 @@ echo "[6/8] 配置 Nginx..."
 cat > /etc/nginx/sites-available/gesp << 'NGINX_CONF'
 server {
     listen 80;
-    server_name gesp.257758.xyz;
+    server_name <YOUR_DOMAIN>;
 
     location / {
         proxy_pass http://127.0.0.1:3000;

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # GESP 刷题平台 - 美国服务器部署脚本
-# 服务器: 154.9.226.175
+# 服务器: <YOUR_SERVER_IP>
 # 用法: 在本地运行此脚本，会自动上传并部署
 
 set -e
 
-SERVER="154.9.226.175"
+SERVER="<YOUR_SERVER_IP>"
 USER="root"
 REMOTE_DIR="/opt/gesp"
 LOCAL_DIR="$(cd "$(dirname "$0")" && pwd)"

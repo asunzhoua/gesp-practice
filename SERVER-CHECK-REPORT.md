@@ -4,15 +4,15 @@
 
 | 检测项 | 状态 | 说明 |
 |-------|------|------|
-| DNS 解析 | ✅ 正常 | gesp.257758.xyz → 154.9.226.175 |
+| DNS 解析 | ✅ 正常 | <YOUR_DOMAIN> → <YOUR_SERVER_IP> |
 | 网络连通 | ✅ 正常 | Ping 延迟 170ms，丢包率 0% |
 | 端口 3000 | ✅ 可用 | 无服务占用，可直接使用 |
 | 9router 服务 | ✅ 运行中 | 端口 20128 正常工作 |
 | SSH 连接 | ⚠️ 需确认 | 密码认证被拒绝，可能已更改密码 |
 
 ## 服务器信息
-- **IP**: 154.9.226.175
-- **域名**: gesp.257758.xyz
+- **IP**: <YOUR_SERVER_IP>
+- **域名**: <YOUR_DOMAIN>
 - **现有服务**: 9router (端口 20128)
 - **可用端口**: 3000 (GESP 平台)
 
@@ -26,7 +26,7 @@
 
 ### 步骤 1: SSH 登录服务器
 ```bash
-ssh root@154.9.226.175
+ssh root@<YOUR_SERVER_IP>
 # 输入当前密码
 ```
 
@@ -49,7 +49,7 @@ tar -czf /tmp/gesp-deploy.tar.gz \
   .
 
 # 上传到服务器（输入密码）
-scp /tmp/gesp-deploy.tar.gz root@154.9.226.175:/tmp/
+scp /tmp/gesp-deploy.tar.gz root@<YOUR_SERVER_IP>:/tmp/
 ```
 
 ### 步骤 4: 在服务器上解压并配置
@@ -121,8 +121,8 @@ iptables -A INPUT -p tcp --dport 3000 -j ACCEPT
 ## 验证部署
 
 部署完成后，访问以下地址测试：
-- **http://gesp.257758.xyz:3000**
-- **http://154.9.226.175:3000**
+- **http://<YOUR_DOMAIN>:3000**
+- **http://<YOUR_SERVER_IP>:3000**
 
 登录账号：`teacher` / `teacher123`
 

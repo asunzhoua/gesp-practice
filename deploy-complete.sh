@@ -4,8 +4,8 @@
 
 set -e
 
-DOMAIN="gesp.257758.xyz"
-EMAIL="admin@257758.xyz"
+DOMAIN="<YOUR_DOMAIN>"
+EMAIL="admin@<YOUR_DOMAIN>"
 APP_DIR="/opt/gesp"
 
 echo "=========================================="
@@ -43,7 +43,7 @@ echo "[6/10] 配置 Nginx..."
 cat > /etc/nginx/sites-available/gesp << 'NGINX_HTTP'
 server {
     listen 80;
-    server_name gesp.257758.xyz;
+    server_name <YOUR_DOMAIN>;
 
     location / {
         proxy_pass http://127.0.0.1:3000;

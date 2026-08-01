@@ -1,8 +1,8 @@
 # GESP 刷题平台 - 美国服务器部署指南
 
 ## 部署信息
-- **服务器**: 154.9.226.175
-- **访问地址**: http://154.9.226.175:3000
+- **服务器**: <YOUR_SERVER_IP>
+- **访问地址**: http://<YOUR_SERVER_IP>:3000
 - **默认账号**: teacher / teacher123
 
 ## 部署步骤
@@ -25,13 +25,13 @@ tar -czf gesp-deploy.tar.gz \
 #### 2. 上传到服务器
 使用 SCP 或其他工具上传 `gesp-deploy.tar.gz` 到服务器：
 ```bash
-scp gesp-deploy.tar.gz root@154.9.226.175:/tmp/
+scp gesp-deploy.tar.gz root@<YOUR_SERVER_IP>:/tmp/
 ```
 
 #### 3. 在服务器上部署
 ```bash
 # SSH 登录服务器
-ssh root@154.9.226.175
+ssh root@<YOUR_SERVER_IP>
 
 # 创建目录
 mkdir -p /opt/gesp
@@ -72,16 +72,16 @@ pm2 startup
 
 ```bash
 # 上传部署脚本到服务器
-scp deploy-server.sh root@154.9.226.175:/tmp/
+scp deploy-server.sh root@<YOUR_SERVER_IP>:/tmp/
 
 # 在服务器上运行
-ssh root@154.9.226.175
+ssh root@<YOUR_SERVER_IP>
 bash /tmp/deploy-server.sh
 ```
 
 ## 部署后验证
 
-1. 访问 http://154.9.226.175:3000
+1. 访问 http://<YOUR_SERVER_IP>:3000
 2. 使用账号 `teacher` / `teacher123` 登录
 3. 测试练习和考试功能
 
@@ -157,4 +157,4 @@ pm2 restart gesp-practice
 1. 服务器同时运行着 9router 服务（端口 20128），不会冲突
 2. 建议定期备份数据库
 3. 生产环境建议配置 HTTPS（使用 Let's Encrypt）
-4. 如果需要域名访问，配置 DNS 指向 154.9.226.175
+4. 如果需要域名访问，配置 DNS 指向 <YOUR_SERVER_IP>
