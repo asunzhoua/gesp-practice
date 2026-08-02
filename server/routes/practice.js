@@ -26,11 +26,14 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
   const now = new Date();
   const today = now.toISOString().slice(0, 10);
 
-  // 1. Get all wrong question_ids (not yet corrected)
+  // 1. Get all wrong question_ids (not yet corrected), excluding coding questions
+  //    (coding questions are practiced in the dedicated coding module, not in the
+  //    multiple-choice review mode)
   const wrongIds = db.prepare(`
-    SELECT DISTINCT question_id FROM answers
-    WHERE user_id = ? AND is_correct = 0
-    AND question_id NOT IN (
+    SELECT DISTINCT a.question_id FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND a.is_correct = 0 AND q.type != 'coding'
+    AND a.question_id NOT IN (
       SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
     )
   `).all(userId, userId).map(r => r.question_id);
@@ -60,6 +63,7 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
 
     // Question info
     const q = db.prepare('SELECT id, kp, type, title, difficulty FROM questions WHERE id = ?').get(qid);
+    if (q?.type === 'coding') continue; // safety: never schedule coding questions here
 
     // Current round (0-based, capped at last interval)
     const round = Math.min(correctCount, EBBINGHAUS_INTERVALS.length - 1);
@@ -96,19 +100,25 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
   todayReview.sort((a, b) => b.round - a.round); // higher round first (more important to review)
 
   // 3. Review stats
+  // reviewedToday: distinct questions answered today that were ever wrong (non-coding),
+  // which includes reviews answered correctly today
   const reviewedToday = db.prepare(`
-    SELECT COUNT(DISTINCT question_id) as c FROM answers
-    WHERE user_id = ? AND is_correct = 0
-    AND question_id IN (SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 0)
-    AND date(answered_at) = ?
-  `).get(userId, userId, today).c;
+    SELECT COUNT(DISTINCT a.question_id) as c FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND q.type != 'coding'
+    AND date(a.answered_at) = ?
+    AND a.question_id IN (
+      SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
+    )
+  `).get(userId, today, userId).c;
 
   // Mastered: questions that were once wrong (had is_correct=0) but have since been answered correctly
   // i.e., they left the wrong list because the student got them right
   const mastered = db.prepare(`
-    SELECT COUNT(DISTINCT question_id) as c FROM answers
-    WHERE user_id = ? AND is_correct = 1
-    AND question_id IN (
+    SELECT COUNT(DISTINCT a.question_id) as c FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND a.is_correct = 1 AND q.type != 'coding'
+    AND a.question_id IN (
       SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
     )
   `).get(userId, userId).c;

@@ -44,7 +44,10 @@ async function initDb() {
       answer INTEGER,
       explanation TEXT,
       source TEXT,
-      is_judge INTEGER DEFAULT 0
+      is_judge INTEGER DEFAULT 0,
+      answer_text TEXT,
+      starter_code TEXT,
+      test_cases TEXT
     )
   `);
 

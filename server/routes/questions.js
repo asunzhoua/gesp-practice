@@ -35,10 +35,17 @@ router.get('/stats', authMiddleware, (req, res) => {
 
   const byKp = db.prepare(`
     SELECT q.kp, COUNT(DISTINCT a.question_id) as answered,
-           SUM(CASE WHEN a.is_correct = 1 THEN 1 ELSE 0 END) as correct
+           COUNT(DISTINCT CASE WHEN a.is_correct = 1 THEN a.question_id END) as correct
     FROM answers a JOIN questions q ON a.question_id = q.id
     WHERE a.user_id = ?
     GROUP BY q.kp ORDER BY q.kp
+  `).all(userId);
+
+  const dailyStats = db.prepare(`
+    SELECT date(answered_at) as day, COUNT(*) as count,
+           SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) as correct
+    FROM answers WHERE user_id = ?
+    GROUP BY date(answered_at) ORDER BY day DESC LIMIT 30
   `).all(userId);
 
   const examHistory = db.prepare('SELECT * FROM exam_sessions WHERE user_id = ? ORDER BY started_at DESC LIMIT 10').all(userId);
@@ -85,6 +92,7 @@ router.get('/stats', authMiddleware, (req, res) => {
     totalCorrect: totalCorrect.count,
     totalWrong: totalWrong.count,
     byKp,
+    dailyStats,
     kpCounts: db.prepare("SELECT kp, COUNT(*) as count FROM questions WHERE kp LIKE 'kp%' GROUP BY kp").all().reduce((o, r) => { o[r.kp] = r.count; return o; }, {}),
     examHistory,
     totalQuestions,

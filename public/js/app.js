@@ -242,10 +242,8 @@ async function renderDashboard() {
   // Radar chart
   const radarHtml = renderRadarChart(stats.byKp || [], { accuracyMode: true });
 
-  // Daily accuracy chart
-  const accuracyHtml = renderAccuracyChart(stats.examHistory?.slice(0, 14).reverse().map(e => ({
-    day: e.started_at?.slice(0, 10), count: e.total, correct: e.correct
-  })) || []);
+  // Daily accuracy chart (real daily practice data)
+  const accuracyHtml = renderAccuracyChart(stats.dailyStats || []);
 
   // Exam history
   let examHtml = '';
@@ -733,7 +731,7 @@ function renderCodingQuestion() {
   // Build problem statement HTML (exam format)
   let problemHtml = '';
   if (parsed.description) {
-    problemHtml += `<div class="coding-problem-desc">${parsed.description}</div>`;
+    problemHtml += `<div class="coding-problem-desc">${escapeHtml(parsed.description)}</div>`;
   }
   if (parsed.inputExample || parsed.outputExample) {
     problemHtml += `<div class="coding-problem-io">`;
@@ -1158,7 +1156,7 @@ function renderMockExam() {
         ${optionsHtml}
         <div class="exam-nav">
           <button class="btn btn-secondary" onclick="examPrev()" ${mockState.current === 0 ? 'disabled' : ''}>上一题</button>
-          <button class="btn btn-primary" onclick="examNext()">${mockState.current < mockState.questions.length - 1 ? '下一题' : '完成'}</button>
+          <button class="btn btn-primary" onclick="${mockState.current < mockState.questions.length - 1 ? 'examNext()' : 'confirmSubmitExam()'}">${mockState.current < mockState.questions.length - 1 ? '下一题' : '完成并交卷'}</button>
         </div>
       </div>
       <div class="answer-palette" id="examPalette">
@@ -1224,7 +1222,7 @@ function examJump(idx) {
 /* --- Coding Editor Helpers --- */
 function escapeHtml(s) {
   if (!s) return '';
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function onExamCodeChange(textarea) {
@@ -1326,7 +1324,15 @@ async function submitMockExam() {
   const timeSpent = EXAM_TIME - mockState.timeLeft;
   let result = { total: 30, correct: 0, score: 0 };
 
-  try { result = await API.submitExam(mockState.paperId, answers, timeSpent); } catch {}
+  try {
+    result = await API.submitExam(mockState.paperId, answers, timeSpent);
+  } catch (e) {
+    // Submission failed: keep the exam data so the student can retry
+    alert('提交失败：' + (e.message || '网络错误') + '，请重新交卷');
+    mockState.submitting = false;
+    if (mockState.timeLeft > 0) mockState.timer = setInterval(tickTimer, 1000);
+    return;
+  }
 
   mockState.started = false;
 
@@ -1814,8 +1820,8 @@ async function renderTeacher() {
           <div class="stu-id">@${escapeHtml(s.username)}</div>
         </div>
         <div class="stu-actions" onclick="event.stopPropagation()">
-          <button class="btn-icon" onclick="resetPwd(${s.id},'${escapeHtml(s.nickname)}')" title="重置密码">🔑</button>
-          <button class="btn-icon btn-danger-icon" onclick="deleteStudent(${s.id},'${escapeHtml(s.nickname)}')" title="删除">🗑</button>
+          <button class="btn-icon" data-action="resetPwd" data-id="${s.id}" data-name="${escapeHtml(s.nickname)}" title="重置密码">🔑</button>
+          <button class="btn-icon btn-danger-icon" data-action="deleteStudent" data-id="${s.id}" data-name="${escapeHtml(s.nickname)}" title="删除">🗑</button>
         </div>
       </div>
       <div class="stu-stats-row">
@@ -1963,7 +1969,7 @@ async function doBatchAdd() {
       html += `<p style="color:var(--error)">${result.errors.length} 个失败</p>`;
     }
     html += `<p>默认密码: <code>${result.defaultPassword}</code></p>`;
-    html += '<div class="batch-list">' + result.created.map(s => `<span class="batch-item">${s.nickname}(@${s.username})</span>`).join('') + '</div>';
+    html += '<div class="batch-list">' + result.created.map(s => `<span class="batch-item">${escapeHtml(s.nickname)}(@${escapeHtml(s.username)})</span>`).join('') + '</div>';
     html += `<button class="btn btn-primary" style="margin-top:12px" onclick="hideModal();renderTeacher()">完成</button></div>`;
     resultEl.innerHTML = html;
   } catch (e) {
@@ -2138,6 +2144,7 @@ function renderBottomTab(section) {
 
   let el = document.querySelector('.bottom-tab');
   if (el) {
+    el.style.display = ''; // restore if it was hidden during an exam
     el.innerHTML = tabs.map(t => `<a href="#/${t.id || ''}" class="${t.id === section ? 'active' : ''}" data-tab="${t.id}">
       <span class="tab-icon">${t.icon}</span>
       <span>${t.label}</span>
@@ -2199,6 +2206,17 @@ async function init() {
       handleRoute();
     }
   });
+
+  // Delegate teacher action buttons (reset/delete) via data attributes
+  // to avoid inline-onclick injection through student nicknames.
+  // Use capture phase so it fires before the card's stopPropagation handlers.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const { action, id, name } = btn.dataset;
+    if (action === 'resetPwd') resetPwd(id, name);
+    else if (action === 'deleteStudent') deleteStudent(id, name);
+  }, true);
 
   handleRoute();
 }

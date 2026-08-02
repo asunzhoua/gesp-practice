@@ -17,8 +17,8 @@ async function seed() {
   for (const [kp, data] of Object.entries(bank.knowledgePoints)) {
     for (const q of data.questions) {
       const options = q.options ? JSON.stringify(q.options) : null;
-      db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-        q.id, kp, q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0
+      db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+        q.id, kp, q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null
       );
       count++;
     }
@@ -26,16 +26,16 @@ async function seed() {
 
   for (const q of bank.mockExam) {
     const options = q.options ? JSON.stringify(q.options) : null;
-    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-      q.id, 'mock', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0
+    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+      q.id, 'mock', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null
     );
     count++;
   }
 
   for (const q of bank.realExam) {
     const options = q.options ? JSON.stringify(q.options) : null;
-    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-      q.id, 'real', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0
+    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+      q.id, 'real', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null
     );
     count++;
   }

@@ -53,15 +53,14 @@ router.post('/compile-run', authMiddleware, (req, res) => {
     return res.status(400).json({ error: '代码过长，请精简后重试' });
   }
 
-  // Reject dangerous includes/content
+  // Reject dangerous includes/content (file I/O, process control, networking, assembly)
   const banned = [
-    /#include\s*<\s*(sys\/|unistd|windows|direct|io\.h|process\.h)/i,
-    /\bsystem\s*\(/i,
-    /\bfork\s*\(/i,
-    /\bexec\w*\s*\(/i,
-    /\bremove\s*\(/i,
-    /\brename\s*\(/i,
-    /\bfopen\s*\(/i,
+    /#include\s*[<"](sys\/|unistd|windows|direct|io\.h|process\.h|fstream|filesystem|fcntl|dirent|sys\/stat|sys\/types|sys\/socket|netinet|arpa|thread|pthread)/i,
+    /#include\s*[<"]\s*\//i,
+    /\b(?:system|popen|fork|vfork|exec\w*|remove|rename|unlink|rmdir|mkdir|chmod|chown|kill|setuid|setgid|mount|umount|socket|connect|bind|listen|accept)\s*\(/i,
+    /\b(?:fopen|freopen|open|creat|ifstream|ofstream|fstream)\s*\(/i,
+    /\bstd::(?:ifstream|ofstream|fstream)\b/i,
+    /\b__asm__\b|\basm\s*\(/i,
   ];
   for (const pat of banned) {
     if (pat.test(code)) {
@@ -96,14 +95,19 @@ router.post('/compile-run', authMiddleware, (req, res) => {
       });
     }
 
+    // Run as an unprivileged user when the server is root, feed stdin from a file
+    const prefix = getPrivilegePrefix(tmpDir);
+    try { fs.chmodSync(binFile, 0o755); } catch {}
+    if (stdin) fs.writeFileSync(path.join(tmpDir, 'input.txt'), stdin, 'utf8');
+
     // Run
     let stdout = '';
     let stderr = '';
     let runError = null;
     try {
       const runCmd = stdin
-        ? `echo ${shellEscape(stdin)} | timeout 5 "${binFile}" 2>&1`
-        : `timeout 5 "${binFile}" 2>&1`;
+        ? `cd "${tmpDir}" && timeout 5 ${prefix}./main < input.txt 2>&1`
+        : `cd "${tmpDir}" && timeout 5 ${prefix}./main 2>&1`;
       stdout = execSync(runCmd, {
         timeout: TIMEOUT_MS,
         encoding: 'utf8',
@@ -196,15 +200,20 @@ router.post('/compile-run/test-cases', authMiddleware, (req, res) => {
       });
     }
 
+    // Run as an unprivileged user when the server is root, feed stdin from a file
+    const prefix = getPrivilegePrefix(tmpDir);
+    try { fs.chmodSync(binFile, 0o755); } catch {}
+
     // Run each test case
     for (const tc of testCases) {
       const start = Date.now();
       let stdout = '';
       let error = null;
       try {
+        if (tc.input) fs.writeFileSync(path.join(tmpDir, 'input.txt'), tc.input, 'utf8');
         const runCmd = tc.input
-          ? `echo ${shellEscape(tc.input)} | timeout 5 "${binFile}" 2>&1`
-          : `timeout 5 "${binFile}" 2>&1`;
+          ? `cd "${tmpDir}" && timeout 5 ${prefix}./main < input.txt 2>&1`
+          : `cd "${tmpDir}" && timeout 5 ${prefix}./main 2>&1`;
         stdout = execSync(runCmd, {
           timeout: TIMEOUT_MS, encoding: 'utf8', maxBuffer: 1024 * 1024
         });
@@ -253,6 +262,19 @@ router.post('/compile-run/test-cases', authMiddleware, (req, res) => {
 });
 
 // Helpers
+function getPrivilegePrefix(tmpDir) {
+  // When the server runs as root, execute the compiled binary as "nobody"
+  // so that a malicious program cannot read or write server files.
+  if (process.getuid && process.getuid() === 0) {
+    try {
+      fs.chmodSync(tmpDir, 0o755);
+      require('child_process').execSync('command -v setpriv', { encoding: 'utf8' });
+      return 'setpriv --reuid=65534 --regid=65534 --clear-groups ';
+    } catch { /* setpriv unavailable; fall back to current user */ }
+  }
+  return '';
+}
+
 function shellEscape(s) {
   // Single-quote escape for shell
   return "'" + String(s).replace(/'/g, "'\\''") + "'";

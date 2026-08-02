@@ -112,7 +112,7 @@ router.get('/students/:id/profile', (req, res) => {
   const byKp = db.prepare(`
     SELECT q.kp,
            COUNT(DISTINCT a.question_id) as answered,
-           SUM(CASE WHEN a.is_correct = 1 THEN 1 ELSE 0 END) as correct
+           COUNT(DISTINCT CASE WHEN a.is_correct = 1 THEN a.question_id END) as correct
     FROM answers a JOIN questions q ON a.question_id = q.id
     WHERE a.user_id = ?
     GROUP BY q.kp ORDER BY q.kp
@@ -189,7 +189,7 @@ router.get('/student/:id', (req, res) => {
   const byKp = db.prepare(`
     SELECT q.kp,
            COUNT(DISTINCT a.question_id) as answered,
-           SUM(CASE WHEN a.is_correct = 1 THEN 1 ELSE 0 END) as correct
+           COUNT(DISTINCT CASE WHEN a.is_correct = 1 THEN a.question_id END) as correct
     FROM answers a JOIN questions q ON a.question_id = q.id
     WHERE a.user_id = ?
     GROUP BY q.kp ORDER BY q.kp
