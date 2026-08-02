@@ -140,7 +140,7 @@ async function renderDashboard() {
   app.innerHTML = `<div class="hero animate-in"><p class="text-muted">加载中...</p></div>`;
 
   let stats = { totalAnswered: 0, totalCorrect: 0, totalWrong: 0, byKp: [], examHistory: [],
-    totalQuestions: 233, completedKPs: 0, dailyGoal: 20, todayAnswered: 0, todayCorrect: 0, reviewStreak: 0 };
+    totalQuestions: 513, completedKPs: 0, dailyGoal: 20, todayAnswered: 0, todayCorrect: 0, reviewStreak: 0 };
   let schedule = { todayReview: [], overdue: [], upcoming: [], reviewStats: { totalWrong: 0, reviewedToday: 0, mastered: 0, streak: 0 } };
   try {
     [stats, schedule] = await Promise.all([API.getStats(), API.getReviewSchedule()]);
@@ -284,6 +284,10 @@ async function renderDashboard() {
         <h2 class="section-title">知识掌握</h2>
         ${radarHtml ? `<div class="radar-chart">${radarHtml}</div>` : '<p class="text-muted text-center" style="padding:40px">暂无数据</p>'}
       </div>
+      ${accuracyHtml ? `<div class="section">
+        <h2 class="section-title">学习趋势</h2>
+        ${accuracyHtml}
+      </div>` : ''}
       ${schedule.upcoming?.length ? `<div class="section">
         <h2 class="section-title">未来7天复习</h2>
         <div class="upcoming-list">${schedule.upcoming.map(u => `
@@ -335,7 +339,8 @@ async function startTodayReview() {
   // Fetch wrong questions and filter to those in our review list
   let allWrong = [];
   try { allWrong = await API.getWrongQuestions(); } catch {}
-  const reviewQuestions = allWrong.filter(q => reviewIds.includes(q.id));
+  // Filter out coding questions (no code editor in review mode)
+  const reviewQuestions = allWrong.filter(q => reviewIds.includes(q.id) && q.type !== 'coding');
 
   if (reviewQuestions.length === 0) {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">今日复习</span></div>

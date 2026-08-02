@@ -103,17 +103,15 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
     AND date(answered_at) = ?
   `).get(userId, userId, today).c;
 
-  // Mastered: wrong questions that have been answered correctly 3+ times
+  // Mastered: questions that were once wrong (had is_correct=0) but have since been answered correctly
+  // i.e., they left the wrong list because the student got them right
   const mastered = db.prepare(`
-    SELECT COUNT(*) as c FROM (
-      SELECT question_id, SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) as correct_count
-      FROM answers WHERE user_id = ? AND question_id IN (
-        SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
-        AND question_id NOT IN (SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1)
-      )
-      GROUP BY question_id HAVING correct_count >= 3
+    SELECT COUNT(DISTINCT question_id) as c FROM answers
+    WHERE user_id = ? AND is_correct = 1
+    AND question_id IN (
+      SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
     )
-  `).get(userId, userId, userId).c;
+  `).get(userId, userId).c;
 
   // 4. Streak: consecutive days with at least one answer
   let streak = 0;
