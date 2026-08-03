@@ -522,6 +522,19 @@ ul, ol { list-style: none; }
 .coding-solution .code-block .code-comment {
   color: #6C7086;
 }
+/* Code blocks embedded in question titles (read-the-code questions) */
+.question-code {
+  background: #1E1E2E; color: #CDD6F4;
+  padding: 12px 14px; border-radius: var(--radius-sm);
+  font-family: var(--font-code); font-size: .88em; line-height: 1.6;
+  white-space: pre-wrap; word-break: break-word; overflow-x: auto;
+  margin: 8px 0; border: 1px solid #313244;
+}
+.question-title code, .wrong-q code, .exam-detail-title code {
+  background: rgba(77, 163, 255, .12); color: var(--brand-primary);
+  padding: 1px 6px; border-radius: 4px;
+  font-family: var(--font-code); font-size: .9em;
+}
 
 /* ---------- Code Editor ---------- */
 .editor-wrap { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid #333; }

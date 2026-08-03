@@ -505,7 +505,7 @@ function renderReviewQuestion() {
         <span class="q-kp">${KP_NAMES[q.kp] || q.kp}</span>
         ${q.source ? `<span class="q-source">真题</span>` : ''}
       </div>
-      <div class="question-title">${escapeHtml(q.title)}</div>
+      <div class="question-title">${formatQuestionTitle(q.title)}</div>
       ${optionsHtml}
       ${feedbackHtml}
     </div>
@@ -564,6 +564,27 @@ function formatCodingAnswer(text) {
     }
   }
   return html;
+}
+
+// Render a question title that may contain <pre><code> code blocks (read-the-code
+// questions) as proper multi-line code, instead of escaping the tags and collapsing
+// every newline into one long line.
+function formatQuestionTitle(html) {
+  if (!html) return '';
+  let out = '';
+  const parts = html.split(/<pre><code>([\s\S]*?)<\/code><\/pre>/);
+  for (let i = 0; i < parts.length; i++) {
+    if (i % 2 === 1) {
+      out += '<pre class="question-code">' + escapeHtml(parts[i]) + '</pre>';
+    } else {
+      let seg = parts[i].replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/<br\s*\/?>/gi, '\n');
+      seg = seg.split(/<code>([\s\S]*?)<\/code>/).map((s, j) =>
+        j % 2 === 1 ? '<code>' + escapeHtml(s) + '</code>' : escapeHtml(s)
+      ).join('');
+      out += seg;
+    }
+  }
+  return out;
 }
 
 /* ============================================================
@@ -634,7 +655,7 @@ function renderPracticeQuestion() {
         <span class="q-diff ${diffClass[q.difficulty] || ''}">${diffLabel[q.difficulty] || ''}</span>
         ${q.source ? `<span class="q-source">真题</span>` : ''}
       </div>
-      <div class="question-title">${escapeHtml(q.title)}</div>
+      <div class="question-title">${formatQuestionTitle(q.title)}</div>
       ${optionsHtml}
       ${explanation}
       <div class="question-nav">
@@ -1245,7 +1266,7 @@ function renderMockExam() {
             probHtml += '</div>';
           }
           return `<div class="coding-problem">${probHtml}</div>`;
-        })() : `<div class="question-title">${escapeHtml(q.title)}</div>`}
+        })() : `<div class="question-title">${formatQuestionTitle(q.title)}</div>`}
         ${codingEditorHtml}
         ${optionsHtml}
         <div class="exam-nav">
@@ -1472,7 +1493,7 @@ async function submitMockExam() {
           <span>第 ${i + 1} 题 · ${isCoding ? '编程题' : (q.isJudge ? '判断题' : '选择题')}</span>
           <span class="${isCoding ? '' : (isCorrect ? 'text-success' : 'text-error')}">${statusHtml}</span>
         </div>
-        <div class="exam-detail-title">${escapeHtml(q.title)}</div>
+        <div class="exam-detail-title">${formatQuestionTitle(q.title)}</div>
         ${detailBody}
         ${rr && rr.explanation ? `<div class="exam-detail-explain"><strong>解析：</strong>${escapeHtml(rr.explanation)}</div>` : ''}
       </div>`;
@@ -1530,7 +1551,7 @@ async function renderReview() {
         <span class="q-kp">${KP_NAMES[q.kp] || q.kp}</span>
         ${q.source ? `<span class="q-source">真题</span>` : ''}
       </div>
-      <div class="question-title">${escapeHtml(q.title)}</div>
+      <div class="question-title">${formatQuestionTitle(q.title)}</div>
       ${q.options ? '<div class="options">' + q.options.map((opt, i) => {
         let cls = 'option disabled';
         if (i === q.answer) cls += ' correct';
@@ -1649,7 +1670,7 @@ function renderWrongPracticeQuestion() {
         <span class="q-kp">${KP_NAMES[q.kp] || q.kp}</span>
         ${q.source ? `<span class="q-source">真题</span>` : ''}
       </div>
-      <div class="question-title">${escapeHtml(q.title)}</div>
+      <div class="question-title">${formatQuestionTitle(q.title)}</div>
       ${optionsHtml}
       ${feedbackHtml}
     </div>
@@ -2151,7 +2172,7 @@ async function viewStudent(id) {
     const labels = 'ABCD';
     const opts = safeParse(w.options, []);
     return `<div class="wrong-item">
-      <div class="wrong-q">${escapeHtml(w.title)}</div>
+      <div class="wrong-q">${formatQuestionTitle(w.title)}</div>
       <div class="wrong-detail">
         <span class="text-error">你的答案: ${labels[w.selected] || '-'}</span>
         <span class="text-success">正确答案: ${labels[w.answer] || '-'}</span>
