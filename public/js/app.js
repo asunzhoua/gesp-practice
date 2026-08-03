@@ -456,7 +456,7 @@ function renderReviewQuestion() {
   if (isAnswered) {
     const fbClass = isCorrect ? 'ok' : 'fail';
     const fbIcon = isCorrect ? '✓' : '✗';
-    const fbText = isCorrect ? cheer(true) : cheer(false) + ' 正确答案是 ' + labels[q.answer];
+    const fbText = isCorrect ? cheer(true) : cheer(false) + ' 正确答案是 ' + (labels[q.answer] ?? '?');
     feedbackHtml = `<div class="feedback show ${fbClass}">
       <span class="fb-icon">${fbIcon}</span> ${fbText}
       ${q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
@@ -1343,13 +1343,14 @@ function isCodingAnswered(q) {
   if (!code.trim()) return false;
   const template = '#include <iostream>\nusing namespace std;\n\nint main() {\n    // 在这里编写代码\n    \n    return 0;\n}';
   if (code.trim() === template.trim()) return false;
-  // Check if they actually wrote code between main() { and return 0;
-  const bodyMatch = code.match(/int main\(\)\s*\{([\s\S]*?)return\s+0;/);
-  if (bodyMatch) {
-    const body = bodyMatch[1].replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').trim();
-    if (!body) return false; // Only comments or empty
-  }
-  return true;
+  // Strip comments and the main() skeleton; if any real statement remains, it is answered.
+  const stripped = code
+    .replace(/\/\/.*$/gm, '')
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/int\s+main\s*\([^)]*\)\s*\{/, '')
+    .replace(/\}\s*$/, '')
+    .trim();
+  return stripped.length > 0;
 }
 
 function confirmSubmitExam() {
@@ -1590,7 +1591,7 @@ function renderWrongPracticeQuestion() {
   if (isAnswered) {
     const fbClass = isCorrect ? 'ok' : 'fail';
     const fbIcon = isCorrect ? '✓' : '✗';
-    const fbText = isCorrect ? cheer(true) + ' 已从错题库移除' : cheer(false) + ' 正确答案是 ' + labels[q.answer];
+    const fbText = isCorrect ? cheer(true) + ' 已从错题库移除' : cheer(false) + ' 正确答案是 ' + (labels[q.answer] ?? '?');
     feedbackHtml = `<div class="feedback show ${fbClass}">
       <span class="fb-icon">${fbIcon}</span> ${fbText}
       ${!isCorrect && q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
