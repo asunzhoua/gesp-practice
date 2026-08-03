@@ -211,7 +211,7 @@ async function renderDashboard() {
     totalQuestions: 513, completedKPs: 0, dailyGoal: 20, todayAnswered: 0, todayCorrect: 0, reviewStreak: 0 };
   let schedule = { todayReview: [], overdue: [], upcoming: [], reviewStats: { totalWrong: 0, reviewedToday: 0, mastered: 0, streak: 0 } };
   try {
-    [stats, schedule] = await Promise.all([API.getStats(currentLevel), API.getReviewSchedule()]);
+    [stats, schedule] = await Promise.all([API.getStats(currentLevel), API.getReviewSchedule(currentLevel)]);
   } catch {}
 
   const progressPct = stats.totalAnswered > 0 ? Math.round(stats.totalCorrect / stats.totalAnswered * 100) : 0;
@@ -405,7 +405,7 @@ async function startTodayReview() {
   app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">今日复习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载复习题目...</p></div>`;
 
   let schedule = {};
-  try { schedule = await API.getReviewSchedule(); } catch {}
+  try { schedule = await API.getReviewSchedule(currentLevel); } catch {}
   window._lastSchedule = schedule;
 
   // Combine overdue + todayReview, then fetch full question data
@@ -418,7 +418,7 @@ async function startTodayReview() {
 
   // Fetch wrong questions and filter to those in our review list
   let allWrong = [];
-  try { allWrong = await API.getWrongQuestions(); } catch {}
+  try { allWrong = await API.getWrongQuestions(currentLevel); } catch {}
   // Filter out coding questions (no code editor in review mode)
   const reviewQuestions = allWrong.filter(q => reviewIds.includes(q.id) && q.type !== 'coding');
 
@@ -1540,7 +1540,7 @@ async function renderReview() {
   app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">错题复习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let questions = [];
-  try { questions = await API.getWrongQuestions(); } catch {}
+  try { questions = await API.getWrongQuestions(currentLevel); } catch {}
   // Skip coding questions (no code editor in review mode)
   questions = questions.filter(q => q.type !== 'coding');
 
@@ -1592,7 +1592,7 @@ async function startWrongPractice() {
   app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/', '确定退出练习？')">← 退出</a><span style="font-weight:700">错题巩固练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let questions = [];
-  try { questions = await API.getWrongQuestions(); } catch {}
+  try { questions = await API.getWrongQuestions(currentLevel); } catch {}
   // Skip coding questions (no code editor in practice mode)
   questions = questions.filter(q => q.type !== 'coding');
 

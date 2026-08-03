@@ -1,6 +1,7 @@
 const express = require('express');
 const { db } = require('../db');
 const { authMiddleware } = require('../auth');
+const { levelInt, kpWhere } = require('../level');
 
 const router = express.Router();
 
@@ -34,16 +35,16 @@ router.post('/answer', authMiddleware, (req, res) => {
 // Get review schedule based on Ebbinghaus forgetting curve
 router.get('/review/schedule', authMiddleware, (req, res) => {
   const userId = req.user.id;
+  const level = levelInt(req.query.level);
+  const kp = kpWhere(level, 'q');
   const now = new Date();
   const today = now.toISOString().slice(0, 10);
 
-  // 1. Get all wrong question_ids (not yet corrected), excluding coding questions
-  //    (coding questions are practiced in the dedicated coding module, not in the
-  //    multiple-choice review mode)
+  // 1. Get all wrong question_ids (not yet corrected) for this level, excluding coding
   const wrongIds = db.prepare(`
     SELECT DISTINCT a.question_id FROM answers a
     JOIN questions q ON a.question_id = q.id
-    WHERE a.user_id = ? AND a.is_correct = 0 AND q.type != 'coding'
+    WHERE a.user_id = ? AND a.is_correct = 0 AND q.type != 'coding' AND ${kp}
     AND a.question_id NOT IN (
       SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
     )
@@ -116,7 +117,7 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
   const reviewedToday = db.prepare(`
     SELECT COUNT(DISTINCT a.question_id) as c FROM answers a
     JOIN questions q ON a.question_id = q.id
-    WHERE a.user_id = ? AND q.type != 'coding'
+    WHERE a.user_id = ? AND q.type != 'coding' AND ${kp}
     AND date(a.answered_at) = ?
     AND a.question_id IN (
       SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
@@ -124,21 +125,22 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
   `).get(userId, today, userId).c;
 
   // Mastered: questions that were once wrong (had is_correct=0) but have since been answered correctly
-  // i.e., they left the wrong list because the student got them right
   const mastered = db.prepare(`
     SELECT COUNT(DISTINCT a.question_id) as c FROM answers a
     JOIN questions q ON a.question_id = q.id
-    WHERE a.user_id = ? AND a.is_correct = 1 AND q.type != 'coding'
+    WHERE a.user_id = ? AND a.is_correct = 1 AND q.type != 'coding' AND ${kp}
     AND a.question_id IN (
       SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
     )
   `).get(userId, userId).c;
 
-  // 4. Streak: consecutive days with at least one answer
+  // 4. Streak: consecutive days with at least one answer (this level)
   let streak = 0;
   const dayRows = db.prepare(`
-    SELECT DISTINCT date(answered_at) as day FROM answers
-    WHERE user_id = ? ORDER BY day DESC LIMIT 60
+    SELECT DISTINCT date(a.answered_at) as day FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND ${kp}
+    ORDER BY day DESC LIMIT 60
   `).all(userId);
 
   if (dayRows.length > 0) {
@@ -171,10 +173,13 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
 });
 
 router.get('/wrong-ids', authMiddleware, (req, res) => {
+  const level = levelInt(req.query.level);
+  const kp = kpWhere(level, 'q');
   const rows = db.prepare(`
-    SELECT DISTINCT question_id FROM answers
-    WHERE user_id = ? AND is_correct = 0
-    AND question_id NOT IN (
+    SELECT DISTINCT a.question_id FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND a.is_correct = 0 AND ${kp}
+    AND a.question_id NOT IN (
       SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
     )
   `).all(req.user.id, req.user.id);
@@ -183,10 +188,12 @@ router.get('/wrong-ids', authMiddleware, (req, res) => {
 });
 
 router.get('/wrong-questions', authMiddleware, (req, res) => {
+  const level = levelInt(req.query.level);
+  const kp = kpWhere(level, 'q');
   const rows = db.prepare(`
     SELECT DISTINCT q.* FROM questions q
     JOIN answers a ON q.id = a.question_id
-    WHERE a.user_id = ? AND a.is_correct = 0
+    WHERE a.user_id = ? AND a.is_correct = 0 AND ${kp}
     AND q.id NOT IN (
       SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
     )

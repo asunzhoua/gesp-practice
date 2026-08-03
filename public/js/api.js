@@ -73,9 +73,9 @@ const API = (() => {
     async submitAnswer(questionId, selected, isCorrect) {
       return request('/practice/answer', { method: 'POST', body: JSON.stringify({ questionId, selected, isCorrect }) });
     },
-    async getWrongIds() { return request('/practice/wrong-ids'); },
-    async getWrongQuestions() { return request('/practice/wrong-questions'); },
-    async getReviewSchedule() { return request('/practice/review/schedule'); },
+    async getWrongIds(level) { return request('/practice/wrong-ids' + (level ? '?level=' + level : '')); },
+    async getWrongQuestions(level) { return request('/practice/wrong-questions' + (level ? '?level=' + level : '')); },
+    async getReviewSchedule(level) { return request('/practice/review/schedule' + (level ? '?level=' + level : '')); },
     async getTeacherStudents() { return request('/teacher/students'); },
     async getTeacherStudent(id) { return request('/teacher/student/' + id); },
     async getTeacherStats() { return request('/teacher/stats'); },

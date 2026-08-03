@@ -21,9 +21,22 @@ router.get('/stats', authMiddleware, (req, res) => {
   const level = levelInt(req.query.level);
   const kpFilter = kpWhere(level, 'q');
 
-  const totalAnswered = db.prepare('SELECT COUNT(DISTINCT question_id) as count FROM answers WHERE user_id = ?').get(userId);
-  const totalCorrect = db.prepare('SELECT COUNT(DISTINCT question_id) as count FROM answers WHERE user_id = ? AND is_correct = 1').get(userId);
-  const totalWrong = db.prepare('SELECT COUNT(DISTINCT question_id) as count FROM answers WHERE user_id = ? AND is_correct = 0 AND question_id NOT IN (SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1)').get(userId, userId);
+  const totalAnswered = db.prepare(`
+    SELECT COUNT(DISTINCT a.question_id) as count FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND ${kpFilter}
+  `).get(userId);
+  const totalCorrect = db.prepare(`
+    SELECT COUNT(DISTINCT a.question_id) as count FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND a.is_correct = 1 AND ${kpFilter}
+  `).get(userId);
+  const totalWrong = db.prepare(`
+    SELECT COUNT(DISTINCT a.question_id) as count FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND a.is_correct = 0 AND ${kpFilter}
+    AND a.question_id NOT IN (SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1)
+  `).get(userId, userId);
 
   const byKp = db.prepare(`
     SELECT q.kp, COUNT(DISTINCT a.question_id) as answered,
@@ -34,10 +47,11 @@ router.get('/stats', authMiddleware, (req, res) => {
   `).all(userId);
 
   const dailyStats = db.prepare(`
-    SELECT date(answered_at) as day, COUNT(*) as count,
-           SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) as correct
-    FROM answers WHERE user_id = ?
-    GROUP BY date(answered_at) ORDER BY day DESC LIMIT 30
+    SELECT date(a.answered_at) as day, COUNT(*) as count,
+           SUM(CASE WHEN a.is_correct = 1 THEN 1 ELSE 0 END) as correct
+    FROM answers a JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND ${kpFilter}
+    GROUP BY date(a.answered_at) ORDER BY day DESC LIMIT 30
   `).all(userId);
 
   const examHistory = db.prepare('SELECT * FROM exam_sessions WHERE user_id = ? ORDER BY started_at DESC LIMIT 10').all(userId);
@@ -52,18 +66,21 @@ router.get('/stats', authMiddleware, (req, res) => {
   const profile = db.prepare('SELECT daily_goal FROM student_profiles WHERE user_id = ?').get(userId);
   const dailyGoal = profile?.daily_goal || 20;
 
-  // Today's activity
+  // Today's activity (this level)
   const todayRow = db.prepare(`
     SELECT COUNT(*) as total,
-           SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) as correct
-    FROM answers WHERE user_id = ? AND date(answered_at) = ?
+           SUM(CASE WHEN a.is_correct = 1 THEN 1 ELSE 0 END) as correct
+    FROM answers a JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND date(a.answered_at) = ? AND ${kpFilter}
   `).get(userId, today);
 
-  // Review streak (consecutive days with answers)
+  // Review streak (consecutive days with answers, this level)
   let reviewStreak = 0;
   const dayRows = db.prepare(`
-    SELECT DISTINCT date(answered_at) as day FROM answers
-    WHERE user_id = ? ORDER BY day DESC LIMIT 60
+    SELECT DISTINCT date(a.answered_at) as day FROM answers a
+    JOIN questions q ON a.question_id = q.id
+    WHERE a.user_id = ? AND ${kpFilter}
+    ORDER BY day DESC LIMIT 60
   `).all(userId);
   if (dayRows.length > 0) {
     let checkDate = today;
