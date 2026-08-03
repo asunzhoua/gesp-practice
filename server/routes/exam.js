@@ -1,51 +1,43 @@
 const express = require('express');
-const { execSync } = require('child_process');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { db } = require('../db');
 const { authMiddleware } = require('../auth');
+const { runCmd, compileSem, privilegePrefix, LIMITS } = require('../compile-util');
 
 const router = express.Router();
 
 // Server-side verification of a submitted C++ coding answer: compile + run the
 // student's code against the question's stored test cases. Returns true only if
-// every test case passes. Runs as "nobody" with hard resource limits.
-function verifyCoding(code, testCasesJson) {
+// every test case passes. Async + bounded by compileSem, so it never blocks the
+// event loop.
+async function verifyCoding(code, testCasesJson) {
+  let testCases = [];
+  if (testCasesJson) { try { testCases = JSON.parse(testCasesJson); } catch { testCases = []; } }
+  if (!Array.isArray(testCases) || testCases.length === 0) return false;
+
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'gesp-v-'));
+  const src = path.join(tmp, 'main.cpp');
+  fs.writeFileSync(src, code, 'utf8');
+  const prefix = privilegePrefix(tmp);
+
+  await compileSem.acquire();
   try {
-    let testCases = [];
-    if (testCasesJson) { try { testCases = JSON.parse(testCasesJson); } catch { testCases = []; } }
-    if (!Array.isArray(testCases) || testCases.length === 0) return false;
-
-    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'gesp-v-'));
-    const src = path.join(tmp, 'main.cpp');
-    fs.writeFileSync(src, code, 'utf8');
-
-    const isRoot = process.getuid && process.getuid() === 0;
-    const prefix = isRoot ? 'setpriv --reuid=65534 --regid=65534 --clear-groups ' : '';
-    if (isRoot) fs.chmodSync(tmp, 0o777);
-
-    try {
-      execSync(`cd "${tmp}" && ${prefix}g++ -o main main.cpp -std=c++17 -O2 2>&1`, { timeout: 8000, encoding: 'utf8' });
-    } catch (e) { try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {} return false; }
-
-    const limits = 'ulimit -v 262144; ulimit -u 20; ulimit -f 1024; ulimit -t 5; ';
+    const c = await runCmd(`cd "${tmp}" && ${prefix}g++ -o main main.cpp -std=c++17 -O2 2>&1`, 8000);
+    if (c.error) return false;
     const norm = (s) => String(s || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trimEnd();
     for (const tc of testCases) {
-      let out = '';
-      try {
-        const inf = path.join(tmp, 'in.txt');
-        if (tc.input) fs.writeFileSync(inf, tc.input);
-        out = execSync(`cd "${tmp}" && ${limits}timeout -k 1 5 ${prefix}./main ${tc.input ? '< in.txt' : ''} 2>&1`, { timeout: 8000, encoding: 'utf8' });
-      } catch (e) { out = e.stdout || ''; }
-      if (norm(out) !== norm(tc.expectedOutput)) {
-        try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
-        return false;
-      }
+      if (tc.input) fs.writeFileSync(path.join(tmp, 'in.txt'), tc.input, 'utf8');
+      const r = await runCmd(`cd "${tmp}" && ${LIMITS}timeout -k 1 5 ${prefix}./main ${tc.input ? '< in.txt' : ''} 2>&1`, 8000);
+      if (norm(r.stdout || '') !== norm(tc.expectedOutput)) return false;
     }
-    try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
     return true;
   } catch { return false; }
+  finally {
+    compileSem.release();
+    try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
+  }
 }
 
 // Get all available exam papers
@@ -125,11 +117,22 @@ router.get('/paper', authMiddleware, (req, res) => {
   res.json({ paper: { id: 0, title: '随机组卷', description: '从题库随机抽取30道题' }, questions });
 });
 
-router.post('/submit', authMiddleware, (req, res) => {
+router.post('/submit', authMiddleware, async (req, res) => {
   const { paperId, answers, timeSpent } = req.body;
   if (!answers || !Array.isArray(answers)) {
     return res.status(400).json({ error: '参数不完整' });
   }
+
+  // Async server-side verification of coding answers (bounded by compileSem).
+  const codingPassed = new Map();
+  await Promise.all(answers.map(async (a) => {
+    if (!a || !a.questionId) return;
+    const q = db.prepare('SELECT type, test_cases FROM questions WHERE id = ?').get(a.questionId);
+    if (q && q.type === 'coding') {
+      const submittedCode = (typeof a.code === 'string' && a.code.trim()) ? a.code : '';
+      codingPassed.set(a.questionId, submittedCode ? await verifyCoding(submittedCode, q.test_cases) : false);
+    }
+  }));
 
   let correct = 0;
   let earnedPoints = 0;
@@ -139,13 +142,10 @@ router.post('/submit', authMiddleware, (req, res) => {
   const insertAnswer = db.prepare('INSERT INTO answers (user_id, question_id, selected, is_correct) VALUES (?, ?, ?, ?)');
   const transaction = db.transaction(() => {
     for (const a of answers) {
-      const q = db.prepare('SELECT answer, type, is_judge, test_cases FROM questions WHERE id = ?').get(a.questionId);
+      const q = db.prepare('SELECT answer, type, is_judge FROM questions WHERE id = ?').get(a.questionId);
       let isCorrect;
       if (q && q.type === 'coding') {
-        // Verify the student's code server-side against the stored test cases;
-        // never trust a client-sent pass flag.
-        const submittedCode = (typeof a.code === 'string' && a.code.trim()) ? a.code : '';
-        isCorrect = submittedCode ? (verifyCoding(submittedCode, q.test_cases) ? 1 : 0) : 0;
+        isCorrect = codingPassed.get(a.questionId) ? 1 : 0;
         totalPoints += 25; // GESP: coding = 25 points each
         if (isCorrect) { correct++; earnedPoints += 25; }
       } else {
