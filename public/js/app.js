@@ -7,18 +7,38 @@
    Constants
    ============================================================ */
 const EXAM_TIME = 45 * 60;
-const KP_LABELS = {
-  kp01: '01', kp02: '02', kp03: '03', kp04: '04',
-  kp05: '05', kp06: '06', kp07: '07', kp08: '08'
-};
 const KP_NAMES = {
-  kp01: '变量与数据类型', kp02: '基本运算', kp03: '输入输出',
-  kp04: '条件语句', kp05: '循环语句', kp06: '数组基础',
-  kp07: '字符与字符串', kp08: '函数基础', mock: '模拟考试',
+  // Level 1 (official GESP syllabus)
+  kp1_01: '计算机基础知识', kp1_02: '集成开发环境', kp1_03: '程序的基本语句',
+  kp1_04: '分支结构', kp1_05: '循环结构', kp1_06: '程序的基本概念',
+  kp1_07: '基本运算', kp1_08: '基本数据类型',
   // Level 2
-  kp2_01: '指针与引用', kp2_02: '递归与递推', kp2_03: '排序算法',
-  kp2_04: '字符串进阶', kp2_05: '结构体与类', kp2_06: '栈与队列',
-  kp2_07: '树与图入门', kp2_08: '数学与位运算'
+  kp2_01: '计算机存储与网络', kp2_02: '程序设计语言', kp2_03: '流程图',
+  kp2_04: 'ASCII编码', kp2_05: '数据类型转换', kp2_06: '多层分支结构',
+  kp2_07: '多层循环语句', kp2_08: '数学函数',
+  // Level 3
+  kp3_01: '数据编码与进制转换', kp3_02: '位运算', kp3_03: '算法的概念与描述',
+  kp3_04: '一维数组', kp3_05: '字符串及函数', kp3_06: '枚举法', kp3_07: '模拟法',
+  // Level 4
+  kp4_01: '函数', kp4_02: '形参实参与作用域', kp4_03: '指针', kp4_04: '函数参数传递',
+  kp4_05: '结构体', kp4_06: '二维及多维数组', kp4_07: '递推', kp4_08: '排序概念',
+  kp4_09: '排序算法', kp4_10: '算法复杂度', kp4_11: '文件读写', kp4_12: '异常处理',
+  // Level 5
+  kp5_01: '初等数论', kp5_02: '高精度运算', kp5_03: '链表', kp5_04: '辗转相除法',
+  kp5_05: '素数筛法', kp5_06: '唯一分解定理', kp5_07: '二分查找', kp5_08: '贪心算法',
+  kp5_09: '分治算法', kp5_10: '递归', kp5_11: '算法复杂度',
+  // Level 6
+  kp6_01: '树的定义与遍历', kp6_02: '哈夫曼树', kp6_03: '完全二叉树',
+  kp6_04: '二叉排序树', kp6_05: '哈夫曼编码', kp6_06: '格雷编码', kp6_07: '深度优先搜索',
+  kp6_08: '宽度优先搜索', kp6_09: '二叉树搜索', kp6_10: '简单动态规划',
+  kp6_11: '面向对象思想', kp6_12: '类', kp6_13: '栈、队列、循环队列',
+  // Level 7
+  kp7_01: '数学库函数', kp7_02: '复杂动态规划', kp7_03: '图的定义及遍历',
+  kp7_04: '图论基本算法', kp7_05: '哈希表',
+  // Level 8
+  kp8_01: '计数原理', kp8_02: '排列与组合', kp8_03: '杨辉三角', kp8_04: '倍增法',
+  kp8_05: '代数与平面几何', kp8_06: '图论算法综合', kp8_07: '算法优化',
+  mock: '模拟考试'
 };
 const EXAM_TYPE_MAP = { mock: '模拟测试', formal: '正式考试' };
 
@@ -34,10 +54,19 @@ function setLevel(n) {
     location.hash = '#/';
   }
 }
+// Official kp codes for a level (variable count per level)
 function levelKps(level) {
-  if (level === 1) return ['kp01', 'kp02', 'kp03', 'kp04', 'kp05', 'kp06', 'kp07', 'kp08'];
-  return ['kp' + level + '_01', 'kp' + level + '_02', 'kp' + level + '_03', 'kp' + level + '_04',
-          'kp' + level + '_05', 'kp' + level + '_06', 'kp' + level + '_07', 'kp' + level + '_08'];
+  const perLevel = {
+    1: ['kp1_01','kp1_02','kp1_03','kp1_04','kp1_05','kp1_06','kp1_07','kp1_08'],
+    2: ['kp2_01','kp2_02','kp2_03','kp2_04','kp2_05','kp2_06','kp2_07','kp2_08'],
+    3: ['kp3_01','kp3_02','kp3_03','kp3_04','kp3_05','kp3_06','kp3_07'],
+    4: ['kp4_01','kp4_02','kp4_03','kp4_04','kp4_05','kp4_06','kp4_07','kp4_08','kp4_09','kp4_10','kp4_11','kp4_12'],
+    5: ['kp5_01','kp5_02','kp5_03','kp5_04','kp5_05','kp5_06','kp5_07','kp5_08','kp5_09','kp5_10','kp5_11'],
+    6: ['kp6_01','kp6_02','kp6_03','kp6_04','kp6_05','kp6_06','kp6_07','kp6_08','kp6_09','kp6_10','kp6_11','kp6_12','kp6_13'],
+    7: ['kp7_01','kp7_02','kp7_03','kp7_04','kp7_05'],
+    8: ['kp8_01','kp8_02','kp8_03','kp8_04','kp8_05','kp8_06','kp8_07']
+  };
+  return perLevel[level] || perLevel[1];
 }
 function kpLabelOf(kp) {
   if (kp === 'mock') return '模拟';
@@ -245,7 +274,7 @@ async function renderDashboard() {
     const kpStat = stats.byKp.find(x => x.kp === k);
     const done = kpStat ? kpStat.answered : 0;
     const correct = kpStat ? kpStat.correct : 0;
-    const total = stats.kpCounts?.[k] || 15;
+    const total = stats.kpCounts?.[k] || 0;
     const pct = total > 0 ? Math.round(done / total * 100) : 0;
     kpCards += `
       <div class="kp-card animate-in ${pct >= 100 ? 'completed' : ''}" data-kp="${k}" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
@@ -777,7 +806,7 @@ async function renderCodingHome() {
   const grid = kps.map((kp, i) => `
     <div class="kp-card animate-in" data-kp="${kp.id}" onclick="navigate('#/coding/${kp.id}')" style="animation-delay:${i * 0.05}s">
       <div class="kp-card-header">
-        <span class="kp-num">${KP_LABELS[kp.id] || ''}</span>
+        <span class="kp-num">${kpLabelOf(kp.id)}</span>
         <span class="kp-progress-text">💻</span>
       </div>
       <div class="kp-card-title">${escapeHtml(kp.title)}</div>

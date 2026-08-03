@@ -8,36 +8,36 @@ const QUESTION_BANK = {
     "version": "3.0",
     "totalQuestions": 513,
     "knowledgePoints": {
-      "kp01": {
-        "title": "变量与数据类型",
+      "kp1_08": {
+        "title": "基本数据类型",
         "questions": 50
       },
-      "kp02": {
+      "kp1_07": {
         "title": "基本运算",
         "questions": 50
       },
-      "kp03": {
-        "title": "输入输出",
+      "kp1_03": {
+        "title": "程序的基本语句",
         "questions": 50
       },
-      "kp04": {
-        "title": "条件语句",
+      "kp1_04": {
+        "title": "分支结构",
         "questions": 50
       },
-      "kp05": {
-        "title": "循环语句",
+      "kp1_05": {
+        "title": "循环结构",
         "questions": 50
       },
-      "kp06": {
-        "title": "数组基础",
+      "kp3_04": {
+        "title": "一维数组",
         "questions": 50
       },
-      "kp07": {
-        "title": "字符与字符串",
+      "kp3_05": {
+        "title": "字符串及函数",
         "questions": 50
       },
-      "kp08": {
-        "title": "函数基础",
+      "kp4_01": {
+        "title": "函数",
         "questions": 50
       }
     },
@@ -45,8 +45,8 @@ const QUESTION_BANK = {
     "realExamQuestions": 83
   },
   "knowledgePoints": {
-    "kp01": {
-      "title": "变量与数据类型",
+    "kp1_08": {
+      "title": "基本数据类型",
       "questions": [
         {
           "id": "kp01_q01",
@@ -771,7 +771,7 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp02": {
+    "kp1_07": {
       "title": "基本运算",
       "questions": [
         {
@@ -1499,8 +1499,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp03": {
-      "title": "输入输出",
+    "kp1_03": {
+      "title": "程序的基本语句",
       "questions": [
         {
           "id": "kp03_q01",
@@ -2224,8 +2224,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp04": {
-      "title": "条件语句",
+    "kp1_04": {
+      "title": "分支结构",
       "questions": [
         {
           "id": "kp04_q01",
@@ -2954,8 +2954,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp05": {
-      "title": "循环语句",
+    "kp1_05": {
+      "title": "循环结构",
       "questions": [
         {
           "id": "kp05_q01",
@@ -3678,8 +3678,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp06": {
-      "title": "数组基础",
+    "kp3_04": {
+      "title": "一维数组",
       "questions": [
         {
           "id": "kp06_q01",
@@ -4397,8 +4397,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp07": {
-      "title": "字符与字符串",
+    "kp3_05": {
+      "title": "字符串及函数",
       "questions": [
         {
           "id": "kp07_q01",
@@ -5120,8 +5120,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp08": {
-      "title": "函数基础",
+    "kp4_01": {
+      "title": "函数",
       "questions": [
         {
           "id": "kp08_q01",

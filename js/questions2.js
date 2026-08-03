@@ -8,36 +8,36 @@ const QUESTION_BANK = {
     "version": "1.0",
     "totalQuestions": 56,
     "knowledgePoints": {
-      "kp2_01": {
-        "title": "指针与引用",
+      "kp4_03": {
+        "title": "指针",
         "questions": 7
       },
-      "kp2_02": {
-        "title": "递归与递推",
+      "kp5_10": {
+        "title": "递归",
         "questions": 7
       },
-      "kp2_03": {
+      "kp4_09": {
         "title": "排序算法",
         "questions": 7
       },
-      "kp2_04": {
-        "title": "字符串进阶",
+      "kp3_05": {
+        "title": "字符串及函数",
         "questions": 7
       },
-      "kp2_05": {
-        "title": "结构体与类",
+      "kp4_05": {
+        "title": "结构体",
         "questions": 7
       },
-      "kp2_06": {
-        "title": "栈与队列",
+      "kp6_13": {
+        "title": "栈、队列、循环队列",
         "questions": 7
       },
-      "kp2_07": {
-        "title": "树与图入门",
+      "kp6_01": {
+        "title": "树的定义与遍历",
         "questions": 7
       },
-      "kp2_08": {
-        "title": "数学与位运算",
+      "kp3_02": {
+        "title": "位运算",
         "questions": 7
       }
     },
@@ -45,8 +45,8 @@ const QUESTION_BANK = {
     "realExamQuestions": 0
   },
   "knowledgePoints": {
-    "kp2_01": {
-      "title": "指针与引用",
+    "kp4_03": {
+      "title": "指针",
       "questions": [
         {
           "id": "kp2_01_q01",
@@ -174,8 +174,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_02": {
-      "title": "递归与递推",
+    "kp5_10": {
+      "title": "递归",
       "questions": [
         {
           "id": "kp2_02_q01",
@@ -303,7 +303,7 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_03": {
+    "kp4_09": {
       "title": "排序算法",
       "questions": [
         {
@@ -432,8 +432,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_04": {
-      "title": "字符串进阶",
+    "kp3_05": {
+      "title": "字符串及函数",
       "questions": [
         {
           "id": "kp2_04_q01",
@@ -561,8 +561,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_05": {
-      "title": "结构体与类",
+    "kp4_05": {
+      "title": "结构体",
       "questions": [
         {
           "id": "kp2_05_q01",
@@ -690,8 +690,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_06": {
-      "title": "栈与队列",
+    "kp6_13": {
+      "title": "栈、队列、循环队列",
       "questions": [
         {
           "id": "kp2_06_q01",
@@ -819,8 +819,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_07": {
-      "title": "树与图入门",
+    "kp6_01": {
+      "title": "树的定义与遍历",
       "questions": [
         {
           "id": "kp2_07_q01",
@@ -948,8 +948,8 @@ const QUESTION_BANK = {
         }
       ]
     },
-    "kp2_08": {
-      "title": "数学与位运算",
+    "kp3_02": {
+      "title": "位运算",
       "questions": [
         {
           "id": "kp2_08_q01",
