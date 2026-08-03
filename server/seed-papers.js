@@ -20,6 +20,11 @@ async function seedPapers() {
   createPaper("GESP一级模拟卷（八）", "侧重条件语句、循环语句与逻辑思维", 'mock', 8, ["kp04_q01","kp04_q02","kp04_q03","kp04_q04","kp04_q05","kp04_q06","kp04_q08","kp05_q01","kp05_q02","kp05_q03","kp05_q04","kp05_q05","kp05_q06","kp05_q09","kp01_q01","kp02_q01","kp02_q02","kp03_q01","kp03_q02","kp06_q01","kp04_q07","kp04_q11","kp04_q12","kp04_q18","kp05_q07","kp05_q08","kp05_q11","kp05_q13","kp02_q48","kp02_q49"]);
   createPaper("GESP一级模拟卷（九）", "侧重数组、字符串与函数基础", 'mock', 9, ["kp06_q01","kp06_q02","kp06_q03","kp06_q04","kp06_q05","kp06_q06","kp07_q01","kp07_q02","kp07_q03","kp07_q04","kp07_q05","kp07_q06","kp08_q01","kp08_q02","kp08_q03","kp08_q04","kp08_q05","kp01_q01","kp02_q01","kp03_q01","kp06_q08","kp06_q09","kp06_q12","kp07_q09","kp07_q10","kp07_q11","kp08_q07","kp08_q08","kp02_q50","kp03_q14"]);
   createPaper("GESP一级模拟卷（十）", "高难度冲刺卷，挑战自我", 'mock', 10, ["kp01_q01","kp01_q02","kp02_q01","kp02_q02","kp03_q01","kp03_q02","kp04_q01","kp04_q02","kp05_q01","kp05_q02","kp06_q01","kp06_q02","kp07_q01","kp08_q01","kp08_q02","kp01_q13","kp02_q13","kp03_q13","kp04_q07","kp04_q11","kp05_q07","kp05_q08","kp06_q08","kp07_q09","kp08_q07","kp01_q14","kp02_q14","kp05_q14","kp07_q14","kp08_q14"]);
+
+  console.log('Creating 2 GESP Level 2 mock exam papers...');
+  createPaper("GESP二级模拟卷（一）", "覆盖指针、递归、排序等二级核心知识点", 'mock', 1, ["kp2_01_q01","kp2_01_q02","kp2_01_q03","kp2_01_q04","kp2_01_q05","kp2_02_q01","kp2_02_q02","kp2_02_q03","kp2_02_q04","kp2_02_q05","kp2_03_q01","kp2_03_q02","kp2_03_q03","kp2_03_q04","kp2_03_q05","kp2_04_q01","kp2_04_q02","kp2_04_q03","kp2_05_q01","kp2_05_q02","kp2_05_q03","kp2_06_q01","kp2_06_q02","kp2_06_q03","kp2_07_q01","kp2_07_q02","kp2_08_q01","kp2_08_q02","kp2_08_q03","kp2_08_q04"], 2);
+  createPaper("GESP二级模拟卷（二）", "侧重结构体、栈队列、树图入门", 'mock', 2, ["kp2_05_q01","kp2_05_q02","kp2_05_q03","kp2_05_q04","kp2_05_q05","kp2_05_q06","kp2_06_q01","kp2_06_q02","kp2_06_q03","kp2_06_q04","kp2_06_q05","kp2_06_q06","kp2_07_q01","kp2_07_q02","kp2_07_q03","kp2_07_q04","kp2_07_q05","kp2_07_q06","kp2_08_q01","kp2_08_q02","kp2_08_q03","kp2_04_q01","kp2_04_q02","kp2_04_q03","kp2_04_q04","kp2_01_q06","kp2_02_q06","kp2_03_q04","kp2_03_q05","kp2_03_q06"], 2);
+
   console.log('\nExam papers created successfully!');
 
   // Verify
@@ -40,9 +45,9 @@ async function seedPapers() {
   console.log('Database file size:', fs.statSync(dbPath).size, 'bytes');
 }
 
-function createPaper(title, description, type, difficultyLevel, questionIds) {
-  db.prepare('INSERT INTO exam_papers (title, description, type, total_questions, time_limit, difficulty_level) VALUES (?, ?, ?, ?, ?, ?)').run(
-    title, description, type, 30, 45, difficultyLevel.toString()
+function createPaper(title, description, type, difficultyLevel, questionIds, level) {
+  db.prepare('INSERT INTO exam_papers (title, description, type, total_questions, time_limit, difficulty_level, level) VALUES (?, ?, ?, ?, ?, ?, ?)').run(
+    title, description, type, 30, 45, difficultyLevel.toString(), level || 1
   );
 
   const paperId = db.prepare('SELECT last_insert_rowid() as id').get().id;

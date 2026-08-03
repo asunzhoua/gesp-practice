@@ -6,38 +6,37 @@ const { initDb, db } = require('./db');
 async function seed() {
   await initDb();
 
-  const questionsPath = path.join(__dirname, '..', 'js', 'questions.js');
-  const content = fs.readFileSync(questionsPath, 'utf-8');
-
-  const fn = new Function(content + '; return QUESTION_BANK;');
-  const bank = fn();
-
+  // Load every level bank file that exists (js/questions.js, js/questions2.js, ...).
+  const bankFiles = ['questions.js', 'questions2.js', 'questions3.js', 'questions4.js', 'questions5.js', 'questions6.js', 'questions7.js', 'questions8.js'];
   let count = 0;
+  const insertQ = db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
 
-  for (const [kp, data] of Object.entries(bank.knowledgePoints)) {
-    for (const q of data.questions) {
+  for (const f of bankFiles) {
+    const questionsPath = path.join(__dirname, '..', 'js', f);
+    if (!fs.existsSync(questionsPath)) continue;
+
+    const fn = new Function(fs.readFileSync(questionsPath, 'utf-8') + '; return QUESTION_BANK;');
+    const bank = fn();
+
+    for (const [kp, data] of Object.entries(bank.knowledgePoints)) {
+      for (const q of data.questions) {
+        const options = q.options ? JSON.stringify(q.options) : null;
+        insertQ.run(q.id, kp, q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null);
+        count++;
+      }
+    }
+
+    for (const q of bank.mockExam) {
       const options = q.options ? JSON.stringify(q.options) : null;
-      db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-        q.id, kp, q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null
-      );
+      insertQ.run(q.id, 'mock', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null);
       count++;
     }
-  }
 
-  for (const q of bank.mockExam) {
-    const options = q.options ? JSON.stringify(q.options) : null;
-    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-      q.id, 'mock', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null
-    );
-    count++;
-  }
-
-  for (const q of bank.realExam) {
-    const options = q.options ? JSON.stringify(q.options) : null;
-    db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
-      q.id, 'real', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null
-    );
-    count++;
+    for (const q of bank.realExam) {
+      const options = q.options ? JSON.stringify(q.options) : null;
+      insertQ.run(q.id, 'real', q.type || 'choice', q.difficulty || 1, q.question || '', options, q.answer ?? 0, q.explanation || '', q.source || null, q.isJudge ? 1 : 0, q.answerText || null, q.starterCode || null, q.testCases ? JSON.stringify(q.testCases) : null);
+      count++;
+    }
   }
 
   console.log(`Seeded ${count} questions.`);

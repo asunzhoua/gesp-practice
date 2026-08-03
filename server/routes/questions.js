@@ -1,26 +1,16 @@
 const express = require('express');
 const { db } = require('../db');
 const { authMiddleware } = require('../auth');
+const { levelInt, kpName, kpWhere } = require('../level');
 
 const router = express.Router();
 
 router.get('/knowledge-points', authMiddleware, (req, res) => {
+  const level = levelInt(req.query.level);
   const rows = db.prepare(`
-    SELECT kp, COUNT(*) as count FROM questions GROUP BY kp ORDER BY kp
+    SELECT kp, COUNT(*) as count FROM questions WHERE ${kpWhere(level)} GROUP BY kp ORDER BY kp
   `).all();
-
-  const labels = {
-    kp01: '变量与数据类型', kp02: '基本运算', kp03: '输入输出',
-    kp04: '条件语句', kp05: '循环语句', kp06: '数组基础',
-    kp07: '字符与字符串', kp08: '函数基础'
-  };
-
-  const result = rows.map(r => ({
-    id: r.kp,
-    title: labels[r.kp] || r.kp,
-    count: r.count
-  }));
-
+  const result = rows.map(r => ({ id: r.kp, title: kpName(r.kp, level), count: r.count }));
   res.json(result);
 });
 
@@ -28,6 +18,8 @@ router.get('/knowledge-points', authMiddleware, (req, res) => {
 router.get('/stats', authMiddleware, (req, res) => {
   const userId = req.user.id;
   const today = new Date().toISOString().slice(0, 10);
+  const level = levelInt(req.query.level);
+  const kpFilter = kpWhere(level, 'q');
 
   const totalAnswered = db.prepare('SELECT COUNT(DISTINCT question_id) as count FROM answers WHERE user_id = ?').get(userId);
   const totalCorrect = db.prepare('SELECT COUNT(DISTINCT question_id) as count FROM answers WHERE user_id = ? AND is_correct = 1').get(userId);
@@ -37,7 +29,7 @@ router.get('/stats', authMiddleware, (req, res) => {
     SELECT q.kp, COUNT(DISTINCT a.question_id) as answered,
            COUNT(DISTINCT CASE WHEN a.is_correct = 1 THEN a.question_id END) as correct
     FROM answers a JOIN questions q ON a.question_id = q.id
-    WHERE a.user_id = ?
+    WHERE a.user_id = ? AND ${kpFilter}
     GROUP BY q.kp ORDER BY q.kp
   `).all(userId);
 
@@ -51,7 +43,7 @@ router.get('/stats', authMiddleware, (req, res) => {
   const examHistory = db.prepare('SELECT * FROM exam_sessions WHERE user_id = ? ORDER BY started_at DESC LIMIT 10').all(userId);
 
   // Total questions in bank
-  const totalQuestions = db.prepare('SELECT COUNT(*) as count FROM questions').get().count;
+  const totalQuestions = db.prepare(`SELECT COUNT(*) as count FROM questions WHERE ${kpWhere(level)}`).get().count;
 
   // Completed KPs (answered >= 10 questions in that KP)
   const completedKPs = byKp.filter(k => k.answered >= 10).length;
@@ -93,7 +85,7 @@ router.get('/stats', authMiddleware, (req, res) => {
     totalWrong: totalWrong.count,
     byKp,
     dailyStats,
-    kpCounts: db.prepare("SELECT kp, COUNT(*) as count FROM questions WHERE kp LIKE 'kp%' GROUP BY kp").all().reduce((o, r) => { o[r.kp] = r.count; return o; }, {}),
+    kpCounts: db.prepare(`SELECT kp, COUNT(*) as count FROM questions WHERE ${kpWhere(level)} GROUP BY kp`).all().reduce((o, r) => { o[r.kp] = r.count; return o; }, {}),
     examHistory,
     totalQuestions,
     completedKPs,
@@ -106,17 +98,13 @@ router.get('/stats', authMiddleware, (req, res) => {
 
 // Get KPs that have coding questions (for coding practice grid)
 router.get('/coding-kps', authMiddleware, (req, res) => {
-  const labels = {
-    kp01: '变量与数据类型', kp02: '基本运算', kp03: '输入输出',
-    kp04: '条件语句', kp05: '循环语句', kp06: '数组基础',
-    kp07: '字符与字符串', kp08: '函数基础'
-  };
+  const level = levelInt(req.query.level);
   const rows = db.prepare(`
     SELECT kp, COUNT(*) as count FROM questions
-    WHERE type = 'coding' AND kp LIKE 'kp%'
+    WHERE type = 'coding' AND ${kpWhere(level)}
     GROUP BY kp ORDER BY kp
   `).all();
-  res.json(rows.map(r => ({ id: r.kp, title: labels[r.kp] || r.kp, count: r.count })));
+  res.json(rows.map(r => ({ id: r.kp, title: kpName(r.kp, level), count: r.count })));
 });
 
 // Get coding questions for a specific KP

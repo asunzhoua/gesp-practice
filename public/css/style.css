@@ -148,6 +148,14 @@ ul, ol { list-style: none; }
   font-weight: 700; font-size: .8em;
 }
 
+/* Level switcher (L1-L8) in the nav */
+.level-switch { margin-right: 12px; }
+.level-switch select {
+  background: var(--bg-secondary); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 4px 8px; font-size: .82em; font-weight: 600; cursor: pointer;
+}
+
 /* ---------- Bottom Tab Bar (Mobile) ---------- */
 .bottom-tab {
   display: none; /* hidden on desktop */

@@ -61,13 +61,13 @@ const API = (() => {
       setUser(null);
     },
 
-    async getKnowledgePoints() { return request('/questions/knowledge-points'); },
+    async getKnowledgePoints(level) { return request('/questions/knowledge-points' + (level ? '?level=' + level : '')); },
     async getQuestions(kp) { return request('/questions/' + kp); },
-    async getCodingKPs() { return request('/questions/coding-kps'); },
+    async getCodingKPs(level) { return request('/questions/coding-kps' + (level ? '?level=' + level : '')); },
     async getCodingQuestions(kp) { return request('/questions/coding/' + kp); },
-    async getStats() { return request('/questions/stats'); },
-    async getExamPaper() { return request('/exam/paper'); },
-    async getExamPapers() { return request('/exam/papers'); },
+    async getStats(level) { return request('/questions/stats' + (level ? '?level=' + level : '')); },
+    async getExamPaper(level) { return request('/exam/paper' + (level ? '?level=' + level : '')); },
+    async getExamPapers(level) { return request('/exam/papers' + (level ? '?level=' + level : '')); },
     async getExamPaperById(id) { return request('/exam/paper/' + id); },
     async submitExam(paperId, answers, timeSpent) { return request('/exam/submit', { method: 'POST', body: JSON.stringify({ paperId, answers, timeSpent }) }); },
     async submitAnswer(questionId, selected, isCorrect) {

@@ -88,6 +88,7 @@ async function initDb() {
       total_questions INTEGER DEFAULT 30,
       time_limit INTEGER DEFAULT 45,
       difficulty_level TEXT,
+      level INTEGER DEFAULT 1,
       is_active INTEGER DEFAULT 1,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
@@ -139,6 +140,13 @@ async function initDb() {
   sqlDb.run('CREATE INDEX IF NOT EXISTS idx_answers_question ON answers(question_id)');
   sqlDb.run('CREATE INDEX IF NOT EXISTS idx_questions_kp ON questions(kp)');
   sqlDb.run('CREATE INDEX IF NOT EXISTS idx_exam_sessions_user ON exam_sessions(user_id)');
+
+  // Migration: add `level` to exam_papers on pre-existing databases
+  const paperCols = db.prepare('PRAGMA table_info(exam_papers)').all().map(c => c.name);
+  if (!paperCols.includes('level')) {
+    sqlDb.run('ALTER TABLE exam_papers ADD COLUMN level INTEGER DEFAULT 1');
+    sqlDb.run('UPDATE exam_papers SET level = 1 WHERE level IS NULL');
+  }
 
   return db;
 }

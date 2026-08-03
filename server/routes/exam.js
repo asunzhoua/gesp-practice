@@ -5,6 +5,7 @@ const path = require('path');
 const { db } = require('../db');
 const { authMiddleware } = require('../auth');
 const { runCmd, compileSem, privilegePrefix, LIMITS } = require('../compile-util');
+const { levelInt, kpWhere } = require('../level');
 
 const router = express.Router();
 
@@ -40,9 +41,10 @@ async function verifyCoding(code, testCasesJson) {
   }
 }
 
-// Get all available exam papers
+// Get all available exam papers for a level
 router.get('/papers', authMiddleware, (req, res) => {
-  const papers = db.prepare('SELECT * FROM exam_papers WHERE is_active = 1 ORDER BY id').all();
+  const level = levelInt(req.query.level);
+  const papers = db.prepare('SELECT * FROM exam_papers WHERE is_active = 1 AND (level IS NULL OR level = ?) ORDER BY id').all(level);
   res.json(papers);
 });
 
@@ -86,15 +88,16 @@ router.get('/paper/:id', authMiddleware, (req, res) => {
 
 // Get random paper (for quick start) - guaranteed at least 2 coding questions
 router.get('/paper', authMiddleware, (req, res) => {
-  // Step 1: Pick 2 random coding questions
+  const level = levelInt(req.query.level);
+  // Step 1: Pick 2 random coding questions from this level
   const codingQs = db.prepare(`
-    SELECT * FROM questions WHERE type = 'coding' ORDER BY RANDOM() LIMIT 2
+    SELECT * FROM questions WHERE type = 'coding' AND ${kpWhere(level)} ORDER BY RANDOM() LIMIT 2
   `).all();
   const codingIds = new Set(codingQs.map(q => q.id));
 
-  // Step 2: Fill remaining 28 with choice/judge questions
+  // Step 2: Fill remaining 28 with choice/judge questions from this level
   const remaining = db.prepare(`
-    SELECT * FROM questions WHERE type != 'coding' ORDER BY RANDOM() LIMIT 30
+    SELECT * FROM questions WHERE type != 'coding' AND ${kpWhere(level)} ORDER BY RANDOM() LIMIT 30
   `).all();
 
   // Step 3: Combine and shuffle

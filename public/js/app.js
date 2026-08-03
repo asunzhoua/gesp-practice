@@ -14,9 +14,36 @@ const KP_LABELS = {
 const KP_NAMES = {
   kp01: '变量与数据类型', kp02: '基本运算', kp03: '输入输出',
   kp04: '条件语句', kp05: '循环语句', kp06: '数组基础',
-  kp07: '字符与字符串', kp08: '函数基础', mock: '模拟考试'
+  kp07: '字符与字符串', kp08: '函数基础', mock: '模拟考试',
+  // Level 2
+  kp2_01: '指针与引用', kp2_02: '递归与递推', kp2_03: '排序算法',
+  kp2_04: '字符串进阶', kp2_05: '结构体与类', kp2_06: '栈与队列',
+  kp2_07: '树与图入门', kp2_08: '数学与位运算'
 };
 const EXAM_TYPE_MAP = { mock: '模拟测试', formal: '正式考试' };
+
+/* GESP multi-level state (L1-L8 in one site) */
+let currentLevel = parseInt(localStorage.getItem('gesp_level') || '1', 10) || 1;
+function setLevel(n) {
+  currentLevel = n;
+  localStorage.setItem('gesp_level', String(n));
+  if (location.hash === '#/' || location.hash === '') {
+    document.getElementById('app').innerHTML = '';
+    handleRoute();
+  } else {
+    location.hash = '#/';
+  }
+}
+function levelKps(level) {
+  if (level === 1) return ['kp01', 'kp02', 'kp03', 'kp04', 'kp05', 'kp06', 'kp07', 'kp08'];
+  return ['kp' + level + '_01', 'kp' + level + '_02', 'kp' + level + '_03', 'kp' + level + '_04',
+          'kp' + level + '_05', 'kp' + level + '_06', 'kp' + level + '_07', 'kp' + level + '_08'];
+}
+function kpLabelOf(kp) {
+  if (kp === 'mock') return '模拟';
+  const idx = String(kp).split('_')[1] || String(kp).slice(2);
+  return idx;
+}
 
 /* Cartoon avatar sets (girl / boy) */
 const AVATARS = {
@@ -184,7 +211,7 @@ async function renderDashboard() {
     totalQuestions: 513, completedKPs: 0, dailyGoal: 20, todayAnswered: 0, todayCorrect: 0, reviewStreak: 0 };
   let schedule = { todayReview: [], overdue: [], upcoming: [], reviewStats: { totalWrong: 0, reviewedToday: 0, mastered: 0, streak: 0 } };
   try {
-    [stats, schedule] = await Promise.all([API.getStats(), API.getReviewSchedule()]);
+    [stats, schedule] = await Promise.all([API.getStats(currentLevel), API.getReviewSchedule()]);
   } catch {}
 
   const progressPct = stats.totalAnswered > 0 ? Math.round(stats.totalCorrect / stats.totalAnswered * 100) : 0;
@@ -213,8 +240,8 @@ async function renderDashboard() {
 
   // KP cards
   let kpCards = '';
-  for (let i = 1; i <= 8; i++) {
-    const k = 'kp0' + i;
+  const kps8 = levelKps(currentLevel);
+  kps8.forEach((k, i) => {
     const kpStat = stats.byKp.find(x => x.kp === k);
     const done = kpStat ? kpStat.answered : 0;
     const correct = kpStat ? kpStat.correct : 0;
@@ -223,14 +250,14 @@ async function renderDashboard() {
     kpCards += `
       <div class="kp-card animate-in ${pct >= 100 ? 'completed' : ''}" data-kp="${k}" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
         <div class="kp-card-header">
-          <span class="kp-num">${KP_LABELS[k]}</span>
+          <span class="kp-num">${kpLabelOf(k)}</span>
           ${pct >= 100 ? '<span class="kp-star">⭐</span>' : `<span class="kp-progress-text">${pct}%</span>`}
         </div>
         <div class="kp-card-title">${KP_NAMES[k]}</div>
         <div class="kp-progress-bar"><div class="kp-progress-fill" style="width:${pct}%"></div></div>
         <div class="kp-card-stats">${done}/${total} 题</div>
       </div>`;
-  }
+  });
 
   // Review task card
   let reviewCard = '';
@@ -715,7 +742,7 @@ async function renderCodingHome() {
   app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">编程题练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let kps = [];
-  try { kps = await API.getCodingKPs(); } catch {}
+  try { kps = await API.getCodingKPs(currentLevel); } catch {}
 
   const grid = kps.map((kp, i) => `
     <div class="kp-card animate-in" data-kp="${kp.id}" onclick="navigate('#/coding/${kp.id}')" style="animation-delay:${i * 0.05}s">
@@ -1008,7 +1035,7 @@ async function renderMock() {
   if (mockState.started) { renderMockExam(); return; }
 
   // Load available papers
-  try { examPapers = await API.getExamPapers(); } catch {}
+  try { examPapers = await API.getExamPapers(currentLevel); } catch {}
 
   const papersHtml = examPapers.map(p => `
     <div class="paper-card" onclick="selectExamPaper(${p.id})">
@@ -1026,7 +1053,7 @@ async function renderMock() {
     <div class="start-screen animate-in">
       <div class="card">
         <h2>模拟考试</h2>
-        <p class="text-muted">模拟真实 GESP 一级考试环境</p>
+        <p class="text-muted">模拟真实 GESP L${currentLevel} 考试环境</p>
         <div class="rules">
           <li>共 30 题（选择 + 编程）</li>
           <li>时间限制：45 分钟</li>
@@ -1066,7 +1093,7 @@ async function startMockExam() {
       questions = data.questions || [];
       paperInfo = data.paper || paperInfo;
     } else {
-      const data = await API.getExamPaper();
+      const data = await API.getExamPaper(currentLevel);
       questions = data.questions || [];
       paperInfo = data.paper || paperInfo;
     }
@@ -1664,7 +1691,7 @@ function renderRadarChart(data, opts = {}) {
   const size = opts.size || 300;
   const cx = size / 2, cy = size / 2;
   const r = size * 0.35;
-  const kps = ['kp01','kp02','kp03','kp04','kp05','kp06','kp07','kp08'];
+  const kps = levelKps(currentLevel);
   const n = kps.length;
 
   // Calculate accuracy for each KP
@@ -2245,7 +2272,12 @@ function renderNav() {
   const user = API.getUser();
   return `
     <nav class="nav">
-      <a class="nav-brand" href="#/">GESP <span class="badge">L1</span></a>
+      <a class="nav-brand" href="#/">GESP <span class="badge">L${currentLevel}</span></a>
+      <div class="level-switch">
+        <select onchange="setLevel(+this.value)" aria-label="选择等级" title="切换考级等级">
+          ${Array.from({ length: 8 }, (_, i) => `<option value="${i + 1}" ${i + 1 === currentLevel ? 'selected' : ''}>L${i + 1}</option>`).join('')}
+        </select>
+      </div>
       <div class="nav-links">
         <a href="#/" data-section="">首页</a>
         <a href="#/practice/kp01" data-section="practice">练习</a>
