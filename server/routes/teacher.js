@@ -33,7 +33,7 @@ router.post('/students/batch', (req, res) => {
 
       insertProfile.run(userId, s.className || s.class || '', s.grade || '', s.parentName || s.parent || '', s.parentPhone || s.phone || '');
 
-      results.push({ id: userId, username, nickname, password: pwd });
+      results.push({ id: userId, username, nickname });
     }
   });
 
@@ -61,7 +61,7 @@ router.post('/students', (req, res) => {
   db.prepare('INSERT INTO student_profiles (user_id, class_name, grade, parent_name, parent_phone) VALUES (?, ?, ?, ?, ?)').run(userId, className || '', grade || '', parentName || '', parentPhone || '');
 
   db.save();
-  res.json({ id: userId, username, nickname: nickname || username, password: pwd });
+  res.json({ id: userId, username, nickname: nickname || username });
 });
 
 // Delete student
@@ -97,7 +97,7 @@ router.post('/students/:id/reset-password', (req, res) => {
   db.prepare('UPDATE users SET password = ? WHERE id = ?').run(hash, req.params.id);
   db.save();
 
-  res.json({ ok: true, newPassword: pwd });
+  res.json({ ok: true });
 });
 
 // Get student profile with full learning data

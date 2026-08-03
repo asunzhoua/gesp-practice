@@ -1372,6 +1372,13 @@ async function submitMockExam() {
   mockState.submitting = true;
   if (mockState.timer) { clearInterval(mockState.timer); mockState.timer = null; }
 
+  // Show a "judging" overlay while the server verifies coding answers
+  const judging = document.createElement('div');
+  judging.id = 'judgingOverlay';
+  judging.className = 'judging-overlay';
+  judging.innerHTML = '<div class="judging-box">⏳ 正在判题，请稍候...</div>';
+  document.body.appendChild(judging);
+
   const answers = mockState.questions.map(q => {
     if (q.type === 'coding') {
       // Send the student's actual code so the server re-verifies it against test cases
@@ -1387,63 +1394,49 @@ async function submitMockExam() {
     result = await API.submitExam(mockState.paperId, answers, timeSpent);
   } catch (e) {
     // Submission failed: keep the exam data so the student can retry
+    if (judging.parentNode) judging.remove();
     alert('提交失败：' + (e.message || '网络错误') + '，请重新交卷');
     mockState.submitting = false;
     if (mockState.timeLeft > 0) mockState.timer = setInterval(tickTimer, 1000);
     return;
   }
 
+  if (judging.parentNode) judging.remove();
   mockState.started = false;
 
+  const resultMap = new Map((result.results || []).map(r => [r.questionId, r]));
   const labels = 'ABCD';
-  const codeResults = mockState.codeResults || {};
   let detailHtml = mockState.questions.map((q, i) => {
     const selected = mockState.answers[q.id];
-    const hasOptions = q.options && q.options.length > 0;
     const isCoding = q.type === 'coding';
+    const rr = resultMap.get(q.id);
 
-    let statusHtml, detailBody;
+    let statusHtml, detailBody, isCorrect;
     if (isCoding) {
-      const cr = codeResults[q.id];
-      const codeWritten = !!(mockState.codeAnswers?.[q.id]);
-      if (cr) {
-        const passed = cr.allPassed !== undefined ? cr.allPassed : cr.passed;
-        statusHtml = passed ? '✅ 测试通过' : (cr.error === 'compile' ? '❌ 编译错误' : cr.error === 'timeout' ? '⏰ 超时' : '❌ 未通过');
-        detailBody = `
-          ${cr.compileError ? `<div class="run-stderr">${escapeHtml(cr.compileError)}</div>` : ''}
-          ${cr.stdout ? `<div class="run-io-row"><span class="run-io-label">输出：</span><pre class="run-stdout">${escapeHtml(cr.stdout)}</pre></div>` : ''}
-          ${cr.results ? cr.results.map((r, ri) => `
-            <div class="tc-result ${r.passed ? 'pass' : 'fail'}">
-              <span class="tc-result-icon">${r.passed ? '✅' : '❌'}</span>
-              <span class="tc-result-desc">用例 ${ri + 1}: ${escapeHtml(r.description || '')}</span>
-              ${!r.passed ? `<span class="tc-result-detail">输出: ${escapeHtml(r.stdout || '(空)')}</span>` : ''}
-            </div>
-          `).join('') : ''}
-          ${q.answer_text ? `<div class="coding-solution" style="margin-top:8px"><strong>参考代码：</strong>${formatCodingAnswer(q.answer_text)}</div>` : ''}`;
-      } else {
-        statusHtml = codeWritten ? '📝 已编写' : '⚪ 未编写';
-        detailBody = q.answer_text ? `<div class="coding-solution"><strong>参考代码：</strong>${formatCodingAnswer(q.answer_text)}</div>` : '';
-      }
+      isCorrect = rr ? rr.correct === 1 : false;
+      statusHtml = isCorrect ? '✅ 测试通过' : '❌ 未通过';
+      detailBody = rr && rr.answer_text ? `<div class="coding-solution" style="margin-top:8px"><strong>参考代码：</strong>${formatCodingAnswer(rr.answer_text)}</div>` : '';
     } else {
-      const isCorrect = selected === q.answer;
+      const answer = rr ? rr.answer : -1;
+      isCorrect = rr ? rr.correct === 1 : false;
       statusHtml = isCorrect ? '✅ 正确' : '❌ 错误';
       detailBody = `<div class="exam-detail-options">${q.options.map((opt, j) => {
         let cls = 'exam-opt';
-        if (j === q.answer) cls += ' answer';
+        if (j === answer) cls += ' answer';
         if (j === selected && !isCorrect) cls += ' wrong';
         return `<div class="${cls}">${labels[j]}. ${escapeHtml(opt)}</div>`;
       }).join('')}</div>`;
     }
 
     return `
-      <div class="exam-detail-item ${isCoding ? '' : (selected === q.answer ? 'correct' : 'incorrect')}">
+      <div class="exam-detail-item ${isCoding ? '' : (isCorrect ? 'correct' : 'incorrect')}">
         <div class="exam-detail-header">
           <span>第 ${i + 1} 题 · ${isCoding ? '编程题' : (q.isJudge ? '判断题' : '选择题')}</span>
-          <span class="${isCoding ? '' : (selected === q.answer ? 'text-success' : 'text-error')}">${statusHtml}</span>
+          <span class="${isCoding ? '' : (isCorrect ? 'text-success' : 'text-error')}">${statusHtml}</span>
         </div>
         <div class="exam-detail-title">${escapeHtml(q.title)}</div>
         ${detailBody}
-        ${q.explanation ? `<div class="exam-detail-explain"><strong>解析：</strong>${escapeHtml(q.explanation)}</div>` : ''}
+        ${rr && rr.explanation ? `<div class="exam-detail-explain"><strong>解析：</strong>${escapeHtml(rr.explanation)}</div>` : ''}
       </div>`;
   }).join('');
 

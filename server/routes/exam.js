@@ -76,7 +76,6 @@ router.get('/paper/:id', authMiddleware, (req, res) => {
   const questions = rows.map(q => ({
     id: q.id, type: q.type, difficulty: q.difficulty,
     title: q.title, options: q.options ? JSON.parse(q.options) : null,
-    answer: q.answer, explanation: q.explanation, answer_text: q.answer_text || null,
     starter_code: q.starter_code || null,
     test_cases: q.test_cases ? JSON.parse(q.test_cases) : null,
     isJudge: q.is_judge === 1
@@ -108,7 +107,6 @@ router.get('/paper', authMiddleware, (req, res) => {
   const questions = all.map(q => ({
     id: q.id, type: q.type, difficulty: q.difficulty,
     title: q.title, options: q.options ? JSON.parse(q.options) : null,
-    answer: q.answer, explanation: q.explanation, answer_text: q.answer_text || null,
     starter_code: q.starter_code || null,
     test_cases: q.test_cases ? JSON.parse(q.test_cases) : null,
     isJudge: q.is_judge === 1
@@ -138,11 +136,12 @@ router.post('/submit', authMiddleware, async (req, res) => {
   let earnedPoints = 0;
   let totalPoints = 0;
   const total = answers.length;
+  const results = [];
 
   const insertAnswer = db.prepare('INSERT INTO answers (user_id, question_id, selected, is_correct) VALUES (?, ?, ?, ?)');
   const transaction = db.transaction(() => {
     for (const a of answers) {
-      const q = db.prepare('SELECT answer, type, is_judge FROM questions WHERE id = ?').get(a.questionId);
+      const q = db.prepare('SELECT answer, type, is_judge, explanation, answer_text FROM questions WHERE id = ?').get(a.questionId);
       let isCorrect;
       if (q && q.type === 'coding') {
         isCorrect = codingPassed.get(a.questionId) ? 1 : 0;
@@ -154,6 +153,13 @@ router.post('/submit', authMiddleware, async (req, res) => {
         if (isCorrect) { correct++; earnedPoints += 2; }
       }
       insertAnswer.run(req.user.id, a.questionId, a.selected, isCorrect);
+      results.push({
+        questionId: a.questionId,
+        correct: isCorrect,
+        answer: q ? q.answer : -1,
+        explanation: q ? (q.explanation || '') : '',
+        answer_text: q && q.type === 'coding' ? (q.answer_text || null) : null
+      });
     }
 
     // Score = earnedPoints / totalPoints * 100, capped at 100
@@ -162,7 +168,7 @@ router.post('/submit', authMiddleware, async (req, res) => {
       req.user.id, paperId || null, 'mock', total, correct, score, timeSpent || 0, JSON.stringify(answers)
     );
 
-    return { total, correct, score, earnedPoints, totalPoints };
+    return { total, correct, score, earnedPoints, totalPoints, results };
   });
 
   const result = transaction();

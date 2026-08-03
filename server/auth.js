@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { db } = require('./db');
 
 // NEVER fall back to a hard-coded secret. If JWT_SECRET is missing, use a random
 // per-boot secret (safe but invalidates sessions on restart) and warn loudly.
@@ -22,6 +23,10 @@ function authMiddleware(req, res, next) {
   }
   try {
     const decoded = jwt.verify(header.slice(7), SECRET);
+    // Token revocation: re-check the user still exists in the DB, so deleted users'
+    // tokens are invalidated immediately instead of living out their 7-day expiry.
+    const exists = db.prepare('SELECT id FROM users WHERE id = ?').get(decoded.id);
+    if (!exists) return res.status(401).json({ error: '登录已过期' });
     req.user = decoded;
     next();
   } catch {

@@ -964,6 +964,19 @@ ul, ol { list-style: none; }
   margin: 4px 0 16px; text-align: center;
 }
 
+/* ---------- Judging overlay (exam submit) ---------- */
+.judging-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(11, 16, 38, .78);
+  display: flex; align-items: center; justify-content: center;
+}
+.judging-box {
+  background: var(--card); color: var(--text);
+  padding: 26px 44px; border-radius: var(--radius-lg);
+  font-size: 1.2em; font-weight: 700;
+  box-shadow: var(--shadow-lg); animation: popIn .3s ease;
+}
+
 /* ============================================================
    Table (Teacher)
    ============================================================ */
