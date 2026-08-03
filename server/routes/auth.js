@@ -92,4 +92,19 @@ router.get('/me', require('../auth').authMiddleware, (req, res) => {
   res.json({ ...user, avatar: user.avatar || '😊' });
 });
 
+router.put('/password', require('../auth').authMiddleware, (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  if (!oldPassword || !newPassword || newPassword.length < 6) {
+    return res.status(400).json({ error: '旧密码不能为空，新密码至少6位' });
+  }
+  const user = db.prepare('SELECT * FROM users WHERE id = ?').get(req.user.id);
+  if (!user || !bcrypt.compareSync(oldPassword, user.password)) {
+    return res.status(400).json({ error: '旧密码错误' });
+  }
+  const hash = bcrypt.hashSync(newPassword, 10);
+  db.prepare('UPDATE users SET password=? WHERE id=?').run(hash, req.user.id);
+  db.save();
+  res.json({ ok: true });
+});
+
 module.exports = router;

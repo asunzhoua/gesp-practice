@@ -13,7 +13,7 @@ router.post('/answer', authMiddleware, (req, res) => {
     return res.status(400).json({ error: '参数不完整' });
   }
 
-  const q = db.prepare('SELECT type, answer FROM questions WHERE id = ?').get(questionId);
+  const q = db.prepare('SELECT type, answer, explanation FROM questions WHERE id = ?').get(questionId);
   if (!q) return res.status(404).json({ error: '题目不存在' });
 
   // Never trust the client's is_correct — compute it server-side from the question bank.
@@ -28,7 +28,7 @@ router.post('/answer', authMiddleware, (req, res) => {
     req.user.id, questionId, selected, isCorrect
   );
 
-  res.json({ ok: true, isCorrect });
+  res.json({ ok: true, isCorrect, answer: q.answer, explanation: q.explanation || '' });
 });
 
 // Get review schedule based on Ebbinghaus forgetting curve

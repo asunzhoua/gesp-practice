@@ -43,9 +43,10 @@ async function seed() {
   console.log(`Seeded ${count} questions.`);
 
   const bcrypt = require('bcryptjs');
-  const hash = bcrypt.hashSync('teacher123', 10);
+  const randomPwd = require('crypto').randomBytes(3).toString('hex');
+  const hash = bcrypt.hashSync(randomPwd, 10);
   db.prepare(`INSERT OR IGNORE INTO users (username, password, nickname, role) VALUES (?, ?, ?, ?)`).run('teacher', hash, '孙老师', 'teacher');
-  console.log('Default teacher account: teacher / teacher123');
+  console.log('Default teacher account: teacher / ' + randomPwd);
 
   db.save();
   console.log('Database saved.');

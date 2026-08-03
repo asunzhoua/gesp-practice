@@ -561,20 +561,21 @@ function renderPracticeQuestion() {
   if (current >= questions.length) { renderPracticeComplete(); return; }
 
   const q = questions[current];
+  const a = answers[q.id];
   const labels = 'ABCD';
   const diffLabel = { 1: '基础', 2: '进阶', 3: '挑战' };
   const diffClass = { 1: 'easy', 2: 'medium', 3: 'hard' };
 
   let optionsHtml = '';
   if (q.options) {
-    const answered = answers[q.id] !== undefined;
+    const answered = a !== undefined;
     const tmpSel = practiceState.selectedIdx;
     optionsHtml = '<div class="options">' + q.options.map((opt, i) => {
       let cls = 'option';
       if (answered) {
         cls += ' disabled';
-        if (i === q.answer) cls += ' correct';
-        else if (i === answers[q.id]) cls += ' incorrect';
+        if (i === a.answer) cls += ' correct';
+        else if (i === a.selected && !a.isCorrect) cls += ' incorrect';
       } else if (tmpSel === i) {
         cls += ' selected';
       }
@@ -582,11 +583,11 @@ function renderPracticeQuestion() {
     }).join('') + '</div>';
   }
 
-  const explanation = answers[q.id] !== undefined
+  const explanation = a !== undefined
     ? (q.options && q.options.length > 0
-      ? `<div class="explanation ${answers[q.id] === q.answer ? 'correct' : 'incorrect'}">
-          <strong>${cheer(answers[q.id] === q.answer)}</strong>
-          <p>${escapeHtml(q.explanation || '')}</p>
+      ? `<div class="explanation ${a.isCorrect ? 'correct' : 'incorrect'}">
+          <strong>${cheer(a.isCorrect)}</strong>
+          <p>${escapeHtml(a.explanation || '')}</p>
         </div>`
       : `<div class="explanation correct">
           <strong>📖 参考解析</strong>
@@ -621,7 +622,7 @@ function renderPracticeQuestion() {
       ${questions.map((qq, i) => {
         let cls = 'palette-item';
         if (i === current) cls += ' current';
-        if (answers[qq.id] !== undefined) cls += answers[qq.id] === qq.answer ? ' correct' : ' wrong';
+        if (answers[qq.id] !== undefined) cls += (answers[qq.id] && answers[qq.id].isCorrect) ? ' correct' : ' wrong';
         return `<div class="${cls}" onclick="practiceJump(${i})">${i + 1}</div>`;
       }).join('')}
     </div>`;
@@ -646,9 +647,18 @@ async function practiceCheck() {
   const selected = hasOptions ? practiceState.selectedIdx : -1;
   const isCorrect = hasOptions ? (selected === q.answer) : false;
 
-  practiceState.answers[q.id] = selected;
   practiceState.selectedIdx = -1;
-  try { await API.submitAnswer(q.id, selected, isCorrect); } catch {}
+  try {
+    const res = await API.submitAnswer(q.id, selected, isCorrect);
+    practiceState.answers[q.id] = {
+      selected,
+      isCorrect: res.isCorrect === 1 || res.isCorrect === true,
+      answer: res.answer,
+      explanation: res.explanation
+    };
+  } catch {
+    practiceState.answers[q.id] = { selected, isCorrect: false, answer: null, explanation: '' };
+  }
   renderPracticeQuestion();
 }
 
@@ -675,7 +685,7 @@ function practiceJump(idx) {
 function renderPracticeComplete() {
   const { answers, questions } = practiceState;
   let correct = 0;
-  questions.forEach(q => { if (answers[q.id] === q.answer) correct++; });
+  questions.forEach(q => { if (answers[q.id] && answers[q.id].isCorrect) correct++; });
   const acc = questions.length > 0 ? Math.round(correct / questions.length * 100) : 0;
 
   document.getElementById('app').innerHTML = `
