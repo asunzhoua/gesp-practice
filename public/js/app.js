@@ -475,7 +475,7 @@ function renderReviewQuestion() {
       } else if (i === selectedIdx) {
         cls += ' selected';
       }
-      return `<div class="${cls}" onclick="selectReviewOption(${i})"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(opt)}</span></div>`;
+      return `<div class="${cls}" onclick="selectReviewOption(${i})"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(decodeHtmlEntities(opt))}</span></div>`;
     }).join('') + '</div>';
   }
 
@@ -568,18 +568,27 @@ function formatCodingAnswer(text) {
 
 // Render a question title that may contain <pre><code> code blocks (read-the-code
 // questions) as proper multi-line code, instead of escaping the tags and collapsing
-// every newline into one long line.
+// every newline into one long line. Titles store pre-escaped HTML (e.g. &lt;&lt;),
+// so decode entities first, then re-escape for insertion.
+function decodeHtmlEntities(s) {
+  return String(s || '')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&');
+}
 function formatQuestionTitle(html) {
   if (!html) return '';
   let out = '';
   const parts = html.split(/<pre><code>([\s\S]*?)<\/code><\/pre>/);
   for (let i = 0; i < parts.length; i++) {
     if (i % 2 === 1) {
-      out += '<pre class="question-code">' + escapeHtml(parts[i]) + '</pre>';
+      out += '<pre class="question-code">' + escapeHtml(decodeHtmlEntities(parts[i])) + '</pre>';
     } else {
       let seg = parts[i].replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/<br\s*\/?>/gi, '\n');
       seg = seg.split(/<code>([\s\S]*?)<\/code>/).map((s, j) =>
-        j % 2 === 1 ? '<code>' + escapeHtml(s) + '</code>' : escapeHtml(s)
+        j % 2 === 1 ? '<code>' + escapeHtml(decodeHtmlEntities(s)) + '</code>' : escapeHtml(decodeHtmlEntities(s))
       ).join('');
       out += seg;
     }
@@ -627,7 +636,7 @@ function renderPracticeQuestion() {
       } else if (tmpSel === i) {
         cls += ' selected';
       }
-      return `<div class="${cls}" data-idx="${i}" onclick="selectPracticeAnswer(${i})"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(opt)}</span></div>`;
+      return `<div class="${cls}" data-idx="${i}" onclick="selectPracticeAnswer(${i})"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(decodeHtmlEntities(opt))}</span></div>`;
     }).join('') + '</div>';
   }
 
@@ -1238,7 +1247,7 @@ function renderMockExam() {
       if (i === mockState.answers[q.id]) {
         cls += ' selected';
       }
-      return `<div class="${cls}" data-idx="${i}" onclick="selectExamAnswer(${i})"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(opt)}</span></div>`;
+      return `<div class="${cls}" data-idx="${i}" onclick="selectExamAnswer(${i})"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(decodeHtmlEntities(opt))}</span></div>`;
     }).join('') + '</div>';
   }
 
@@ -1483,7 +1492,7 @@ async function submitMockExam() {
         let cls = 'exam-opt';
         if (j === answer) cls += ' answer';
         if (j === selected && !isCorrect) cls += ' wrong';
-        return `<div class="${cls}">${labels[j]}. ${escapeHtml(opt)}</div>`;
+        return `<div class="${cls}">${labels[j]}. ${escapeHtml(decodeHtmlEntities(opt))}</div>`;
       }).join('')}</div>`;
     }
 
@@ -1555,7 +1564,7 @@ async function renderReview() {
       ${q.options ? '<div class="options">' + q.options.map((opt, i) => {
         let cls = 'option disabled';
         if (i === q.answer) cls += ' correct';
-        return `<div class="${cls}"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(opt)}</span></div>`;
+        return `<div class="${cls}"><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(decodeHtmlEntities(opt))}</span></div>`;
       }).join('') + '</div>' : ''}
       ${q.answer_text ? `<div class="coding-solution">${formatCodingAnswer(q.answer_text)}</div>` : (q.explanation ? `<div class="explanation correct"><strong>解析：</strong><p>${escapeHtml(q.explanation)}</p></div>` : '')}
     </div>`).join('');
@@ -1641,7 +1650,7 @@ function renderWrongPracticeQuestion() {
         cls += ' selected';
       }
       const onclick = isAnswered ? '' : `onclick="selectWrongOption(${i})"`;
-      return `<div class="${cls}" ${onclick}><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(opt)}</span></div>`;
+      return `<div class="${cls}" ${onclick}><span>${labels[i]}.</span> <span class="option-text">${escapeHtml(decodeHtmlEntities(opt))}</span></div>`;
     }).join('') + '</div>';
   }
 
