@@ -7,7 +7,7 @@ async function seed() {
   await initDb();
 
   // Load every level bank file that exists (js/questions.js, js/questions2.js, ...).
-  const bankFiles = ['questions.js', 'questions2.js', 'questions3.js', 'questions4.js', 'questions5.js', 'questions6.js', 'questions7.js', 'questions8.js'];
+  const bankFiles = ['questions.js', 'questions-l1.js', 'questions2.js', 'questions3.js', 'questions4.js', 'questions5.js', 'questions6.js', 'questions7.js', 'questions8.js'];
   let count = 0;
   const insertQ = db.prepare(`INSERT OR REPLACE INTO questions (id, kp, type, difficulty, title, options, answer, explanation, source, is_judge, answer_text, starter_code, test_cases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
 
