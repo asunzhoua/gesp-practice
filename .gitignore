@@ -1,5 +1,5 @@
 node_modules/
-data/gesp.db
+data/
 .env
 logs/
 *.log
