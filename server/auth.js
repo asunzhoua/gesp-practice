@@ -1,6 +1,11 @@
 const jwt = require('jsonwebtoken');
 
-const SECRET = process.env.JWT_SECRET || 'gesp-dev-secret';
+// NEVER fall back to a hard-coded secret. If JWT_SECRET is missing, use a random
+// per-boot secret (safe but invalidates sessions on restart) and warn loudly.
+const SECRET = process.env.JWT_SECRET || require('crypto').randomBytes(32).toString('hex');
+if (!process.env.JWT_SECRET) {
+  console.warn('[auth] JWT_SECRET is not set — using a random per-boot secret. Set JWT_SECRET in .env for production.');
+}
 
 function signToken(user) {
   return jwt.sign(

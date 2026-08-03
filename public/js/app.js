@@ -18,6 +18,27 @@ const KP_NAMES = {
 };
 const EXAM_TYPE_MAP = { mock: '模拟测试', formal: '正式考试' };
 
+/* Cartoon avatar sets (girl / boy) */
+const AVATARS = {
+  girl: ['👧', '🧚‍♀️', '🐰', '🦄', '🦋', '👑', '🎀', '🌸', '🍓', '🧁'],
+  boy: ['👦', '🦸‍♂️', '🧑‍🚀', '🦖', '🐯', '🚀', '⚽', '🤖', '🎮', '🦁']
+};
+function getAvatar(user) { return (user && user.avatar) || '😊'; }
+
+/* --- Emotional encouragement (answer feedback) --- */
+const CHEER_CORRECT = ['🎉 太棒了，完全正确！', '🌟 你真厉害！', '💪 答对了，继续保持！', '🚀 又拿下了一题，冲呀！', '✨ 完美，你越来越棒了！', '🎯 漂亮，轻松搞定！'];
+const CHEER_WRONG = ['💪 没关系，看看解析就懂了！', '🌈 别灰心，错一题多学一招！', '🍀 记住这个知识点，下次就对啦！', '📖 失败是成功之母，看完解析再来一次！', '😊 别着急，慢慢来，你一定能掌握！', '🧠 这个有点难，多练几次就会了！'];
+function cheer(isCorrect) {
+  const pool = isCorrect ? CHEER_CORRECT : CHEER_WRONG;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+function completeCheer(acc) {
+  if (acc >= 90) return '🎉 太棒了，你几乎全对！继续保持！';
+  if (acc >= 70) return '🌟 很不错，正确率很高，继续加油！';
+  if (acc >= 50) return '💪 不错哦，再多练练会更棒！';
+  return '🌈 别灰心，每一次练习都在进步，加油！';
+}
+
 /* ============================================================
    Exam State
    ============================================================ */
@@ -30,8 +51,28 @@ let reviewFilter = 'all';
    ============================================================ */
 function navigate(hash) { location.hash = hash; }
 
+// Navigate to a hash; if we are already on it (no hashchange fires), force a re-render.
+// Fixes exits/backs from modes entered directly (e.g. today review from the dashboard).
+function exitTo(hash, msg) {
+  if (msg && !confirm(msg)) return;
+  if (location.hash === hash) {
+    document.getElementById('app').innerHTML = '';
+    handleRoute();
+  } else {
+    location.hash = hash;
+  }
+}
+
 function handleRoute() {
   const nav = document.querySelector('.nav');
+
+  // Prevent silently leaving an active exam
+  if (mockState.started && mockState.timeLeft > 0 && !mockState.submitting && location.hash !== '#/mock') {
+    if (!confirm('考试还在进行中，离开会丢失答题进度，确定离开吗？')) {
+      location.hash = '#/mock';
+      return;
+    }
+  }
 
   // Clean up exam timer if navigating away
   if (mockState.timer && location.hash !== '#/mock') {
@@ -277,7 +318,10 @@ async function renderDashboard() {
   app.innerHTML = `
     <div class="dashboard-hero animate-in">
       <div class="dashboard-hero-text">
-        <h1>Hi, ${escapeHtml(user?.nickname || '同学')}！👋</h1>
+        <div class="hero-avatar-row">
+          <span class="hero-avatar" title="点击更换头像" onclick="openAvatarPicker()">${escapeHtml(getAvatar(user))}</span>
+          <h1>Hi, ${escapeHtml(user?.nickname || '同学')}！👋</h1>
+        </div>
         <p class="subtitle">今天继续挑战吧 ${streakBadge}</p>
         <div class="hero-stats">
           <div class="hero-stat"><span class="hero-stat-val">${stats.totalAnswered}</span><span class="hero-stat-lbl">已做题</span></div>
@@ -331,7 +375,7 @@ let reviewState = { questions: [], current: 0, answers: {}, finished: false };
 
 async function startTodayReview() {
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">今日复习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载复习题目...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">今日复习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载复习题目...</p></div>`;
 
   let schedule = {};
   try { schedule = await API.getReviewSchedule(); } catch {}
@@ -340,7 +384,7 @@ async function startTodayReview() {
   // Combine overdue + todayReview, then fetch full question data
   const reviewIds = [...(schedule.overdue || []), ...(schedule.todayReview || [])].map(r => r.questionId);
   if (reviewIds.length === 0) {
-    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">今日复习</span></div>
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">今日复习</span></div>
       <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">今天没有需要复习的题目，继续加油！</p></div>`;
     return;
   }
@@ -352,7 +396,7 @@ async function startTodayReview() {
   const reviewQuestions = allWrong.filter(q => reviewIds.includes(q.id) && q.type !== 'coding');
 
   if (reviewQuestions.length === 0) {
-    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">今日复习</span></div>
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">今日复习</span></div>
       <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">所有待复习题目都已完成！</p></div>`;
     return;
   }
@@ -371,7 +415,7 @@ function renderReviewQuestion() {
     const total = Object.keys(reviewState.answers).length;
     const correct = Object.values(reviewState.answers).filter(a => a).length;
     app.innerHTML = `
-      <div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">复习完成</span></div>
+      <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">复习完成</span></div>
       <div class="review-summary animate-in">
         <div class="review-summary-icon">🎉</div>
         <h2>今日复习完成！</h2>
@@ -380,7 +424,7 @@ function renderReviewQuestion() {
           <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-value">${correct}</div><div class="stat-label">答对</div></div>
           <div class="stat-card"><div class="stat-icon">${correct === total ? '🌟' : '📖'}</div><div class="stat-value">${total > 0 ? Math.round(correct/total*100) : 0}%</div><div class="stat-label">正确率</div></div>
         </div>
-        <p class="text-muted" style="margin:16px 0">${correct === total ? '全部答对，太厉害了！' : '错题已自动安排到艾宾豪斯复习计划中，记得下次复习哦！'}</p>
+        <p class="text-muted" style="margin:16px 0">${correct === total ? completeCheer(100) : completeCheer(Math.round(correct / total * 100)) + ' 错题已安排到下次复习，记得再来哦！'}</p>
         <button class="btn btn-primary" onclick="navigate('#/')">返回首页</button>
       </div>`;
     return;
@@ -412,7 +456,7 @@ function renderReviewQuestion() {
   if (isAnswered) {
     const fbClass = isCorrect ? 'ok' : 'fail';
     const fbIcon = isCorrect ? '✓' : '✗';
-    const fbText = isCorrect ? '回答正确！' : '答错了，正确答案是 ' + labels[q.answer];
+    const fbText = isCorrect ? cheer(true) : cheer(false) + ' 正确答案是 ' + labels[q.answer];
     feedbackHtml = `<div class="feedback show ${fbClass}">
       <span class="fb-icon">${fbIcon}</span> ${fbText}
       ${q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
@@ -423,7 +467,7 @@ function renderReviewQuestion() {
 
   app.innerHTML = `
     <div class="practice-nav">
-      <a class="back-btn" href="#/" onclick="if(!confirm('确定退出复习？'))return false">← 退出</a>
+      <a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/', '确定退出复习？')">← 退出</a>
       <span style="font-weight:700">📖 复习 (${current + 1}/${questions.length})</span>
       ${scheduleItem ? `<span class="review-round-badge">第${scheduleItem.round}轮</span>` : ''}
     </div>
@@ -500,7 +544,7 @@ function formatCodingAnswer(text) {
    ============================================================ */
 async function renderPractice(kp) {
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp}</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp}</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let questions = [];
   try { questions = await API.getQuestions(kp); } catch {}
@@ -541,7 +585,7 @@ function renderPracticeQuestion() {
   const explanation = answers[q.id] !== undefined
     ? (q.options && q.options.length > 0
       ? `<div class="explanation ${answers[q.id] === q.answer ? 'correct' : 'incorrect'}">
-          <strong>${answers[q.id] === q.answer ? '✅ 正确！' : '❌ 错误'}</strong>
+          <strong>${cheer(answers[q.id] === q.answer)}</strong>
           <p>${escapeHtml(q.explanation || '')}</p>
         </div>`
       : `<div class="explanation correct">
@@ -552,7 +596,7 @@ function renderPracticeQuestion() {
 
   document.getElementById('app').innerHTML = `
     <div class="practice-nav">
-      <a class="back-btn" href="#/">← 返回</a>
+      <a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a>
       <span style="font-weight:700">${KP_NAMES[kp] || kp}</span>
       <span class="practice-count">${current + 1}/${questions.length}</span>
     </div>
@@ -597,6 +641,7 @@ function selectPracticeAnswer(idx) {
 
 async function practiceCheck() {
   const q = practiceState.questions[practiceState.current];
+  if (practiceState.answers[q.id] !== undefined) return; // prevent double-check race
   const hasOptions = q.options && q.options.length > 0;
   const selected = hasOptions ? practiceState.selectedIdx : -1;
   const isCorrect = hasOptions ? (selected === q.answer) : false;
@@ -631,17 +676,19 @@ function renderPracticeComplete() {
   const { answers, questions } = practiceState;
   let correct = 0;
   questions.forEach(q => { if (answers[q.id] === q.answer) correct++; });
+  const acc = questions.length > 0 ? Math.round(correct / questions.length * 100) : 0;
 
   document.getElementById('app').innerHTML = `
-    <div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">${KP_NAMES[practiceState.kp]}</span></div>
+    <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">${KP_NAMES[practiceState.kp]}</span></div>
     <div class="start-screen animate-in">
       <div class="card">
         <h2>🎉 练习完成！</h2>
         <div class="stats-grid" style="margin:20px 0">
           <div class="stat-card"><div class="stat-value">${correct}</div><div class="stat-label">正确</div></div>
           <div class="stat-card"><div class="stat-value">${questions.length - correct}</div><div class="stat-label">错误</div></div>
-          <div class="stat-card"><div class="stat-value">${Math.round(correct / questions.length * 100)}%</div><div class="stat-label">正确率</div></div>
+          <div class="stat-card"><div class="stat-value">${acc}%</div><div class="stat-label">正确率</div></div>
         </div>
+        <p class="complete-cheer">${completeCheer(acc)}</p>
         <button class="btn btn-primary" onclick="navigate('#/practice/${practiceState.kp}')">再练一次</button>
         <button class="btn btn-secondary" onclick="navigate('#/')" style="margin-left:8px">返回首页</button>
       </div>
@@ -651,11 +698,11 @@ function renderPracticeComplete() {
 /* ============================================================
    Coding Practice (编程题专项)
    ============================================================ */
-let codingState = { questions: [], current: 0, kp: '', code: '', result: null };
+let codingState = { questions: [], current: 0, kp: '', codes: {}, results: {} };
 
 async function renderCodingHome() {
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">编程题练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">编程题练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let kps = [];
   try { kps = await API.getCodingKPs(); } catch {}
@@ -666,13 +713,13 @@ async function renderCodingHome() {
         <span class="kp-num">${KP_LABELS[kp.id] || ''}</span>
         <span class="kp-progress-text">💻</span>
       </div>
-      <div class="kp-card-title">${kp.title}</div>
+      <div class="kp-card-title">${escapeHtml(kp.title)}</div>
       <div class="kp-card-stats">${kp.count} 道编程题</div>
     </div>
   `).join('');
 
   app.innerHTML = `
-    <div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">编程题练习</span></div>
+    <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">编程题练习</span></div>
     <div class="section animate-in">
       <h2 class="section-title">选择知识点</h2>
       <p class="text-muted" style="margin-bottom:16px">每个模块精选编程题，编写代码后在线编译运行</p>
@@ -684,18 +731,18 @@ async function renderCodingHome() {
 
 async function renderCodingPractice(kp) {
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/coding')">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let questions = [];
   try { questions = await API.getCodingQuestions(kp); } catch {}
 
   if (questions.length === 0) {
-    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">编程题练习</span></div>
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/coding')">← 返回</a><span style="font-weight:700">编程题练习</span></div>
       <div class="review-empty"><div class="empty-icon">📝</div><h3>暂无编程题</h3><p class="text-muted">该模块暂无编程题目</p></div>`;
     return;
   }
 
-  codingState = { questions, current: 0, kp, code: '', result: null };
+  codingState = { questions, current: 0, kp, codes: {}, results: {} };
   renderBottomTab('coding');
   renderCodingQuestion();
 }
@@ -724,17 +771,18 @@ function parseCodingTitle(rawTitle) {
 }
 
 function renderCodingQuestion() {
-  const { questions, current, kp, result } = codingState;
+  const { questions, current, kp } = codingState;
   if (current >= questions.length) { renderCodingComplete(); return; }
 
   const q = questions[current];
+  const result = codingState.results[q.id];
   const diffLabel = { 1: '基础', 2: '进阶', 3: '挑战' };
   const diffClass = { 1: 'easy', 2: 'medium', 3: 'hard' };
   const progressPct = Math.round((current / questions.length) * 100);
 
   const defaultCode = '#include <iostream>\nusing namespace std;\n\nint main() {\n    // 在这里编写代码\n    \n    return 0;\n}';
-  const savedCode = codingState.code || q.starter_code || defaultCode;
-  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
+  const savedCode = codingState.codes[q.id] || q.starter_code || defaultCode;
+  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? safeParse(q.test_cases, []) : q.test_cases) : [];
 
   // Parse title into exam-style sections
   const parsed = parseCodingTitle(q.title);
@@ -779,7 +827,7 @@ function renderCodingQuestion() {
   const app = document.getElementById('app');
   app.innerHTML = `
     <div class="practice-nav">
-      <a class="back-btn" href="#/coding" onclick="if(!confirm('确定退出练习？'))return false">← 退出</a>
+      <a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/coding', '确定退出练习？')">← 退出</a>
       <span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span>
       <span class="practice-count">${current + 1}/${questions.length}</span>
     </div>
@@ -858,7 +906,8 @@ function renderCodingQuestion() {
 }
 
 function onCodingCodeChange(textarea) {
-  codingState.code = textarea.value;
+  const q = codingState.questions[codingState.current];
+  if (q) codingState.codes[q.id] = textarea.value;
   updateCodingLineNumbers();
 }
 
@@ -885,27 +934,25 @@ async function runCodingCode() {
   if (btn) { btn.disabled = true; btn.innerHTML = '<span class="run-icon">⏳</span> 运行中...'; }
 
   const q = codingState.questions[codingState.current];
-  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
+  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? safeParse(q.test_cases, []) : q.test_cases) : [];
 
   try {
     if (testCases.length > 0) {
-      codingState.result = await API.compileAndRunTestCases(code, testCases);
+      codingState.results[q.id] = await API.compileAndRunTestCases(code, testCases);
     } else {
-      codingState.result = await API.compileAndRun(code, '', undefined);
+      codingState.results[q.id] = await API.compileAndRun(code, '', undefined);
     }
     renderCodingQuestion();
   } catch (e) {
     alert('运行失败: ' + e.message);
   } finally {
-    codingState.code = editor.value; // preserve code across re-render
+    codingState.codes[q.id] = editor.value; // preserve code across re-render
     if (btn) { btn.disabled = false; btn.innerHTML = '<span class="run-icon">▶</span> 运行代码'; }
   }
 }
 
 function codingPrev() {
   if (codingState.current > 0) {
-    codingState.code = '';
-    codingState.result = null;
     codingState.current--;
     renderCodingQuestion();
   }
@@ -913,12 +960,10 @@ function codingPrev() {
 
 function codingNext() {
   // Must run code at least once before advancing
-  if (!codingState.result) {
+  if (!codingState.results[codingState.questions[codingState.current].id]) {
     alert('请先运行代码测试');
     return;
   }
-  codingState.code = '';
-  codingState.result = null;
   if (codingState.current < codingState.questions.length - 1) {
     codingState.current++;
     renderCodingQuestion();
@@ -932,7 +977,7 @@ function renderCodingComplete() {
   const { questions, kp } = codingState;
   renderBottomTab('coding');
   document.getElementById('app').innerHTML = `
-    <div class="practice-nav"><a class="back-btn" href="#/coding">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div>
+    <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/coding')">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp} · 编程</span></div>
     <div class="start-screen animate-in">
       <div class="card">
         <h2>🎉 编程练习完成！</h2>
@@ -957,8 +1002,8 @@ async function renderMock() {
 
   const papersHtml = examPapers.map(p => `
     <div class="paper-card" onclick="selectExamPaper(${p.id})">
-      <div class="paper-title">${p.title}</div>
-      <div class="paper-desc text-muted">${p.description}</div>
+      <div class="paper-title">${escapeHtml(p.title)}</div>
+      <div class="paper-desc text-muted">${escapeHtml(p.description)}</div>
       <div class="paper-info">
         <span>${p.total_questions} 题</span>
         <span>${p.time_limit} 分钟</span>
@@ -1001,6 +1046,7 @@ async function selectExamPaper(paperId) {
 }
 
 async function startMockExam() {
+  if (mockState.started) return; // prevent double-start (double interval)
   let questions = [];
   let paperInfo = { title: '模拟考试' };
 
@@ -1060,7 +1106,7 @@ function renderMockExam() {
     // NEVER show the answer - only use a minimal blank template
     const defaultCode = '#include <iostream>\nusing namespace std;\n\nint main() {\n    // 在这里编写代码\n    \n    return 0;\n}';
     const code = savedCode || defaultCode;
-    const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
+    const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? safeParse(q.test_cases, []) : q.test_cases) : [];
 
     // Store default code if not yet stored
     if (!mockState.codeAnswers) mockState.codeAnswers = {};
@@ -1140,7 +1186,7 @@ function renderMockExam() {
 
   document.getElementById('app').innerHTML = `
     <div class="exam-header">
-      <div class="exam-title">${mockState.paperInfo?.title || '模拟考试'}</div>
+      <div class="exam-title">${escapeHtml(mockState.paperInfo?.title) || '模拟考试'}</div>
       <div class="exam-progress">第 ${mockState.current + 1}/${mockState.questions.length} 题</div>
       <div class="exam-timer" id="timerValue">${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}</div>
     </div>
@@ -1236,6 +1282,10 @@ function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+function safeParse(s, fallback) {
+  try { return JSON.parse(s); } catch { return fallback; }
+}
+
 function onExamCodeChange(textarea) {
   const q = mockState.questions[mockState.current];
   if (!mockState.codeAnswers) mockState.codeAnswers = {};
@@ -1267,7 +1317,7 @@ async function runExamCode() {
   const btn = document.getElementById('btnRunCode');
   if (btn) { btn.disabled = true; btn.innerHTML = '<span class="run-icon">⏳</span> 运行中...'; }
 
-  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? JSON.parse(q.test_cases) : q.test_cases) : [];
+  const testCases = q.test_cases ? (typeof q.test_cases === 'string' ? safeParse(q.test_cases, []) : q.test_cases) : [];
 
   try {
     let result;
@@ -1324,10 +1374,8 @@ async function submitMockExam() {
 
   const answers = mockState.questions.map(q => {
     if (q.type === 'coding') {
-      // For coding questions, send whether test cases passed
-      const cr = mockState.codeResults?.[q.id];
-      const passed = cr ? (cr.allPassed !== undefined ? cr.allPassed : cr.passed === true) : false;
-      return { questionId: q.id, selected: -1, codePassed: passed };
+      // Send the student's actual code so the server re-verifies it against test cases
+      return { questionId: q.id, selected: -1, code: mockState.codeAnswers?.[q.id] || '' };
     }
     return { questionId: q.id, selected: mockState.answers[q.id] ?? -1 };
   });
@@ -1408,6 +1456,7 @@ async function submitMockExam() {
           <div class="stat-card"><div class="stat-value">${result.correct}/${result.total}</div><div class="stat-label">正确/总题</div></div>
           <div class="stat-card"><div class="stat-value">${Math.floor(timeSpent / 60)}分${timeSpent % 60}秒</div><div class="stat-label">用时</div></div>
         </div>
+        <p class="complete-cheer">${completeCheer(Math.round(result.score || 0))}</p>
         <button class="btn btn-primary" onclick="navigate('#/mock')">再考一次</button>
         <button class="btn btn-secondary" onclick="navigate('#/')" style="margin-left:8px">返回首页</button>
       </div>
@@ -1427,7 +1476,7 @@ let wrongPractice = { questions: [], current: 0, answers: {}, finished: false };
 
 async function renderReview() {
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">错题复习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">错题复习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let questions = [];
   try { questions = await API.getWrongQuestions(); } catch {}
@@ -1435,7 +1484,7 @@ async function renderReview() {
   questions = questions.filter(q => q.type !== 'coding');
 
   if (questions.length === 0) {
-    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">错题复习</span></div>
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">错题复习</span></div>
       <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，继续加油！</p></div>`;
     setActiveNav('review');
     renderBottomTab('review');
@@ -1461,7 +1510,7 @@ async function renderReview() {
 
   app.innerHTML = `
     <div class="practice-nav">
-      <a class="back-btn" href="#/">← 返回</a>
+      <a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a>
       <span style="font-weight:700">错题复习</span>
       <span class="wrong-count">共 ${questions.length} 题</span>
     </div>
@@ -1479,7 +1528,7 @@ async function renderReview() {
 
 async function startWrongPractice() {
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/" onclick="if(!confirm('确定退出练习？'))return false">← 退出</a><span style="font-weight:700">错题巩固练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/', '确定退出练习？')">← 退出</a><span style="font-weight:700">错题巩固练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let questions = [];
   try { questions = await API.getWrongQuestions(); } catch {}
@@ -1487,7 +1536,7 @@ async function startWrongPractice() {
   questions = questions.filter(q => q.type !== 'coding');
 
   if (questions.length === 0) {
-    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">错题巩固练习</span></div>
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">错题巩固练习</span></div>
       <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，继续加油！</p></div>`;
     return;
   }
@@ -1507,7 +1556,7 @@ function renderWrongPracticeQuestion() {
     const mastered = Object.values(answers).filter(a => a.correct).length;
     const remaining = total - mastered;
     app.innerHTML = `
-      <div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">练习完成</span></div>
+      <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">练习完成</span></div>
       <div class="review-summary animate-in">
         <div class="summary-icon">${mastered === total ? '🎉' : '📖'}</div>
         <h2>${mastered === total ? '全部掌握！' : '练习完成'}</h2>
@@ -1548,7 +1597,7 @@ function renderWrongPracticeQuestion() {
   if (isAnswered) {
     const fbClass = isCorrect ? 'ok' : 'fail';
     const fbIcon = isCorrect ? '✓' : '✗';
-    const fbText = isCorrect ? '回答正确！已从错题库移除' : '答错了，正确答案是 ' + labels[q.answer];
+    const fbText = isCorrect ? cheer(true) + ' 已从错题库移除' : cheer(false) + ' 正确答案是 ' + labels[q.answer];
     feedbackHtml = `<div class="feedback show ${fbClass}">
       <span class="fb-icon">${fbIcon}</span> ${fbText}
       ${!isCorrect && q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
@@ -1559,7 +1608,7 @@ function renderWrongPracticeQuestion() {
 
   app.innerHTML = `
     <div class="practice-nav">
-      <a class="back-btn" href="#/" onclick="if(!confirm('确定退出练习？'))return false">← 退出</a>
+      <a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/', '确定退出练习？')">← 退出</a>
       <span style="font-weight:700">错题巩固 (${current + 1}/${questions.length})</span>
     </div>
     <div class="q-progress"><div class="q-progress-bar"><div class="q-progress-fill" style="width:${progressPct}%"></div></div></div>
@@ -1822,7 +1871,7 @@ async function renderTeacher() {
   if (API.getRole() !== 'teacher' && API.getRole() !== 'admin') { navigate('#/'); return; }
 
   const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">教师面板</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">教师面板</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
 
   let students = [], stats = {};
   try {
@@ -1843,7 +1892,7 @@ async function renderTeacher() {
     return `
     <div class="stu-card" onclick="viewStudent(${s.id})">
       <div class="stu-card-head">
-        <div class="stu-avatar">${escapeHtml((s.nickname || s.username)[0])}</div>
+        <div class="stu-avatar">${escapeHtml(s.avatar) || '😊'}</div>
         <div class="stu-info">
           <div class="stu-name">${escapeHtml(s.nickname)}</div>
           <div class="stu-id">@${escapeHtml(s.username)}</div>
@@ -1895,7 +1944,7 @@ async function renderTeacher() {
   }
 
   app.innerHTML = `
-    <div class="practice-nav"><a class="back-btn" href="#/">← 返回</a><span style="font-weight:700">👩‍🏫 教师面板</span></div>
+    <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">👩‍🏫 教师面板</span></div>
     <div class="stats-grid animate-in" style="margin:16px 0">
       <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-value">${stats.totalStudents || 0}</div><div class="stat-label">学生总数</div></div>
       <div class="stat-card"><div class="stat-icon">📈</div><div class="stat-value">${stats.activeToday || 0}</div><div class="stat-label">今日活跃</div></div>
@@ -2002,7 +2051,7 @@ async function doBatchAdd() {
     html += `<button class="btn btn-primary" style="margin-top:12px" onclick="hideModal();renderTeacher()">完成</button></div>`;
     resultEl.innerHTML = html;
   } catch (e) {
-    resultEl.innerHTML = `<p style="color:var(--error)">${e.message}</p>`;
+    resultEl.innerHTML = `<p style="color:var(--error)">${escapeHtml(e.message)}</p>`;
   }
 }
 
@@ -2069,7 +2118,7 @@ async function viewStudent(id) {
   // Wrong questions
   let wrongHtml = recentWrong?.slice(0, 10).map(w => {
     const labels = 'ABCD';
-    const opts = w.options ? JSON.parse(w.options) : [];
+    const opts = safeParse(w.options, []);
     return `<div class="wrong-item">
       <div class="wrong-q">${escapeHtml(w.title)}</div>
       <div class="wrong-detail">
@@ -2089,10 +2138,10 @@ async function viewStudent(id) {
   }).join('') || '';
 
   app.innerHTML = `
-    <div class="practice-nav"><a class="back-btn" href="#/teacher">← 返回</a><span style="font-weight:700">${student?.nickname || '学生'} 的学习档案</span></div>
+    <div class="practice-nav"><a class="back-btn" href="#/teacher">← 返回</a><span style="font-weight:700">${escapeHtml(student?.nickname) || '学生'} 的学习档案</span></div>
 
     <div class="profile-header animate-in">
-      <div class="profile-avatar">${escapeHtml((student?.nickname || '?')[0])}</div>
+      <div class="profile-avatar">${escapeHtml(student?.avatar) || '😊'}</div>
       <div class="profile-info">
         <h2>${escapeHtml(student?.nickname)}</h2>
         <p>@${escapeHtml(student?.username)} · ${escapeHtml(profile?.class_name || '未分班')} · ${escapeHtml(profile?.grade || '')}</p>
@@ -2202,6 +2251,9 @@ function renderNav() {
         ${user?.role === 'teacher' ? '<a href="#/teacher" data-section="teacher">管理</a>' : ''}
       </div>
       <div class="nav-user">
+        <button class="nav-avatar" onclick="openAvatarPicker()" title="更换头像" aria-label="更换头像">
+          <span class="nav-avatar-emoji">${escapeHtml(getAvatar(user))}</span>
+        </button>
         <span class="xp-badge">${escapeHtml(user?.nickname || '')}</span>
         <a class="nav-logout" onclick="confirmLogout(event)" title="退出登录" role="button" aria-label="退出登录">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2220,6 +2272,37 @@ function confirmLogout(e) {
   if (!confirm('确定要退出登录吗？')) return;
   API.logout();
   handleRoute(); // hides nav + renders login
+}
+
+/* --- Avatar picker --- */
+function openAvatarPicker() {
+  const user = API.getUser();
+  const current = getAvatar(user);
+  const groups = [
+    { label: '👧 女生款', key: 'girl', list: AVATARS.girl },
+    { label: '👦 男生款', key: 'boy', list: AVATARS.boy }
+  ];
+  const body = `<div class="avatar-picker">
+    <p class="avatar-picker-hint">点击选一个喜欢的头像，立刻生效！</p>
+    ${groups.map(g => `
+      <p class="avatar-group-label">${g.label}</p>
+      <div class="avatar-grid">
+        ${g.list.map(a => `<button class="avatar-option ${a === current ? 'active' : ''}" onclick="selectAvatar('${a}')">${a}</button>`).join('')}
+      </div>`).join('')}
+  </div>`;
+  showModal(body, '🎭 我的头像');
+}
+
+async function selectAvatar(a) {
+  try {
+    await API.updateAvatar(a);
+    hideModal();
+    const nav = document.querySelector('.nav');
+    if (nav) nav.outerHTML = renderNav();
+    handleRoute();
+  } catch (e) {
+    alert('更换头像失败：' + e.message);
+  }
 }
 
 /* ============================================================

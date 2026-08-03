@@ -15,7 +15,7 @@ router.post('/students/batch', (req, res) => {
   const results = [];
   const errors = [];
 
-  const insertUser = db.prepare('INSERT INTO users (username, password, nickname, role) VALUES (?, ?, ?, ?)');
+  const insertUser = db.prepare('INSERT INTO users (username, password, nickname, role, avatar) VALUES (?, ?, ?, ?, ?)');
   const insertProfile = db.prepare('INSERT INTO student_profiles (user_id, class_name, grade, parent_name, parent_phone) VALUES (?, ?, ?, ?, ?)');
 
   const transaction = db.transaction(() => {
@@ -27,7 +27,8 @@ router.post('/students/batch', (req, res) => {
       const existing = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
       if (existing) { errors.push({ username, error: '用户名已存在' }); continue; }
 
-      const result = insertUser.run(username, hash, nickname, 'student');
+      const safeAvatar = (s.avatar && typeof s.avatar === 'string' && s.avatar.length <= 8) ? s.avatar : '😊';
+      const result = insertUser.run(username, hash, nickname, 'student', safeAvatar);
       const userId = result.lastInsertRowid;
 
       insertProfile.run(userId, s.className || s.class || '', s.grade || '', s.parentName || s.parent || '', s.parentPhone || s.phone || '');
@@ -44,7 +45,7 @@ router.post('/students/batch', (req, res) => {
 
 // Create single student
 router.post('/students', (req, res) => {
-  const { username, nickname, className, grade, parentName, parentPhone, defaultPassword } = req.body;
+  const { username, nickname, className, grade, parentName, parentPhone, defaultPassword, avatar } = req.body;
   const pwd = defaultPassword || '123456';
 
   if (!username) return res.status(400).json({ error: '用户名不能为空' });
@@ -53,7 +54,8 @@ router.post('/students', (req, res) => {
   if (existing) return res.status(409).json({ error: '用户名已存在' });
 
   const hash = bcrypt.hashSync(pwd, 10);
-  const result = db.prepare('INSERT INTO users (username, password, nickname, role) VALUES (?, ?, ?, ?)').run(username, hash, nickname || username, 'student');
+  const safeAvatar = (avatar && typeof avatar === 'string' && avatar.length <= 8 && !/[<>"'&\\/]/.test(avatar)) ? avatar : '😊';
+  const result = db.prepare('INSERT INTO users (username, password, nickname, role, avatar) VALUES (?, ?, ?, ?, ?)').run(username, hash, nickname || username, 'student', safeAvatar);
 
   const userId = result.lastInsertRowid;
   db.prepare('INSERT INTO student_profiles (user_id, class_name, grade, parent_name, parent_phone) VALUES (?, ?, ?, ?, ?)').run(userId, className || '', grade || '', parentName || '', parentPhone || '');
@@ -100,7 +102,7 @@ router.post('/students/:id/reset-password', (req, res) => {
 
 // Get student profile with full learning data
 router.get('/students/:id/profile', (req, res) => {
-  const student = db.prepare('SELECT id, username, nickname, created_at FROM users WHERE id = ? AND role = ?').get(req.params.id, 'student');
+  const student = db.prepare('SELECT id, username, nickname, avatar, created_at FROM users WHERE id = ? AND role = ?').get(req.params.id, 'student');
   if (!student) return res.status(404).json({ error: '学生不存在' });
 
   const profile = db.prepare('SELECT * FROM student_profiles WHERE user_id = ?').get(req.params.id) || {};
@@ -166,7 +168,7 @@ router.put('/students/:id/profile', (req, res) => {
 
 router.get('/students', (req, res) => {
   const rows = db.prepare(`
-    SELECT u.id, u.username, u.nickname, u.created_at, u.role,
+    SELECT u.id, u.username, u.nickname, u.avatar, u.created_at, u.role,
            sp.class_name, sp.grade, sp.parent_name, sp.parent_phone, sp.daily_goal,
            (SELECT COUNT(DISTINCT a.question_id) FROM answers a WHERE a.user_id = u.id) as total_answered,
            (SELECT COUNT(DISTINCT a.question_id) FROM answers a WHERE a.user_id = u.id AND a.is_correct = 1) as total_correct,
@@ -181,7 +183,7 @@ router.get('/students', (req, res) => {
 });
 
 router.get('/student/:id', (req, res) => {
-  const student = db.prepare('SELECT id, username, nickname, created_at FROM users WHERE id = ? AND role = ?').get(req.params.id, 'student');
+  const student = db.prepare('SELECT id, username, nickname, avatar, created_at FROM users WHERE id = ? AND role = ?').get(req.params.id, 'student');
   if (!student) return res.status(404).json({ error: '学生不存在' });
 
   const profile = db.prepare('SELECT * FROM student_profiles WHERE user_id = ?').get(req.params.id) || {};

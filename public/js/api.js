@@ -40,11 +40,20 @@ const API = (() => {
       return data.user;
     },
 
-    async register(username, password, nickname, role) {
-      const data = await request('/auth/register', { method: 'POST', body: JSON.stringify({ username, password, nickname, role }) });
+    async register(username, password, nickname, role, avatar) {
+      const data = await request('/auth/register', { method: 'POST', body: JSON.stringify({ username, password, nickname, role, avatar }) });
       setToken(data.token);
       setUser(data.user);
       return data.user;
+    },
+
+    async updateAvatar(avatar) {
+      const data = await request('/auth/avatar', { method: 'PUT', body: JSON.stringify({ avatar }) });
+      // keep the in-memory user and localStorage in sync
+      if (currentUser) currentUser.avatar = data.avatar;
+      const saved = JSON.parse(localStorage.getItem('gesp_user') || 'null');
+      if (saved) { saved.avatar = data.avatar; localStorage.setItem('gesp_user', JSON.stringify(saved)); }
+      return data;
     },
 
     logout() {

@@ -1,8 +1,52 @@
 const express = require('express');
+const { execSync } = require('child_process');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 const { db } = require('../db');
 const { authMiddleware } = require('../auth');
 
 const router = express.Router();
+
+// Server-side verification of a submitted C++ coding answer: compile + run the
+// student's code against the question's stored test cases. Returns true only if
+// every test case passes. Runs as "nobody" with hard resource limits.
+function verifyCoding(code, testCasesJson) {
+  try {
+    let testCases = [];
+    if (testCasesJson) { try { testCases = JSON.parse(testCasesJson); } catch { testCases = []; } }
+    if (!Array.isArray(testCases) || testCases.length === 0) return false;
+
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'gesp-v-'));
+    const src = path.join(tmp, 'main.cpp');
+    fs.writeFileSync(src, code, 'utf8');
+
+    const isRoot = process.getuid && process.getuid() === 0;
+    const prefix = isRoot ? 'setpriv --reuid=65534 --regid=65534 --clear-groups ' : '';
+    if (isRoot) fs.chmodSync(tmp, 0o777);
+
+    try {
+      execSync(`cd "${tmp}" && ${prefix}g++ -o main main.cpp -std=c++17 -O2 2>&1`, { timeout: 8000, encoding: 'utf8' });
+    } catch (e) { try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {} return false; }
+
+    const limits = 'ulimit -v 262144; ulimit -u 20; ulimit -f 1024; ulimit -t 5; ';
+    const norm = (s) => String(s || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trimEnd();
+    for (const tc of testCases) {
+      let out = '';
+      try {
+        const inf = path.join(tmp, 'in.txt');
+        if (tc.input) fs.writeFileSync(inf, tc.input);
+        out = execSync(`cd "${tmp}" && ${limits}timeout -k 1 5 ${prefix}./main ${tc.input ? '< in.txt' : ''} 2>&1`, { timeout: 8000, encoding: 'utf8' });
+      } catch (e) { out = e.stdout || ''; }
+      if (norm(out) !== norm(tc.expectedOutput)) {
+        try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
+        return false;
+      }
+    }
+    try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
+    return true;
+  } catch { return false; }
+}
 
 // Get all available exam papers
 router.get('/papers', authMiddleware, (req, res) => {
@@ -95,11 +139,13 @@ router.post('/submit', authMiddleware, (req, res) => {
   const insertAnswer = db.prepare('INSERT INTO answers (user_id, question_id, selected, is_correct) VALUES (?, ?, ?, ?)');
   const transaction = db.transaction(() => {
     for (const a of answers) {
-      const q = db.prepare('SELECT answer, type, is_judge FROM questions WHERE id = ?').get(a.questionId);
+      const q = db.prepare('SELECT answer, type, is_judge, test_cases FROM questions WHERE id = ?').get(a.questionId);
       let isCorrect;
       if (q && q.type === 'coding') {
-        // For coding questions, use the codePassed flag from the client
-        isCorrect = a.codePassed ? 1 : 0;
+        // Verify the student's code server-side against the stored test cases;
+        // never trust a client-sent pass flag.
+        const submittedCode = (typeof a.code === 'string' && a.code.trim()) ? a.code : '';
+        isCorrect = submittedCode ? (verifyCoding(submittedCode, q.test_cases) ? 1 : 0) : 0;
         totalPoints += 25; // GESP: coding = 25 points each
         if (isCorrect) { correct++; earnedPoints += 25; }
       } else {
@@ -120,6 +166,7 @@ router.post('/submit', authMiddleware, (req, res) => {
   });
 
   const result = transaction();
+  db.save(); // persist exam + answers immediately (avoid data loss on restart)
   res.json(result);
 });
 

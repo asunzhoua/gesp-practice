@@ -26,8 +26,8 @@ async function start() {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
   });
 
-  // Auto-save db every 30 seconds
-  setInterval(() => db.save(), 30000);
+  // Auto-save db every 10 seconds (sql.js is in-memory; persist frequently)
+  setInterval(() => db.save(), 10000);
 
   app.listen(PORT, () => {
     console.log(`GESP Practice Server running at http://localhost:${PORT}`);

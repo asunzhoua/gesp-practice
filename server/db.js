@@ -29,6 +29,7 @@ async function initDb() {
       password TEXT NOT NULL,
       nickname TEXT NOT NULL,
       role TEXT NOT NULL DEFAULT 'student',
+      avatar TEXT DEFAULT '😊',
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);

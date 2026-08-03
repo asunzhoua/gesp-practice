@@ -54,16 +54,24 @@ router.post('/compile-run', authMiddleware, (req, res) => {
   }
 
   // Reject dangerous includes/content (file I/O, process control, networking, assembly)
+  // Normalize the source first: collapse backslash-newline line splicing and strip comments,
+  // so macro/comment/line-splice tricks cannot hide banned tokens from the scan.
+  const scanCode = code
+    .replace(/\\\r?\n/g, '')                 // line splicing: "#include \" + <header>
+    .replace(/\/\*[\s\S]*?\*\//g, '')        // block comments: fopen/**/(
+    .replace(/\/\/[^\n]*/g, '');             // line comments
   const banned = [
-    /#include\s*[<"](sys\/|unistd|windows|direct|io\.h|process\.h|fstream|filesystem|fcntl|dirent|sys\/stat|sys\/types|sys\/socket|netinet|arpa|thread|pthread)/i,
+    /#include\s*(next)?\s*[<"](sys\/|spawn\.h|unistd|windows|direct|io\.h|process\.h|fstream|filesystem|fcntl|dirent|sys\/stat|sys\/types|sys\/socket|netinet|arpa|thread|pthread)/i,
     /#include\s*[<"]\s*\//i,
-    /\b(?:system|popen|fork|vfork|exec\w*|remove|rename|unlink|rmdir|mkdir|chmod|chown|kill|setuid|setgid|mount|umount|socket|connect|bind|listen|accept)\s*\(/i,
+    /#include_next/i,
+    /\b(?:system|popen|posix_spawn|fork|vfork|exec\w*|remove|rename|unlink|rmdir|mkdir|chmod|chown|kill|setuid|setgid|mount|umount|socket|connect|bind|listen|accept|dlopen|dlsym|syscall)\s*\(/i,
     /\b(?:fopen|freopen|open|creat|ifstream|ofstream|fstream)\s*\(/i,
     /\bstd::(?:ifstream|ofstream|fstream)\b/i,
+    /\b(?:ifstream|ofstream|fstream|fopen|freopen|system|popen|posix_spawn|syscall|dlopen|dlsym)\b/i,
     /\b__asm__\b|\basm\s*\(/i,
   ];
   for (const pat of banned) {
-    if (pat.test(code)) {
+    if (pat.test(scanCode)) {
       return res.status(400).json({ error: '代码包含不允许的操作' });
     }
   }
@@ -76,12 +84,15 @@ router.post('/compile-run', authMiddleware, (req, res) => {
     // Write source code
     fs.writeFileSync(srcFile, code, 'utf8');
 
-    // Compile
+    // Drop privileges for BOTH compile and run when the server is root
+    const prefix = getPrivilegePrefix(tmpDir);
+
+    // Compile (as nobody when root)
     const compileStart = Date.now();
     let compileOut = '';
     try {
       compileOut = execSync(
-        `g++ -o "${binFile}" "${srcFile}" -std=c++17 -O2 2>&1`,
+        `cd "${tmpDir}" && ${prefix}g++ -o main main.cpp -std=c++17 -O2 2>&1`,
         { timeout: TIMEOUT_MS, encoding: 'utf8', maxBuffer: 1024 * 1024 }
       );
     } catch (e) {
@@ -95,19 +106,18 @@ router.post('/compile-run', authMiddleware, (req, res) => {
       });
     }
 
-    // Run as an unprivileged user when the server is root, feed stdin from a file
-    const prefix = getPrivilegePrefix(tmpDir);
     try { fs.chmodSync(binFile, 0o755); } catch {}
     if (stdin) fs.writeFileSync(path.join(tmpDir, 'input.txt'), stdin, 'utf8');
 
-    // Run
+    // Run with hard resource limits (memory / processes / file size / CPU)
     let stdout = '';
     let stderr = '';
     let runError = null;
+    const limits = 'ulimit -v 262144; ulimit -u 20; ulimit -f 1024; ulimit -t 5; ';
     try {
       const runCmd = stdin
-        ? `cd "${tmpDir}" && timeout 5 ${prefix}./main < input.txt 2>&1`
-        : `cd "${tmpDir}" && timeout 5 ${prefix}./main 2>&1`;
+        ? `cd "${tmpDir}" && ${limits}timeout -k 1 5 ${prefix}./main < input.txt 2>&1`
+        : `cd "${tmpDir}" && ${limits}timeout -k 1 5 ${prefix}./main 2>&1`;
       stdout = execSync(runCmd, {
         timeout: TIMEOUT_MS,
         encoding: 'utf8',
@@ -181,10 +191,13 @@ router.post('/compile-run/test-cases', authMiddleware, (req, res) => {
   try {
     fs.writeFileSync(srcFile, code, 'utf8');
 
-    // Compile once
+    // Drop privileges for BOTH compile and run
+    const prefix = getPrivilegePrefix(tmpDir);
+
+    // Compile once (as nobody when root)
     try {
       execSync(
-        `g++ -o "${binFile}" "${srcFile}" -std=c++17 -O2 2>&1`,
+        `cd "${tmpDir}" && ${prefix}g++ -o main main.cpp -std=c++17 -O2 2>&1`,
         { timeout: TIMEOUT_MS, encoding: 'utf8', maxBuffer: 1024 * 1024 }
       );
     } catch (e) {
@@ -200,9 +213,8 @@ router.post('/compile-run/test-cases', authMiddleware, (req, res) => {
       });
     }
 
-    // Run as an unprivileged user when the server is root, feed stdin from a file
-    const prefix = getPrivilegePrefix(tmpDir);
     try { fs.chmodSync(binFile, 0o755); } catch {}
+    const limits = 'ulimit -v 262144; ulimit -u 20; ulimit -f 1024; ulimit -t 5; ';
 
     // Run each test case
     for (const tc of testCases) {
@@ -212,8 +224,8 @@ router.post('/compile-run/test-cases', authMiddleware, (req, res) => {
       try {
         if (tc.input) fs.writeFileSync(path.join(tmpDir, 'input.txt'), tc.input, 'utf8');
         const runCmd = tc.input
-          ? `cd "${tmpDir}" && timeout 5 ${prefix}./main < input.txt 2>&1`
-          : `cd "${tmpDir}" && timeout 5 ${prefix}./main 2>&1`;
+          ? `cd "${tmpDir}" && ${limits}timeout -k 1 5 ${prefix}./main < input.txt 2>&1`
+          : `cd "${tmpDir}" && ${limits}timeout -k 1 5 ${prefix}./main 2>&1`;
         stdout = execSync(runCmd, {
           timeout: TIMEOUT_MS, encoding: 'utf8', maxBuffer: 1024 * 1024
         });
@@ -263,11 +275,12 @@ router.post('/compile-run/test-cases', authMiddleware, (req, res) => {
 
 // Helpers
 function getPrivilegePrefix(tmpDir) {
-  // When the server runs as root, execute the compiled binary as "nobody"
-  // so that a malicious program cannot read or write server files.
+  // When the server runs as root, run g++ and the compiled binary as "nobody"
+  // so malicious code cannot read/write server files.
   if (process.getuid && process.getuid() === 0) {
     try {
-      fs.chmodSync(tmpDir, 0o755);
+      // 0777 so "nobody" can write the compiled binary inside the sandbox dir
+      fs.chmodSync(tmpDir, 0o777);
       require('child_process').execSync('command -v setpriv', { encoding: 'utf8' });
       return 'setpriv --reuid=65534 --regid=65534 --clear-groups ';
     } catch { /* setpriv unavailable; fall back to current user */ }

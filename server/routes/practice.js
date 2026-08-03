@@ -8,16 +8,27 @@ const router = express.Router();
 const EBBINGHAUS_INTERVALS = [1, 2, 4, 7, 15, 30];
 
 router.post('/answer', authMiddleware, (req, res) => {
-  const { questionId, selected, isCorrect } = req.body;
+  const { questionId, selected, codePassed } = req.body;
   if (!questionId || selected === undefined) {
     return res.status(400).json({ error: '参数不完整' });
   }
 
+  const q = db.prepare('SELECT type, answer FROM questions WHERE id = ?').get(questionId);
+  if (!q) return res.status(404).json({ error: '题目不存在' });
+
+  // Never trust the client's is_correct — compute it server-side from the question bank.
+  let isCorrect = 0;
+  if (q.type === 'coding') {
+    isCorrect = codePassed === true ? 1 : 0;
+  } else {
+    isCorrect = selected === q.answer ? 1 : 0;
+  }
+
   db.prepare('INSERT INTO answers (user_id, question_id, selected, is_correct) VALUES (?, ?, ?, ?)').run(
-    req.user.id, questionId, selected, isCorrect ? 1 : 0
+    req.user.id, questionId, selected, isCorrect
   );
 
-  res.json({ ok: true });
+  res.json({ ok: true, isCorrect });
 });
 
 // Get review schedule based on Ebbinghaus forgetting curve
