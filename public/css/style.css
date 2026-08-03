@@ -837,14 +837,20 @@ ul, ol { list-style: none; }
    Nav logout
    ============================================================ */
 .nav-logout {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 1.1em;
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-  transition: background .2s;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--text-secondary); text-decoration: none; cursor: pointer;
+  padding: 6px 13px; border-radius: var(--radius-pill);
+  border: 1px solid var(--border); background: var(--card);
+  font-size: .85em; font-weight: 600; white-space: nowrap;
+  transition: all .2s ease; user-select: none;
 }
-.nav-logout:hover { background: rgba(0,0,0,.06); color: var(--error); }
+.nav-logout svg { flex-shrink: 0; }
+.nav-logout:hover {
+  background: #fff5f5; border-color: rgba(239, 68, 68, .45);
+  color: var(--error); transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, .15);
+}
+.nav-logout:active { transform: scale(.96); }
 
 /* ============================================================
    Table (Teacher)
@@ -1378,21 +1384,41 @@ ul, ol { list-style: none; }
   border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   padding: 20px; overflow-x: auto;
 }
-.accuracy-chart svg { min-width: 300px; width: 100%; height: auto; }
+.accuracy-chart svg { min-width: 280px; width: 100%; height: auto; }
 .accuracy-bar { fill: var(--brand-primary); opacity: .6; rx: 3; }
 .accuracy-bar:hover { opacity: .8; }
 .accuracy-line { fill: none; stroke: var(--brand-accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .accuracy-dot { fill: var(--brand-accent); stroke: #fff; stroke-width: 2; }
+
+/* ---------- Kid-friendly week summary (no chart) ---------- */
+.section-week { margin-top: 8px; }
+.week-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); padding: 20px;
+}
+.week-summary { font-size: 1em; color: var(--text-secondary); margin: 0 0 14px; }
+.week-summary b { color: var(--brand-primary-dark); font-size: 1.1em; }
+.week-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.week-day {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 14px; text-align: center; min-width: 66px; box-shadow: var(--shadow-sm);
+}
+.week-day-date { font-size: .78em; color: var(--text-secondary); font-weight: 600; }
+.week-day-count { font-size: 1.25em; font-weight: 800; color: var(--brand-primary-dark); }
+.week-day-count span { font-size: .6em; font-weight: 600; color: var(--text-secondary); }
 
 /* ============================================================
    Dashboard Section Grid
    ============================================================ */
 .dashboard-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 16px; margin-bottom: 28px;
+  gap: 16px; margin-bottom: 28px; align-items: stretch;
 }
-.dashboard-grid .section { margin-bottom: 0; }
+.dashboard-grid .section { margin-bottom: 0; display: flex; flex-direction: column; }
 .dashboard-grid .section-title { margin-bottom: 12px; }
+.dashboard-grid .radar-chart { flex: 1; min-height: 280px; }
+/* When only one module is present, let it span the full row (no empty column) */
+.dashboard-grid > .section:only-child { grid-column: 1 / -1; }
 
 /* ============================================================
    Dashboard Hero (Enhanced)
@@ -1483,15 +1509,12 @@ ul, ol { list-style: none; }
 /* ============================================================
    Upcoming Review List
    ============================================================ */
-.upcoming-list { display: flex; flex-direction: column; gap: 6px; }
-.upcoming-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 12px; background: var(--card);
-  border-radius: var(--radius-sm); border: 1px solid var(--border);
-  font-size: .85em;
-}
-.upcoming-title { flex: 1; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.upcoming-date { color: var(--text-secondary); font-size: .8em; font-weight: 600; flex-shrink: 0; }
+/* ---------- Upcoming reviews inside the daily review card ---------- */
+.review-upcoming { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); }
+.review-upcoming-title { font-size: .8em; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; }
+.review-upcoming-item { display: flex; align-items: center; gap: 8px; font-size: .82em; padding: 4px 0; }
+.review-upcoming-text { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-primary); }
+.review-upcoming-date { font-size: .78em; color: var(--text-secondary); font-weight: 600; flex-shrink: 0; }
 
 /* ============================================================
    Three-way Responsive: Tablet (768px)
@@ -1663,7 +1686,6 @@ ul, ol { list-style: none; }
   .review-task-card { padding: 16px; }
   .review-task-stats { gap: 16px; }
   .review-stat-num { font-size: 1.2em; }
-  .upcoming-item { font-size: .8em; padding: 6px 10px; }
 }
 
 /* ============================================================

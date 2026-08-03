@@ -209,6 +209,15 @@ async function renderDashboard() {
           <div class="review-stat"><span class="review-stat-num">${schedule.reviewStats.mastered}</span><span class="review-stat-label">已掌握</span></div>
         </div>
         <div class="review-progress-bar"><div class="review-progress-fill" style="width:${reviewPct}%"></div></div>
+        ${schedule.upcoming?.length ? `<div class="review-upcoming">
+          <div class="review-upcoming-title">接下来 7 天还有 ${schedule.upcoming.length} 题复习</div>
+          ${schedule.upcoming.slice(0, 3).map(u => `
+            <div class="review-upcoming-item">
+              <span class="q-kp">${KP_NAMES[u.kp] || u.kp}</span>
+              <span class="review-upcoming-text">${escapeHtml(u.title || '')}</span>
+              <span class="review-upcoming-date">${u.nextReview}</span>
+            </div>`).join('')}
+        </div>` : ''}
         <button class="btn btn-primary btn-block" style="margin-top:12px">开始今日复习 →</button>
       </div>`;
   } else if (schedule.reviewStats.totalWrong > 0) {
@@ -242,8 +251,21 @@ async function renderDashboard() {
   // Radar chart
   const radarHtml = renderRadarChart(stats.byKp || [], { accuracyMode: true });
 
-  // Daily accuracy chart (real daily practice data)
-  const accuracyHtml = renderAccuracyChart(stats.dailyStats || []);
+  // Simple week summary (clear for kids): last active days + total questions, no chart
+  const weekData = (stats.dailyStats || []).slice(0, 7); // newest first
+  const weekTotal = weekData.reduce((s, d) => s + (d.count || 0), 0);
+  const trendHtml = weekData.length ? `<div class="section section-week animate-in">
+    <h2 class="section-title">📚 本周学习</h2>
+    <div class="week-card">
+      <p class="week-summary">这 <b>${weekData.length}</b> 天你一共做了 <b>${weekTotal}</b> 道题${weekTotal > 0 ? '，真棒，继续加油！🎉' : '，从今天开始吧！'}</p>
+      <div class="week-row">
+        ${weekData.map(d => `<div class="week-day">
+          <div class="week-day-date">${(d.day || '').slice(5)}</div>
+          <div class="week-day-count">${d.count || 0}<span> 题</span></div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>` : '';
 
   // Exam history
   let examHtml = '';
@@ -282,20 +304,9 @@ async function renderDashboard() {
         <h2 class="section-title">知识掌握</h2>
         ${radarHtml ? `<div class="radar-chart">${radarHtml}</div>` : '<p class="text-muted text-center" style="padding:40px">暂无数据</p>'}
       </div>
-      ${accuracyHtml ? `<div class="section">
-        <h2 class="section-title">学习趋势</h2>
-        ${accuracyHtml}
-      </div>` : ''}
-      ${schedule.upcoming?.length ? `<div class="section">
-        <h2 class="section-title">未来7天复习</h2>
-        <div class="upcoming-list">${schedule.upcoming.map(u => `
-          <div class="upcoming-item">
-            <span class="q-kp">${KP_NAMES[u.kp] || u.kp}</span>
-            <span class="upcoming-title">${escapeHtml(u.title || '')}</span>
-            <span class="upcoming-date">${u.nextReview}</span>
-          </div>`).join('')}</div>
-      </div>` : ''}
     </div>
+
+    ${trendHtml}
 
     <div class="section animate-in">
       <h2 class="section-title">知识点练习</h2>
@@ -1730,57 +1741,75 @@ function renderTrendChart(exams) {
 function renderAccuracyChart(dailyStats) {
   if (!dailyStats || dailyStats.length === 0) return '';
   const data = [...dailyStats].reverse().slice(-14);
-  const w = 500, h = 180;
-  const pad = { top: 20, right: 40, bottom: 30, left: 40 };
+  const w = 760, h = 220;
+  const pad = { top: 28, right: 52, bottom: 34, left: 52 };
   const cw = w - pad.left - pad.right;
   const ch = h - pad.top - pad.bottom;
 
+  // Round the count axis up to a nice multiple of 5 so the left labels are friendly
   const maxCount = Math.max(...data.map(d => d.count), 1);
-  const barW = Math.min(24, (cw / data.length) * 0.6);
+  const countCeil = Math.max(5, Math.ceil(maxCount / 5) * 5);
+  const barW = Math.min(30, (cw / data.length) * 0.55);
   const gap = cw / data.length;
 
-  // Bars
+  // Bars (left axis = number of questions done)
   let barsSvg = '';
   data.forEach((d, i) => {
     const x = pad.left + i * gap + (gap - barW) / 2;
-    const bh = (d.count / maxCount) * ch;
+    const bh = (d.count / countCeil) * ch;
     const y = pad.top + ch - bh;
-    barsSvg += `<rect x="${x}" y="${y}" width="${barW}" height="${bh}" class="accuracy-bar"><title>${d.day?.slice(5)}: ${d.count}题</title></rect>`;
+    barsSvg += `<rect x="${x}" y="${y}" width="${barW}" height="${bh > 0 ? bh : 1}" class="accuracy-bar"><title>${(d.day || '').slice(5)}: ${d.count}题</title></rect>`;
   });
 
-  // Accuracy line
+  // Accuracy line (right axis = percentage)
   const linePts = data.map((d, i) => {
     const x = pad.left + i * gap + gap / 2;
     const acc = d.count > 0 ? d.correct / d.count : 0;
     const y = pad.top + ch - acc * ch;
-    return { x, y, acc, day: d.day?.slice(5) || '' };
+    return { x, y, acc, day: (d.day || '').slice(5) };
   });
-
   const linePath = linePts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ');
   const dotsSvg = linePts.map(p =>
-    `<circle cx="${p.x}" cy="${p.y}" r="3.5" class="accuracy-dot"><title>${p.day}: ${Math.round(p.acc*100)}%</title></circle>`
+    `<circle cx="${p.x}" cy="${p.y}" r="4" class="accuracy-dot"><title>${p.day}: ${Math.round(p.acc * 100)}%</title></circle>`
   ).join('');
 
-  // Y axis (accuracy %)
-  let yAxisSvg = '';
+  // Gridlines
+  let gridSvg = '';
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + ch * i / 4;
+    gridSvg += `<line x1="${pad.left}" y1="${y}" x2="${w - pad.right}" y2="${y}" class="trend-grid"/>`;
+  }
+
+  // Left axis (题数)
+  let leftAxisSvg = '';
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + ch * i / 4;
+    const val = Math.round(countCeil - countCeil * i / 4);
+    leftAxisSvg += `<text x="${pad.left - 10}" y="${y + 4}" class="trend-axis-label" text-anchor="end">${val}</text>`;
+  }
+  leftAxisSvg += `<text x="${pad.left - 10}" y="${pad.top - 10}" class="trend-axis-label" text-anchor="end">题数</text>`;
+
+  // Right axis (正确率 %)
+  let rightAxisSvg = '';
   for (let i = 0; i <= 4; i++) {
     const y = pad.top + ch * i / 4;
     const val = 100 - i * 25;
-    yAxisSvg += `<line x1="${pad.left}" y1="${y}" x2="${w - pad.right}" y2="${y}" class="trend-grid"/>`;
-    yAxisSvg += `<text x="${pad.left - 8}" y="${y + 4}" class="trend-axis-label" text-anchor="end">${val}%</text>`;
+    rightAxisSvg += `<text x="${w - pad.right + 10}" y="${y + 4}" class="trend-axis-label" text-anchor="start">${val}%</text>`;
   }
+  rightAxisSvg += `<text x="${w - pad.right + 10}" y="${pad.top - 10}" class="trend-axis-label" text-anchor="start">正确率</text>`;
 
   // X labels
-  const labelStep = Math.max(1, Math.floor(data.length / 6));
+  const labelStep = Math.max(1, Math.floor(data.length / 8));
   let xLabels = '';
   linePts.forEach((p, i) => {
     if (i % labelStep === 0 || i === linePts.length - 1) {
-      xLabels += `<text x="${p.x}" y="${h - 4}" class="trend-label" text-anchor="middle">${p.day}</text>`;
+      xLabels += `<text x="${p.x}" y="${h - 8}" class="trend-label" text-anchor="middle">${p.day}</text>`;
     }
   });
 
   return `<div class="accuracy-chart"><svg viewBox="0 0 ${w} ${h}">
-    ${yAxisSvg}${barsSvg}
+    ${gridSvg}${leftAxisSvg}${rightAxisSvg}
+    ${barsSvg}
     <path d="${linePath}" class="accuracy-line"/>
     ${dotsSvg}${xLabels}
   </svg></div>`;
@@ -2174,9 +2203,23 @@ function renderNav() {
       </div>
       <div class="nav-user">
         <span class="xp-badge">${escapeHtml(user?.nickname || '')}</span>
-        <a href="#/logout" class="nav-logout" title="退出">⏻</a>
+        <a class="nav-logout" onclick="confirmLogout(event)" title="退出登录" role="button" aria-label="退出登录">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>退出</span>
+        </a>
       </div>
     </nav>`;
+}
+
+function confirmLogout(e) {
+  if (e) e.preventDefault();
+  if (!confirm('确定要退出登录吗？')) return;
+  API.logout();
+  handleRoute(); // hides nav + renders login
 }
 
 /* ============================================================
