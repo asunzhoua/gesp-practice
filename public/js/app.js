@@ -848,6 +848,24 @@ function parseCodingTitle(rawTitle) {
   // Decode HTML entities first
   let html = rawTitle
     .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"');
+  // Plain-text GESP format: no <p> tags, but uses 【输入描述】/【输入格式】/【输出描述】/【输出格式】
+  // or "输入格式："/"输出格式：" labels. Split them into clean sections.
+  if (!/<p>/i.test(html)) {
+    const inputMatch = html.match(/【输入描述】\s*([\s\S]*?)(?=【输出描述】|【样例】|样例输入|$)/)
+      || html.match(/【输入格式】\s*([\s\S]*?)(?=【输出格式】|【样例】|样例输入|$)/)
+      || html.match(/输入格式[：:]\s*([\s\S]*?)(?=输出格式|样例输入|$)/);
+    const outputMatch = html.match(/【输出描述】\s*([\s\S]*?)(?=$)/)
+      || html.match(/【输出格式】\s*([\s\S]*?)(?=$)/)
+      || html.match(/输出格式[：:]\s*([\s\S]*?)(?=$)/);
+    let description = html;
+    if (inputMatch) description = description.replace(inputMatch[0], '');
+    if (outputMatch) description = description.replace(outputMatch[0], '');
+    return {
+      description: description.replace(/^【题目描述】\s*/, '').trim(),
+      inputExample: inputMatch ? inputMatch[1].trim() : '',
+      outputExample: outputMatch ? outputMatch[1].trim() : ''
+    };
+  }
   // Split on <p> tags
   const parts = html.split(/<p>/);
   let description = parts[0].replace(/<[^>]+>/g, '').trim();
@@ -2392,9 +2410,12 @@ async function selectAvatar(a) {
   try {
     await API.updateAvatar(a);
     hideModal();
-    const nav = document.querySelector('.nav');
-    if (nav) nav.outerHTML = renderNav();
-    handleRoute();
+    // Update only the visible avatar(s) — do NOT re-render the current route,
+    // otherwise an in-progress practice/exam loses its state and restarts.
+    const navEmoji = document.querySelector('.nav-avatar-emoji');
+    if (navEmoji) navEmoji.textContent = a;
+    const heroEmoji = document.querySelector('.hero-avatar');
+    if (heroEmoji) heroEmoji.textContent = a;
   } catch (e) {
     alert('更换头像失败：' + e.message);
   }
@@ -2416,12 +2437,14 @@ async function init() {
     handleRoute();
   });
 
-  // Force re-render when clicking a nav link that matches the current hash
+  // Force re-render when clicking a nav link that matches the current hash.
+  // Skip while a practice/exam session is active so it does not silently lose progress.
   document.addEventListener('click', (e) => {
     const link = e.target.closest('.nav-links a');
     if (!link) return;
     const href = link.getAttribute('href');
-    if (href && location.hash === href) {
+    const inSession = (practiceState.questions && practiceState.current > 0 && practiceState.current < practiceState.questions.length) || mockState.started;
+    if (href && location.hash === href && !inSession) {
       e.preventDefault();
       document.getElementById('app').innerHTML = '';
       handleRoute();
