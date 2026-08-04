@@ -82,17 +82,17 @@ const AVATARS = {
 function getAvatar(user) { return (user && user.avatar) || '😊'; }
 
 /* --- Emotional encouragement (answer feedback) --- */
-const CHEER_CORRECT = ['🎉 太棒了，完全正确！', '🌟 你真厉害！', '💪 答对了，继续保持！', '🚀 又拿下了一题，冲呀！', '✨ 完美，你越来越棒了！', '🎯 漂亮，轻松搞定！'];
-const CHEER_WRONG = ['💪 没关系，看看解析就懂了！', '🌈 别灰心，错一题多学一招！', '🍀 记住这个知识点，下次就对啦！', '📖 失败是成功之母，看完解析再来一次！', '😊 别着急，慢慢来，你一定能掌握！', '🧠 这个有点难，多练几次就会了！'];
+const CHEER_CORRECT = ['🎉 太棒了，完全正确！', '🌟 你真厉害，天生小码神！', '💪 答对了，继续保持！', '🚀 又拿下了一题，冲呀！', '✨ 完美，你越来越棒了！', '🎯 漂亮，轻松搞定！', '🏆 又得一分，高手！', '🌈 答得真漂亮，保持这个节奏！', '🧠 你的代码脑瓜真灵光！', '🎈 太强了，这道题都难不倒你！', '⭐ 离满分又近了一步！', '🦄 今天也是元气满满的小程序员！'];
+const CHEER_WRONG = ['💪 没关系，看看解析就懂了！', '🌈 别灰心，错一题多学一招！', '🍀 记住这个知识点，下次就对啦！', '📖 失败是成功之母，看完解析再来一次！', '😊 别着急，慢慢来，你一定能掌握！', '🧠 这个有点难，多练几次就会了！', '🌱 每一次错误都是成长的种子！', '🚀 认真看解析，下一题一定行！', '🎈 你已经很棒了，就差一点点！', '💡 看明白这道题，你就多了一个超能力！', '🌟 慢慢来比较快，你正在进步！', '🍬 别气馁，吃颗糖再战一题！'];
 function cheer(isCorrect) {
   const pool = isCorrect ? CHEER_CORRECT : CHEER_WRONG;
   return pool[Math.floor(Math.random() * pool.length)];
 }
 function completeCheer(acc) {
-  if (acc >= 90) return '🎉 太棒了，你几乎全对！继续保持！';
-  if (acc >= 70) return '🌟 很不错，正确率很高，继续加油！';
-  if (acc >= 50) return '💪 不错哦，再多练练会更棒！';
-  return '🌈 别灰心，每一次练习都在进步，加油！';
+  if (acc >= 90) return '🎉 太棒了，你几乎全对！真是小天才！继续保持！';
+  if (acc >= 70) return '🌟 很不错，正确率很高，离满分只差一步！';
+  if (acc >= 50) return '💪 不错哦，再多练练会更棒，你正在进步！';
+  return '🌈 别灰心，每一次练习都在进步，你一定能行！';
 }
 
 /* ============================================================
@@ -324,7 +324,7 @@ async function renderDashboard() {
           <div class="review-task-icon">🎉</div>
           <div class="review-task-info">
             <h3>今日复习已完成！</h3>
-            <p>太棒了，所有待复习题目都已完成</p>
+            <p>太棒了，所有待复习题目都已完成，你真自律！🎉</p>
           </div>
         </div>
         <div class="review-task-stats">
@@ -450,7 +450,7 @@ async function startTodayReview() {
   const reviewIds = [...(schedule.overdue || []), ...(schedule.todayReview || [])].map(r => r.questionId);
   if (reviewIds.length === 0) {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">今日复习</span></div>
-      <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">今天没有需要复习的题目，继续加油！</p></div>`;
+      <div class="review-empty"><div class="empty-icon celebrate-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">今天没有需要复习的题目，你全部搞定啦，去休息一下吧！✨</p></div>`;
     return;
   }
 
@@ -462,7 +462,7 @@ async function startTodayReview() {
 
   if (reviewQuestions.length === 0) {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">今日复习</span></div>
-      <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">所有待复习题目都已完成！</p></div>`;
+      <div class="review-empty"><div class="empty-icon celebrate-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">所有待复习题目都已完成，你就是今日最闪亮的小程序员！🌟</p></div>`;
     return;
   }
 
@@ -522,8 +522,12 @@ function renderReviewQuestion() {
     const fbClass = isCorrect ? 'ok' : 'fail';
     const fbIcon = isCorrect ? '✓' : '✗';
     const fbText = isCorrect ? cheer(true) : cheer(false) + ' 正确答案是 ' + (labels[q.answer] ?? '?');
+    const cheerEmojis = isCorrect ? ['🎉','🌟','🚀','🏆','✨','🎈','🎯'] : ['💪','🌈','🌱','💡','🍀','😊','🚀'];
+    const cheerEmoji = cheerEmojis[Math.floor(Math.random() * cheerEmojis.length)];
     feedbackHtml = `<div class="feedback show ${fbClass}">
-      <span class="fb-icon">${fbIcon}</span> ${fbText}
+      <span class="fb-icon">${fbIcon}</span>
+      <span class="cheer-emoji">${cheerEmoji}</span>
+      ${fbText}
       ${q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
     </div>`;
   }
@@ -843,7 +847,7 @@ async function renderCodingPractice(kp) {
 
   if (questions.length === 0) {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/coding')">← 返回</a><span style="font-weight:700">编程题练习</span></div>
-      <div class="review-empty"><div class="empty-icon">📝</div><h3>暂无编程题</h3><p class="text-muted">该模块暂无编程题目</p></div>`;
+      <div class="review-empty"><div class="empty-icon cheer-emoji-big">💻</div><h3>暂无编程题</h3><p class="text-muted">该模块暂时还没有编程题，先去练练其它模块吧！🌈</p></div>`;
     return;
   }
 
@@ -1602,7 +1606,7 @@ async function renderReview() {
 
   if (questions.length === 0) {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">错题复习</span></div>
-      <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，继续加油！</p></div>`;
+      <div class="review-empty"><div class="empty-icon celebrate-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，你真厉害，继续保持！💪</p></div>`;
     setActiveNav('review');
     renderBottomTab('review');
     return;
@@ -1654,7 +1658,7 @@ async function startWrongPractice() {
 
   if (questions.length === 0) {
     app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">错题巩固练习</span></div>
-      <div class="review-empty"><div class="empty-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，继续加油！</p></div>`;
+      <div class="review-empty"><div class="empty-icon celebrate-icon">🎉</div><h3>太棒了！</h3><p class="text-muted">没有错题，你真厉害，继续保持！💪</p></div>`;
     return;
   }
 

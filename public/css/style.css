@@ -1612,6 +1612,29 @@ ul, ol { list-style: none; }
   0%, 100% { transform: translateY(0) rotate(-5deg); }
   50% { transform: translateY(-8px) rotate(5deg); }
 }
+/* floating animated emoji next to encouraging text */
+.cheer-emoji {
+  display: inline-block;
+  font-size: 1.5em;
+  line-height: 1;
+  margin-right: 6px;
+  animation: floaty 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.25));
+}
+.cheer-emoji-big {
+  display: inline-block;
+  font-size: 2.4em;
+  line-height: 1;
+  animation: floaty 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.3));
+}
+@keyframes popInBig {
+  0% { transform: scale(0) rotate(-20deg); }
+  70% { transform: scale(1.3) rotate(6deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.celebrate-icon { display: inline-block; animation: popInBig .5s ease-out; }
+
 .dashboard-hero h1 {
   font-size: 1.7em; color: #fff; margin-bottom: 4px; font-weight: 900;
   letter-spacing: .5px; text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
