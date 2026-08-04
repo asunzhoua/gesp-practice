@@ -482,6 +482,188 @@ const QUESTION_BANK = {
           "answerText": null,
           "starterCode": null,
           "testCases": null
+        },
+        {
+          "id": "l1_202506_01",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "2025年4月19日在北京举行了一场颇为瞩目的人形机器人半程马拉松赛。比赛期间，跑动着的机器人会利用身上安装的多个传感器所反馈的数据来调整姿态、保持平衡等，那么这类传感器类似于计算机的（   ）。",
+          "options": [
+            "处理器",
+            "存储器",
+            "输入设备",
+            "输出设备"
+          ],
+          "answer": 2,
+          "explanation": "传感器负责采集外界环境的信息，比如机器人的距离、速度、角度等数据，并把它们传送给处理器使用。它把外部信息送进计算机，作用和键盘、鼠标一样，都属于输入设备，所以本题选C（输入设备）。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_16",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "人们现在参加很多闭卷考试时通常都不允许带智能手机、平板电脑等，此外很多种智能手表同样因为具有嵌入操作系统及通信等功能，所以也不允许随身携带。（  ）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "智能手表内部带有嵌入式操作系统，还具备Wi-Fi、蓝牙等通信功能，和手机一样可能被用来传递答案或搜题，所以闭卷考试时不允许随身携带。题干描述符合实际情况，说法正确。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_01",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "人工智能现在非常火，小杨就想多了解一下，其中就经常听人提到“大模型”。那么请问这里说的“大模型”最贴切是指（　　）。",
+          "options": [
+            "A. 大电脑模型",
+            "B. 大规模智能",
+            "C. 智能的单位",
+            "D. 大语言模型"
+          ],
+          "answer": 3,
+          "explanation": "现在大家常说的“大模型”，主要指像ChatGPT这样能看懂文字、会写文章的“大语言模型”。它是经过海量文字数据训练出来的，能理解和生成语言，所以最贴切的说法是大语言模型。其他几个选项只是按字面想象出来的，不是专业的真实含义。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_01",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "近日，空中客车公司表示，约6000架空客A320系列飞机需要紧急更换一种易受太阳辐射影响的飞行控制软件。空客表示，在对一起飞行事故分析后的结果显示，强烈的太阳辐射可能会损坏飞行控制系统所需的关键数据，导致判断失误，进而引发飞行异常。那这里的飞行控制系统执行判断的部件最可能是下面的（　）。",
+          "options": [
+            "辐射传感器",
+            "处理器",
+            "内存单元",
+            "输出设备"
+          ],
+          "answer": 1,
+          "explanation": "飞行控制系统要“执行判断”，判断、计算和决策都是处理器（CPU）的工作。传感器负责采集外部信息，内存单元负责存储数据，输出设备负责显示结果，它们都不负责“判断”。所以执行判断的部件最可能是处理器，故选B。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_16",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "鸿蒙是华为公司开发的一款操作系统，那么它能够将正确的源程序翻译成目标程序，并运行。（　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "操作系统的主要作用是管理和调度计算机的硬件与软件资源、运行目标程序，它并不负责把源程序翻译成目标程序。把源程序翻译成目标程序是编译器的功能。鸿蒙虽然是华为开发的操作系统，但不能编译源程序，所以这句话说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_01",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "2026年春节联欢晚会上一个武术表演节目《武 BOT》。节目中多个人形机器人会表演空翻，它们落地可能会有微微踉跄，但都会迅速调整姿态站稳，并适当移动来和前后左右的其他机器人保持原来队列。如果将机器人视作一个计算机系统，那么在该计算机系统中下面哪一项不能作为输入设备（　　）。",
+          "options": [
+            "A. 检测重心的重力传感器",
+            "B. 预装的AI算法程序",
+            "C. 接收动作指令的遥控器",
+            "D. 拍摄其他机器人的摄像头"
+          ],
+          "answer": 1,
+          "explanation": "输入设备是把外部信息送进计算机的硬件。重力传感器能把重心高低的信息送进去，遥控器能把动作指令送进去，摄像头能把画面送进去，它们都是输入设备。而预装的AI算法程序是软件，用来处理数据的，不是设备，所以选B。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_16",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "小明的妈妈最近刚刚给他买了一块电话手表，除了可以看时间，小明也可以用它和妈妈打电话、收发信息，那么可以推测这块手表中装有一款特定操作系统。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "电话手表能打电话、收发信息，说明它里面有处理器和许多软件一起配合工作，还必须有一款操作系统来管理这些功能。只有装了操作系统，手表才能看时间、打电话、收信息。所以可以推测这块手表中装有一款特定操作系统，说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_01",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "学校组织到未来农场参观，小明听讲解员介绍，在智能温室中，湿度传感器可以连续检测土壤的湿度变化，并将检测到的湿度数据实时发送给中央控制器。中央控制器根据这些数据判断是否开启灌溉系统。请问，这里的湿度传感器所发挥的作用，类似于计算机系统中的哪一类组件？（ ）",
+          "options": [
+            "处理器",
+            "存储器",
+            "输入设备",
+            "输出设备"
+          ],
+          "answer": 2,
+          "explanation": "湿度传感器把检测到的土壤湿度数据“送进”中央控制器，就像鼠标键盘把信息输入电脑一样。计算机把负责接收外界信息的设备称为输入设备，所以湿度传感器相当于输入设备。选项 C 正确。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_02",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "小明去农场参观回来后就在自己的电脑上安装了一个 3D 农场仿真模拟系统，因为他今年买的二手电脑有点老旧，系统运行时经常弹出“系统内存不足”的警告，导致系统卡顿严重。他计划通过增加物理内存来解决问题。请问他应该购买以下哪种硬件组件？（ ）",
+          "options": [
+            "机械硬盘",
+            "内存条",
+            "图形显卡",
+            "移动硬盘"
+          ],
+          "answer": 1,
+          "explanation": "系统提示“内存不足”指的是内存(RAM)不够用。想增加物理内存，就要购买内存条插在主板上。机械硬盘、移动硬盘属于外存，显卡负责图像显示，它们都不能直接解决内存不够的问题。选 B 内存条。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_16",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "又到期末考试周，小明发现这次许多闭卷考试不仅禁止携带手机、平板电脑，还有最近比较时髦的各类 AI 眼镜（也有叫智能眼镜）也同样不允许带入考场。这些 AI 眼镜应该也是内置了操作系统并可能支持 Wi-Fi 或蓝牙连接。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "AI 眼镜是智能穿戴设备，内部装有操作系统，并能通过 Wi-Fi 或蓝牙联网，具备拍照、录音、搜索等功能，和手机一样可能作弊，所以考场禁止带入。说法符合实际，选正确。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
         }
       ]
     },
@@ -743,6 +925,272 @@ const QUESTION_BANK = {
           "answer": 1,
           "explanation": "N是char字符型，cin读入10时只读进第一个字符1，字符1的ASCII码是49，N乘2等于98，printf输出的应是98而不是20。所以输入10输出20的说法是错误的。",
           "source": "GESP2025-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_14",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "试图编译并执行下面C++代码，下面描述正确的是（ ）。\n\nfloat x;\nx = 101;\nx++;\ncout << ++x;",
+          "options": [
+            "输出101",
+            "输出102",
+            "输出103",
+            "编译将报错，无法执行"
+          ],
+          "answer": 2,
+          "explanation": "x是float类型，x=101相当于把整数101转成浮点数101.0。x++后x变成102.0，再执行++x，x变成103.0，cout输出103。这段代码语法正确，不会编译报错，所以选C。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_23",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行C++代码cout << (12 + 12.12) 将报错，因为12是int类型，而12.12是float类型，不同类型不能直接运算。（  ）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "12是int类型，12.12是double类型（小数默认是double），两种类型做加法时int会自动转换成double再运算，结果是24.12，完全可以正常执行。题目说会报错是错误的，所以说法错误。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_23",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行C++代码cout << (12 + 12.12) 将报错，因为 12 是 int 类型，而 12.12 是 float 类型，不同类型不能直接运算。（　　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "C++中int和double类型可以直接运算，整数会自动转换成小数再相加，12加12.12等于24.12，可以正常输出，不会报错。所以题目说不同类型不能运算是错误的。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_26",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "小杨是“爱心社区”的小志愿者，每周他都会帮助邻居们寄送捐赠给山区小学的文具和书籍。快递公司为了支持公益行动，制定了特殊的运费规则，鼓励大家合理包装。\n假设快递的体积为V，重量为G。按体积计算：运费按体积计算，公式是V/2元。按重量计算：当重量小于300克，即G<300时，运费为M元；当重量达到或超过300克，即G>=300时，运费为N元。\n最终的运费会取按体积计算和按重量计算这两种方式中价格较低的那一个，这样对寄件人最公道。\n\n输入格式：四行，每行一个一位小数的浮点数，分别代表，快递的体积V、快递的重量G、第一档重量运费M、第二档重量运费N。\n输出格式：一行一个一位小数，代表实际快递运费。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：先读入体积V、重量G、第一档运费M、第二档运费N四个数。按体积算的运费是V/2；按重量算时，若G<300取M，否则取N。最后取两者中较小者作为答案，用%.1f保留一位小数输出。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "100.4\n300.2\n60.6\n70.5",
+              "output": "50.2"
+            },
+            {
+              "input": "99.8\n200.9\n60.2\n70.1",
+              "output": "49.9"
+            }
+          ]
+        },
+        {
+          "id": "l1_202512_27",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "小杨的手机就像一个聪明的小助手，当电量变化时，它会用不同的方式来提醒我们，假设当前的电量百分比为P。\n当电量非常低（不超过10，即P<=10），它会显示一个大写字母R；当电量有点低（超过10但不超过20，即10<P<=20），它会显示一个大写字母L；当电量比较充足（超过20，即P>20），它就会直接显示具体的数字。\n\n输入格式：第一行一个正整数T，代表数据组数。对于每组数据，一行包含一个正整数P，代表手机电量百分比。\n输出格式：对于每组数据，输出一行，代表当前手机显示的电量信息。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：先读入组数T，用循环处理每一组电量P。用分支判断：P<=10输出R；10<P<=20输出L；P>20直接输出P本身。每组输出后换行。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "5\n10\n1\n20\n99\n19",
+              "output": "R\nR\nL\n99\nL"
+            }
+          ]
+        },
+        {
+          "id": "l1_202603_11",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "一个正整数的每位都是个位数，称为数位，最高位非0。下面的C++代码用于求正整数的所有数位之和，简称数位和。如 123 的各数位分别是1、2、3，则其数位和为1+2+3 ，结果为6。为实现该目标，横线处应该填写的代码是（　　）。\n\nint N;\ncin >> N;\nint tnt = 0;\nwhile (N != 0){\n    ____________;\n    ____________;\n}\ncout << \"N的数位和为：\" << tnt;",
+          "options": [
+            "A. tnt += N / 10\nN /= 10",
+            "B. tnt += N % 10\nN /= 10",
+            "C. tnt += N / 10\nN %= 10",
+            "D. tnt = tnt + N % 10\nN %= 10"
+          ],
+          "answer": 1,
+          "explanation": "求数位和要一位一位取出来加。N%10能取出个位数字，把它累加到tnt里，再用N/=10去掉个位，继续循环，直到N变成0。比如123，先取3加进去，再取2，再取1，加起来就是6。所以应填 tnt += N % 10 和 N /= 10，选B。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_12",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "小明想要快速知道任给一个正整数中有多少个奇数位(数位值是奇数)，下面的C++代码是其实现，横线处应该填入的代码是（　　）。\n\nint N;\ncin >> N;\nint odd_count = 0;  // 记录奇数的个数\nint old_number = N; // 保存原数\nwhile (N != 0){\n    if (_________________)\n        odd_count += 1;\n    N = (N - N % 10) / 10;\n}\ncout << old_number << \"中共有 \" << odd_count << \" 个奇数\";",
+          "options": [
+            "A. N % 10 % 2 == 0",
+            "B. N % 10 % 2 == 1",
+            "C. N / 10 / 2 == 1",
+            "D. N / 2 / 10 == 0"
+          ],
+          "answer": 1,
+          "explanation": "判断个位数字是不是奇数：先用N%10取出个位，再对2取余，余1就说明是奇数，odd_count加1。代码里N=(N-N%10)/10就是去掉个位继续循环。所以横线处应填 N % 10 % 2 == 1，即个位取余2等于1，选B。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_14",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "执行下面C++代码可以判断一个6位正整数 N 的高3位和低3位的差是否是314的倍数。例如 628314 就符合要求。横线处应该填入（　　）。\n\ncin >> N;\nif (___________________________)\n    cout << N << \"符合条件\" << endl;",
+          "options": [
+            "A. ((N % 1000) - (N / 1000)) / 314 == 0",
+            "B. ((N / 1000) - (N % 1000)) % 314 == 0",
+            "C. ((N % 1000) - (N / 1000)) / 314",
+            "D. ((N / 1000) - (N % 1000)) % 314"
+          ],
+          "answer": 1,
+          "explanation": "6位正整数的前3位是N/1000，后3位是N%1000。要判断它们的差是不是314的倍数，先算出前3位减后3位的差，再对314取余，看余数是不是0。比如628314，前3位628减后3位314得314，314%314=0，符合。所以填 ((N/1000)-(N%1000)) % 314 == 0，选B。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_15",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "N 是一个正整数。如果 N 的所有奇数位的数位和等于所有偶数位的数位和，则称它是一个“双螺旋数”。例如 12375 的所有奇数位的数位和是9，同时它的所有偶数位的数位和也是9，则 12375 就是一个双螺旋数。下面的C++代码用于判断输入的 N 是否为双螺旋数。空白处应该填入的代码是（　　）。\n\nint i, N, N1=0, N2=0, N0;\ncin >> N;\nN0 = N;\nwhile (N){\n    _________________________\n    _________________________\n}\nif(N1 == N2)\n    cout << N0 << \"是双螺旋数\" << endl;",
+          "options": [
+            "A. N1 += N%10, N /= 10;\nN2 += N%10, N /= 10;",
+            "B. N1 += N/10, N /= 10;\nN2 += N/10, N /= 10;",
+            "C. N1 += N%10, N %= 10;\nN2 += N%10, N %= 10;",
+            "D. N1 += N/10, N %= 10;\nN2 += N/10, N %= 10;"
+          ],
+          "answer": 0,
+          "explanation": "程序从个位开始交替取数字：第一次用N%10取个位加到N1，算是第1个奇数位，再用N/=10去掉个位；第二次再取新个位加到N2，算偶数位，再去掉个位。一直循环到N为0，把每个数位都分到两个组里。最后N1等于N2就是双螺旋数。所以选A。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_21",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面的C++代码段的变量都是整型，它能用于判断输入的正整数是否为对称数。所谓对称数是指从左到右和从右到左读该数，其值相同。例如，121 和 414 都是对称数，而 123 不是对称数。\n\ncout << \"请输入正整数:\";\ncin >> n;\nold_number = n;\nnew_number = 0;\nwhile (n != 0){\n    new_number = new_number * 10 + n % 10;\n    n /= 10;\n}\nif (old_number == new_number)\n    cout << \"对称数\";\nelse\n    cout << \"非对称数\";",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "程序把n的个位数字取出来，放到new_number的最前面，相当于把整个数倒过来。循环结束后，new_number就是从右往左读的数。如果和原来的数old_number相等，说明从左读和从右读一样，就是对称数。比如121倒过来还是121。判断方法正确，说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_26",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：交朋友。Alice 班上共有 4 个小朋友，身高分别为 H1、H2、H3、H4，其中 Alice 的身高为 H1。Alice 想要和身高最接近她的人交朋友，如果有多个人符合条件，则 Alice 想和其中较矮的那一人做朋友，你能告诉她这个人的身高是多少吗？输入共 4 行，每行包含一个整数，表示班上小朋友的身高（第 1 个是 Alice 的身高）。输出一行，包含一个整数，表示 Alice 想交的朋友的身高。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：先假定第2个小朋友H2离Alice最近，记下差距。然后依次比较H3、H4与Alice的差距：差距更小就换人，差距相同就选更矮的那个。遍历完输出最合适的身高。样例中Alice身高150，165和135差距都是15，选更矮的135。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "150\n165\n135\n133",
+              "output": "135"
+            }
+          ]
+        },
+        {
+          "id": "l1_202603_27",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：数字替换。Alice 不喜欢数字 4，但觉得数字 8 寓意好，她想把数中的 4 全都替换成 8，若数中不含 4 则无需修改，你能帮帮她吗？输入一行，包含一个整数，表示替换前的数。输出一行，包含一个整数，表示替换后的数。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：从个位开始一位一位处理。每次取出当前数的个位，如果是4就换成8，否则原样保留，把这一位乘上对应的位权累加到结果里；然后去掉个位继续处理下一位，直到数为0。这样4都被换成了8，其他数字不变。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "8459045",
+              "output": "8859085"
+            },
+            {
+              "input": "123",
+              "output": "123"
+            }
+          ]
+        },
+        {
+          "id": "l1_202606_03",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "有关如下 C++ 代码的说法，正确的是（ ）。\n```cpp\nfloat a = 3 + 3.5;\ncout << a;\n```",
+          "options": [
+            "代码执行将报错。如果将 a = 3 + 3.5 改为 a = float(3) + 3.5 将能正常执行。",
+            "代码执行将报错。如果将 a = 3 + 3.5 改为 a = 3.0 + 3.5 将能正常执行。",
+            "代码能正常执行，将输出 6 。",
+            "代码能正常执行，将输出 6.5 。"
+          ],
+          "answer": 3,
+          "explanation": "3 是整数，3.5 是小数，3 + 3.5 = 6.5，结果仍是小数，赋给 float 类型的变量 a 完全没问题，程序不会报错。6 是整数，不是正确输出，正确输出是 6.5。所以选 D。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_18",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行 C++ 语句 cout << (int(3.5) * 2) 将输出 6 。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "int(3.5) 把小数 3.5 转换成整数 3（直接舍去小数部分），3 乘 2 等于 6，所以输出 6。注意 int 转换是直接舍去小数、不四舍五入，所以结果是 6 而不是 7，说法正确。",
+          "source": "GESP2026-06",
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
@@ -1261,6 +1709,173 @@ const QUESTION_BANK = {
           "explanation": "变量名中不能出现减号。user_Name、_userName、userName_三个名称都合法，但user-Name中间有减号，编译器会把它当成减法运算而不是变量名，所以它不合法。题目说四个都合法是错误的。",
           "source": "GESP2025-03",
           "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_03",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "对下列C++的代码，描述准确的是（ ）。\n\nint first = 10;\nprintf(\"{%d}\\n\", First)",
+          "options": [
+            "执行后输出10",
+            "执行后输出{First}",
+            "执行后输出\"{First}\"",
+            "编译报错，因为First应该是first"
+          ],
+          "answer": 3,
+          "explanation": "程序声明的是小写变量first，而printf里写的是大写First。C++严格区分大小写，First没有被声明过，所以编译会报错；此外printf语句末尾还缺少分号。因此不可能正常输出10或{First}，只能选D。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_04",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "在C++中，下列可以做变量名的是（ ）。",
+          "options": [
+            "X.cpp",
+            "X-cpp",
+            "X#cpp",
+            "X_cpp"
+          ],
+          "answer": 3,
+          "explanation": "C++变量名只能由字母、数字和下划线组成，并且不能以数字开头。X.cpp中含有小数点“.”，X-cpp中含有连字符“-”，X#cpp中含有“#”，这些字符都不能出现在变量名里；只有X_cpp全部由字母和下划线组成，合法，选D。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_24",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "在C++代码中，不可以将变量命名为false，因为false是C++语言的关键字。（  ）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "false是C++中的布尔常量，表示“假”，它是语言自带的保留关键字，和true一样，不能用来给变量命名。把保留关键字当变量名会导致编译错误，所以题干的说法正确。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_03",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码用于输入姓名，然后输出姓名，正确的说法是（　　）。\n\n```\nstring XingMing;\ncout << \"请输入您的姓名：\";\ncin >> XingMing;\ncout << XingMing;\n```",
+          "options": [
+            "A. XingMing 是汉语拼音，不能作为变量名称",
+            "B. 可以将 XingMing 改为 Xing Ming",
+            "C. 可以将 XingMing 改为 xingming",
+            "D. 可以将 XingMing 改为 Xing-Ming"
+          ],
+          "answer": 2,
+          "explanation": "C++变量名只能由字母、数字和下划线组成，不能包含空格和连字符。XingMing全是字母，是合法的变量名，所以A错。Xing Ming里有空格、Xing-Ming里有连字符，都不合法。XingMing改成xingming只是字母大小写变化，仍然是合法变量名，所以C正确。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_24",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如果 x 是C++代码中的 double 型变量，则对 cout << ( x? 1227 : 12.27); 编译时将报错，因为 1227 和 12.12 分别是 int 和 double 类型，导致识别混乱。（　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "三目运算符两个分支类型不同时，C++会自动把int类型转换成double类型（隐式类型转换），并不会编译报错。1227会被转换成double参与运算，所以说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_07",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行时，其说法正确的是（　　）。\n\nint M = 0, N = 0;\ncin >> M;\ncin >> N;\nif (N > M)\n    cout << (N - M);\nelse\n    cout << (M - N);",
+          "options": [
+            "A. 如果输入一个正数和一个负数，其输出结果肯定是大于0",
+            "B. 不管是负整数、正整数亦或0，其结果肯定是大于等于0",
+            "C. 如果 N 和 M 是相等的整数，将不会有输出",
+            "D. 如果 N 和 M 输入带有小数点的数，将按整数部分计算"
+          ],
+          "answer": 1,
+          "explanation": "程序比较M和N，谁大就用谁减谁，实际上求的是两个数的差，相当于绝对值，结果肯定大于等于0，所以B对。如果M和N相等，差是0，会输出0而不是没有输出，C错；一个正数一个负数相减可能超出整数范围，不能保证大于0，A错。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_13",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "小明和弟弟在玩一个拼数字游戏，游戏规则是：二人各写一个两位正整数 M 和 N ；然后将较大的数字放在较小的前面，拼成一个4位数；将这个4位数除以3的余数添加到4位数的后面，得到一个5位数；最后判断这个5位数能否被14整除。下面的C++代码用于判断 M 和 N 是否符合全部要求，如果符合则输出 Y 否则输出 N 。例如输入 85 和 79 ，可以拼出 85792 ,恰好是14的倍数，则输出 Y 。关于下面代码描述正确的是（　　）。\n\nint M, N, Q;\ncin >> M >> N;\nif(M > N)    // L1\n    Q = M*100+N;\nelse\n    Q = N*100+M;\nif((Q*10+Q%3) % 14 == 0)    // L2\n    cout << \"Y\";\nelse\n    cout << \"N\";",
+          "options": [
+            "A. 代码段不能完成正确判断",
+            "B. L1行代码中条件应该改为 M <= N",
+            "C. L2行代码应该改为 if ((Q*10+Q/3) % 14 == 0)",
+            "D. 代码段可以不使用变量 Q ，而是在区分 M 和 N 大小后分别直接用它们来判断"
+          ],
+          "answer": 3,
+          "explanation": "程序把较大的数放前面、较小的放后面拼成4位数Q，再用Q%3求出除以3的余数，拼成5位数后判断能否被14整除，逻辑是正确的。L2用Q%3是对的做法，改成Q/3反而错；L1的条件M>N配合else已经覆盖所有情况；D说不用变量Q直接判断当然也可以，所以选D。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_13",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "英文 corner case 通常翻译为极端案例或边角案例，通常指正常范围以外的问题或者情形。在如下 C++ 代码中，变量都是整型，则 corner case 最应该是（ ）。\n```cpp\nint tnt = 0, cnt = 0;\nwhile (1) {\n    int score;\n    cin >> score;\n    if (score == -1)\n        break;\n    tnt += score;\n    cnt += 1;\n}\ncout << tnt / cnt;\n```",
+          "options": [
+            "tnt = 0, cnt = 0 是 corner case ，应分为两行",
+            "while(1) 是 corner case ，因为 while(1) 将会导致死循环",
+            "cin >> score 是 corner case ，因为输入数据前应该提示整型数据",
+            "cout << tnt / cnt 是 corner case ，因为如果直接输入 -1 ，将导致执行错误，虽然这种情况较为罕见"
+          ],
+          "answer": 3,
+          "explanation": "corner case 指极端情况。如果第一次输入就是 -1，循环立刻结束，此时 cnt 还是 0，最后计算 tnt/cnt 就是除以 0，程序会运行错误。这正是一个典型的边角情况，所以选 D。while(1) 是正常设计，A、C 的说法都不对。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_15",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "某学校举办“校园演讲比赛”，每位选手由 8 位评委打分（分数为 0 到 100 的整数），且每位评委必须打分。计分规则：去掉一个最高分，去掉一个最低分。如下程序通过键盘先输入选手编号，然后依次输入 8 个分数，并计算最终得分。下列说法正确的是（ ）。\n```cpp\nfor (int i = 0; i < 10; i++) {\n    int id, score;\n    printf(\"输入选手编号: \");\n    scanf(\"%d\", &id);\n    int max_score = 0, min_score = 100;\n    int total_score = 0;\n    for (int j = 1; j < 9; j++) {\n        printf(\"输入选手第%d个成绩:\", j);\n        scanf(\"%d\", &score);\n        if (max_score < score)\n            max_score = score;\n        if (min_score > score)\n            min_score = score;\n        total_score += score;\n    }\n    total_score = total_score - max_score - min_score;\n    printf(\"%d号选手的成绩:去掉一个最高分%d,去掉一个最低分%d,最后成绩是：%d\", id, max_score, min_score, total_score);\n}\n```",
+          "options": [
+            "上述代码能完成题目要求",
+            "max_score = 0, min_score = 100 应修改为 max_score = 0, min_score = 0",
+            "max_score < score 和 min_score > score 必须相应修改为 <= 和 >=",
+            "total_score = total_score - max_score - min_score 不能达到预期，可修改如下：int total = total_score - max_score - min_score; total_score = total;"
+          ],
+          "answer": 0,
+          "explanation": "分数范围是 0 到 100，max_score 初值 0、min_score 初值 100，刚好能正确找出最高分和最低分（分数不会小于 0 或大于 100），不用改成 0、0，也不用把 < > 改成 <= >=。内层循环读 8 个分数，再去掉最高最低分，代码能正确完成任务，选 A。",
+          "source": "GESP2026-06",
+          "isJudge": false,
           "answerText": null,
           "starterCode": null,
           "testCases": null
@@ -2479,6 +3094,664 @@ const QUESTION_BANK = {
               "expectedOutput": "40\n60\n30\n70\n90"
             }
           ]
+        },
+        {
+          "id": "l1_202506_05",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "C++表达式14-3*3%2 的值是（ ）。",
+          "options": [
+            "0",
+            "11",
+            "13",
+            "-67"
+          ],
+          "answer": 2,
+          "explanation": "在C++中，乘号*和取模%的优先级高于减号-，同级时按从左到右的顺序计算。先算3*3得到9，再算9%2得到1，最后算减法14-1=13，所以表达式的值是13，选C。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_07",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "定义整型变量int a=16 ，则执行++a += 3 之后，a的值会是（  ）。",
+          "options": [
+            "3",
+            "17",
+            "19",
+            "20"
+          ],
+          "answer": 3,
+          "explanation": "++a表示先让a自增1，执行后a从16变成17；接着执行+=3，相当于a=a+3，把17加3得到20。也就是说这个复合语句先做前缀自增，再做加3的复合赋值，最终a的值是20，所以选D。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_08",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "C++的int 类型变量X 的值为8，如果执行cout << (++X)++; ，则输出和执行后X 的值分别是（    ）。",
+          "options": [
+            "8 9",
+            "9 9",
+            "9 10",
+            "编译错误，无法执行"
+          ],
+          "answer": 2,
+          "explanation": "(++X)先把X加1，X变成9，此时表达式(++X)的值是9；接着对它做后置++，这个表达式的值仍为9，所以先输出9，随后X再自增变成10。输出9、X为10，选C。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_15",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "以下C++代码可以找出百位、十位和个位满足特定条件的三位数，横线处应该填入的是（   ）\n\nint count = 0;\nfor (int i = 100; i <= 999; i++) {\n    int a = i / 100;\n    _________________________\n    int c = i % 10;\n    if (a * a + b * b == c * c) {\n        count++;\n    }\n}",
+          "options": [
+            "int b = (i / 10) / 10;",
+            "int b = (i / 10) % 10;",
+            "int b = (i % 10) / 10;",
+            "int b = (i % 10) % 10;"
+          ],
+          "answer": 1,
+          "explanation": "题目已经得到百位a=i/100和个位c=i%10，横线处要求的是十位。对三位数i，十位数字等于先除以10去掉个位，再对10取余，即(i/10)%10，比如i=123时(123/10)%10=12%10=2。所以选B。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_17",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如果N是C++的整型变量，值为5，则表达式(N + !N) 的值为4。 ( )",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "!N是逻辑非运算符：N的值是5，不是0，所以!5等于0。那么表达式N+!N等于5+0=5，并不是题目说的4。判断一个语句正确与否要看它是否和计算结果一致，这里结果应为5，因此说法错误。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_25",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "X是C++的整型变量，则表达式3 < X < 5 求值结果是4。(  )",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "3<X<5在C++里会从左到右分成两步计算：先算3<X得到0或1，再拿这个结果去和5比较，0<5和1<5都成立，结果恒为1（真），根本不会得到数字4，所以说法错误。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_26",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：假期阅读。\n题目描述：小A有一本厚厚的书。这本书总共有n页，小A一天中最多只能阅读完其中的k页。小A的假期总共有t天，他想知道在假期中最多能阅读完这本书的多少页。\n输入格式：第一行，一个正整数n，表示书的页数。第二行，一个正整数k，表示小A每天最多阅读的页数。第三行，一个正整数t，表示小A假期的天数。\n输出格式：一行，一个整数，表示假期中所能阅读的最多页数。\n样例：\n输入样例1：\n8\n3\n2\n输出样例1：\n6\n输入样例2：\n19\n3\n30\n输出样例2：\n19\n数据范围：对于所有测试点，保证n,k,t均不超过1000。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：小A每天最多读k页，t天最多能读k×t页；但书总共只有n页，读的总页数不能超过n。所以答案是n和k×t中较小的那个，即min(n,k×t)。步骤：用cin读入n、k、t，令ans=k×t，若n<ans则ans=n，最后输出ans。样例1中n=8、k=3、t=2，k×t=6，min(8,6)=6。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "8\n3\n2",
+              "expectedOutput": "6"
+            },
+            {
+              "input": "19\n3\n30",
+              "expectedOutput": "19"
+            }
+          ]
+        },
+        {
+          "id": "l1_202509_04",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下列C++代码中a和b都是整型变量，执行后，其结果是（　　）。\n\n```\na = 13;\nb = 5;\ncout << a / b << a %// b << a % b;\na*b;\n```",
+          "options": [
+            "A. 2 3",
+            "B. 23",
+            "C. 20",
+            "D. 以上都不准确"
+          ],
+          "answer": 3,
+          "explanation": "代码第三行里有“//”，它在C++中表示注释，后面的内容都被忽略，于是这句变成 cout << a / b << a %，运算符%的右边缺少操作数，程序无法通过编译，也就没有任何输出。因此A、B、C三个选项都不准确，只能选“以上都不准确”。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_05",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "C++表达式3 * 4 % 5 / 6 的值是（　　）。",
+          "options": [
+            "A. 10",
+            "B. 5",
+            "C. 2",
+            "D. 0"
+          ],
+          "answer": 3,
+          "explanation": "乘、除、取模的优先级相同，都按从左到右的顺序计算：先算3乘4得12，再算12对5取模得2，最后算2除以6。因为都是整数，2除以6的整数商是0，所以整个表达式的值是0。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_07",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "当前是9月，编写C++代码求N个月后的月份。横线处应填入的代码是（　　）。\n\n```\nint N, M;\ncin >> N;\nM = _____________;\nif (M == 0)\n    printf(\"%d个月后12月\", N);\nelse\n    printf(\"%d个月后是%d月\", N, M);\n```",
+          "options": [
+            "A. N % 12",
+            "B. 9 + N % 12",
+            "C. (9 + N) / 12",
+            "D. (9 + N) % 12"
+          ],
+          "answer": 3,
+          "explanation": "现在是9月，N个月后的月份应该是(9+N)对12取余。如果余数是0，说明正好是12月，交给if(M==0)的分支输出12月。A没有加当前的9月，B不取余会超过12，C整除求的是商而不是月份，所以D正确。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_13",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码用于获得正整数N的第M位数，约定个位数为第1位，如N等于1234，M等于2，则输出3。假设M的值是大于等于1且小于等于N的位数。横线处应填入的代码是（　　）。\n\n```\nint N, M, div=1;\ncin >> N;\ncin >> M;\nfor (int i =0; i < (M - 1); i++) div *= 10;\ncout << (______________);\n```",
+          "options": [
+            "A. N % div / 10",
+            "B. N / div / 10",
+            "C. N % div % 10",
+            "D. N / div % 10"
+          ],
+          "answer": 3,
+          "explanation": "先把div算成10的(M-1)次方。要取第M位数，先让N除以div，把第M位挪到个位，再对10取模得到这一位。例如N等于1234、M等于2时div等于10，1234除以10得123，123对10取模得3。所以应填N / div % 10。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_17",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行C++表达式10 % 0.5 将报错，因为 0.5 所在位置只能是整数。（　　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "C++里的取模运算符%规定两边都必须是整数，不能是小数。0.5是一个double类型的小数，用它和10做取模运算，编译器会直接报错。题目说0.5所在位置只能是整数，这个说法是正确的。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_09",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后的输出是（　）。\n\n```\nint i, tnt = 0;\nfor (i = 0; i < 100; i++)\n    tnt += 1;\ncout << tnt << ' ' << i;\n```",
+          "options": [
+            "99 99",
+            "100 99",
+            "99 100",
+            "100 100"
+          ],
+          "answer": 3,
+          "explanation": "i从0到99共有100个取值，循环体tnt+=1执行100次，tnt=100。循环结束后i再自增变成100，不再满足i<100而退出，所以i=100。输出“100 100”，故选D。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_10",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "有关下面C++代码的说法，错误的是（　）。\n\n```\nint tnt = 0;\nfor (int i = 1; i < 10; i += 2)  // L1\n    tnt += i;  // L2\ncout << tnt;\n```",
+          "options": [
+            "L1的 i < 10 改为 i < 11 结果相同。",
+            "L1的 i = 1 改为 i = 0 结果相同。",
+            "tnt += i 与 tnt = tnt + i 效果相同。",
+            "tnt += i 与 tnt = i + tnt 效果相同。"
+          ],
+          "answer": 1,
+          "explanation": "原循环i取1、3、5、7、9，和是25。改为i<11后i仍取1、3、5、7、9（11不小于11），结果不变。但i从1改为0后，i取0、2、4、6、8，和变成20，结果改变。所以B的说法错误，故选B。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_11",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后输出是（　）。\n\n```\nint i;\nfor (i = 10; i < 100; i += 10){\n    if (i % 10 == 0)\n        continue;\n    printf(\"%d#\",i);\n}\nif(i >= 100)\n    printf(\"%d END\",i);\n```",
+          "options": [
+            "10#20#30#40#50#60#70#80#90#100 END",
+            "100#100 END",
+            "100 END",
+            "没有输出"
+          ],
+          "answer": 2,
+          "explanation": "i依次取10、20、…、90，全都是10的倍数，i%10==0恒成立，每次都执行continue跳过后面的printf。循环结束时i自增到100，if(i>=100)成立，输出“100 END”，故选C。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_12",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "两个正整数，只要不相等，就一直进行如下操作：最大数减去最小数得到一个值，该值和两个数的最小数构成新的两个正整数，重复操作，直到两个数相等，此时输出该数。下面的C++代码用于实现该操作，横线处应该填写的代码是（　）。\n\n```\nint N, M;\ncin >> N >> M;\nwhile (N != M){\n    if (N > M)\n        _______________;\n    else\n        _______________;\n}\ncout << N;\n```",
+          "options": [
+            "N = N - M\nM = M - N",
+            "M = M - N\nN = N - M",
+            "M = N - M\nN = M - N",
+            "N, M = M, N\nM, N = N, M"
+          ],
+          "answer": 0,
+          "explanation": "这是“更相减损”法。当N>M时，用大的减小的，执行N=N-M；当M>N时，执行M=M-N。重复直到两数相等。选项A的第一行填在N>M分支、第二行填在else分支，正好对应这两种情况，故选A。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_13",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "如果一个正整数能被3整除，或者某一位能被3整除，则称之为“漂亮数”。下面的C++代码用于判断正整数N是否为漂亮数，L1行的横线处应该填入的代码是（　）。\n\n```\nint N, Flag;\ncin >> N;\nFlag = 0; // \"非漂亮数\"\nif (N % 3 == 0)\n    Flag = 1; //\"漂亮数\"\nelse\n    while (N != 0){\n        if (_______________){ // L1\n            Flag = 1;\n            break;\n        }\n        N /= 10;\n    }\ncout << (Flag? \"漂亮数\" : \"非漂亮数\");\n```",
+          "options": [
+            "N % 10 == 0",
+            "N % 3 % 10 == 0",
+            "N % 10 % 3",
+            "N % 10 % 3 == 0"
+          ],
+          "answer": 3,
+          "explanation": "N%10取出个位数字，再%3判断这一位能否被3整除，即(N%10)%3==0。成立说明某一位是3的倍数，置Flag=1并break；N/=10去掉个位继续检查下一位。故选D。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_14",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "如果正整数N的所有奇因数（即能将N整除的正奇数）的和是27的倍数，则称N是27的神秘数。下面的C++代码用于判断输入的N是否为27的神秘数。如输入53，它有两个奇因数1和53，则将输出Y。（　）。\n\n```\nint i, N, cnt = 0;\ncin >> N;\nfor (i=1; i <=N; i++){\n    if (_________________)\n        cnt += i;\n}\nif(cnt % 27 == 0)\n    cout << 'Y';\n```",
+          "options": [
+            "(N % i) && (i % 2)",
+            "(N % i == 0) && (i % 2 == 0)",
+            "(N % i == 0) && (i % 2)",
+            "(N % i) && (i % 2 == 0)"
+          ],
+          "answer": 2,
+          "explanation": "条件要同时满足“i是N的因数”和“i是奇数”。N%i==0表示i能整除N（i是因数）；i%2为真即i%2!=0，表示i是奇数。两者用&&连接，即(N%i==0)&&(i%2)，故选C。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_15",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "执行下面C++代码可以找出千位与个位的和恰好等于中间两位的四位数，横线处应该填入（　）。\n\n```\nint count = 0;\nint a, bc, d, tmp;\nfor (int i = 1000; i <= 9999; i++) {\n    a = (tmp = i) / 1000;\n    _________________________\n    bc = tmp / 10;\n    d = tmp - bc * 10;\n    if ( a + d == bc) {\n        count++;\n    }\n}\ncout << count;\n```",
+          "options": [
+            "tmp = i / 10;",
+            "tmp = i % 100;",
+            "tmp -= a * 1000;",
+            "tmp = i - i%1000;"
+          ],
+          "answer": 2,
+          "explanation": "前面a=(tmp=i)/1000已取出千位a，并把tmp设为i。要得到后三位，应去掉千位：tmp=tmp-a*1000，即tmp-=a*1000。之后bc=tmp/10取百位和十位，d=tmp-bc*10取个位，完成四位分解，故选C。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_18",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码执行后将输出 0 。( )\n\n```\nint i;\nfor (i = 0; i < 10; i++)\n    if (i % 3 == 0)\n        continue;\n    else\n        break;\ncout << i;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "i=0时0%3==0成立，执行continue跳到下一轮，i变为1；i=1时1%3!=0，进入else执行break退出循环。此时i=1，输出1而不是0，所以说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_19",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码中的 i > -10; i-- 改为 i < 10; i++ 执行结果相同。（　）\n\n```\nint tnt = 0;\nfor (int i = 0; i > -10; i--){\n    if (i < 0)\n        i = -i;\n    tnt += i;\n}\ncout << tnt;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "原代码中i一旦变负就被改成-i变回正数，i在0、-1、1之间反复，循环永远结束不了（死循环）。而改成i<10;i++后i从0递增到9，输出0+1+…+9=45。两者结果完全不同，说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_20",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码执行后将输出 99 ，因为 i < 100 不包括100，而是到99。（　）\n\n```\nint cnt = 0;\nfor (int i = 0; i < 100; i++)\n    cnt += 1;\ncout << cnt;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "i从0到99共有100个取值，循环体cnt+=1执行100次，cnt从0加到100。注意cnt初始值是0，加100次后cnt=100，所以输出100而不是99，说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_21",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面的C++代码能用于判断输入的正整数是否为对称数。所谓对称数是指从左到右和从右到左读该数，其值相同，121或414等是对称数，而123不是对称数。（　）\n\n```\nint n, new_number;\ncout << \"请输入正整数:\";\ncin >> n;\nnew_number = 0;\nwhile (n != 0){\n    new_number = new_number * 10 + n % 10;\n    n /= 10;\n}\nif (n == new_number)\n    cout << \"对称数\";\nelse\n    cout << \"非对称数\";\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "while循环不断把n除以10，循环结束时n已经变成0，而new_number是倒序后的数。此时比较n==new_number就是比较0和倒序数，几乎恒不相等。例如输入121也会被判定为非对称数，所以这段代码不能正确判断对称数，说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_22",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面的C++代码执行后将输出 0 。（　）\n\n```\nint tnt = 0;\nfor (int i = -100; i < 100; i++)\n    tnt += i;\ncout << tnt;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "i从-100一直加到99。其中-99到99这一段每个数都能两两配对抵消（如-1和1、-99和99），和是0；但最前面还有一个-100没有可配对的数。所以总和是-100，输出-100而不是0，说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_08",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后的输出是（　　）。\n\nint i, tnt = 1;\nfor (i = 0; i < 5; i++)\n    tnt *= i;\nprintf(\"%2d%2d\\n\", tnt, i);",
+          "options": [
+            "A. 24 5",
+            "B. 10 5",
+            "C.  0 4",
+            "D.  0 5"
+          ],
+          "answer": 3,
+          "explanation": "循环从i=0开始，先执行tnt *= i，把0乘进tnt，任何数乘0都得0，所以tnt变成0，后面一直乘下去还是0。循环做完后i变成5。printf用%2d表示右对齐占两格，所以输出“ 0 5”，0和5前面都补一个空格，选D。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_09",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "执行下面C++代码段求序列 -1+2+3-4+5+6-7+8+9-10+11+12...... 之值。例如输入 4 ，则计算序列前4项的值，规律如序列所示，输出为 0 。下面说法中正确的是（　　）。\n\nint N, tnt, i;\ncout << \"请输入正整数：\";\ncin >> N;\ntnt = 0;\nfor (i = 1; i < N + 1; i++)  // L1\n    if (i % 3 == 1)          // L2\n        tnt += -i;\n    else\n        tnt += i;\ncout << tnt;",
+          "options": [
+            "A. L1行中 i < N + 1 应该修为 i < N 才会符合预期",
+            "B. L2行中 i % 3 == 1 应修改为 i % 3 == 0 才会符合预期",
+            "C. L2行中 i % 3 == 1 修改为 i % 3 与当前程序效果相同",
+            "D. 当前代码能实现题目所描述计算目标"
+          ],
+          "answer": 3,
+          "explanation": "程序把1到N每个数相加，规律是：i除以3余1的数（1、4、7、10…）加负号，其余的数（2、3、5、6…）加正号，正好得到-1+2+3-4+5+6-7+8+9-10+11+12…的序列。输入4时，-1+2+3-4=0，结果正确。L1、L2都不用改，所以选D。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_10",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码的相关说法，正确的是（　　）。\n\nint i;\nfor (i = 1; i < 10; i++){\n    if (i % 2 == 0){\n        continue;       // L1\n    }\n    else\n        cout << i << \"#\";\n}\ncout << i << \"END\";",
+          "options": [
+            "A. 上述代码执行后，其输出是 1#3#5#7#9#9END",
+            "B. 删除 else 后的执行效果与当前代码相同",
+            "C. 删除 else 且将 cout << i << \"#\" 移入L1行下面，则执行效果与当前代码相同",
+            "D. 在 cout << i << \"END\" 前增加判断 if(i > 10) ，其执行效果与当前代码相同"
+          ],
+          "answer": 1,
+          "explanation": "循环里i是偶数时执行continue直接跳过本次循环，不输出；i是奇数时输出i和“#”，最后循环结束i=10，输出10END。删掉else后，偶数仍然被continue跳过，效果一模一样，所以B对。A末尾应是10END；C把输出放到continue后面永远不会执行；D加了if(i>10)会把10END挡住，都错。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_18",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码段成功执行后将输出 0 。\n\nfor (i = 1; i < 10; i++)\n    if (i % 3 == 0)\n        break;\ncout << i;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "循环从i=1开始，1和2都不能被3整除，不执行break；i=3时，3%3==0满足条件，执行break跳出整个循环。跳出后执行cout << i，此时i的值是3，输出的是3，不是题目说的0，所以说法错误。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_19",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面能够正常执行的C++代码段用于求1到N之和，N为正整数。因为 i < N + 1 ，所以是1到N且包含N之和。\n\ntnt = 0;\ncout << \"请输入正整数：\";\ncin >> N;\ntotal = 0;\nfor (i =1; i < N + 1; i++) ;\n    total += i;\ncout << total;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "关键在for循环后面直接跟了一个分号，分号本身就是一个空的循环体，所以循环里只做了i++，没有累加。循环结束后才执行total += i，这时i已经是N+1，只加了一次，得到N+1，并不是1到N的和。所以说法错误。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_20",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行下面的C++代码段，其语句 cout << (N) 将被执行0次或无数次（即死循环）。\n\ncin >> N;\nwhile (N)\n    cout << (N);",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "while(N)的意思是N不等于0就继续循环。如果输入0，条件一开始就不成立，cout一次也不执行；如果输入非0的数，N在循环里一直不变，条件永远成立，会无限次输出，形成死循环。所以“执行0次或无数次”的说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_22",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行下面的C++代码段，如果变量都为整型变量，输入为大于0的整数，则输出数值一定为 -N 的值。\n\ncin >> N;\ntotal = 0;\nfor (i = -N; i < N; i +=2)\n    total += i;\ncout << total;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "循环从-N开始，每次加2，一直加到小于N为止。这些数里正数和负数成对出现，能互相抵消，剩下的和正好是-N。比如N=4时，-4、-2、0、2四个数相加得-4，正好等于-N。所以输出一定为-N，说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_24",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行下面的C++代码后将输出 2500 。\n\nint cnt = 0;\nfor (int i = 1; i < 100; i++)\n    cnt += i++;\ncout << cnt;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "循环里cnt += i++，先执行cnt加上i，再让i加1；同时for循环每次结束还会再执行一次i++。所以i每次增加2，实际上累加的是1、3、5一直到99这些奇数。1到99共有50个奇数，50个奇数的和是2500。所以说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_04",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面选择项中，与 C++ 表达式 not (x > 5 or y <= 10) 等价的是（ ）。",
+          "options": [
+            "x <= 5 or y > 10",
+            "x > 5 and y <= 10",
+            "x <= 5 and y > 10",
+            "not x > 5 and not y <= 10"
+          ],
+          "answer": 2,
+          "explanation": "这是德·摩根定律：not(A or B) = (not A) and (not B)。所以 not(x>5 or y<=10) 等于 not(x>5) and not(y<=10)。not(x>5) 就是 x<=5，not(y<=10) 就是 y>10，合起来是 x<=5 and y>10，选 C。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_05",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "小明在某开发环境中执行 C++ 代码 cout << (2.5 + 2.25) << ' ' << (2.2 + 2.1) 时输出 4.75 4.300000000000001 ，其原因最可能是（ ）。",
+          "options": [
+            "C++ 的 + 运算符在处理浮点数时有时正确，有时错误",
+            "某些浮点数难以精确表示，导致微小误差",
+            "+ 运算符不能用于浮点数，只能用于整数",
+            "因为 cout 函数难以输出太长的数值"
+          ],
+          "answer": 1,
+          "explanation": "电脑用二进制存储小数，2.2、2.1 在二进制里是无限循环小数，存储时只能近似表示，所以 2.2+2.1 的结果带了微小误差，变成 4.300000000000001。这是浮点数本身的精度问题，不是 + 运算符出错。选 B。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_17",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "C++ 代码 cout << (not ('5' % 2 == 0) == ((not '5' % 2) == 0)) 执行后的输出是 1 。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "字符 '5' 的 ASCII 码是 53。左边：53%2=1，1==0 是假，not 假得真(1)。右边：not 53=0，0%2=0，0==0 是真(1)。两边都是 1，1==1 成立，输出 1。说法正确。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_24",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行时如果输入正整数，其输出将是输入的正整数。\n```cpp\nint N;\ncin >> N;\nint i = 0, Nbase = 1;\nint rst = 0;\nwhile (N != 0) {\n    rst = rst + N % 10 * Nbase;\n    N /= 10, Nbase *= 10;\n    i += 1;\n}\ncout << rst;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "循环每次取 N 的个位数字，分别乘上 1、10、100…再累加，同时把 N 除以 10。比如输入 123，rst=3×1+2×10+1×100=123，正好把原来的数还原。所以输出等于输入的正整数，说法正确。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
         }
       ]
     },
@@ -2817,6 +4090,177 @@ const QUESTION_BANK = {
           "explanation": "break语句只能出现在循环或switch里。L1处放C组的if语句时，break在if里不属于任何循环，会编译报错。而do-while、for、switch都能放break，所以C组不能通过编译。",
           "source": "GESP2025-03",
           "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_10",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码用于求M天后是星期几，两处横线处分别应填入的代码是（ ）。\n\nint N, M, D;\ncout << \"当前星期几? \"; // 星期日是0\ncin >> N;\ncout << \"求多少天后? \"; // 输入正整数\ncin >> M;\nD = ____________;\nif (____________)\n    printf(\"%d天后是星期日\", M);\nelse\n    printf(\"%d天后是星期%d\", M, D);",
+          "options": [
+            "(N + M) / 7\nD == 0",
+            "(N + M) % 7\nD == 0",
+            "(N + M) / 7\nD <= 0",
+            "(N + M) % 7\nD = 0"
+          ],
+          "answer": 1,
+          "explanation": "当前是星期N，M天后应该是星期(N+M)，星期用0到6表示，所以要取(N+M)%7得到余数D。当D等于0时就是星期日，判断相等要用“==”而不是“=”，所以两处分别填(N+M)%7和D==0，选B。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_26",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：商店折扣\n时间限制：1.0 s\n内存限制：512.0 MB\n\n题目描述：商店正在开展促销活动，给出了两种方案的折扣优惠。第一种方案是购物满 x 元减 y 元；第二种方案是直接打 n 折，也就是说价格变为原先的十分之 n。这里的 x、y、n、p 均是正整数。需要注意的是，第一种方案中满减优惠只能使用一次。例如购物满 x 元减 y 元时，若挑选了价格总和为 p 元的物品，只能减免 y 元，需要支付 p-y 元。\n小明在商店挑选了价格总和为 p 元的物品，结账时只能使用一种优惠方案。小明最少需要支付多少钱呢？\n\n输入格式：四行，四个正整数 x、y、n、p，含义见题目描述。\n\n输出格式：一行，一个小数，表示小明最少需要支付多少钱，保留两位小数。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：先用变量读入四行输入x、y、n、p。方案一：如果p大于等于x，就减去y，否则不减；方案二：价格p乘以n再除以10，也就是打n折后的价钱。比较两个方案需要付的钱，取较小的那个，保留两位小数输出即可。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "8\n7\n9\n10",
+              "output": "3.00"
+            },
+            {
+              "input": "8\n7\n2\n11",
+              "output": "2.20"
+            }
+          ]
+        },
+        {
+          "id": "l1_202512_04",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "X 是C++的整型变量，则 cout << (X=3, X++, ++X); 执行后的输出是（　）。",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "不确定"
+          ],
+          "answer": 2,
+          "explanation": "逗号表达式的值等于最后一个子表达式的值。X=3把X赋为3；X++先使用原值3，再把X变为4；++X先把X加1变成5，再使用，值为5。所以整个括号表达式的值是5，输出5，故选C。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_05",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "C++表达式 2 + 3 * 4 % 5 的值为（　）。",
+          "options": [
+            "0",
+            "4",
+            "14",
+            "50"
+          ],
+          "answer": 1,
+          "explanation": "C++中乘号、除号和取模号的优先级相同，都高于加号，并且按从左到右的顺序计算。所以先算3*4=12，再算12%5=2（12除以5商2余2），最后算加法2+2=4。因此表达式的值为4，故选B。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_06",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码执行后，其输出是（　）。\n\n```\na = 3;\nb = a = 4;\nprintf(\"%d %d\", a, b);\n```",
+          "options": [
+            "4 4",
+            "3 3",
+            "3 4",
+            "4 3"
+          ],
+          "answer": 0,
+          "explanation": "赋值号“=”在C++里是从右往左结合的。先执行最右边的a=4，把变量a的值改成4；再执行b=a，把a的值4赋给b，b也变成4。所以a和b都等于4，printf输出“4 4”，故选A。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_08",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "某个整数很长很长，形如：1232123212321……，其规律是从1开始逐一升高到3然后逐一降低到1，然后又逐一升高到3，一直到很长很长。假设最高位编号为1，要求判断从左边最高位开始的第N位数是几？在横线处应该填入的代码是（　）。\n\n```\nint N, M;\ncout << \"请输入编号：\";\ncin >> N;\nM = ________________;\nif (M != 0)\n    cout << M;\nelse\n    cout << 2;\n```",
+          "options": [
+            "N % 4",
+            "N / 4",
+            "N % 3",
+            "N / 3"
+          ],
+          "answer": 0,
+          "explanation": "数列1232每4位循环一次：第1位是1、第2位是2、第3位是3、第4位是2。当M=N%4时：余1输出1，余2输出2，余3输出3，余0时输出2，正好对应每一位。所以应填N%4，故选A。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_17",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "C++表达式 10 * 4 % 6 和 10 * 2 % 3 的结果相同。( )",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "取模运算“%”求的是除法后的余数。10*4%6：先算10*4=40，40除以6商6余4，结果是4；10*2%3：先算10*2=20，20除以3商6余2，结果是2。4和2不相等，所以两个表达式结果不同，说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_04",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "C++表达式 3 * 3 % 2 的值为（　　）。",
+          "options": [
+            "A. 81",
+            "B. 27",
+            "C. 4",
+            "D. 1"
+          ],
+          "answer": 3,
+          "explanation": "这个表达式要先算乘法和取余。乘法和取余的优先级相同，按从左到右的顺序计算：先算3*3得到9，再算9%2。9除以2商4余1，所以结果是1，选D。选项里的81、27是弄错了运算，4是把余数看错了。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_17",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "C++表达式 4 % 2 和 2 * 2 % 2 的结果相同。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "4%2表示4除以2的余数，4除以2正好除尽，余数是0。2*2%2要先算2*2得4，再算4%2，4除以2也正好除尽，余数还是0。两个表达式的结果都是0，相同，所以说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": true,
           "answerText": null,
           "starterCode": null,
           "testCases": null
@@ -4249,6 +5693,823 @@ const QUESTION_BANK = {
           "answerText": null,
           "starterCode": null,
           "testCases": null
+        },
+        {
+          "id": "l1_202506_11",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后输出是（    ）。\n\nint i;\nfor (i = 1; i < 11; i += 3){\n    continue;\n    if (i % 2 == 0)\n        break;\n    printf(\"%d#\", i);\n}\nif (i >= 11)\n    printf(\"END\");",
+          "options": [
+            "END",
+            "1#",
+            "1#4#END",
+            "1#4#7#10#END"
+          ],
+          "answer": 0,
+          "explanation": "循环体第一条语句就是continue，它会让程序跳过本次循环剩余语句，直接进入下一次循环，所以后面的if和printf永远执行不到。i依次取1、4、7、10，再自增到13时退出循环，13大于等于11，输出END。选A。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_12",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码用于求N的所有因数（即能将N整除的数），如输入12则将输出12,6,4,3,2,1 。（    ）。\n\nint i, N;\ncin >> N;\ni = N;\nwhile (_______){\n    if (N % i == 0)\n        printf(\"%d,\", i);\n    i -= 1;\n}\nprintf(\"1\");",
+          "options": [
+            "i -= 1",
+            "i == 1",
+            "i > 1",
+            "i >= 1"
+          ],
+          "answer": 2,
+          "explanation": "i从N开始每次减1，把能整除N的因数依次输出。要得到12,6,4,3,2,1这样的结果，循环应在i=2时再输出一次，i=1时停止，最后再用printf输出“1”。所以循环条件写i>1，选C；若写i>=1会多输出一个“1,”。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_13",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后输出的是（    ）。\n\nint Sum = 0;\nfor (int i = 0; i < 10; i++){\n    if (i % 2 == 0)\n        continue;\n    if (i % 5 == 0)\n        break;\n    Sum += i;\n}\ncout << Sum;",
+          "options": [
+            "55",
+            "15",
+            "9",
+            "4"
+          ],
+          "answer": 3,
+          "explanation": "循环里i从0到9：i为偶数时continue跳过，奇数中i=1时Sum加1得1，i=3时再加3得4，i=5时满足i%5==0触发break结束循环。所以Sum最终等于4，选D。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_18",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "在下面C++代码中，删除break语句对程序执行结果没有影响。 (  )\n\nint i;\nfor (i = 0; i < 10; i++){\n    continue;\n    cout << i << \"#\";\n    break;\n}\nif (i >= 10)\n    cout << \"END\";",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "循环体里第一句是continue，直接跳到下一次循环，后面的cout和break根本执行不到，break是永远不会执行的“死代码”。删掉这条break对程序运行结果没有任何影响，所以说法正确。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_19",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "删除下面C++代码中的continue后其输出是0#2#4#6#8#。（  ）\n\nint i;\nfor (i = 0; i < 10; i++){\n    if (i % 2 == 0){\n        cout << i << \"#\";\n        continue;\n    }\n}\nif (i >= 10)\n    cout << \"END\";",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "当i为奇数时，if(i%2==0)不成立，循环体什么都不做，因此删掉continue后输出完全不变。完整输出应为0#2#4#6#8#END，题干漏掉了最后的END，所以说输出是0#2#4#6#8#是错误的。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_20",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "将下面C++代码中的i < 100; i = i + 1 修改为i < 200; i += i + 1 ，其输出与当前代码输出相同。（  ）\n\nint cnt = 0;\nfor (int i = 0; i < 100; i = i + 1)\n    cnt += 1;\ncout << cnt;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "原来循环执行100次，cnt等于100。修改后i的取值依次为0、1、3、7、15、31、63、127、255，只循环8次，cnt等于8，和原来的100不一样，所以输出并不相同，说法错误。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_21",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "交换下面C++代码中的i += 2 和cnt += 1 ，交换前后分别运行的两次输出相同。（  ）\n\nint i, cnt = 0;\ncnt = 0;\nwhile (i < 10){\n    i += 2;\n    cnt += 1;\n}\ncout << cnt;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "注意int i,cnt=0只给cnt赋了初值0，变量i没有初始化，它的值是随机的。i<10这个条件到底成立不成立、循环执行几次都无法确定，因此不能断言交换i+=2和cnt+=1这两句前后两次输出相同，说法错误。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_22",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面的C++代码执行后将输出45。（  ）\n\nint cnt;\nfor (int i = 0; i < 10; i++)\n    cnt += 1;\ncout << cnt;",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "变量cnt声明后没有赋初值，里面存的是不确定的垃圾值。循环执行10次，每次都让cnt加1，最终输出的是“初始垃圾值+10”，并不能确定等于45。题干断言一定输出45，与实际结果不符，所以说法错误。",
+          "source": "GESP2025-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_27",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：值日。\n题目描述：小杨和小红是值日生，负责打扫教室。小杨每m天值日一次，小红每n天值日一次。今天他们两个一起值日，请问至少多少天后，他们会再次同一天值日？\n输入格式：第一行，一个正整数m，表示小杨的值日周期。第二行，一个正整数n，表示小红的值日周期。\n输出格式：一行，一个整数，表示至少多少天后他们会再次同一天值日。\n样例：\n输入样例1：\n4\n6\n输出样例1：\n12\n数据范围：对于所有测试点，保证1≤m,n≤100。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：小杨每m天值日，小红每n天值日，两人再次同一天值日需要经过的天数，就是m和n的最小公倍数（LCM）。因为m、n不超过100，可以直接枚举：从较大的那个数开始往上找，找到第一个既能被m整除又能被n整除的数就是答案。做法：用循环从max(m,n)开始，逐个数检查i%m==0且i%n==0，找到后输出并结束。样例中4和6的最小公倍数是12。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "4\n6",
+              "expectedOutput": "12"
+            }
+          ]
+        },
+        {
+          "id": "l1_202509_02",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "小杨这学期刚开学就选修了一门编程课，然后就想编写程序来计算1到10001之间的所有偶数的和。他希望程序采用简单累加整数的方法，同时希望源程序尽可能清晰、简洁，则下面关于实现累加时采用的主要控制结构的哪个说法最不合适（　　）。",
+          "options": [
+            "A. 使用循环结构",
+            "B. 使用循环和分支的组合",
+            "C. 仅使用顺序结构",
+            "D. 不使用分支结构"
+          ],
+          "answer": 2,
+          "explanation": "累加1到10001之间所有偶数，需要把“加上一个数”这个动作重复几千次，最适合用循环结构。B用循环加分支可以，D不用分支也可以。只有C“仅使用顺序结构”做不到重复累加，否则要写几千行加法语句，所以C最不合适。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_08",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后的输出是（　　）。\n\n```\nint n = 0;\nfor (int i =0; i < 100; i++)\n    n += i % 2;\ncout << n;\n```",
+          "options": [
+            "A. 5050",
+            "B. 4950",
+            "C. 50",
+            "D. 49"
+          ],
+          "answer": 2,
+          "explanation": "i从0到99一共100个数。i%2在i是奇数的时候等于1，在i是偶数的时候等于0。0到99里面一共有50个奇数，也就是1、3、5、…、99，所以n被累加了50次1，最终n等于50。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_09",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码执行后输出是（　　）。\n\n```\nint N = 0, i;\nfor (i = -100; i < 100; i++)\n    N += i % 10;\ncout << N;\n```",
+          "options": [
+            "A. 900",
+            "B. 100",
+            "C. 0",
+            "D. -100"
+          ],
+          "answer": 2,
+          "explanation": "i从-100一直加到99。把每10个数分成一组，每组i%10的和可以相互抵消：比如-10到-1这组的余数和是-45，0到9这组的和是+45。在-100到99范围内这样的组正负成对出现，全部抵消，最终N等于0。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_10",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后输出是（　　）。\n\n```\nint i;\nfor(i = 1; i < 5; i++){\n    if(i % 3 == 0)\n        break;\n    printf(\"%d#\",i);\n}\nif(i > 5) printf(\"END\\n\");\n```",
+          "options": [
+            "A. 1#2#",
+            "B. 1#2#END",
+            "C. 1#2",
+            "D. 1#2#3#4#END"
+          ],
+          "answer": 0,
+          "explanation": "i从1开始。i等于1和2时，i%3都不为0，输出1#和2#。i等于3时，i%3等于0，遇到break跳出循环，此时i仍然是3。跳出循环后判断i>5不成立，不输出END，所以最终输出1#2#。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_11",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码用于求N的镜面数（N的个位到最高位的各位数字依次反过来出现在数字中，但高位0将被忽略，不输出），如输入1234，则将输出4321，又如输入120，则将输出21，错误的选项是（　　）。\n\n```\ncout << \"请输入个位数不为0的正整数：\";\ncin >> N;\nrst = 0; // 保存逆序结果\nwhile (______________){\n    rst = rst * 10 + N % 10;\n    N  = N / 10;\n}\ncout << rst << endl;\n```",
+          "options": [
+            "A. N != 0",
+            "B. not (N == 0)",
+            "C. N = 0",
+            "D. N > 0"
+          ],
+          "answer": 2,
+          "explanation": "循环要一直执行到N的每一位都被取走，也就是N不等于0时就继续。A、B、D都表示“N不为0”这个条件，都能让循环正常工作。C写的是N=0，是赋值语句，会把N变成0，导致循环一次都不执行，所以C是错误选项。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_14",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后输出是（　　）。\n\n```\nnum = 0;\nwhile (num <= 5){\n    num += 1;\n    if (num == 3)\n        continue;\n    printf(\"%d#\", num);\n}\n```",
+          "options": [
+            "A. 1#2#4#5#6#",
+            "B. 1#2#4#5#6",
+            "C. 1#2#3#4#5#6#",
+            "D. 1#2#3#4#5#6"
+          ],
+          "answer": 0,
+          "explanation": "每轮循环先把num加1。num为1、2时正常输出1#2#；num为3时遇到continue，跳过本轮后面的输出；之后num为4、5、6都正常输出。num变成7后不满足num<=5，循环结束，所以输出1#2#4#5#6#。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_15",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码用于记录多个输入数中的最大数和最小数（输入 -999 则输入结束），相关说法错误的是（　　）。\n\n```\ncin >> now_num;\nmin_num = max_num = now_num;\nwhile (now_num != -999){\n    if (max_num < now_num)\n        max_num = now_num;\n    if (min_num > now_num)\n        min_num = now_num;\n    cin >> now_num;\n}\ncout << min_num << ' ' << max_num;\n```",
+          "options": [
+            "A. 程序运行时如果第一个数输入 -999 ，则输出将是-999 -999",
+            "B. 程序输入过程中，如果输入的第一个数不是 -999 ，则如果待输入的数据中没有 -999 ，则程序能求出已输入整数中的最大数和最小数",
+            "C. 如果用于输入考试成绩，即成绩中不可能有 -999 ，则程序能求出已输入成绩中的最高成绩和最低成绩",
+            "D. 可以将cin >> now_num; 移动到while (now_num != -999) { 下面，结果不变"
+          ],
+          "answer": 3,
+          "explanation": "原来在循环前先读入第一个数，并把它作为最大最小值的初始值。如果把这个cin移到while循环体的开头，循环条件判断时now_num还没有被读入赋值，会发生未定义行为，第一个数也不会参与统计，结果一定改变。A、B、C的说法都正确，D错误。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_18",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码执行后将输出 9。（　　）\n\n```\nfor (i = 0; i < 10; i++)\n    break;\ncout << i;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "循环从i等于0开始，第一次判断0<10成立，就执行循环体里的break，立刻跳出循环，i还没来得及增加到9，仍然等于0。所以最后输出的值是0，不是9，题目说法错误。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_19",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码执行后将输出 55。（　　）\n\n```\nn = 0;\nfor (int i = 0; i > -10; i--)\n    n = n + i * -1;\ncout << n;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "i从0开始，每轮减1，一直循环到-9为止，一共10个数。i乘以-1之后得到0、1、2、…、9，把它们全部累加起来，0+1+2+…+9等于45，不是55。所以题目说输出55是错误的。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_20",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "将下面C++代码中的 L1 行的i = 0 修改为i = 1 ， 其输出与当前代码输出相同。（　　）\n\n```\ncnt = 0;\nfor (int i = 0; i < 100; i++) // L1\n    cnt += i;\ncout << cnt\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "原来是i从0到99求和，结果是4950。改成i=1后是i从1到99求和，0没有参与，加0和不加0结果一样，仍然是4950。所以两种写法的输出相同，题目说法正确。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_21",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "将下面C++代码中的i < 10 修改为i <= 10 ，其执行后输出相同。（　　）\n\n```\nint n, i;\nn = i = 0;\nwhile (i < 10){\n    n += i;\n    i += 1;\n}\ncout << n;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "原来的代码是i从0开始，只要i<10就一直循环，把0到9这10个数累加起来，结果等于45。如果把条件改成i<=10，循环会在i=10时多执行一次，把10也累加进去，结果变成55。两次输出的数不一样，所以题目说法错误。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_22",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面的C++代码执行后将输出 45。（　　）\n\n```\nint n, i;\nn = i = 0;\nwhile (i < 10){\n    i += 1;\n    n += i;\n}\ncout << n;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "这段代码里每一轮都先执行i+=1把i加1，再把i累加到n上，所以累加的是1、2、3、…、10这10个数。1加2一直加到10等于55，并不是45。所以题目说输出45是错误的。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_24",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面C++代码执行时将导致无限循环（也称死循环）。（　　）\n\n```\nint count = 0;\nwhile (count < 5){\n    count += 1;\n    if (count == 3)\n        continue;\n    cout << count << ' ';\n}\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "每轮循环count都会加1，count等于3时continue只是跳过本轮后面的输出，不影响count继续增加。count依次变成1、2、3、4、5，到5时不满足count<5就退出循环，不会死循环。题目说法错误。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_25",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下列C++代码用于求斐波那契数列，即第1个数为0，第2个数为1，从第三个数开始，依次是其前两个数之和。如果输入的值为大于1的正整数，该代码能实现所求。（　　）\n\n```\ncin >> n;\na = 0, b = 1;\nfor (int j = 0; j < n; j++){\n    cout << a << \" \";\n    b = b + a;\n    a = b - a;\n}\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "每次先输出当前的a，再让b等于a加b，a等于b减a（也就是原来那个b），这样a和b依次变成下一对斐波那契数。输出的序列是0、1、1、2、3、5…，正是斐波那契数列，所以说法正确。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_27",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：金字塔\n时间限制：1.0 s\n内存限制：512.0 MB\n\n题目描述：金字塔由 n 层石块垒成。从塔底向上，每层依次需要 1、4、9、…、n 的平方 块石块。请问搭建金字塔总共需要多少块石块？\n\n输入格式：一行，一个正整数 n，表示金字塔的层数。\n\n输出格式：一行，一个正整数，表示搭建金字塔所需的石块数量。",
+          "options": null,
+          "answer": null,
+          "explanation": "思路：从塔底向上数，第1层需要1块，第2层需要2的平方也就是4块，第i层需要i的平方块。用一个循环让i从1到n，把i乘以i的结果累加到答案里，循环结束后输出答案。例如n等于5时，1+4+9+16+25等于55。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "2",
+              "output": "5"
+            },
+            {
+              "input": "5",
+              "output": "55"
+            }
+          ]
+        },
+        {
+          "id": "l1_202512_07",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码执行时如果先输入 10 回车后输入 20 并回车，其输出是（　）。\n\n```\nint N,M;\nprintf(\"第一个数:\");\nscanf(\"%d\", &N);\nprintf(\"第二个数:\");\nscanf(\"%d\", &M);\nprintf(\"%%(N+M)=%d\", N+M, int(N+M));\n```",
+          "options": [
+            "30=30",
+            "10+20=30",
+            "%(N+M)=30",
+            "错误提示"
+          ],
+          "answer": 2,
+          "explanation": "printf中“%%”表示输出一个%号，普通字符原样输出，%d输出参数N+M=10+20=30。所以输出“%(N+M)=30”。函数里int(N+M)是多余的参数，会被忽略，故选C。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_23",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "某同学执行C++代码时 printf(\"%g\\n\", (3 + 3.1415926535)); 输出 6.14159 而不是 6.1415926535 表明该同学的计算机存在故障需要重新安装C++软件。（　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "%g格式默认只保留6位有效数字，6.1415926535按6位有效数字四舍五入就是6.14159。这是printf的%g格式的正常规则，不是计算机故障，重新安装软件也解决不了。所以说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_06",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码的相关说法，正确的是（　　）。\n\nint N = 0;\ncin >> N;\ncout << (N);",
+          "options": [
+            "A. 执行时如输入 10 ，则将输出 10",
+            "B. 执行时如输入 3.14 ，将报错",
+            "C. 执行时如输入 ABC ，将报错",
+            "D. 执行时如输入 -10 ，将报错"
+          ],
+          "answer": 0,
+          "explanation": "变量N是int整型，只能存整数。输入10，N等于10，输出10；输入-10，也能存进int，输出-10。输入3.14时，cin只读走整数部分3，剩下的小数留在输入流里，不报错；输入ABC时读取失败，N保持初值0，输出0也不报错。只有A说法正确。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_23",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行C++语句 printf(\"%d\\n\", 3.14) 将报错。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "%d要求配整数，而3.14是小数，类型不匹配，这是未定义行为。但C++编译时不会因为这个报错，最多给一个警告，程序还能编译通过，只是运行结果不确定。所以“将报错”的说法错误。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_25",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "小明在测试C++的 printf 的功能时执行了 printf(\"%-5d\\n\", 314) ，则代码输出的结果是 -5314 。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "%-5d表示左对齐占5格。314只有3位，所以在右边补2个空格，输出是“314”后面跟两个空格，并不是“-5314”。那个“-”是格式控制符号，表示左对齐，不会打印出来。所以说法错误。",
+          "source": "GESP2026-03",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_06",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "执行如下 C++ 程序后，当输入 4 时，输出的最后一行是（ ）。\n```cpp\nint n;\ncin >> n;\nfor (int i = n; i > 0; i--) {\n    for (int j = 0; j < i; j++)\n        cout << j + 1 << ' ';\n    cout << endl;\n}\n```",
+          "options": [
+            "0",
+            "1",
+            "1 2",
+            "1 2 3 4"
+          ],
+          "answer": 1,
+          "explanation": "输入 n=4，外层 i 从 4 减到 1。第 1 行输出 1 到 4，第 2 行输出 1 到 3，第 3 行输出 1 到 2，最后一行 i=1 时只输出一个 1。所以最后一行是“1”，选 B。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_07",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的 C++ 代码执行后其输出是（ ）。\n```cpp\nint tnt = 0;\nfor (int i = 1; i < 5; i += 3) {\n    for (int j = 0; j < i; j++)\n        tnt += 1;\n    cout << tnt << \"#\";\n}\ncout << tnt;\n```",
+          "options": [
+            "1#5#5",
+            "1#5#5#",
+            "1#5#12#12",
+            "0"
+          ],
+          "answer": 0,
+          "explanation": "i 从 1 开始每次加 3，所以只执行 i=1 和 i=4 两轮。i=1 时 tnt 加 1 次变成 1，输出“1#”；i=4 时 tnt 再加 4 次变成 5，输出“5#”；循环结束后再输出 5。合起来是 1#5#5，选 A。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_08",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的 C++ 代码执行之后的输出是（ ）。\n```cpp\nint i;\nfor (i = -2; i < 2; i++)\n    if (not i % 3 == 0)\n        cout << i << \"#\";\ncout << i;\n```",
+          "options": [
+            "-2#-1#1#2",
+            "-2#-1#1#2#3",
+            "1#2#3",
+            "0#1#2#3"
+          ],
+          "answer": 0,
+          "explanation": "not 优先级高于 %，not i % 3 == 0 表示 ((not i) % 3) == 0。i=-2、-1、1 时 not i=0，0%3=0，条件成立就输出；i=0 时 not 0=1，1%3=1 不成立不输出。循环结束 i 变成 2，再输出 2。结果是 -2#-1#1#2，选 A。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_09",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的 C++ 代码执行后其输出是（ ）。\n```cpp\nint cnt = 0, i, j;\nfor (i = 0; i < 3; i++) {\n    j = i;\n    while (j) {\n        cnt += 1;\n        j -= 1;\n    }\n}\ncout << i << ' ' << j << ' ' << cnt;\n```",
+          "options": [
+            "3 0 3",
+            "2 0 4",
+            "2 0 5",
+            "3 0 5"
+          ],
+          "answer": 0,
+          "explanation": "i 从 0 到 2，每轮把 j 设为 i，while(j) 让 cnt 加 1 共 i 次。所以 cnt = 0+1+2 = 3。循环结束后 i 变成 3，j 被减到 0。输出“3 0 3”，选 A。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_10",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面 C++ 代码执行后其输出是（ ）。\n```cpp\nint count = 0, i, j;\nfor (i = 1; i < 4; i++)\n    for (j = 0; j < i; j++) {\n        if (j % 3 != 0)\n            continue;\n        count += 1;\n        break;\n    }\ncout << i << ' ' << j << ' ' << count;\n```",
+          "options": [
+            "4 0 4",
+            "3 0 0",
+            "3 2 0",
+            "4 0 3"
+          ],
+          "answer": 3,
+          "explanation": "i 从 1 到 3，内层 j 从 0 开始，第一次 j=0 时 0%3==0 成立，count 加 1 后立刻 break，j 不再增加，始终是 0。三轮共 count=3。i 增到 4 时循环结束。输出“4 0 3”，选 D。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_11",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行后输出是 1 2 3 4 5 6 7 8 9 10 11 5 6 7 8 9 10 11 5 6 7 8 9 10 11 5 6 7 。横线处应该填入的运算符是（ ）。\n```cpp\nint num = 1;\nfor (int i = 0; i < 35; i++) {\n    cout << num << \" \";\n    if (num _______ 10)\n        num _______ 2;\n    else\n        num _______ 1;\n}\n```",
+          "options": [
+            ">  /=  +=",
+            ">=  %=  +=",
+            ">  /=  =+",
+            ">=  %=  =+"
+          ],
+          "answer": 0,
+          "explanation": "要让 num 数到 11 后回到 5：num>10 时成立（10 时还不成立，所以会继续数到 11），11 除以 2 取整数部分是 5；其他时候 num 每次加 1。所以三个空分别是 >、/=、+=，选 A。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_12",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "如下数字图形在通过执行后续的 C++ 代码时，输入 10 来输出。横线处应填入的代码是（ ）。\n图形：\n```\n1 1 1 1 1 1 1 1 1 1\n1 1 0 0 0 0 0 0 0 1\n1 0 1 0 0 0 0 0 0 1\n1 0 0 1 0 0 0 0 0 1\n1 0 0 0 1 0 0 0 0 1\n1 0 0 0 0 1 0 0 0 1\n1 0 0 0 0 0 1 0 0 1\n1 0 0 0 0 0 0 1 0 1\n1 0 0 0 0 0 0 0 1 1\n1 1 1 1 1 1 1 1 1 1\n```\n代码：\n```cpp\nint N;\ncin >> N;\nfor (int i = 1; i < N + 1; i++) {\n    for (int j = 1; j < N + 1; j++)\n        if (________)\n            cout << \"1 \";\n        else\n            cout << \"0 \";\n    cout << endl;\n}\n```",
+          "options": [
+            "i == j and i == 1 and j == 1 and i == N and j == N",
+            "i == j or i == 1 or j == 1 or i == N or j == N",
+            "i == j or i == 0 or j == 0 or i == (N + 1) or j == (N + 1)",
+            "i == j and i == 1 and j == 1 and i == (N + 1) and j == (N + 1)"
+          ],
+          "answer": 1,
+          "explanation": "图形要求最外一圈是 1（i==1、j==1、i==N、j==N），主对角线也是 1（i==j），其余是 0。把边框条件和对角线条件用 or 连接就是正确答案：i == j or i == 1 or j == 1 or i == N or j == N，选 B。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_14",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行后，输入 4 后，输出的数字图形是（ ）。\n```cpp\nint n;\ncin >> n;\nfor (int i = n; i > 0; i--) {\n    for (int j = 0; j < n - i; j++)\n        cout << \"0 \";\n    for (int k = 0; k < i; k++)\n        cout << k + 1 << \" \";\n    cout << endl;\n}\n```",
+          "options": [
+            "1 2 3 4\n1 2 3 0\n1 2 0 0\n1 0 0 0",
+            "1 2 3 4\n0 1 2 3\n0 0 1 2\n0 0 0 1",
+            "1 2 3 4\n2 3 4 0\n3 4 0 0\n4 0 0 0",
+            "0 0 0 1\n0 0 1 2\n0 1 2 3\n1 2 3 4"
+          ],
+          "answer": 1,
+          "explanation": "输入 n=4，每行先输出 n-i 个 0，再输出 1 到 i。i=4：1 2 3 4；i=3：0 1 2 3；i=2：0 0 1 2；i=1：0 0 0 1。四行拼起来正好是选项 B 的图形。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_19",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "下面 C++ 代码执行后将输出 1-4-7- 。\n```cpp\nfor (int i = 1; i < 10; i += 3) {\n    if (not i % 3)\n        break;\n    cout << i << \"-\";\n}\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "i 从 1 开始每次加 3，取 1、4、7。not i % 3 先算 not i 再除以 3 取余：not 1、not 4、not 7 都是 0，0%3=0，if 条件不成立，不会 break，所以依次输出 1-、4-、7-。i=10 时循环结束。说法正确。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_20",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "执行如下 C++ 代码，将从小到大依次输出 abs(N) 个整数，并在最后输出 1 。\n```cpp\nint N;\ncin >> N;\nint start_num = 1, end_num = N + 1, i;\nif (N < 0)\n    start_num = N, end_num = 0;\nfor (i = start_num; i < end_num; i++)\n    cout << i << \" \";\ncout << endl << ((i - 1) == abs(N)) << endl;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "N 为正数时，比如 N=5，会输出 1 2 3 4 5，最后一行 5==5 得 1，符合说法。但如果 N 是负数，比如 -5，会输出 -5 -4 -3 -2 -1，此时 i 变成 0，最后一行是 (0-1)==5，即 0，不是 1。说法不全面，选错误。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_21",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行后，输出值为 9 。\n```cpp\nint cnt = 0, i;\nfor (i = 0; i < 10; i++) {\n    for (int j = 0; j < i; j++)\n        cnt += 1;\n    break;\n}\ncout << i;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "外层循环第一次 i=0 时，内层循环 j<0 一次也不执行，随后立刻执行 break 跳出整个循环，此时 i 仍然是 0，最后输出 0，而不是题目说的 9。break 让循环提前结束，cnt 的变化对输出没有任何影响，说法错误。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_22",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行时如输入 10 ，输出将是 100 。\n```cpp\nint cnt = 0, N;\ncout << \"请输入正整数：\";\ncin >> N;\nfor (int i = 0; i < N; i++)\n    for (int j = -i; j < i; j++)\n        cnt += 1;\ncout << cnt;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "i 从 0 到 9，内层 j 从 -i 到 i-1，一共 2i 个数。cnt 累计 2×(0+1+2+…+9)=2×45=90，输出 90，不是 100。说法错误。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_23",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行其输出是 3 。\n```cpp\nint count = 0;\nint i = 0;\nwhile (i < 3) {\n    int j = 0;\n    while (j < 3) {\n        if (i + j >= 3)\n            count += 1;\n        j += 1;\n    }\n    i += 1;\n}\ncout << count;\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "i、j 都在 0 到 2 之间，一共有 9 组坐标。其中满足 i+j>=3 的有三组：(1,2)、(2,1)、(2,2)，所以 count=3，输出 3。其余坐标的两数之和都小于 3，不会被计数，说法正确。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_25",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "如下 C++ 代码执行时如输入 5 ，将输出代码后的字符图形。\n```cpp\nint n;\ncin >> n;\nfor (int i = 1; i < n + 1; i++) {\n    for (int j = 1; j < n - i + 1; j++)\n        cout << 0;\n    for (int k = 1; k < 2 * i; k++) {\n        if (k <= i)\n            cout << k;\n        else\n            cout << 2 * i - k;\n    }\n    for (int j = 1; j < n - i + 1; j++)\n        cout << 0;\n    cout << endl;\n}\n```\n预期图形：\n```\n000010000\n000121000\n001232100\n012343210\n123454321\n```",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 0,
+          "explanation": "输入 n=5，每行先输出 n-i 个 0，再输出先变大后变小的数字（1…i…1），左右补 0。逐行得到 000010000、000121000、001232100、012343210、123454321，与预期图形一致。说法正确。",
+          "source": "GESP2026-06",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202606_26",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：完全平方数计数。\n题目描述：小杨同学正在研究完全平方数。平方：一个数的平方等于这个数乘以这个数本身。完全平方数：指可以恰好表示为某个正整数的平方的数。例如，4 是完全平方数，因为 2×2=4；但 8 不是，因为 8 不能表示为任何正整数的平方。给定两个正整数 l 和 r（保证 l≤r），小杨同学想知道 l 到 r 之间的所有正整数中（包含 l 和 r），有多少个数是完全平方数。\n输入格式：输入两行，第一行为一个正整数 l，第二行为一个正整数 r。\n输出格式：输出一个非负整数，表示 l 到 r 中，有多少个正整数是完全平方数。如果 l 到 r 中没有完全平方数，则输出 0。\n样例：输入样例 1 为 l=1, r=21，输出样例 1 为 4。",
+          "options": null,
+          "answer": null,
+          "explanation": "完全平方数就是某个正整数的平方，比如 1×1=1、2×2=4、3×3=9。从 i=1 开始枚举，只要 i×i 不超过 r 就继续，若 i×i 不小于 l 就把答案加 1。样例 l=1、r=21 中，1、4、9、16 四个数都是完全平方数，答案输出 4。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "1\n21",
+              "expectedOutput": "4"
+            }
+          ]
+        },
+        {
+          "id": "l1_202606_27",
+          "type": "coding",
+          "difficulty": 1,
+          "question": "试题名称：菱形。\n题目描述：给定正整数 n，在 2n-1 行 2n-1 列的网格画布中，使用字符画一个边长为 n 个网格的菱形。其中，空白网格使用 . 表示，菱形边所在的网格用 + 表示。例如当 n=3 时，图形如下：\n```\n..+..\n.+.+.\n+...+\n.+.+.\n..+..\n```\n输入格式：输入一个正整数 n。\n输出格式：输出 2n-1 行，表示按要求画的菱形。\n样例：输入样例 1 为 n=4，输出样例 1 见测试用例。",
+          "options": null,
+          "answer": null,
+          "explanation": "菱形占 2n-1 行、2n-1 列。对每个格子 (i,j) 判断它是否在菱形四条边上：满足 i+j==n+1、i+j==3n-1、i-j==n-1、j-i==n-1 中任意一个就输出 +，否则输出 .。用两层循环逐行逐列判断即可，规律就是四条斜边上的坐标和或差等于固定值。",
+          "source": "GESP2026-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": [
+            {
+              "input": "4",
+              "expectedOutput": "...+...\n..+.+..\n.+...+.\n+.....+\n.+...+.\n..+.+..\n...+..."
+            }
+          ]
         }
       ]
     },
@@ -4678,6 +6939,156 @@ const QUESTION_BANK = {
           "answerText": null,
           "starterCode": null,
           "testCases": null
+        },
+        {
+          "id": "l1_202506_06",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码执行后，其输出是（ ）。\n\nint x = 10, y = 20;\nx = x + y;\ny = x - y;\nx = x - y;\ncout << x << ' ' << y;",
+          "options": [
+            "10 20",
+            "20 10",
+            "10 10",
+            "20 20"
+          ],
+          "answer": 1,
+          "explanation": "这段代码用三个语句交换两个变量的值。初始x=10、y=20；x=x+y后x=30；y=x-y后y=10；x=x-y后x=20。最终x等于20、y等于10，输出20 10，所以选B。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_09",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码执行后的输出是（ ）。\n\nint a,b;\na = 3;\nb = 4;\nprintf(\"a+b=%02d#a+b={a+b}\", a+b, a+b);",
+          "options": [
+            "a+b=07#a+b={a+b}",
+            "a+b= 7#a+b=7",
+            "a+b=7#a+b={a+b}",
+            "a+b=7#a+b=7"
+          ],
+          "answer": 0,
+          "explanation": "%02d表示整数占两位，不足两位用0补齐，7被输出成07；printf只输出格式串里的内容，第二个参数a+b没有对应的%占位符，会被忽略；格式串中的{a+b}只是普通字符，原样显示。所以输出a+b=07#a+b={a+b}，选A。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_06",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码中变量N和M都是整型，则执行时如果先输入10并输入一个制表符后输入20并回车，其输出的数值是（　　）。\n\n```\nscanf(\"%d\", &N);\nscanf(\"%d\", &M);\nprintf(\"{%d}\",N+M);\n```",
+          "options": [
+            "A. {30}",
+            "B. 1020",
+            "C. {N+M}",
+            "D. 不输出，继续等待输入"
+          ],
+          "answer": 0,
+          "explanation": "scanf的%d会跳过输入中的空白字符（空格、制表符、换行），直接读取整数。输入“10、制表符、20”时，第一个%d读到10赋给N，第二个%d跳过制表符读到20赋给M。N加M等于30，printf按{%d}格式输出{30}。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_12",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码用于交换两个正整数a和b的值，不能实现交换的代码是（　　）。\n\nA组：\n```\ncin >> a; cin >> b;\ntemp = a; a = b; b = temp;\n```\nB组：\n```\ncin >> a; cin >> b;\nb = a - b; a = a - b; b = a + b;\n```\nC组：\n```\ncin >> a; cin >> b;\na = a + b; b = a - b; a = a - b;\n```\nD组：\n```\ncin >> a; cin >> b;\na, b = b, a;\n```",
+          "options": [
+            "A. 用第三个变量temp作为中转完成交换",
+            "B. 用减法完成交换：b=a-b; a=a-b; b=a+b;",
+            "C. 用加减法完成交换：a=a+b; b=a-b; a=a-b;",
+            "D. 用逗号表达式 a, b = b, a; 完成交换"
+          ],
+          "answer": 3,
+          "explanation": "A用第三个变量temp先保存a再交换，B、C用加减法都能正确交换两个数的值。D写的是a, b = b, a，这不是C++中合法的交换写法，逗号表达式不会让a和b互换，所以D不能实现交换。",
+          "source": "GESP2025-09",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_03",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面有关C++变量的说法，正确的是（　）。",
+          "options": [
+            "不可以用 for 作为变量名，因为 for 是C++的关键字（保留字）。",
+            "_tnt 不可以是变量名，因为变量名的第一个字符必须是英文字母。",
+            "_tnt_ 不可以是变量名，因为最后一个字符容易与减号混淆。",
+            "可以用 printf 作为变量名，因为 printf 是关键字，但这不是好习惯，因为 printf 有约定的功能与含义。"
+          ],
+          "answer": 0,
+          "explanation": "C++的关键字（如for、int、if）不能用做变量名，A正确。变量名首字符可以是字母或下划线，所以_tnt合法，B错。C++允许变量名以下划线结尾，_tnt_合法，C错。printf不是关键字而是库函数名，可以用但不太好，D说法错误。故选A。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_25",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "在C++代码中，不可以将变量命名为 keyword ，因为它是C++语言的关键字。（　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "keyword并不是C++的关键字。C++关键字是int、for、if、while等有固定含义的词，keyword只是普通单词，可以作为变量名使用。所以说法错误。",
+          "source": "GESP2025-12",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_03",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面C++代码可以执行，有关说法正确的是（　　）。\n\ndouble PI = 3.1415926;\ncout << (PI);",
+          "options": [
+            "A. 为了方便初学者，cout << (PI) 和 cout << (pi) 效果相同，即变量的大小写不敏感",
+            "B. cout << (PI) 修改为 cout << (Pi) 能正常执行",
+            "C. 不能用 PI 做变量名，因为要保存圆周率这个常量",
+            "D. 将程序中全部 PI 都改写为 Pai ，将能正常执行，不会报错"
+          ],
+          "answer": 3,
+          "explanation": "C++里变量名是区分大小写的，PI、Pi、pi是三个不同的名字。程序里只定义了PI，如果改成Pi会因为没有定义而报错。把全部PI都改成Pai，名字前后一致，程序仍然合法可以执行。PI也可以作为普通变量名保存其他数值。所以选D。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_05",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "整型变量 a 、b 的初值都是 4，则下面的C++代码执行后的输出是（　　）。\n\na, b = 3, 4;\ncout << (a + 2) << (b - 2) << endl;\ncout << a << b << endl;",
+          "options": [
+            "A. 61\n43",
+            "B. 52\n34",
+            "C. 62\n44",
+            "D. 62\n32"
+          ],
+          "answer": 0,
+          "explanation": "逗号表达式 a, b = 3, 4 从左往右依次执行：先看a，a没有变化，还是原来的4；再把b变成3；最后是数字4，不起作用。所以第一行输出(4+2)和(3-2)，即6和1；第二行输出a和b，即4和3，两行结果是61和43，选A。",
+          "source": "GESP2026-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
         }
       ]
     },
@@ -4757,6 +7168,80 @@ const QUESTION_BANK = {
           "answer": 3,
           "explanation": "在编辑器中修改变量定义、保存修改、撤销修改都属于源代码编辑的正常操作；而插入执行截图不是编辑源代码的合法操作，编辑器不能直接插入截图，所以选D。",
           "source": "GESP2025-03",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202506_02",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "在某集成开发环境中调试下面代码段时尝试设置断点和检查局部变量，下面哪个说法是错误的（  ）。\n\nint i,N = 0; // L1\ncin >> N; // L2\nfor (i = 1; i < 9; i++)\n    if (N % i == 0) break;  // L3\nif (i < 9)\n    printf(\"N不能大于9\\n\"); // L4",
+          "options": [
+            "断点不可以设在L1标记的代码行",
+            "执行暂停在L2标记的代码行时，可以检测i的值",
+            "执行暂停在L3标记的代码行时，可以修改i的值",
+            "执行有可能暂停在L4标记的代码行"
+          ],
+          "answer": 0,
+          "explanation": "L1是声明变量int i,N=0的代码行，IDE调试时声明语句同样可以设置断点，所以A说“断点不可以设在L1”是错误的。B中执行暂停在L2时i已经声明，可以查看它的值；C中调试时可以修改i；D中循环里一旦break，i小于9就会走到L4。选A。",
+          "source": "GESP2025-06",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202509_16",
+          "type": "judge",
+          "difficulty": 1,
+          "question": "在集成开发环境里调试程序时，要注意不能修改源程序，因为如果修改，就要终止调试、关闭该文件并重新打开，才能再次开始调试。（　　）",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": 1,
+          "explanation": "现在的集成开发环境（IDE）都很方便，调试过程中可以直接修改源程序，改完保存后重新编译运行即可，根本不需要关闭文件再重新打开。所以题目的说法不符合实际情况，是错误的。",
+          "source": "GESP2025-09",
+          "isJudge": true,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202512_02",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "下面的C++代码在某集成开发环境中编译运行时，提示有“Invalid Character”（“无效字符”）错误。可能的原因是（　）：\n\n```\nint a, b;\na=3，b = 4; // L1\ncout << a; // L2\ncout << b; // L3\n```",
+          "options": [
+            "L1行代码中的逗号很可能是中文逗号，应该改为英文逗号。",
+            "L1行应该分为两行，分别是a = 3 和b = 4。",
+            "代码运行前没有保存到文件。",
+            "L2和L3不能分为两行，应合并为一行。"
+          ],
+          "answer": 0,
+          "explanation": "“无效字符”错误通常是因为代码里混进了中文字符。看L1行“a=3，b = 4”中的逗号是全角中文逗号，C++只认半角英文逗号“,”，编译器遇到中文字符无法识别，所以报“Invalid Character”。把中文逗号改成英文逗号即可修复，故选A。",
+          "source": "GESP2025-12",
+          "isJudge": false,
+          "answerText": null,
+          "starterCode": null,
+          "testCases": null
+        },
+        {
+          "id": "l1_202603_02",
+          "type": "choice",
+          "difficulty": 1,
+          "question": "小明学习编程有一段时间了，他想在图形环境下把当前目录（或文件夹）下的文本文件 20260314.txt 的名字改一下。他用鼠标左键点击选中该文件后，立即完成下面哪个操作后将处于输入新文件名的状态（　　）：",
+          "options": [
+            "A. 单击右键并选择弹出菜单中的“重命名”",
+            "B. 双击左键",
+            "C. 按功能键 F1",
+            "D. 按回车键"
+          ],
+          "answer": 0,
+          "explanation": "重命名文件要先选中它，再单击右键弹出菜单，点菜单里的“重命名”，这时文件名就变成可以编辑的状态，可以输入新名字了。双击左键是打开文件，F1一般是帮助，回车键是确认，都不会让文件名变成可输入状态，所以选A。",
+          "source": "GESP2026-03",
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
