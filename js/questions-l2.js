@@ -70,7 +70,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "6763个汉字×2字节=13526字节，约13526/1024≈13.21KB，而64KB的1/5是12.8KB，13.21KB已经超过1/5，所以说法错误。",
+          "explanation": "6763个汉字×2字节=13526字节，约13526÷1024≈13.21KB，而64KB的1÷5是12.8KB，13.21KB已经超过1÷5，所以说法错误。",
           "source": "GESP2023-06",
           "isJudge": true,
           "answerText": null,
@@ -376,7 +376,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "6763个汉字用2字节编码，共需6763×2=13526字节，约13.2KB。64KB的1/5是12.8KB，13.2KB超过了1/5，所以说“不超过1/5”是错误的。",
+          "explanation": "6763个汉字用2字节编码，共需6763×2=13526字节，约13.2KB。64KB的1÷5是12.8KB，13.2KB超过了1÷5，所以说“不超过1÷5”是错误的。",
           "source": "GESP2023-06",
           "isJudge": true,
           "answerText": null,
@@ -1301,7 +1301,7 @@ const QUESTION_BANK = {
             "(a == b) && (b == 1)",
             "(a && b)",
             "(a == b == 1)",
-            "(a * b == 1)"
+            "(a×b == 1)"
           ],
           "answer": 0,
           "explanation": "A用&&连接a==b和b==1两个条件，a==1且b==1时两个都成立，判断正确。B只要a、b都非0就为真；C只要a==b就为真；D中a、b同为-1也成立，所以选A。",
@@ -1378,7 +1378,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "逻辑或运算符||最后执行，结果只有0或1。(2*3)即6为非零真，(2+5)即7也为真，整个表达式值为1，而不是67，所以本题说法错误。",
+          "explanation": "逻辑或运算符||最后执行，结果只有0或1。(2×3)即6为非零真，(2+5)即7也为真，整个表达式值为1，而不是67，所以本题说法错误。",
           "source": "GESP2023-09",
           "isJudge": true,
           "answerText": null,
@@ -2042,7 +2042,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "逐步计算：a=2-3=-1，b=-1+3=2，a=2-(-1)=3。最终a=3，b=2，a*b=6，输出3*2=6。所以这句话正确。",
+          "explanation": "逐步计算：a=2-3=-1，b=-1+3=2，a=2-(-1)=3。最终a=3，b=2，a×b=6，输出3×2=6。所以这句话正确。",
           "source": "GESP2025-03",
           "isJudge": true,
           "answerText": null,
@@ -2257,13 +2257,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "如果用两个int类型的变量a和b分别表达平行四边形的两条边长，用int类型的变量h表达a边对应的高，则下列哪个表达式不能用来计算b边对应的高？（　）",
           "options": [
-            "a / b * (0.0 + h)",
-            "(0.0 + a * h) / b",
-            "a * h / (b + 0.0)",
-            "(a + 0.0) * h / b"
+            "a÷b * (0.0 + h)",
+            "(0.0 + a×h) / b",
+            "a×h / (b + 0.0)",
+            "(a + 0.0) * h÷b"
           ],
           "answer": 0,
-          "explanation": "平行四边形面积=底×高，a边对应的高为h，则面积=a*h，b边对应的高=面积/b=(a*h)/b。A中“a/b”是两个int相除会向下取整，导致结果错误，所以选A。",
+          "explanation": "平行四边形面积=底×高，a边对应的高为h，则面积=a×h，b边对应的高=面积/b=(a×h)/b。A中“a÷b”是两个int相除会向下取整，导致结果错误，所以选A。",
           "source": "GESP2023-06",
           "isJudge": false,
           "answerText": null,
@@ -2321,7 +2321,7 @@ const QUESTION_BANK = {
             "-12"
           ],
           "answer": 3,
-          "explanation": "-123.123/10=-12.3123，用int()强制转换为整数时直接舍去小数部分，得到-12（向0取整），所以选D。",
+          "explanation": "-123.123÷10=-12.3123，用int()强制转换为整数时直接舍去小数部分，得到-12（向0取整），所以选D。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -2339,7 +2339,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "C++中带小数的字面量默认是double类型，7.8/2得到的是double类型的3.9，而不是float，所以本题说法错误。",
+          "explanation": "C++中带小数的字面量默认是double类型，7.8÷2得到的是double类型的3.9，而不是float，所以本题说法错误。",
           "source": "GESP2023-09",
           "isJudge": true,
           "answerText": null,
@@ -2357,7 +2357,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "在C++中，两个整数相除结果仍为整数，且向零取整。-7除以2的商为-3（余-1），所以-7/2的值确实是整数-3，说法正确。",
+          "explanation": "在C++中，两个整数相除结果仍为整数，且向零取整。-7除以2的商为-3（余-1），所以-7÷2的值确实是整数-3，说法正确。",
           "source": "GESP2023-12",
           "isJudge": true,
           "answerText": null,
@@ -2689,13 +2689,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "如果用两个int类型的变量a和b分别表达平行四边形的两条边长，用int类型的变量h表达a边对应的高，则下列哪个表达式不能用来计算b边对应的高？（ ）",
           "options": [
-            "a / b * (0.0 + h)",
-            "(0.0 + a * h) / b",
-            "a * h / (b + 0.0)",
-            "(a + 0.0) * h / b"
+            "a÷b * (0.0 + h)",
+            "(0.0 + a×h) / b",
+            "a×h / (b + 0.0)",
+            "(a + 0.0) * h÷b"
           ],
           "answer": 0,
-          "explanation": "面积a*h等于b边乘以b边对应的高，所以高=a*h/b。A先算a/b，两个int相除会向下取整丢失精度，算出的高不正确。其它选项都通过+0.0把除数变成double，结果准确。故选A。",
+          "explanation": "面积a×h等于b边乘以b边对应的高，所以高=a×h÷b。A先算a÷b，两个int相除会向下取整丢失精度，算出的高不正确。其它选项都通过+0.0把除数变成double，结果准确。故选A。",
           "source": "GESP2023-06",
           "isJudge": false,
           "answerText": null,
@@ -2733,7 +2733,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "double与int运算时，int会提升为double，结果类型是double。a*10得到35.0（double），不是int类型的35。所以这句话错误。",
+          "explanation": "double与int运算时，int会提升为double，结果类型是double。a×10得到35.0（double），不是int类型的35。所以这句话错误。",
           "source": "GESP2023-06",
           "isJudge": true,
           "answerText": null,
@@ -2753,7 +2753,7 @@ const QUESTION_BANK = {
             "-12"
           ],
           "answer": 3,
-          "explanation": "-123.123/10=-12.3123，int()强制类型转换把小数部分直接截掉（向0取整），-12.3123变成-12。注意不是四舍五入。故选D。",
+          "explanation": "-123.123÷10=-12.3123，int()强制类型转换把小数部分直接截掉（向0取整），-12.3123变成-12。注意不是四舍五入。故选D。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -2771,7 +2771,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "C++中不带后缀的小数默认是double类型，7.8/2的结果是3.9，但类型是double，不是float。所以说类型为float是错误的。",
+          "explanation": "C++中不带后缀的小数默认是double类型，7.8÷2的结果是3.9，但类型是double，不是float。所以说类型为float是错误的。",
           "source": "GESP2023-09",
           "isJudge": true,
           "answerText": null,
@@ -2789,7 +2789,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "N/10去掉个位，N/10*10把个位变成0，N减去它正好剩下个位。例如N=123，123/10=12，12×10=120，123-120=3，得到个位3。所以正确。",
+          "explanation": "N÷10去掉个位，N÷10×10把个位变成0，N减去它正好剩下个位。例如N=123，123÷10=12，12×10=120，123-120=3，得到个位3。所以正确。",
           "source": "GESP2024-12",
           "isJudge": true,
           "answerText": null,
@@ -2807,7 +2807,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "N/10*10把N的个位清成0，N减去它就只剩个位，等于N%10。例如N=123：123-120=3，123%10=3。两个表达式都得到个位数。正确。",
+          "explanation": "N÷10×10把N的个位清成0，N减去它就只剩个位，等于N%10。例如N=123：123-120=3，123%10=3。两个表达式都得到个位数。正确。",
           "source": "GESP2025-03",
           "isJudge": true,
           "answerText": null,
@@ -2827,7 +2827,7 @@ const QUESTION_BANK = {
             "D. 11"
           ],
           "answer": 2,
-          "explanation": "a *= b 等价于 a = a * b，即 a = 3 * 3.5 = 10.5。由于a是int整型，把10.5赋给整型变量时会舍弃小数部分，只保留整数10。所以程序输出10，故选C。",
+          "explanation": "a *= b 等价于 a = a×b，即 a = 3×3.5 = 10.5。由于a是int整型，把10.5赋给整型变量时会舍弃小数部分，只保留整数10。所以程序输出10，故选C。",
           "source": "GESP2025-06",
           "isJudge": false,
           "answerText": "C",
@@ -2841,13 +2841,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面C++代码用于获得正整数的第3位数，如1234则输出2；如果是一位数或两位数则输出0。横线处应填入（　）。代码：cout << _________________;\n选项见各选项。",
           "options": [
-            "A. N % 1000 / 100",
-            "B. N / 1000 % 100",
-            "C. N / 1000 / 100",
-            "D. N % 100 / 100"
+            "A. N % 1000÷100",
+            "B. N÷1000 % 100",
+            "C. N÷1000÷100",
+            "D. N % 100÷100"
           ],
           "answer": 0,
-          "explanation": "求第3位数：先对1000取余去掉百位以上的高位，再除以100去掉百位以下的低位。如1234：1234%1000=234，234/100=2。若N是一位或两位数，如56：56%1000=56，56/100=0，正好输出0。故选A。",
+          "explanation": "求第3位数：先对1000取余去掉百位以上的高位，再除以100去掉百位以下的低位。如1234：1234%1000=234，234÷100=2。若N是一位或两位数，如56：56%1000=56，56÷100=0，正好输出0。故选A。",
           "source": "GESP2025-06",
           "isJudge": false,
           "answerText": "A",
@@ -2885,7 +2885,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "整型相除只保留整数部分。N<10时如7/10=0；N大于等于10时如123/10=12，正好去掉个位。说法符合C++整数除法规则，正确。",
+          "explanation": "整型相除只保留整数部分。N<10时如7÷10=0；N大于等于10时如123÷10=12，正好去掉个位。说法符合C++整数除法规则，正确。",
           "source": "GESP2025-06",
           "isJudge": true,
           "answerText": "正确",
@@ -2953,13 +2953,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面C++代码用于获得正整数N的第M位数（从右往左数，M在1到N的位数之间）。横线处应填入（　）。代码：for(int i=0;i<(M-1);i++) div*=10; cout<<(______);",
           "options": [
-            "A. N % div / 10",
-            "B. N / div / 10",
+            "A. N % div÷10",
+            "B. N÷div÷10",
             "C. N % div % 10",
-            "D. N / div % 10"
+            "D. N÷div % 10"
           ],
           "answer": 3,
-          "explanation": "div=10的(M-1)次方，先N/div把目标位移到个位，再%10取出。如N=1234、M=2时div=10：1234/10=123，123%10=3。故选D。",
+          "explanation": "div=10的(M-1)次方，先N÷div把目标位移到个位，再%10取出。如N=1234、M=2时div=10：1234÷10=123，123%10=3。故选D。",
           "source": "GESP2025-09",
           "isJudge": false,
           "answerText": "D",
@@ -3017,7 +3017,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "整型除法舍去小数：1234/100=12，去掉个位和十位。N<100时商为0。说法完全符合C++整数除法规则，正确。",
+          "explanation": "整型除法舍去小数：1234÷100=12，去掉个位和十位。N<100时商为0。说法完全符合C++整数除法规则，正确。",
           "source": "GESP2025-09",
           "isJudge": true,
           "answerText": "正确",
@@ -3051,7 +3051,7 @@ const QUESTION_BANK = {
           "options": [
             "A. N % 3",
             "B. (N - 1) % 3",
-            "C. N / 3",
+            "C. N÷3",
             "D. (N - 1) / 3"
           ],
           "answer": 1,
@@ -3089,13 +3089,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "工号编码：前4位整除以3的商累加除以10的余数为第5位。下面代码依次输入前4位，两个横线处应填（　）。代码：rst+=___L1___; ... cout<<___L2___;",
           "options": [
-            "A. N%3; rst/10",
+            "A. N%3; rst÷10",
             "B. N%3; rst%10",
-            "C. N/3; rst/10",
-            "D. N/3; rst%10"
+            "C. N÷3; rst÷10",
+            "D. N÷3; rst%10"
           ],
           "answer": 3,
-          "explanation": "L1处累加每位整除以3的商，应填N/3；第5位是累加和除以10的余数，L2处应填rst%10。如76587：7/3=2、6/3=2、5/3=1、8/3=2，和为7，7%10=7，第5位为7。故选D。",
+          "explanation": "L1处累加每位整除以3的商，应填N÷3；第5位是累加和除以10的余数，L2处应填rst%10。如76587：7÷3=2、6÷3=2、5÷3=1、8÷3=2，和为7，7%10=7，第5位为7。故选D。",
           "source": "GESP2025-12",
           "isJudge": false,
           "answerText": "D",
@@ -3113,7 +3113,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "1/3是两个整数相除，结果为0，10/(1/3)即10/0，发生除零错误，无法得到正常值，更不可能等于10/0.333333。所以题面说值为true错误。",
+          "explanation": "1÷3是两个整数相除，结果为0，10/(1÷3)即10÷0，发生除零错误，无法得到正常值，更不可能等于10÷0.333333。所以题面说值为true错误。",
           "source": "GESP2025-12",
           "isJudge": true,
           "answerText": "错误",
@@ -3147,10 +3147,10 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "借阅卡号由6位整数组成，前5位是顺序号，第6位是前5位数字之和除以10的余数。下面的代码用于判断卡号是否正确，横线处应填（　）。",
           "options": [
-            "A. tnt+=order_num/10; tnt/10==check_num",
+            "A. tnt+=order_num÷10; tnt÷10==check_num",
             "B. tnt+=order_num%10; tnt%10==check_num",
-            "C. tnt=order_num/10+tnt; tnt%10==check_num",
-            "D. tnt=order_num%10; tnt/10==check_num"
+            "C. tnt=order_num÷10+tnt; tnt%10==check_num",
+            "D. tnt=order_num%10; tnt÷10==check_num"
           ],
           "answer": 1,
           "explanation": "循环内应累加前5位数字，每次取order_num的个位即order_num%10，故填tnt+=order_num%10；判断时用累加和除以10的余数与校验位比较，即tnt%10==check_num。故选B。",
@@ -3229,7 +3229,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "int(3.5)把3.5强制转换成整数3（截断小数），3*2=6。所以输出6，说法正确。",
+          "explanation": "int(3.5)把3.5强制转换成整数3（截断小数），3×2=6。所以输出6，说法正确。",
           "source": "GESP2026-06",
           "isJudge": true,
           "answerText": "正确",
@@ -3382,13 +3382,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面图形每一行从字母A开始，以ABC方式重复。行数为输入的整数。请在C++代码段横线处填入合适代码（　）。\n```cpp\nint N = 0;\ncout << \"请输入行列数量:\";\ncin >> N;\nfor (int i = 1; i < N + 1; i++) {\nfor (int j = 0; j < i; j++)\ncout << __________; // 此处填写代码\ncout << endl;\n}\n```",
           "options": [
-            "'A' + j / 3",
-            "(char)('A' + j / 3)",
+            "'A' + j÷3",
+            "(char)('A' + j÷3)",
             "'A' + j % 3",
             "(char)('A' + j % 3)"
           ],
           "answer": 3,
-          "explanation": "j%3在0、1、2之间循环，对应A、B、C循环输出；而j/3在j较小时一直为0，会连续输出A。字符与整数相加得到int，需要(char)转回字符，所以选D。",
+          "explanation": "j%3在0、1、2之间循环，对应A、B、C循环输出；而j÷3在j较小时一直为0，会连续输出A。字符与整数相加得到int，需要(char)转回字符，所以选D。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -3406,7 +3406,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "字符'9'的ASCII码是57，int('9')得到57，2*57*2=228，而不是36。注意数字字符对应的ASCII码不是其数值，'0'的ASCII码是48，'9'是57。",
+          "explanation": "字符'9'的ASCII码是57，int('9')得到57，2×57×2=228，而不是36。注意数字字符对应的ASCII码不是其数值，'0'的ASCII码是48，'9'是57。",
           "source": "GESP2023-12",
           "isJudge": true,
           "answerText": null,
@@ -3590,8 +3590,8 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面图形每一行从字母A开始，以ABC方式重复。行数为输入的整数。请在C++代码段横线处填入合适代码（ ）。代码：for(int j=0;j<i;j++) cout<<____;",
           "options": [
-            "'A' + j / 3",
-            "(char)('A' + j / 3)",
+            "'A' + j÷3",
+            "(char)('A' + j÷3)",
             "'A' + j % 3",
             "(char)('A' + j % 3)"
           ],
@@ -3770,7 +3770,7 @@ const QUESTION_BANK = {
           "question": "百鸡问题\n【问题描述】“百鸡问题”是出自我国古代《张丘建算经》的著名数学问题。大意为：“每只公鸡5元，每只母鸡3元，每3只小鸡1元；现在有100元，买了100只鸡，共有多少种方案？”小明决定对这个问题进行扩展：如果每只公鸡x元，每只母鸡y元，每z只小鸡1元；现在有n元，买了m只鸡，共有多少种方案？\n【输入描述】输入一行，包含五个整数，分别为问题描述中的x、y、z、n、m。约定1≤x, y, z ≤10，1≤ n, m ≤1000。\n【输出描述】输出一行，包含一个整数C，表示有C种方案。",
           "options": null,
           "answer": null,
-          "explanation": "思路：用两层循环枚举公鸡数量gj和母鸡数量mj，条件保证花销不超过n且鸡总数不超过m。由剩余钱数算出小鸡数量xj=(n-gj*x-mj*y)*z，再判断gj+mj+xj是否等于m，若相等方案数加1。枚举结束后输出cnt。",
+          "explanation": "思路：用两层循环枚举公鸡数量gj和母鸡数量mj，条件保证花销不超过n且鸡总数不超过m。由剩余钱数算出小鸡数量xj=(n-gj×x-mj×y)*z，再判断gj+mj+xj是否等于m，若相等方案数加1。枚举结束后输出cnt。",
           "source": "GESP2023-03",
           "isJudge": false,
           "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int x, y, z, n, m, cnt = 0;\n    cin >> x >> y >> z >> n >> m;\n    // 枚举公鸡数量，花销和只数都不能超过限制\n    for (int gj = 0; gj * x <= n && gj <= m; gj++)\n        // 枚举母鸡数量\n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) {\n            int xj = (n - gj * x - mj * y) * z; // 计算小鸡数量\n            if (gj + mj + xj == m) // 判断总数是否等于m\n                cnt++; // 方案数加1\n        }\n    cout << cnt << endl;\n    return 0;\n}",
@@ -4005,7 +4005,7 @@ const QUESTION_BANK = {
             "没有输出"
           ],
           "answer": 1,
-          "explanation": "i取1、4、7、10。i=1时内层不执行；i=4时j=1，i*j为偶数直接break；i=10时j=1也为偶数break；只有i=7时j取1、3、5，i*j都为奇数，cnt加3，所以选B。",
+          "explanation": "i取1、4、7、10。i=1时内层不执行；i=4时j=1，i×j为偶数直接break；i=10时j=1也为偶数break；只有i=7时j取1、3、5，i×j都为奇数，cnt加3，所以选B。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -4025,7 +4025,7 @@ const QUESTION_BANK = {
             "1,5,7,11,13,15"
           ],
           "answer": 1,
-          "explanation": "x依次取1,3,5,7,9,11……x能被3整除时输出：x=3输出“3,”，x=9输出“9,”；x=11时x/10不为0，执行break跳出循环，最后输出x的值11，结果为“3,9,11”，选B。",
+          "explanation": "x依次取1,3,5,7,9,11……x能被3整除时输出：x=3输出“3,”，x=9输出“9,”；x=11时x÷10不为0，执行break跳出循环，最后输出x的值11，结果为“3,9,11”，选B。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -4065,7 +4065,7 @@ const QUESTION_BANK = {
             "False"
           ],
           "answer": 0,
-          "explanation": "while条件用true让循环一直进行，靠循环体内的break在输入负数时退出。C、D的True/False在C++中不是布尔关键字，B的false会直接不进循环，所以选A。",
+          "explanation": "while条件用true让循环一直进行，靠循环体内的break在输入负数时退出。C、D的True÷False在C++中不是布尔关键字，B的false会直接不进循环，所以选A。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -4244,10 +4244,10 @@ const QUESTION_BANK = {
             "代码能正确判断N是否为质数。",
             "代码总是不能判断N是否质数。",
             "删除第5行break，将能正确判断N是否质数。",
-            "代码存在漏洞，边界存在问题，应将第2行和第7行的N/2改为N/2+1。"
+            "代码存在漏洞，边界存在问题，应将第2行和第7行的N÷2改为N÷2+1。"
           ],
           "answer": 3,
-          "explanation": "循环条件i<N/2漏掉了i等于N/2这一关键除数。例如N=4时i=2正好等于N/2，循环不执行，会错误输出“是质数”。改为i<N/2+1（即i<=N/2）才能测到边界，故D正确。",
+          "explanation": "循环条件i<N÷2漏掉了i等于N÷2这一关键除数。例如N=4时i=2正好等于N÷2，循环不执行，会错误输出“是质数”。改为i<N÷2+1（即i<=N÷2）才能测到边界，故D正确。",
           "source": "GESP2023-12",
           "isJudge": false,
           "answerText": null,
@@ -4267,7 +4267,7 @@ const QUESTION_BANK = {
             "2#3#"
           ],
           "answer": 0,
-          "explanation": "i=2时j=1，2*1=2为偶数输出2#；i=3时j=1乘积3为奇数、j=2乘积6为偶数输出3#。外层continue对结果无影响，循环结束后输出0，所以结果是2#3#0。",
+          "explanation": "i=2时j=1，2×1=2为偶数输出2#；i=3时j=1乘积3为奇数、j=2乘积6为偶数输出3#。外层continue对结果无影响，循环结束后输出0，所以结果是2#3#0。",
           "source": "GESP2023-12",
           "isJudge": false,
           "answerText": null,
@@ -4287,7 +4287,7 @@ const QUESTION_BANK = {
             "4#4"
           ],
           "answer": 3,
-          "explanation": "只有当i为偶数时内层第一个j就能使i*j为偶数，cnt加1并break，所以i=2,4,6,8各计一次，cnt=4。循环结束后i=10满足i>=10，输出4#，最后再输出4，结果为4#4。",
+          "explanation": "只有当i为偶数时内层第一个j就能使i×j为偶数，cnt加1并break，所以i=2,4,6,8各计一次，cnt=4。循环结束后i=10满足i>=10，输出4#，最后再输出4，结果为4#4。",
           "source": "GESP2023-12",
           "isJudge": false,
           "answerText": null,
@@ -4529,7 +4529,7 @@ const QUESTION_BANK = {
             "81"
           ],
           "answer": 3,
-          "explanation": "循环在i*i<=81时执行，依次检查i=1..9：i=1时81%1=0，result=1；i=3时81%9=0，result=9；i=9时81%81=0，result=81。i=10时100>81退出，输出81。",
+          "explanation": "循环在i×i<=81时执行，依次检查i=1..9：i=1时81%1=0，result=1；i=3时81%9=0，result=9；i=9时81%81=0，result=81。i=10时100>81退出，输出81。",
           "source": "GESP2024-03",
           "isJudge": false,
           "answerText": null,
@@ -4585,7 +4585,7 @@ const QUESTION_BANK = {
           "options": [
             "break",
             "continue",
-            "N=N/10",
+            "N=N÷10",
             "N=N%10"
           ],
           "answer": 0,
@@ -4603,13 +4603,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "一个数的所有数字倒序排列后这个数的大小保持不变，这个数就是回文数，比如101与6886都是回文数，而100不是回文数。以下程序代码用于判断一个数是否为回文数，横线处应填写？（ ）\nint n,a,k;\ncin>>n;\na=0;\nk=n;\nwhile(n>0){ a=______; n/=10; }\nif(a==k) cout<<\"是回文数\"; else cout<<\"不是回文数\";",
           "options": [
-            "10*a+n%10",
+            "10×a+n%10",
             "a+n%10",
-            "10*a+n/10",
-            "a+n/10"
+            "10×a+n÷10",
+            "a+n÷10"
           ],
           "answer": 0,
-          "explanation": "把原数倒序：每次取出个位n%10拼到已有结果a的后面，即a=a*10+n%10，再把n除以10去掉个位。最后倒序数a与原数k相等则为回文数。",
+          "explanation": "把原数倒序：每次取出个位n%10拼到已有结果a的后面，即a=a×10+n%10，再把n除以10去掉个位。最后倒序数a与原数k相等则为回文数。",
           "source": "GESP2024-03",
           "isJudge": false,
           "answerText": null,
@@ -4883,7 +4883,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "i=1时j=1,2,3,4，其中1*2、1*4为偶，cnt=2；i=2时j=2,4，乘积均偶，cnt=4；i=3时j=3乘积9为奇；i=4时j=4乘积16为偶，cnt=5。输出5，说法正确。",
+          "explanation": "i=1时j=1,2,3,4，其中1×2、1×4为偶，cnt=2；i=2时j=2,4，乘积均偶，cnt=4；i=3时j=3乘积9为奇；i=4时j=4乘积16为偶，cnt=5。输出5，说法正确。",
           "source": "GESP2024-06",
           "isJudge": true,
           "answerText": null,
@@ -4997,11 +4997,11 @@ const QUESTION_BANK = {
           "options": [
             "j=i; j<i; j++",
             "j=1; j<i; j++",
-            "j=i; j<i*2; j++",
+            "j=i; j<i×2; j++",
             "j=i+1; j<i+i; j++"
           ],
           "answer": 2,
-          "explanation": "第i行输出i个数，从i开始到2i-1，即j从i到i*2-1。选项C的循环j=i; j<i*2; j++使j取i到2i-1，正好满足。其余选项行数或起始值不对。",
+          "explanation": "第i行输出i个数，从i开始到2i-1，即j从i到i×2-1。选项C的循环j=i; j<i×2; j++使j取i到2i-1，正好满足。其余选项行数或起始值不对。",
           "source": "GESP2024-09",
           "isJudge": false,
           "answerText": null,
@@ -5015,13 +5015,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面C++代码执行后输出逆序数，如输入123则输出321。如输入120则输出21。横线处先后应填入的代码是（ ）。\nint N; cin>>N;\nint rst=0;\nwhile(N){ ______; ______; }\ncout<<(rst);",
           "options": [
-            "rst=rst*10+N%10  和  N=N/10",
-            "rst+=N%10  和  N=N/10",
-            "rst=rst*10+N/10  和  N=N%10",
-            "rst+=N/10  和  N=N%10"
+            "rst=rst×10+N%10  和  N=N÷10",
+            "rst+=N%10  和  N=N÷10",
+            "rst=rst×10+N÷10  和  N=N%10",
+            "rst+=N÷10  和  N=N%10"
           ],
           "answer": 0,
-          "explanation": "构造逆序数：每次取出个位N%10，追加到rst后面（rst=rst*10+N%10），再把N除以10去掉个位。这样123→321；输入120时rst先得0、再2、再1，输出21。故选A。",
+          "explanation": "构造逆序数：每次取出个位N%10，追加到rst后面（rst=rst×10+N%10），再把N除以10去掉个位。这样123→321；输入120时rst先得0、再2、再1，输出21。故选A。",
           "source": "GESP2024-09",
           "isJudge": false,
           "answerText": null,
@@ -5057,8 +5057,8 @@ const QUESTION_BANK = {
           "options": [
             "num % i",
             "num % i == 0",
-            "num / i",
-            "num / i == 0"
+            "num÷i",
+            "num÷i == 0"
           ],
           "answer": 1,
           "explanation": "判断质数要检查num能否被i整除，若能整除（num%i==0）则说明不是质数，输出NO并break。循环结束后若i==num说明一直没有被整除，输出YES。故选num%i==0。",
@@ -5288,7 +5288,7 @@ const QUESTION_BANK = {
           "question": "百鸡问题\n【问题描述】“百鸡问题”出自我国古代《张丘建算经》：每只公鸡5元，每只母鸡3元，每3只小鸡1元；现在有100元，买了100只鸡，共有多少种方案？小明决定扩展：如果每只公鸡x元，每只母鸡y元，每z只小鸡1元；现在有n元，买了m只鸡，共有多少种方案？\n【输入描述】输入一行，包含五个整数x、y、z、n、m。约定1≤x,y,z≤10，1≤n,m≤1000。\n【输出描述】输出一行，包含一个整数C，表示有C种方案。",
           "options": null,
           "answer": null,
-          "explanation": "思路：用两层循环枚举公鸡数gj和母鸡数mj，先根据钱数算出能买的小鸡数xj=(n-gj*x-mj*y)*z，再判断三种鸡总数gj+mj+xj是否等于m，相等则方案数加1。枚举时利用gj*x<=n且gj<=m、mj*y+gj*x<=n且mj+gj<=m来减少无效循环。",
+          "explanation": "思路：用两层循环枚举公鸡数gj和母鸡数mj，先根据钱数算出能买的小鸡数xj=(n-gj×x-mj×y)*z，再判断三种鸡总数gj+mj+xj是否等于m，相等则方案数加1。枚举时利用gj×x<=n且gj<=m、mj×y+gj×x<=n且mj+gj<=m来减少无效循环。",
           "source": "GESP2023-03",
           "isJudge": false,
           "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int x, y, z, n, m, cnt = 0;\n    cin >> x >> y >> z >> n >> m;\n    for (int gj = 0; gj * x <= n && gj <= m; gj++)\n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) {\n            int xj = (n - gj * x - mj * y) * z;\n            if (gj + mj + xj == m) cnt++;\n        }\n    cout << cnt << endl;\n    return 0;\n}",
@@ -5563,7 +5563,7 @@ const QUESTION_BANK = {
             "没有输出"
           ],
           "answer": 1,
-          "explanation": "i取值1,4,7,10。i=1时内层不执行；i=4时j=1，i*j=4为偶数直接break；i=7时j=1,3,5都使i*j为奇数，cnt加3；i=10时j=1，i*j=10为偶数break。cnt最终为3。故选B。",
+          "explanation": "i取值1,4,7,10。i=1时内层不执行；i=4时j=1，i×j=4为偶数直接break；i=7时j=1,3,5都使i×j为奇数，cnt加3；i=10时j=1，i×j=10为偶数break。cnt最终为3。故选B。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -5583,7 +5583,7 @@ const QUESTION_BANK = {
             "1,5,7,11,13,15"
           ],
           "answer": 1,
-          "explanation": "x从1开始每次加2。x=3、9时x%3==0输出“3,”和“9,”；x=11时x%3=2且x/10=1非0，执行break退出循环，最后输出x=11。因此输出3,9,11。故选B。",
+          "explanation": "x从1开始每次加2。x=3、9时x%3==0输出“3,”和“9,”；x=11时x%3=2且x÷10=1非0，执行break退出循环，最后输出x=11。因此输出3,9,11。故选B。",
           "source": "GESP2023-09",
           "isJudge": false,
           "answerText": null,
@@ -5855,8 +5855,8 @@ const QUESTION_BANK = {
           "options": [
             "将L1注释的printf(\"\\n\")移到L2注释所在行，效果相同",
             "将L1注释的printf(\"\\n\")修改为print(\"%c\",'\\n')效果相同",
-            "将Lie * Hang > 9 修改为Lie * Hang >= 10 效果相同",
-            "将Lie * Hang > 9 修改为Hang * Lie > 9 效果相同"
+            "将Lie×Hang > 9 修改为Lie×Hang >= 10 效果相同",
+            "将Lie×Hang > 9 修改为Hang×Lie > 9 效果相同"
           ],
           "answer": 0,
           "explanation": "A把换行从每行结束后移到内层循环里，每输出一个算式就换行，会打乱乘法表的行结构，效果不同，所以A是错误说法。B的print实为printf笔误；C、D条件等价。故选A。",
@@ -5874,7 +5874,7 @@ const QUESTION_BANK = {
           "question": "下面的C++用于求1-N的阶乘之和，如N为3，则是1!+2!+3!。下面代码段补充选项后用于实现上述功能，其中不能实现阶乘和的选项是（ ）。代码：for(int i=1;i<N+1;i++){ ____; ____; } cout<<tnt;",
           "options": [
             "nowNum *= i; tnt += nowNum;",
-            "nowNum = nowNum * i; tnt = tnt + nowNum;",
+            "nowNum = nowNum×i; tnt = tnt + nowNum;",
             "nowNum *= i; tnt = nowNum + tnt;",
             "nowNum = nowNum + i; tnt *= nowNum;"
           ],
@@ -5913,10 +5913,10 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面C++代码实现输出如下图形（星号金字塔，高度为5时第1行4空格1星号、最后一行9星号），横线应填入的代码是（ ）。代码：for(i=0;i<height;i++){ for(j=0;j<______;j++) cout<<\" \"; for(k=0;k<______;k++) cout<<\"*\"; cout<<endl; }",
           "options": [
-            "height - i, 2 * i",
-            "height, 2 * i",
-            "height - i, 2 * i + 1",
-            "height - i - 1, 2 * i + 1"
+            "height - i, 2×i",
+            "height, 2×i",
+            "height - i, 2×i + 1",
+            "height - i - 1, 2×i + 1"
           ],
           "answer": 3,
           "explanation": "第i行（从0开始）前面空格数=height-i-1（最后一行0个空格），星号数=2i+1（1,3,5,7,9）。A、B、C的空格数或星号数与图形不符。故选D。",
@@ -6276,7 +6276,7 @@ const QUESTION_BANK = {
           "question": "等差矩阵\n【题目描述】小A想构造一个n行m列的矩阵，使得矩阵的每一行与每一列均是等差数列。小A发现，在矩阵的第i行第j列填入整数i×j，得到的矩阵能满足要求。你能帮小A输出这个矩阵吗？\n【输入格式】一行，两个正整数n m。\n【输出格式】共n行，每行m个由空格分割的整数，表示小A需要构造的矩阵。",
           "options": null,
           "answer": null,
-          "explanation": "思路：直接用两层循环，第i行第j列输出i*j。注意第i行、第j列从1开始编号，每行最后一个数字后不要输出多余空格（用\" \\n\"[j==m]实现：j是最后一个位置时输出换行，否则输出空格）。",
+          "explanation": "思路：直接用两层循环，第i行第j列输出i×j。注意第i行、第j列从1开始编号，每行最后一个数字后不要输出多余空格（用\" \\n\"[j==m]实现：j是最后一个位置时输出换行，否则输出空格）。",
           "source": "GESP2025-03",
           "isJudge": false,
           "answerText": "#include <bits/stdc++.h>\nusing namespace std;\nint n, m;\nint main() {\n    scanf(\"%d%d\", &n, &m);\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++)\n            printf(\"%d%c\", i * j, \" \\n\"[j == m]);\n    return 0;\n}",
@@ -6321,7 +6321,7 @@ const QUESTION_BANK = {
             "D. 3"
           ],
           "answer": 2,
-          "explanation": "内层找到第一个使i*j为奇数的j就break。奇数i（如3、5）时j=1即奇数，内层立刻break，j保持1；偶数i时内层跑完j=i。i=11（奇数）内层j=1退出后，i自增为12，循环结束。此时i*j=12*1=12，故选C。",
+          "explanation": "内层找到第一个使i×j为奇数的j就break。奇数i（如3、5）时j=1即奇数，内层立刻break，j保持1；偶数i时内层跑完j=i。i=11（奇数）内层j=1退出后，i自增为12，循环结束。此时i×j=12×1=12，故选C。",
           "source": "GESP2025-06",
           "isJudge": false,
           "answerText": "C",
@@ -6395,7 +6395,7 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面C++代码用于判断一个大于0的正整数是几位数，横线处应填入的代码先后是（　）。代码：cnt=0; while(___1___){cnt+=1; ___2___;} cout<<cnt;",
           "options": [
-            "A. N>1; N=N/10",
+            "A. N>1; N=N÷10",
             "B. N>1; N/=10",
             "C. N==0; N/=10",
             "D. N>0; N/=10"
@@ -6417,7 +6417,7 @@ const QUESTION_BANK = {
           "options": [
             "A. 如果Flag在循环中不被改为false，则说明该数是自守数",
             "B. if(N1%10!=M1%10)用于判断个位数是否相等",
-            "C. N1=N1/10, M1=M1/10将个位数去掉",
+            "C. N1=N1÷10, M1=M1÷10将个位数去掉",
             "D. 将N1>0改为N>0效果相同"
           ],
           "answer": 3,
@@ -6513,7 +6513,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "N为奇数如5：N/2=2，(N-1)/2=2，只有j=2为*，是中间一列；N为偶数如4：N/2=2，(N-1)/2=1，j=1、2为*，是中间两列。两种情况都符合要求，说法正确。",
+          "explanation": "N为奇数如5：N÷2=2，(N-1)/2=2，只有j=2为*，是中间一列；N为偶数如4：N÷2=2，(N-1)/2=1，j=1、2为*，是中间两列。两种情况都符合要求，说法正确。",
           "source": "GESP2025-06",
           "isJudge": true,
           "answerText": "正确",
@@ -6528,7 +6528,7 @@ const QUESTION_BANK = {
           "question": "编程题1：数三角形。直角三角形两条直角边a、b取不超过n的正整数，求面积为整数的直角三角形个数（a和b无序）。",
           "options": null,
           "answer": null,
-          "explanation": "思路：面积为a*b/2，面积为整数等价于a*b为偶数。用双层循环枚举a从1到n、b从a到n（避免重复），若a*b为偶数则计数。样例：n=3时(1,2)(2,2)(2,3)共3个；n=5时共9个。",
+          "explanation": "思路：面积为a×b÷2，面积为整数等价于a×b为偶数。用双层循环枚举a从1到n、b从a到n（避免重复），若a×b为偶数则计数。样例：n=3时(1,2)(2,2)(2,3)共3个；n=5时共9个。",
           "source": "GESP2025-06",
           "isJudge": false,
           "answerText": null,
@@ -6601,7 +6601,7 @@ const QUESTION_BANK = {
             "D. 无输出"
           ],
           "answer": 1,
-          "explanation": "i为奇数时，j=0时i*0%2=0不break，j=1时i*1为奇数立即break，j保持1；i为偶数时continue跳过。i=11后i自增为12退出循环。i*j=12*1=12，且i>=12成立，输出12，故选B。",
+          "explanation": "i为奇数时，j=0时i×0%2=0不break，j=1时i×1为奇数立即break，j保持1；i为偶数时continue跳过。i=11后i自增为12退出循环。i×j=12×1=12，且i>=12成立，输出12，故选B。",
           "source": "GESP2025-09",
           "isJudge": false,
           "answerText": "B",
@@ -6794,7 +6794,7 @@ const QUESTION_BANK = {
           "question": "编程题2：菱形。给定奇数n，绘制n行n列的菱形字符画，顶点在四边中点，用#绘制菱形边，其余位置用.。",
           "options": null,
           "answer": null,
-          "explanation": "思路：对n行n列的每个位置(i,j)判断是否在菱形边上。菱形条件为|i-k|+|j-k|==k，其中k=n/2（行列从0开始）。满足则输出#否则输出.。样例：n=3输出.#./#.#/.#.；n=9输出9行的菱形。",
+          "explanation": "思路：对n行n列的每个位置(i,j)判断是否在菱形边上。菱形条件为|i-k|+|j-k|==k，其中k=n÷2（行列从0开始）。满足则输出#否则输出.。样例：n=3输出.#./#.#/.#.；n=9输出9行的菱形。",
           "source": "GESP2025-09",
           "isJudge": false,
           "answerText": null,
@@ -6863,7 +6863,7 @@ const QUESTION_BANK = {
             "D. 0 11"
           ],
           "answer": 2,
-          "explanation": "i为奇数时，j=0使i*0%2==0成立立即break，j=0，j>=i不成立无输出；i为偶数时continue跳过。i=11后自增为12，if(i>=12)输出i*j=12*0=0。所以只输出0，故选C。",
+          "explanation": "i为奇数时，j=0使i×0%2==0成立立即break，j=0，j>=i不成立无输出；i为偶数时continue跳过。i=11后自增为12，if(i>=12)输出i×j=12×0=0。所以只输出0，故选C。",
           "source": "GESP2025-12",
           "isJudge": false,
           "answerText": "C",
@@ -6943,7 +6943,7 @@ const QUESTION_BANK = {
             "D. 左对齐递减三角"
           ],
           "answer": 1,
-          "explanation": "第i行先输出n-i-1个空格使星号居中，再输出2*i+1个星号。i=0时1个星号，i=4时9个星号，形成居中的正金字塔。n=5时输出第1行1个*、第5行9个*的等腰三角形，故选B。",
+          "explanation": "第i行先输出n-i-1个空格使星号居中，再输出2×i+1个星号。i=0时1个星号，i=4时9个星号，形成居中的正金字塔。n=5时输出第1行1个*、第5行9个*的等腰三角形，故选B。",
           "source": "GESP2025-12",
           "isJudge": false,
           "answerText": "B",
@@ -6961,7 +6961,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "正整数不断除以10最终为0；0时循环不执行直接输出0；负整数如-123，-123/10=-12、-12/10=-1、-1/10=0（C++向零取整），最终也为0。所以总是输出0，说法正确。",
+          "explanation": "正整数不断除以10最终为0；0时循环不执行直接输出0；负整数如-123，-123÷10=-12、-12÷10=-1、-1÷10=0（C++向零取整），最终也为0。所以总是输出0，说法正确。",
           "source": "GESP2025-12",
           "isJudge": true,
           "answerText": "正确",
@@ -7030,7 +7030,7 @@ const QUESTION_BANK = {
           "question": "编程题1：环保能量球。小杨每走1公里得1点能量，每走x公里额外奖励1点。给定每组行走里程n和间隔x，求总能量。",
           "options": null,
           "answer": null,
-          "explanation": "思路：对每组数据，基础能量为n点；每走x公里额外1点，即额外奖励n/x（整除）点。答案=n+n/x。用循环从1到n判断i%x==0也可。样例：n=5,x=2得5+2=7；n=10,x=3得10+3=13；n=2,x=5得2+0=2。",
+          "explanation": "思路：对每组数据，基础能量为n点；每走x公里额外1点，即额外奖励n÷x（整除）点。答案=n+n÷x。用循环从1到n判断i%x==0也可。样例：n=5,x=2得5+2=7；n=10,x=3得10+3=13；n=2,x=5得2+0=2。",
           "source": "GESP2025-12",
           "isJudge": false,
           "answerText": null,
@@ -7169,10 +7169,10 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "下面的C++代码段正常执行后其输出的数字图形是（　）。代码：for(i=1;i<5;i++){for(j=1;j<i+1;j++) cout<<j; cout<<endl;}",
           "options": [
-            "A. 1/12/123/1234",
-            "B. 1/22/333/4444",
-            "C. 1/21/321/4321",
-            "D. 4/34/234/1234"
+            "A. 1÷12÷123÷1234",
+            "B. 1÷22÷333÷4444",
+            "C. 1÷21÷321÷4321",
+            "D. 4÷34÷234÷1234"
           ],
           "answer": 0,
           "explanation": "第i行输出1到i，即i=1行输出1，i=2行输出12，i=3行输出123，i=4行输出1234。图形为1、12、123、1234，故选A。",
@@ -7247,7 +7247,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "j=0时i*0%10==0成立，内层立即break，每个i都如此。循环结束后i=10，if(i>=10)成立，输出i*j=10*0=0，所以是有输出的。题面说不会有输出错误。",
+          "explanation": "j=0时i×0%10==0成立，内层立即break，每个i都如此。循环结束后i=10，if(i>=10)成立，输出i×j=10×0=0，所以是有输出的。题面说不会有输出错误。",
           "source": "GESP2026-03",
           "isJudge": true,
           "answerText": "错误",
@@ -7265,7 +7265,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "实际执行：i=1时j结束为2，输出1*2=2#；i=2时j=3输出6#；i=3时j=4输出12#；i=4时j=5输出20#；最后输出5*5=25。整体为2#6#12#20#25，与题面1#4#9#16#16不符，说法错误。",
+          "explanation": "实际执行：i=1时j结束为2，输出1×2=2#；i=2时j=3输出6#；i=3时j=4输出12#；i=4时j=5输出20#；最后输出5×5=25。整体为2#6#12#20#25，与题面1#4#9#16#16不符，说法错误。",
           "source": "GESP2026-03",
           "isJudge": true,
           "answerText": "错误",
@@ -7457,10 +7457,10 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "如下C++代码执行后，输入4后输出的数字图形是（　）。代码：for(i=n;i>0;i--){for(j=0;j<n-i;j++)cout<<\"0 \"; for(k=0;k<i;k++)cout<<k+1<<\" \"; cout<<endl;}",
           "options": [
-            "A. 1 2 3 4/1 2 3 0/1 2 0 0/1 0 0 0",
-            "B. 1 2 3 4/0 1 2 3/0 0 1 2/0 0 0 1",
-            "C. 1 2 3 4/2 3 4 0/3 4 0 0/4 0 0 0",
-            "D. 0 0 0 1/0 0 1 2/0 1 2 3/1 2 3 4"
+            "A. 1 2 3 4÷1 2 3 0÷1 2 0 0÷1 0 0 0",
+            "B. 1 2 3 4÷0 1 2 3÷0 0 1 2÷0 0 0 1",
+            "C. 1 2 3 4÷2 3 4 0÷3 4 0 0÷4 0 0 0",
+            "D. 0 0 0 1÷0 0 1 2÷0 1 2 3÷1 2 3 4"
           ],
           "answer": 1,
           "explanation": "i=4输出0个0再接1 2 3 4；i=3先输出1个0再接1 2 3；i=2输出0 0再接1 2；i=1输出0 0 0再接1。图形为B，故选B。",
@@ -7672,7 +7672,7 @@ const QUESTION_BANK = {
             "1,10,12"
           ],
           "answer": 3,
-          "explanation": "x=1输出“1,”后加2得3；3是3的倍数且3/10为0，执行x+=5得8再加2得10；10不是3的倍数输出“10,”再加2得12；12是3的倍数且12/10为1触发break，最后输出12，结果为1,10,12。",
+          "explanation": "x=1输出“1,”后加2得3；3是3的倍数且3÷10为0，执行x+=5得8再加2得10；10不是3的倍数输出“10,”再加2得12；12是3的倍数且12÷10为1触发break，最后输出12，结果为1,10,12。",
           "source": "GESP2023-12",
           "isJudge": false,
           "answerText": null,
@@ -7812,13 +7812,13 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "某货币由5元、2元和1元组成。输入金额（假设为正整数），计算出最少数量。为实现其功能，横线处应填入代码是（ ）。\nint N; cin>>N;\nint M5,M2,M1;\nM5=N/5;\nM2=______;\nM1=______;\nprintf(\"5*%d+2*%d+1*%d\",M5,M2,M1);",
           "options": [
-            "N/2  和  N-M5-M2",
-            "(N-M5*5)/2  和  N-M5*5-M2*2",
-            "N-M5*5/2  和  N-M5*5-M2*2",
-            "(N-M5*5)/2  和  N-M5-M2"
+            "N÷2  和  N-M5-M2",
+            "(N-M5×5)/2  和  N-M5×5-M2×2",
+            "N-M5×5÷2  和  N-M5×5-M2×2",
+            "(N-M5×5)/2  和  N-M5-M2"
           ],
           "answer": 1,
-          "explanation": "用5元尽量多取，M5=N/5；剩下N-M5*5元用2元尽量多取，M2=(N-M5*5)/2；最后剩余N-M5*5-M2*2元用1元补齐，M1=N-M5*5-M2*2。故选B。",
+          "explanation": "用5元尽量多取，M5=N÷5；剩下N-M5×5元用2元尽量多取，M2=(N-M5×5)/2；最后剩余N-M5×5-M2×2元用1元补齐，M1=N-M5×5-M2×2。故选B。",
           "source": "GESP2024-06",
           "isJudge": false,
           "answerText": null,
@@ -7913,7 +7913,7 @@ const QUESTION_BANK = {
             "(a == b) && (b == 1)",
             "(a && b)",
             "(a == b == 1)",
-            "(a * b == 1)"
+            "(a×b == 1)"
           ],
           "answer": 0,
           "explanation": "A先判断a和b相等，再判断b等于1，两个条件同时成立时说明a=b=1，符合题意。B只要a、b都非0；C只要a和b相等；D中a=-1、b=-1也满足。故选A。",
@@ -7972,7 +7972,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 1,
-          "explanation": "||是逻辑或运算，返回值只能是0或1（false或true）。2*3=6非0，所以整个表达式为真，值是1，不是67。这句话错误。",
+          "explanation": "||是逻辑或运算，返回值只能是0或1（false或true）。2×3=6非0，所以整个表达式为真，值是1，不是67。这句话错误。",
           "source": "GESP2023-09",
           "isJudge": true,
           "answerText": null,
@@ -8045,10 +8045,10 @@ const QUESTION_BANK = {
             "将else if ((remainder == 9) || (remainder == 0)) 修改为else 效果相同",
             "将((1 <= remainder) && (remainder<= 5)) 修改为(remainder <= 5) 效果相同",
             "else if ((6 <= remainder) && (remainder <= 8)) 写法错误，应修改为else if (6 <= remainder <= 8)",
-            "根据题意remainder = N % 10 应修改为remainder = N / 10"
+            "根据题意remainder = N % 10 应修改为remainder = N÷10"
           ],
           "answer": 0,
-          "explanation": "每个循环周期10个球，余数1~5红、6~8绿、9和0蓝，覆盖了所有可能。最后一个else if改成else也能正确捕捉其余情况（余数为9或0），所以A说法正确。B会让0误判为Red，C的连比写法语义不同，D改N/10方向错误。",
+          "explanation": "每个循环周期10个球，余数1~5红、6~8绿、9和0蓝，覆盖了所有可能。最后一个else if改成else也能正确捕捉其余情况（余数为9或0），所以A说法正确。B会让0误判为Red，C的连比写法语义不同，D改N÷10方向错误。",
           "source": "GESP2025-03",
           "isJudge": false,
           "answerText": null,
@@ -8416,7 +8416,7 @@ const QUESTION_BANK = {
             "D. cout<<tnt/cnt：如果直接输入-1，将导致除0错误"
           ],
           "answer": 3,
-          "explanation": "如果第一次输入就是-1，则cnt为0，tnt/cnt发生除零错误，这是典型的边界（corner case）。A、B、C都不是实质性问题。故选D。",
+          "explanation": "如果第一次输入就是-1，则cnt为0，tnt÷cnt发生除零错误，这是典型的边界（corner case）。A、B、C都不是实质性问题。故选D。",
           "source": "GESP2026-06",
           "isJudge": false,
           "answerText": "D",
@@ -8515,7 +8515,7 @@ const QUESTION_BANK = {
             "int(sqrt(i))=sqrt(i)"
           ],
           "answer": 2,
-          "explanation": "判断i是否为完全平方数，可先取sqrt(i)的整数部分r，再检查r*r是否等于i。A、D用单个等号是赋值不是比较；B比较整数与浮点可能因精度误判；C用r*r==i最稳妥。",
+          "explanation": "判断i是否为完全平方数，可先取sqrt(i)的整数部分r，再检查r×r是否等于i。A、D用单个等号是赋值不是比较；B比较整数与浮点可能因精度误判；C用r×r==i最稳妥。",
           "source": "GESP2023-12",
           "isJudge": false,
           "answerText": null,
@@ -8609,7 +8609,7 @@ const QUESTION_BANK = {
             "错误"
           ],
           "answer": 0,
-          "explanation": "10/3=3（整除），10%3=1（余数），中间输出一个“-”，所以输出“3-1”，说法正确。",
+          "explanation": "10÷3=3（整除），10%3=1（余数），中间输出一个“-”，所以输出“3-1”，说法正确。",
           "source": "GESP2024-06",
           "isJudge": true,
           "answerText": null,
@@ -8624,7 +8624,7 @@ const QUESTION_BANK = {
           "question": "试题名称：平方之和\n小杨有n个正整数a_i，他想知道对于所有的a_i，是否存在两个正整数x和y满足x×x+y×y=a_i。\n输入格式：第一行包含一个正整数n，代表正整数数量。之后n行，每行包含一个正整数a_i。\n输出格式：对于每个正整数，如果存在两个正整数x和y满足条件，输出Yes，否则输出No。",
           "options": null,
           "answer": null,
-          "explanation": "思路：对每个数n，枚举x从1到sqrt(n-1)（保证y*y>=1），令j=n-x*x，判断j是否是完全平方数（开方后平方等于j）。若存在则输出Yes，否则No。判断完全平方可用int(sqrt(j))*int(sqrt(j))==j，注意用double开方并转为int比较。",
+          "explanation": "思路：对每个数n，枚举x从1到sqrt(n-1)（保证y×y>=1），令j=n-x×x，判断j是否是完全平方数（开方后平方等于j）。若存在则输出Yes，否则No。判断完全平方可用int(sqrt(j))*int(sqrt(j))==j，注意用double开方并转为int比较。",
           "source": "GESP2024-06",
           "isJudge": false,
           "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nbool check(int x){\n    int y = sqrt(x);\n    return y*y==x;\n}\nint main(){\n    int t;\n    cin>>t;\n    while(t--){\n        int n;\n        cin>>n;\n        int fl=0;\n        for(int i=1;i*i<n;i++){\n            int j=n-i*i;\n            if(check(j))fl=1;\n        }\n        if(fl)cout<<\"Yes\\n\";\n        else cout<<\"No\\n\";\n    }\n}",
@@ -8664,12 +8664,12 @@ const QUESTION_BANK = {
           "question": "在C++代码中假设N为正整数，则下面代码能获得个位数的是（ ）。",
           "options": [
             "N % 10",
-            "N / 10",
+            "N÷10",
             "N && 10",
             "以上选项均不正确"
           ],
           "answer": 0,
-          "explanation": "取个位数用N%10，即N除以10的余数。N/10得到的是去掉个位后的数，N&&10是逻辑运算，结果只表示N是否非零。故选N%10。",
+          "explanation": "取个位数用N%10，即N除以10的余数。N÷10得到的是去掉个位后的数，N&&10是逻辑运算，结果只表示N是否非零。故选N%10。",
           "source": "GESP2024-09",
           "isJudge": false,
           "answerText": null,
@@ -8946,7 +8946,7 @@ const QUESTION_BANK = {
           "question": "编程题1：完全平方数计数。给定两个正整数l和r，求l到r之间（含端点）完全平方数的个数。",
           "options": null,
           "answer": null,
-          "explanation": "思路：完全平方数是某正整数平方的数。用i从1开始，若i*i在[l,r]内则计数；i*i超过r即停止。样例：1到21之间完全平方数为1、4、9、16，共4个。",
+          "explanation": "思路：完全平方数是某正整数平方的数。用i从1开始，若i×i在[l,r]内则计数；i×i超过r即停止。样例：1到21之间完全平方数为1、4、9、16，共4个。",
           "source": "GESP2026-06",
           "isJudge": false,
           "answerText": null,
