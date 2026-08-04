@@ -348,8 +348,17 @@ async function renderDashboard() {
   // Radar chart
   const radarHtml = renderRadarChart(stats.byKp || [], { accuracyMode: true });
 
-  // Simple week summary (clear for kids): last active days + total questions, no chart
-  const weekData = (stats.dailyStats || []).slice(0, 7); // newest first
+  // This week: show the actual last 7 calendar days (today back 6), filling
+  // missing days with 0 so a real "week" is visible (yesterday appears if practised).
+  const dsMap = new Map((stats.dailyStats || []).map(d => [d.day, d]));
+  const weekData = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setHours(12, 0, 0, 0);
+    d.setDate(d.getDate() - i);
+    const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    weekData.push(dsMap.get(key) || { day: key, count: 0, correct: 0 });
+  }
   const weekTotal = weekData.reduce((s, d) => s + (d.count || 0), 0);
   const trendHtml = weekData.length ? `<div class="section section-week animate-in">
     <h2 class="section-title">📚 本周学习</h2>
