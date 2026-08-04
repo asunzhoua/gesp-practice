@@ -4444,11 +4444,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "1\n2\n10\n5",
-              "output": "19"
+              "expectedOutput": "19"
             },
             {
               "input": "1\n1\n5\n8",
-              "output": "12"
+              "expectedOutput": "12"
             }
           ]
         },
@@ -4468,11 +4468,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "5",
-              "output": "|aaa|\n|aaa|\n|---|\n|aaa|\n|aaa|"
+              "expectedOutput": "|aaa|\n|aaa|\n|---|\n|aaa|\n|aaa|"
             },
             {
               "input": "7",
-              "output": "|aaaaa|\n|aaaaa|\n|aaaaa|\n|-----|\n|aaaaa|\n|aaaaa|\n|aaaaa|"
+              "expectedOutput": "|aaaaa|\n|aaaaa|\n|aaaaa|\n|-----|\n|aaaaa|\n|aaaaa|\n|aaaaa|"
             }
           ]
         },
@@ -4688,11 +4688,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "5",
-              "output": "|---|\n|xxx|\n|---|\n|xxx|\n|---|"
+              "expectedOutput": "|---|\n|xxx|\n|---|\n|xxx|\n|---|"
             },
             {
               "input": "7",
-              "output": "|-----|\n|xxxxx|\n|xxxxx|\n|-----|\n|xxxxx|\n|xxxxx|\n|-----|"
+              "expectedOutput": "|-----|\n|xxxxx|\n|xxxxx|\n|-----|\n|xxxxx|\n|xxxxx|\n|-----|"
             }
           ]
         },
@@ -4924,7 +4924,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "25\n2",
-              "output": "9"
+              "expectedOutput": "9"
             }
           ]
         },
@@ -5194,7 +5194,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "3\n7\n52\n103",
-              "output": "Yes\nYes\nNo"
+              "expectedOutput": "Yes\nYes\nNo"
             }
           ]
         },
@@ -5214,7 +5214,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "5",
-              "output": "+---+\n++--+\n+-+-+\n+--++\n+---+"
+              "expectedOutput": "+---+\n++--+\n+-+-+\n+--++\n+---+"
             }
           ]
         },
@@ -5272,11 +5272,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "3",
-              "output": "A\nBC\nDEF"
+              "expectedOutput": "A\nBC\nDEF"
             },
             {
               "input": "7",
-              "output": "A\nBC\nDEF\nGHIJ\nKLMNO\nPQRSTU\nVWXYZAB"
+              "expectedOutput": "A\nBC\nDEF\nGHIJ\nKLMNO\nPQRSTU\nVWXYZAB"
             }
           ]
         },
@@ -5296,11 +5296,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "5 3 3 100 100",
-              "output": "4"
+              "expectedOutput": "4"
             },
             {
               "input": "1 1 1 100 100",
-              "output": "5151"
+              "expectedOutput": "5151"
             }
           ]
         },
@@ -5418,11 +5418,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "2\n10",
-              "output": "4"
+              "expectedOutput": "4"
             },
             {
               "input": "98\n100",
-              "output": "0"
+              "expectedOutput": "0"
             }
           ]
         },
@@ -5442,11 +5442,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "3\n152\n111\n153",
-              "output": "F\nF\nT"
+              "expectedOutput": "F\nF\nT"
             },
             {
               "input": "5\n8208\n548834\n88593477\n12345\n5432",
-              "output": "T\nT\nT\nF\nF"
+              "expectedOutput": "T\nT\nT\nF\nF"
             }
           ]
         },
@@ -5718,11 +5718,11 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "5",
-              "output": "+---+\n-+-+-\n--+--\n-+-+-\n+---+"
+              "expectedOutput": "+---+\n-+-+-\n--+--\n-+-+-\n+---+"
             },
             {
               "input": "7",
-              "output": "+-----+\n-+---+-\n--+-+--\n---+---\n--+-+--\n-+---+-+\n+-----+"
+              "expectedOutput": "+-----+\n-+---+-\n--+-+--\n---+---\n--+-+--\n-+---+-+\n+-----+"
             }
           ]
         },
@@ -5742,7 +5742,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "352",
-              "output": "4"
+              "expectedOutput": "4"
             }
           ]
         },
@@ -6014,7 +6014,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "3\n16\n81\n10",
-              "output": "9"
+              "expectedOutput": "9"
             }
           ]
         },
@@ -6284,7 +6284,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "3 4",
-              "output": "1 2 3 4\n2 4 6 8\n3 6 9 12"
+              "expectedOutput": "1 2 3 4\n2 4 6 8\n3 6 9 12"
             }
           ]
         },
@@ -6531,16 +6531,16 @@ const QUESTION_BANK = {
           "explanation": "思路：面积为a×b÷2，面积为整数等价于a×b为偶数。用双层循环枚举a从1到n、b从a到n（避免重复），若a×b为偶数则计数。样例：n=3时(1,2)(2,2)(2,3)共3个；n=5时共9个。",
           "source": "GESP2025-06",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n  int n,c=0; cin>>n;\n  for(int a=1;a<=n;a++) for(int b=a;b<=n;b++)\n    if((a*b)%2==0) c++;\n  cout<<c<<endl;\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "3",
-              "output": "3"
+              "expectedOutput": "3"
             },
             {
               "input": "5",
-              "output": "9"
+              "expectedOutput": "9"
             }
           ]
         },
@@ -6555,16 +6555,16 @@ const QUESTION_BANK = {
           "explanation": "思路：a、b都取2的幂（从1开始每次乘2）。外层a从1到r，内层b从a到r，计算a+b；若a+b落在[l,r]内则计数，b、a每次乘2扩大。样例：l=2,r=8时和为2、3、4、5、6、8共6个；l=10,r=100共20个。",
           "source": "GESP2025-06",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\n#include <set>\nusing namespace std;\nint main(){\n  int l,r; cin>>l>>r;\n  set<int> s;\n  for(int i=0;i<=20;i++) for(int j=0;j<=20;j++){\n    long long v=(1LL<<i)+(1LL<<j);\n    if(v>=l&&v<=r) s.insert(v);\n  }\n  cout<<s.size()<<endl;\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "2 8",
-              "output": "6"
+              "expectedOutput": "6"
             },
             {
               "input": "10 100",
-              "output": "20"
+              "expectedOutput": "20"
             }
           ]
         },
@@ -6773,16 +6773,16 @@ const QUESTION_BANK = {
           "explanation": "思路：从1到n逐个判断每个数的各位数字是否全相同。取出个位作基准v，循环除以10逐个比较其余各位，若都等于v则计数。样例：n=6时1到6都是优美数，共6个；n=2025时一位数9个、二位数9个、三位数9个、四位数1111和2222共2个（2222>2025），合计28个。",
           "source": "GESP2025-09",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\nusing namespace std;\nbool beauty(int x){ int d=x%10; while(x){ if(x%10!=d) return false; x/=10;} return true;}\nint main(){\n  int n,c=0; cin>>n;\n  for(int i=1;i<=n;i++) if(beauty(i)) c++;\n  cout<<c<<endl;\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "6",
-              "output": "6"
+              "expectedOutput": "6"
             },
             {
               "input": "2025",
-              "output": "28"
+              "expectedOutput": "28"
             }
           ]
         },
@@ -6797,16 +6797,16 @@ const QUESTION_BANK = {
           "explanation": "思路：对n行n列的每个位置(i,j)判断是否在菱形边上。菱形条件为|i-k|+|j-k|==k，其中k=n÷2（行列从0开始）。满足则输出#否则输出.。样例：n=3输出.#./#.#/.#.；n=9输出9行的菱形。",
           "source": "GESP2025-09",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main(){\n  int n; cin>>n; int mid=n/2;\n  for(int r=0;r<n;r++){\n    int d=abs(r-mid), l=d, rr=n-1-d;\n    for(int c=0;c<n;c++) cout<<(c==l||c==rr?\"#\":\".\");\n    cout<<endl;\n  }\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "3",
-              "output": ".#.\n#.#\n.#."
+              "expectedOutput": ".#.\n#.#\n.#."
             },
             {
               "input": "9",
-              "output": "....#....\n...#.#...\n..#...#..\n.#.....#.\n#.......#\n.#.....#.\n..#...#..\n...#.#...\n....#...."
+              "expectedOutput": "....#....\n...#.#...\n..#...#..\n.#.....#.\n#.......#\n.#.....#.\n..#...#..\n...#.#...\n....#...."
             }
           ]
         },
@@ -7033,12 +7033,12 @@ const QUESTION_BANK = {
           "explanation": "思路：对每组数据，基础能量为n点；每走x公里额外1点，即额外奖励n÷x（整除）点。答案=n+n÷x。用循环从1到n判断i%x==0也可。样例：n=5,x=2得5+2=7；n=10,x=3得10+3=13；n=2,x=5得2+0=2。",
           "source": "GESP2025-12",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n  int T; cin>>T;\n  while(T--){ int n,x; cin>>n>>x; cout<<n+n/x<<endl; }\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "3\n5 2\n10 3\n2 5",
-              "output": "7\n13\n2"
+              "expectedOutput": "7\n13\n2"
             }
           ]
         },
@@ -7301,12 +7301,12 @@ const QUESTION_BANK = {
           "explanation": "思路：从L到R逐个枚举，对每个数i用循环除以10统计数字2出现的次数c，若c==3则计数。样例：2221和2223各含3个2是美丽数，2222含4个2不是，所以2221到2223共有2个美丽数，输出2。",
           "source": "GESP2026-03",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\nusing namespace std;\nint cnt2(int x){ int c=0; while(x){ if(x%10==2) c++; x/=10;} return c;}\nint main(){\n  int L,R,c=0; cin>>L>>R;\n  for(int i=L;i<=R;i++) if(cnt2(i)==3) c++;\n  cout<<c<<endl;\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "2221\n2223",
-              "output": "2"
+              "expectedOutput": "2"
             }
           ]
         },
@@ -7321,12 +7321,12 @@ const QUESTION_BANK = {
           "explanation": "思路：双重循环枚举行i和列j（0到n-1）。若j==0或j==n-1（边界列）：顶点处输出+，其余输出|；否则若i==0或i==n-1输出-，其余输出*。样例：n=5输出+---+、|***|共5行。",
           "source": "GESP2026-03",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n  int n; cin>>n;\n  for(int r=0;r<n;r++){\n    for(int c=0;c<n;c++){\n      if((r==0||r==n-1)&&(c==0||c==n-1)) cout<<\"+\";\n      else if(r==0||r==n-1) cout<<\"-\";\n      else if(c==0||c==n-1) cout<<\"|\";\n      else cout<<\"*\";\n    }\n    cout<<endl;\n  }\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "5",
-              "output": "+---+\n|***|\n|***|\n|***|\n+---+"
+              "expectedOutput": "+---+\n|***|\n|***|\n|***|\n+---+"
             }
           ]
         },
@@ -7589,12 +7589,12 @@ const QUESTION_BANK = {
           "explanation": "思路：行列都从1到2n-1。菱形边满足四个条件：i+j==n+1、i+j==3n-1、i-j==n-1、j-i==n-1，满足任一条件输出+，否则输出.。样例：n=4输出7行的菱形。",
           "source": "GESP2026-06",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main(){\n  int n; cin>>n; int sz=2*n-1, mid=n-1;\n  for(int r=0;r<sz;r++){\n    int d=abs(r-mid), l=d, rr=sz-1-d;\n    for(int c=0;c<sz;c++) cout<<(c==l||c==rr?\"+\":\".\");\n    cout<<endl;\n  }\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "4",
-              "output": "...+...\n..+.+..\n.+...+.\n+.....+\n.+...+.\n..+.+..\n...+..."
+              "expectedOutput": "...+...\n..+.+..\n.+...+.\n+.....+\n.+...+.\n..+.+..\n...+..."
             }
           ]
         }
@@ -7753,15 +7753,15 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "2\n3\n5",
-              "output": "15"
+              "expectedOutput": "15"
             },
             {
               "input": "3\n100\n100\n100",
-              "output": "1000000"
+              "expectedOutput": "1000000"
             },
             {
               "input": "4\n100\n100\n100\n100",
-              "output": ">1000000"
+              "expectedOutput": ">1000000"
             }
           ]
         },
@@ -8109,7 +8109,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "2008\n2\n28\n23\n1",
-              "output": "2008 2 29 0"
+              "expectedOutput": "2008 2 29 0"
             }
           ]
         },
@@ -8632,7 +8632,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "2\n5\n4",
-              "output": "Yes\nNo"
+              "expectedOutput": "Yes\nNo"
             }
           ]
         },
@@ -8802,7 +8802,7 @@ const QUESTION_BANK = {
           "testCases": [
             {
               "input": "3\n16\n81\n10",
-              "output": "2\n3\n-1"
+              "expectedOutput": "2\n3\n-1"
             }
           ]
         },
@@ -8893,12 +8893,12 @@ const QUESTION_BANK = {
           "explanation": "思路：枚举所有格子(r从1到H，c从1到W)，用sqrt函数计算坐标平方和的平方根，判断是否小于等于x+r-c，满足则计数。样例：H=4,W=4,x=2时满足条件的有(1,1)(2,1)(3,1)(4,1)共4个黄金格。",
           "source": "GESP2025-12",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n  int H,W,x,c=0; cin>>H>>W>>x;\n  for(int r=1;r<=H;r++) for(int c2=1;c2<=W;c2++)\n    if(r*r+c2*c2<=(x+r-c2)*(x+r-c2)) c++;\n  cout<<c<<endl;\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "4\n4\n2",
-              "output": "4"
+              "expectedOutput": "4"
             }
           ]
         },
@@ -8949,12 +8949,12 @@ const QUESTION_BANK = {
           "explanation": "思路：完全平方数是某正整数平方的数。用i从1开始，若i×i在[l,r]内则计数；i×i超过r即停止。样例：1到21之间完全平方数为1、4、9、16，共4个。",
           "source": "GESP2026-06",
           "isJudge": false,
-          "answerText": null,
+          "answerText": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main(){\n  int l,r,c=0; cin>>l>>r;\n  for(int i=l;i<=r;i++){ int s=sqrt(i); if(s*s==i) c++; }\n  cout<<c<<endl;\n  return 0;\n}",
           "starterCode": null,
           "testCases": [
             {
               "input": "1\n21",
-              "output": "4"
+              "expectedOutput": "4"
             }
           ]
         }
