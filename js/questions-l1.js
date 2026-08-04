@@ -993,7 +993,7 @@ const QUESTION_BANK = {
           "explanation": "思路：先读入体积V、重量G、第一档运费M、第二档运费N四个数。按体积算的运费是V÷2；按重量算时，若G<300取M，否则取N。最后取两者中较小者作为答案，用%.1f保留一位小数输出。",
           "source": "GESP2025-12",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    double V,G,M,N;\n    cin>>V>>G>>M>>N;\n    double byVol=V/2.0;\n    double byWgt=(G<300)?M:N;\n    double ans=(byVol<byWgt)?byVol:byWgt;\n    printf(\"%.1f\\n\",ans);\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    double V,G,M,N;                 // 定义4个变量：体积V、重量G、第一档运费M、第二档运费N（都是小数）\n    cin>>V>>G>>M>>N;                // 读入体积、重量、M、N这4个数\n    double byVol=V/2.0;             // 按体积算运费：把体积除以2，得到按体积的运费\n    double byWgt=(G<300)?M:N;       // 按重量算运费：如果重量不到300克用M，达到或超过300克用N\n    double ans=(byVol<byWgt)?byVol:byWgt;  // 比较两种运费，选便宜的那个作为最终运费\n    printf(\"%.1f\\n\",ans);          // 输出最终运费，保留1位小数并换行\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -1016,7 +1016,7 @@ const QUESTION_BANK = {
           "explanation": "思路：先读入组数T，用循环处理每一组电量P。用分支判断：P<=10输出R；10<P<=20输出L；P>20直接输出P本身。每组输出后换行。",
           "source": "GESP2025-12",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int T; cin>>T;\n    while(T--){\n        int P; cin>>P;\n        if(P<=10) cout<<\"R\\n\";\n        else if(P<=20) cout<<\"L\\n\";\n        else cout<<P<<\"\\n\";\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int T; cin>>T;                  // 先读入一个整数T，表示一共有几组数据\n    while(T--){                     // 循环处理每组数据，每处理完一组T就减1，直到T变成0\n        int P; cin>>P;              // 读入这组数据的电量百分比P\n        if(P<=10) cout<<\"R\\n\";     // 电量不超过10时，显示字母R\n        else if(P<=20) cout<<\"L\\n\";// 电量在11到20之间时，显示字母L\n        else cout<<P<<\"\\n\";        // 电量超过20时，直接显示电量的数字\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -1128,7 +1128,7 @@ const QUESTION_BANK = {
           "explanation": "思路：先假定第2个小朋友H2离Alice最近，记下差距。然后依次比较H3、H4与Alice的差距：差距更小就换人，差距相同就选更矮的那个。遍历完输出最合适的身高。样例中Alice身高150，165和135差距都是15，选更矮的135。",
           "source": "GESP2026-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\nint main(){\n    int H1,H2,H3,H4;\n    cin>>H1>>H2>>H3>>H4;\n    int h[3]={H2,H3,H4};\n    int best=h[0], bestDiff=abs(h[0]-H1);\n    for(int i=1;i<3;i++){\n        int d=abs(h[i]-H1);\n        if(d<bestDiff || (d==bestDiff && h[i]<best)){\n            bestDiff=d; best=h[i];\n        }\n    }\n    cout<<best<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\nint main(){\n    int H1,H2,H3,H4;                // 定义4个身高变量，其中H1是Alice的身高\n    cin>>H1>>H2>>H3>>H4;            // 读入4个人的身高\n    int h[3]={H2,H3,H4};            // 把另外3个小朋友的身高放进数组h\n    int best=h[0], bestDiff=abs(h[0]-H1);  // 先假设第1个朋友身高最近，bestDiff记录身高差\n    for(int i=1;i<3;i++){           // 依次检查第2、第3个小朋友\n        int d=abs(h[i]-H1);         // 计算这个小朋友和Alice的身高差\n        if(d<bestDiff || (d==bestDiff && h[i]<best)){  // 如果差更小，或差相同但更矮，就换人\n            bestDiff=d; best=h[i];  // 更新最近的身高差和对应身高\n        }\n    }\n    cout<<best<<endl;               // 输出Alice要交朋友的那个身高\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -1147,7 +1147,7 @@ const QUESTION_BANK = {
           "explanation": "思路：从个位开始一位一位处理。每次取出当前数的个位，如果是4就换成8，否则原样保留，把这一位乘上对应的位权累加到结果里；然后去掉个位继续处理下一位，直到数为0。这样4都被换成了8，其他数字不变。",
           "source": "GESP2026-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    string s; cin>>s;\n    for(size_t i=0;i<s.size();i++){\n        if(s[i]=='4') s[i]='8';\n    }\n    cout<<s<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    string s; cin>>s;               // 把输入的数当成字符串s读入\n    for(size_t i=0;i<s.size();i++){ // 从头到尾看这个字符串的每一位\n        if(s[i]=='4') s[i]='8';     // 如果这一位是4，就把它改成8\n    }\n    cout<<s<<endl;                  // 输出改完的字符串\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2362,7 +2362,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用(x-1+n%7)%7+1一步求出考试是星期几，其中7表示星期日。验证：输入1和6得(0+6)%7+1=7；输入5和3得(4+3)%7+1=1，与样例输出一致。",
           "source": "GESP2023-12",
           "isJudge": false,
-          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int x, n;\n    scanf(\"%d%d\", &x, &n);\n    printf(\"%d\\n\", (x-1+n%7)%7+1);\n    return 0;\n}",
+          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int x, n;                       // 定义变量：x是今天星期几，n是距离考试还有几天\n    scanf(\"%d%d\", &x, &n);          // 读入今天星期几和剩余天数\n    printf(\"%d\\n\", (x-1+n%7)%7+1); // 把星期几变成数字，加上过去的天数，对7取余再加1，就是考试那天的星期几\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2444,7 +2444,7 @@ const QUESTION_BANK = {
           "explanation": "思路：一本书13元，m元最多能买m÷13本（整数除法取整），剩余m%13元。验证：100元买100÷13=7本余9元，199元买199÷13=15本余4元，与样例输出一致。",
           "source": "GESP2024-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main()\n{\n    int m;\n    cin >> m;\n    cout << m / 13 << endl;\n    cout << m % 13 << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main()\n{\n    int m;                          // 定义变量m，表示小杨有多少零用钱\n    cin >> m;                       // 读入零用钱金额\n    cout << m / 13 << endl;         // 一本书13元，用除法算出最多能买几本\n    cout << m % 13 << endl;         // 用取余算出买完书后还剩多少钱\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2600,7 +2600,7 @@ const QUESTION_BANK = {
           "explanation": "思路：把开始的时、分、秒全部换算成总秒数，加上学习时长k秒，再换算回时、分、秒输出。验证：12点59分59秒加10秒，正好进位得到13点00分09秒，与样例输出一致。",
           "source": "GESP2024-06",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int h,m,s;\n    cin>>h>>m>>s;\n    int k;\n    cin>>k;\n    int now=h*60*60+m*60+s;\n    now+=k;\n    int hh = now/3600;\n    now %= 3600;\n    int mm = now/60;\n    now %= 60;\n    cout<<hh<<\" \"<<mm<<\" \"<<now<<\"\\n\";\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int h,m,s;                      // 定义开始学习的时、分、秒\n    cin>>h>>m>>s;                   // 读入开始学习的时、分、秒\n    int k;                          // 定义变量k，表示学习多少秒\n    cin>>k;                         // 读入学习总秒数\n    int now=h*60*60+m*60+s;         // 把开始时刻全部换算成秒数\n    now+=k;                         // 加上学习的时间，得到休息时刻对应的秒数\n    int hh = now/3600;              // 用整除算出休息时刻是几点（1小时=3600秒）\n    now %= 3600;                    // 去掉整小时，剩下不足1小时的秒数\n    int mm = now/60;                // 用整除算出是多少分钟\n    now %= 60;                      // 剩下的就是多少秒\n    cout<<hh<<\" \"<<mm<<\" \"<<now<<\"\\n\";  // 输出休息时刻的时、分、秒\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2714,7 +2714,7 @@ const QUESTION_BANK = {
           "explanation": "思路：买相同数量的商品A和商品B，每一套要花a+b元，最多能买n/(a+b)套。验证：12元、单价1和2时12÷3=4套，13元时13÷3=4套，与样例输出一致。",
           "source": "GESP2024-09",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n,a,b;\n    cin>>n>>a>>b;\n    cout<<n/(a+b)<<\"\\n\";\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n,a,b;                      // 定义：总钱数n、A的单价a、B的单价b\n    cin>>n>>a>>b;                   // 读入这3个数\n    cout<<n/(a+b)<<\"\\n\";           // 买一个A和一个B要花a+b元，用总钱数除以它就是最多能买几对\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2758,7 +2758,7 @@ const QUESTION_BANK = {
           "explanation": "思路：把开始和结束时刻都换算成分钟（小时乘60加分钟），两者相减就是间隔的分钟数。验证：9点5分到9点6分为1分钟，9点5分到10点0分为55分钟，与样例输出一致。",
           "source": "GESP2023-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int h1,m1,h2,m2;\n    cin>>h1>>m1>>h2>>m2;\n    cout<<(h2*60+m2)-(h1*60+m1)<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int h1,m1,h2,m2;                // 定义开始时刻的时、分和结束时刻的时、分\n    cin>>h1>>m1>>h2>>m2;            // 依次读入这4个数\n    cout<<(h2*60+m2)-(h1*60+m1)<<endl;  // 都换算成分钟再相减，得到相差多少分钟\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2802,7 +2802,7 @@ const QUESTION_BANK = {
           "explanation": "思路：总价 = 2×x + 5×y + 3×z。若 q ≥ 总价，第一行输出Yes，第二行输出剩余钱数 q-总价；否则第一行输出No，第二行输出缺少的钱数 总价-q。用 if-else 分支即可实现。",
           "source": "GESP2023-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int x,y,z,q;\n    cin>>x>>y>>z>>q;\n    int cost=2*x+5*y+3*z;\n    if(q>=cost){\n        cout<<\"Yes\\n\"<<q-cost<<endl;\n    }else{\n        cout<<\"No\\n\"<<cost-q<<endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int x,y,z,q;                    // 定义：签字笔数量x、记事本数量y、直尺数量z、手里的钱q\n    cin>>x>>y>>z>>q;                // 读入这4个数\n    int cost=2*x+5*y+3*z;           // 计算一共要花多少钱（笔2元、本5元、尺3元）\n    if(q>=cost){                    // 如果手里的钱够买\n        cout<<\"Yes\\n\"<<q-cost<<endl;   // 输出Yes和剩下的钱\n    }else{                          // 如果钱不够\n        cout<<\"No\\n\"<<cost-q<<endl;    // 输出No和还差多少钱\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -2942,7 +2942,7 @@ const QUESTION_BANK = {
           "explanation": "思路：C=K-273.15，F=32+1.8×C。先算出F，若F>212则输出提示；否则用printf保留两位小数输出C和F。注意浮点运算和输出格式控制。",
           "source": "GESP2024-12",
           "isJudge": false,
-          "answerText": "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint main(){\n    double K; cin>>K;\n    double C=K-273.15;\n    double F=32+1.8*C;\n    if(F>212){\n        cout<<\"Temperature is too high!\"<<endl;\n    }else{\n        printf(\"%.2f %.2f\\n\",C,F);\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint main(){\n    double K; cin>>K;               // 读入开尔文温度K\n    double C=K-273.15;              // 用公式K=C+273.15，算出摄氏温度C\n    double F=32+1.8*C;              // 用公式F=32+1.8×C，算出华氏温度F\n    if(F>212){                      // 如果华氏温度超过212\n        cout<<\"Temperature is too high!\"<<endl;  // 输出提示：温度太高\n    }else{                          // 否则\n        printf(\"%.2f %.2f\\n\",C,F); // 输出摄氏温度和华氏温度，保留2位小数\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3062,7 +3062,7 @@ const QUESTION_BANK = {
           "explanation": "思路：老鼠y小时最多能啃完 y÷x 本（整除），因为啃完一本才开始啃下一本，所以实际啃坏 y÷x 本，剩下的完整书数为 n - y÷x。",
           "source": "GESP2025-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n,x,y;\n    cin>>n>>x>>y;\n    int eaten=(y+x-1)/x;\n    cout<<n-eaten<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n,x,y;                      // 定义：书的数量n、啃光一本书要x小时、经过y小时\n    cin>>n>>x>>y;                   // 读入这3个数\n    int eaten=(y+x-1)/x;            // 用“向上取整”的除法算出y小时里啃光了几本书\n    cout<<n-eaten<<endl;            // 用总书数减去被啃光的，就是剩下的完整书\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3086,7 +3086,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对x四舍五入到整十，看x%10是否大于等于5：若>=5则向上补到整十，否则向下舍去个位。用循环处理n个输入并逐个输出。",
           "source": "GESP2025-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;\n    while(n--){\n        int x; cin>>x;\n        cout<<(x+5)/10*10<<endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;                  // 读入一共有几个数\n    while(n--){                     // 每个数都处理一遍，处理一个就少一个\n        int x; cin>>x;              // 读入要四舍五入的数x\n        cout<<(x+5)/10*10<<endl;    // 先加5再除以10再乘10，得到四舍五入到整十的数\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3215,7 +3215,7 @@ const QUESTION_BANK = {
           "explanation": "思路：小A每天最多读k页，t天最多能读k×t页；但书总共只有n页，读的总页数不能超过n。所以答案是n和k×t中较小的那个，即min(n,k×t)。步骤：用cin读入n、k、t，令ans=k×t，若n<ans则ans=n，最后输出ans。样例1中n=8、k=3、t=2，k×t=6，min(8,6)=6。",
           "source": "GESP2025-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n,k,t;\n    cin>>n>>k>>t;\n    int pages=k*t;\n    if(pages>n) pages=n;\n    cout<<pages<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n,k,t;                      // 定义：书的总页数n、每天最多读k页、假期t天\n    cin>>n>>k>>t;                   // 读入这3个数\n    int pages=k*t;                  // 先算出假期最多能读的页数 = 每天页数 × 天数\n    if(pages>n) pages=n;            // 如果超过书的页数，就只能读完整本书（取n页）\n    cout<<pages<<endl;              // 输出能读的页数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3961,7 +3961,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用数组保存12个月天数，2月先按28天；再判断闰年：能被400整除，或能被4整除但不能被100整除，是闰年则2月为29天，最后输出对应月份天数。",
           "source": "GESP2023-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int y,m;\n    cin>>y>>m;\n    int days;\n    if(m==2){\n        bool leap=(y%400==0)||(y%4==0&&y%100!=0);\n        days=leap?29:28;\n    }else if(m==1||m==3||m==5||m==7||m==8||m==10||m==12){\n        days=31;\n    }else{\n        days=30;\n    }\n    cout<<days<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int y,m;                        // 定义变量：年份y、月份m\n    cin>>y>>m;                      // 读入年份和月份\n    int days;                       // 定义一个变量用来存这个月有几天\n    if(m==2){                       // 如果是2月，要看是不是闰年\n        bool leap=(y%400==0)||(y%4==0&&y%100!=0);  // 判断闰年：能被400整除，或能被4整除但不能被100整除\n        days=leap?29:28;            // 闰年2月有29天，平年2月有28天\n    }else if(m==1||m==3||m==5||m==7||m==8||m==10||m==12){  // 如果是这些月份\n        days=31;                    // 这个月有31天\n    }else{                          // 剩下的是4、6、9、11月\n        days=30;                    // 这个月有30天\n    }\n    cout<<days<<endl;               // 输出这个月有多少天\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4065,7 +4065,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用两个计数器odd和even，循环读n个数，若当前数%2==0则even加1，否则odd加1，最后输出odd和even，中间用空格间隔。",
           "source": "GESP2024-12",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;\n    int odd=0, even=0;\n    while(n--){\n        int x; cin>>x;\n        if(x%2) odd++; else even++;\n    }\n    cout<<odd<<\" \"<<even<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;                  // 读入一共有几个数\n    int odd=0, even=0;              // odd记录奇数个数，even记录偶数个数，一开始都是0\n    while(n--){                     // 每个数都检查一遍\n        int x; cin>>x;              // 读入一个数\n        if(x%2) odd++; else even++; // 除以2有余数就是奇数，否则是偶数，对应的计数加1\n    }\n    cout<<odd<<\" \"<<even<<endl;     // 输出奇数和偶数的个数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4123,7 +4123,7 @@ const QUESTION_BANK = {
           "explanation": "思路：先用变量读入四行输入x、y、n、p。方案一：如果p大于等于x，就减去y，否则不减；方案二：价格p乘以n再除以10，也就是打n折后的价钱。比较两个方案需要付的钱，取较小的那个，保留两位小数输出即可。",
           "source": "GESP2025-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint main(){\n    int x,y,n,p;\n    cin>>x>>y>>n>>p;\n    double c1=(p>=x)?(double)(p-y):(double)p;\n    double c2=p*n/10.0;\n    double ans=(c1<c2)?c1:c2;\n    printf(\"%.2f\\n\",ans);\n    return 0;\n}",
+          "answerText": "#include <iostream>\n#include <cstdio>\nusing namespace std;\nint main(){\n    int x,y,n,p;                    // 定义：满x减y、打n折、价格p\n    cin>>x>>y>>n>>p;                // 读入这4个数\n    double c1=(p>=x)?(double)(p-y):(double)p;  // 方案一：满x元就减y元，不够x元就按原价\n    double c2=p*n/10.0;             // 方案二：打n折，就是价格乘以n再除以10\n    double ans=(c1<c2)?c1:c2;       // 选两种方案中更便宜的那个\n    printf(\"%.2f\\n\",ans);          // 输出结果，保留2位小数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4547,7 +4547,7 @@ const QUESTION_BANK = {
           "explanation": "思路：for循环让i从1到N，若i%M不等于0则输出i，即跳过所有M的倍数，其余正常输出，每行一个数。",
           "source": "GESP2023-12",
           "isJudge": false,
-          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int n, m, i;\n    scanf(\"%d%d\", &n, &m);\n    for(i=1; i<=n; i++)\n    {\n        if(i%m!=0) printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
+          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int n, m, i;                    // 定义：从1报到n，跳过m的倍数\n    scanf(\"%d%d\", &n, &m);          // 读入n和m\n    for(i=1; i<=n; i++)             // 从1开始一直报到n\n    {\n        if(i%m!=0) printf(\"%d\\n\", i);  // 如果i不是m的倍数，就把i报出来\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4705,7 +4705,7 @@ const QUESTION_BANK = {
           "explanation": "思路：循环i从1到a，若a%i==0则输出i，这样自然从小到大输出a的所有约数，例如a=6时输出1、2、3、6。",
           "source": "GESP2024-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int a;\n    cin >> a;\n    for (int i = 1; i <= a; ++i) {\n        if (a % i == 0) {\n            cout << i << endl;\n        }\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int a;                          // 定义变量a，表示要求因数的那个数\n    cin >> a;                       // 读入a\n    for (int i = 1; i <= a; ++i) {  // 从1试到a，检查每个数\n        if (a % i == 0) {           // 如果a能被i整除，说明i是a的因数\n            cout << i << endl;      // 输出这个因数\n        }\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4849,7 +4849,7 @@ const QUESTION_BANK = {
           "explanation": "思路：循环x从1到n，逐个检查x×x×x是否等于n，找到就输出Yes并结束，循环结束都没找到则输出No。",
           "source": "GESP2024-06",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    int fl=0;\n    for(int i=1;i<=n;i++){\n        if(i*i*i==n){\n            fl=1;\n            break;\n        }\n    }\n    if(fl)cout<<\"Yes\\n\";\n    else cout<<\"No\\n\";\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;                          // 定义变量n\n    cin>>n;                         // 读入n\n    int fl=0;                       // fl是标记：0表示没找到，1表示找到了\n    for(int i=1;i<=n;i++){          // 从1试到n\n        if(i*i*i==n){               // 如果i的三次方正好等于n\n            fl=1;                   // 标记找到了\n            break;                  // 不用再找了，跳出循环\n        }\n    }\n    if(fl)cout<<\"Yes\\n\";           // 找到了就输出Yes\n    else cout<<\"No\\n\";             // 没找到就输出No\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5067,7 +5067,7 @@ const QUESTION_BANK = {
           "explanation": "思路：循环读入n个正整数，对每个数x判断x%9==0且x%8!=0，满足则答案ans加1，最后输出ans。",
           "source": "GESP2024-09",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    int ans=0;\n    for(int i=1;i<=n;i++){\n        int x;\n        cin>>x;\n        if(x%9==0&&x%8!=0)ans++;\n    }\n    cout<<ans<<\"\\n\";\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;                          // 定义n，表示有几个数\n    cin>>n;                         // 读入n\n    int ans=0;                      // ans用来记录美丽数字的个数，一开始是0\n    for(int i=1;i<=n;i++){          // 依次处理每个数\n        int x;                      // 定义变量x\n        cin>>x;                     // 读入这个数\n        if(x%9==0&&x%8!=0)ans++;    // 能被9整除但不能被8整除，就是美丽数字，计数加1\n    }\n    cout<<ans<<\"\\n\";               // 输出美丽数字的个数\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5127,7 +5127,7 @@ const QUESTION_BANK = {
           "explanation": "思路：从1到A枚举长L，如果A能被L整除且宽W=A÷L不大于L，则计数加1。例如面积4可分成1×4、2×2共2种，面积6可分成1×6、2×3共2种，输出计数C。",
           "source": "GESP2023-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int A; cin>>A;\n    int cnt=0;\n    for(int i=1;i*i<=A;i++){\n        if(A%i==0) cnt++;\n    }\n    cout<<cnt<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int A; cin>>A;                  // 读入长方形的面积A\n    int cnt=0;                      // cnt记录有多少种长方形，一开始是0\n    for(int i=1;i*i<=A;i++){        // 只需要试到根号A，因为约定长大于等于宽\n        if(A%i==0) cnt++;           // 如果i能整除A，就找到一种长宽组合\n    }\n    cout<<cnt<<endl;                // 输出方案数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5191,7 +5191,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用双层循环，外层i从1到n，内层j从1到i累加得到1+2+…+i，再把这个和累加到答案中。如n=3时1+3+6=10，n=4时1+3+6+10=20，最后输出总和。",
           "source": "GESP2023-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;\n    int total=0, prefix=0;\n    for(int i=1;i<=n;i++){\n        prefix+=i;\n        total+=prefix;\n    }\n    cout<<total<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;                  // 读入n\n    int total=0, prefix=0;          // total存最终答案，prefix存1加到i的和，都从0开始\n    for(int i=1;i<=n;i++){          // 从1到n\n        prefix+=i;                  // 先算1+2+...+i，存到prefix\n        total+=prefix;              // 再把这段和累加到total里\n    }\n    cout<<total<<endl;              // 输出总和\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5357,7 +5357,7 @@ const QUESTION_BANK = {
           "explanation": "思路：从L到R遍历每个数，若该数能被k整除，或该数的个位数字等于k，就把它累加到答案中，最后输出总和。如k=7、范围10到20时，14是7的倍数、17个位是7，和为31。",
           "source": "GESP2023-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int k,L,R;\n    cin>>k>>L>>R;\n    long long sum=0;\n    for(int i=L;i<=R;i++){\n        if(i%k==0 || i%10==k) sum+=i;\n    }\n    cout<<sum<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int k,L,R;                      // 定义：个位数k、范围L到R\n    cin>>k>>L>>R;                   // 读入这3个数\n    long long sum=0;                // sum存幸运数之和，用long long防止数太大\n    for(int i=L;i<=R;i++){          // 从L到R检查每个数\n        if(i%k==0 || i%10==k) sum+=i;   // 是k的倍数，或个位数是k，就加到总和里\n    }\n    cout<<sum<<endl;                // 输出幸运数之和\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5846,7 +5846,7 @@ const QUESTION_BANK = {
           "explanation": "思路：小杨每m天值日，小红每n天值日，两人再次同一天值日需要经过的天数，就是m和n的最小公倍数（LCM）。因为m、n不超过100，可以直接枚举：从较大的那个数开始往上找，找到第一个既能被m整除又能被n整除的数就是答案。做法：用循环从max(m,n)开始，逐个数检查i%m==0且i%n==0，找到后输出并结束。样例中4和6的最小公倍数是12。",
           "source": "GESP2025-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint gcd(int a,int b){ return b==0?a:gcd(b,a%b); }\nint main(){\n    int m,n; cin>>m>>n;\n    cout<<m/gcd(m,n)*n<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint gcd(int a,int b){ return b==0?a:gcd(b,a%b); }  // 用“辗转相除法”求两个数的最大公约数\nint main(){\n    int m,n; cin>>m>>n;             // 读入两个值日周期m和n\n    cout<<m/gcd(m,n)*n<<endl;       // 用公式算最小公倍数 = m ÷ 最大公约数 × n\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -6117,7 +6117,7 @@ const QUESTION_BANK = {
           "explanation": "思路：从塔底向上数，第1层需要1块，第2层需要2的平方也就是4块，第i层需要i的平方块。用一个循环让i从1到n，把i乘以i的结果累加到答案里，循环结束后输出答案。例如n等于5时，1+4+9+16+25等于55。",
           "source": "GESP2025-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;\n    long long sum=0;\n    for(int i=1;i<=n;i++) sum+=1LL*i*i;\n    cout<<sum<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    int n; cin>>n;                  // 读入金字塔的层数n\n    long long sum=0;                // sum存需要的石块总数\n    for(int i=1;i<=n;i++) sum+=1LL*i*i;  // 第i层需要i×i块石头，把1²+2²+...+n²都加起来\n    cout<<sum<<endl;                // 输出石块总数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -6483,7 +6483,7 @@ const QUESTION_BANK = {
           "explanation": "完全平方数就是某个正整数的平方，比如 1×1=1、2×2=4、3×3=9。从 i=1 开始枚举，只要 i×i 不超过 r 就继续，若 i×i 不小于 l 就把答案加 1。样例 l=1、r=21 中，1、4、9、16 四个数都是完全平方数，答案输出 4。",
           "source": "GESP2026-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    long long l,r;\n    cin>>l>>r;\n    int cnt=0;\n    for(long long i=1;i*i<=r;i++){\n        if(i*i>=l) cnt++;\n    }\n    cout<<cnt<<endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main(){\n    long long l,r;                  // 定义范围l到r\n    cin>>l>>r;                      // 读入l和r\n    int cnt=0;                      // cnt记录完全平方数的个数\n    for(long long i=1;i*i<=r;i++){  // 从1开始，i的平方不能超过r\n        if(i*i>=l) cnt++;           // 如果i的平方在l到r之间，就算一个\n    }\n    cout<<cnt<<endl;                // 输出个数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -6502,7 +6502,7 @@ const QUESTION_BANK = {
           "explanation": "菱形占 2n-1 行、2n-1 列。对每个格子 (i,j) 判断它是否在菱形四条边上：满足 i+j==n+1、i+j==3n-1、i-j==n-1、j-i==n-1 中任意一个就输出 +，否则输出 .。用两层循环逐行逐列判断即可，规律就是四条斜边上的坐标和或差等于固定值。",
           "source": "GESP2026-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\nint main(){\n    int n; cin>>n;\n    int size=2*n-1;\n    for(int row=0;row<size;row++){\n        int dist=n-1-abs(row-(n-1));\n        for(int col=0;col<size;col++){\n            if(col==n-1-dist || col==n-1+dist) cout<<'+';\n            else cout<<'.';\n        }\n        cout<<'\\n';\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\n#include <cstdlib>\nusing namespace std;\nint main(){\n    int n; cin>>n;                  // 读入菱形边长n\n    int size=2*n-1;                 // 整个画布有2n-1行、2n-1列\n    for(int row=0;row<size;row++){  // 从上到下处理每一行\n        int dist=n-1-abs(row-(n-1));    // 计算这一行离中心有多远（决定+画在哪两个位置）\n        for(int col=0;col<size;col++){  // 从左到右处理每一列\n            if(col==n-1-dist || col==n-1+dist) cout<<'+';  // 如果是菱形边缘就画+\n            else cout<<'.';             // 否则画.\n        }\n        cout<<'\\n';                // 每行结束换行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {

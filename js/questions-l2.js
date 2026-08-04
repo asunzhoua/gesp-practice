@@ -3749,7 +3749,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用ch从0开始计数，外层循环i控制行数（1到n），内层循环j控制每行字母个数（第i行有i个）。输出时把ch转成大写字母，即(char)('A'+(ch++)%26)，取%26保证Z之后回到A。每行结束输出换行。",
           "source": "GESP2023-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    int ch = 0; // 定义ch计数\n    for (int i = 1; i <= n; i++) { // 外层循环：三角形共有n行\n        for (int j = 1; j <= i; j++) {\n            cout << (char)('A' + (ch++) % 26); // 将计数值转换为大写字母\n        }\n        cout << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;                          // 定义变量n，表示三角形有几行\n    cin >> n;                       // 读入行数n\n    int ch = 0;                     // ch用来数“已经输出了几个字母”，从0开始\n    for (int i = 1; i <= n; i++) {  // 外层循环：画第i行，i从1到n\n        for (int j = 1; j <= i; j++) {   // 内层循环：第i行要画i个字母\n            cout << (char)('A' + (ch++) % 26);  // 把计数变成字母：0=A、1=B……25=Z，到Z后回到A\n        }\n        cout << endl;               // 这一行画完了，换到下一行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3773,7 +3773,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用两层循环枚举公鸡数量gj和母鸡数量mj，条件保证花销不超过n且鸡总数不超过m。由剩余钱数算出小鸡数量xj=(n-gj×x-mj×y)*z，再判断gj+mj+xj是否等于m，若相等方案数加1。枚举结束后输出cnt。",
           "source": "GESP2023-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int x, y, z, n, m, cnt = 0;\n    cin >> x >> y >> z >> n >> m;\n    // 枚举公鸡数量，花销和只数都不能超过限制\n    for (int gj = 0; gj * x <= n && gj <= m; gj++)\n        // 枚举母鸡数量\n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) {\n            int xj = (n - gj * x - mj * y) * z; // 计算小鸡数量\n            if (gj + mj + xj == m) // 判断总数是否等于m\n                cnt++; // 方案数加1\n        }\n    cout << cnt << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int x, y, z, n, m, cnt = 0;     // 定义：公鸡x元、母鸡y元、z只小鸡1元、钱n元、共m只鸡，cnt记录方案数\n    cin >> x >> y >> z >> n >> m;   // 读入这5个数\n    // 枚举公鸡数量，花销和只数都不能超过限制\n    for (int gj = 0; gj * x <= n && gj <= m; gj++)   // 试公鸡0只、1只、2只……，钱和只数都不能超\n        // 枚举母鸡数量\n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) {  // 公鸡定了后，再试母鸡的只数\n            int xj = (n - gj * x - mj * y) * z; // 用剩下的钱算出能买多少只小鸡\n            if (gj + mj + xj == m) // 判断三种鸡的总数是否正好等于m\n                cnt++; // 方案数加1\n        }\n    cout << cnt << endl;            // 输出共有多少种方案\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3855,7 +3855,7 @@ const QUESTION_BANK = {
           "explanation": "思路：从A到B枚举每个数n，用isPrime标记它是否是素数，初始为true。判断时只需枚举i从2到根号n，若n能整除i则isPrime=false并跳出。n是素数就cnt加1，最后输出cnt。",
           "source": "GESP2023-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int a = 0, b = 0, cnt = 0;\n    cin >> a >> b;\n    for (int n = a; n <= b; n++) {\n        bool isPrime = true; // 先假设n是素数\n        for (int i = 2; i * i <= n; i++) { // 只需检查到根号n\n            if (n % i == 0) {\n                isPrime = false;\n                break;\n            }\n        }\n        if (isPrime)\n            cnt++; // 统计素数个数\n    }\n    cout << cnt << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int a = 0, b = 0, cnt = 0;      // 定义范围a到b，cnt记录素数的个数\n    cin >> a >> b;                  // 读入a和b\n    for (int n = a; n <= b; n++) {  // 把a到b之间的每个数n都检查一遍\n        bool isPrime = true; // 先假设n是素数\n        for (int i = 2; i * i <= n; i++) { // 只需检查到根号n\n            if (n % i == 0) {       // 如果n能被i整除，说明n不是素数\n                isPrime = false;    // 标记为不是素数\n                break;              // 不用再往下检查了\n            }\n        }\n        if (isPrime)                // 如果检查完还是素数标记\n            cnt++; // 统计素数个数  // 素数的个数加1\n    }\n    cout << cnt << endl;            // 输出素数的个数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -3879,7 +3879,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对每个数n，先把它不断除以10统计位数l；再用while循环每次取个位d，用内层for循环求d的l次方并累加到sum；最后若sum等于n则输出T，否则输出F。",
           "source": "GESP2023-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int m = 0;\n    cin >> m;\n    for (int i = 0; i < m; i++) {\n        int n = 0;\n        cin >> n;\n        // 数一下n有多少位数，记为l\n        int t = n, l = 0;\n        while (t > 0) {\n            t /= 10;\n            l++;\n        }\n        // 每位数l次方求和，记为sum\n        int sum = 0;\n        t = n;\n        while (t > 0) {\n            int d = t % 10;\n            t /= 10;\n            int mul = 1;\n            for (int j = 0; j < l; j++)\n                mul *= d;\n            sum += mul;\n        }\n        // 判断是否为自幂数\n        if (sum == n)\n            cout << \"T\" << endl;\n        else\n            cout << \"F\" << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int m = 0;                      // 定义m，表示要判断几个数\n    cin >> m;                       // 读入m\n    for (int i = 0; i < m; i++) {   // 依次处理每个数\n        int n = 0;                  // 定义变量n\n        cin >> n;                   // 读入要判断的数n\n        // 数一下n有多少位数，记为l\n        int t = n, l = 0;           // 用t复制n，l用来数位数\n        while (t > 0) {             // 只要t还没变成0\n            t /= 10;                // 去掉t的最后一位\n            l++;                    // 位数加1\n        }\n        // 每位数l次方求和，记为sum\n        int sum = 0;                // sum存各位数字的l次方之和\n        t = n;                      // 重新把n复制给t\n        while (t > 0) {             // 取出每一位数字\n            int d = t % 10;         // 取t的个位数d\n            t /= 10;                // 去掉已经取过的个位\n            int mul = 1;            // mul用来算d的l次方，从1开始乘\n            for (int j = 0; j < l; j++)  // 连续乘l次\n                mul *= d;           // 每次都乘以d，得到d的l次方\n            sum += mul;             // 把结果加到总和里\n        }\n        // 判断是否为自幂数\n        if (sum == n)               // 如果各位数字次方之和等于原数\n            cout << \"T\" << endl;    // 是自幂数，输出T\n        else\n            cout << \"F\" << endl;    // 不是自幂数，输出F\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4137,7 +4137,7 @@ const QUESTION_BANK = {
           "explanation": "思路：双层循环i、j从0到n-1。主对角线条件是i==j，副对角线条件是i+j==n-1，满足任一就输出+，否则输出-。每行结束后换行。",
           "source": "GESP2023-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0;\n    cin >> n;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j || i + j == n - 1) // 主对角线或副对角线\n                cout << \"+\";\n            else\n                cout << \"-\";\n        }\n        cout << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0;                      // 定义矩阵边长n\n    cin >> n;                       // 读入n\n    for (int i = 0; i < n; i++) {   // 外层循环：第i行，i从0到n-1\n        for (int j = 0; j < n; j++) {   // 内层循环：第j列\n            if (i == j || i + j == n - 1) // 主对角线或副对角线\n                cout << \"+\";        // 在对角线上就输出+\n            else\n                cout << \"-\";        // 不在对角线上就输出-\n        }\n        cout << endl;               // 一行画完，换行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4161,7 +4161,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用变量t记录变换次数，每轮先判断n是否等于495，是则输出t结束。否则取出个、十、百位，按大小分成最大数和最小数，用差值更新n并让t加1，循环直到得到495。",
           "source": "GESP2023-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0;\n    cin >> n;\n    for (int t = 0; ; t++) {\n        if (n == 495) {\n            cout << t << endl;\n            break;\n        }\n        int m0 = n % 10, m1 = n / 10 % 10, m2 = n / 100; // 个位、十位、百位\n        int tmax = 0, tmin = 0;\n        // 按三个数字的大小排列出最大值和最小值\n        if (m0 >= m1 && m1 >= m2) {\n            tmax = m0 * 100 + m1 * 10 + m2;\n            tmin = m2 * 100 + m1 * 10 + m0;\n        } else if (m0 >= m2 && m2 >= m1) {\n            tmax = m0 * 100 + m2 * 10 + m1;\n            tmin = m1 * 100 + m2 * 10 + m0;\n        } else if (m1 >= m0 && m0 >= m2) {\n            tmax = m1 * 100 + m0 * 10 + m2;\n            tmin = m2 * 100 + m0 * 10 + m1;\n        } else if (m1 >= m2 && m2 >= m0) {\n            tmax = m1 * 100 + m2 * 10 + m0;\n            tmin = m0 * 100 + m2 * 10 + m1;\n        } else if (m2 >= m0 && m0 >= m1) {\n            tmax = m2 * 100 + m0 * 10 + m1;\n            tmin = m1 * 100 + m0 * 10 + m2;\n        } else {\n            tmax = m2 * 100 + m1 * 10 + m0;\n            tmin = m0 * 100 + m1 * 10 + m2;\n        }\n        n = tmax - tmin; // 更新为新的三位数\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0;                      // 定义变量n，存放当前的三位数\n    cin >> n;                       // 读入初始三位数\n    for (int t = 0; ; t++) {        // t记录变换次数；这是一个一直循环的循环\n        if (n == 495) {             // 如果已经变成495\n            cout << t << endl;      // 输出变换次数\n            break;                  // 结束循环\n        }\n        int m0 = n % 10, m1 = n / 10 % 10, m2 = n / 100; // 个位、十位、百位\n        int tmax = 0, tmin = 0;     // tmax存重新排出的最大数，tmin存最小数\n        // 按三个数字的大小排列出最大值和最小值\n        if (m0 >= m1 && m1 >= m2) { // 个位≥十位≥百位时\n            tmax = m0 * 100 + m1 * 10 + m2;  // 最大数按 大、中、小 排\n            tmin = m2 * 100 + m1 * 10 + m0;  // 最小数按 小、中、大 排\n        } else if (m0 >= m2 && m2 >= m1) {   // 个位≥百位≥十位时\n            tmax = m0 * 100 + m2 * 10 + m1;  // 最大数按 大、中、小 排\n            tmin = m1 * 100 + m2 * 10 + m0;  // 最小数按 小、中、大 排\n        } else if (m1 >= m0 && m0 >= m2) {   // 十位≥个位≥百位时\n            tmax = m1 * 100 + m0 * 10 + m2;  // 最大数按 大、中、小 排\n            tmin = m2 * 100 + m0 * 10 + m1;  // 最小数按 小、中、大 排\n        } else if (m1 >= m2 && m2 >= m0) {   // 十位≥百位≥个位时\n            tmax = m1 * 100 + m2 * 10 + m0;  // 最大数按 大、中、小 排\n            tmin = m0 * 100 + m2 * 10 + m1;  // 最小数按 小、中、大 排\n        } else if (m2 >= m0 && m0 >= m1) {   // 百位≥个位≥十位时\n            tmax = m2 * 100 + m0 * 10 + m1;  // 最大数按 大、中、小 排\n            tmin = m1 * 100 + m0 * 10 + m2;  // 最小数按 小、中、大 排\n        } else {                    // 最后一种：百位≥十位≥个位\n            tmax = m2 * 100 + m1 * 10 + m0;  // 最大数按 大、中、小 排\n            tmin = m0 * 100 + m1 * 10 + m2;  // 最小数按 小、中、大 排\n        }\n        n = tmax - tmin; // 更新为新的三位数  // 用最大数减最小数，得到新的三位数\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4439,7 +4439,7 @@ const QUESTION_BANK = {
           "explanation": "思路：设第i天做题c_i，递推c_i=c_{i-1}+c_{i-2}，并用ans累加。从第3天起用循环依次求出每天的题目数，一旦某天题目数c达到或超过m，则当天算入总和后直接退出循环（之后不再做题）。最后输出ans。注意数据可能较大，累加和用long long。",
           "source": "GESP2023-12",
           "isJudge": false,
-          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    long long a=0, b=0, m=0, n=0, ans=0, c=0, i;\n    scanf(\"%lld%lld%lld%lld\", &a, &b, &m, &n);\n    ans = a+b;\n    for(i=3; i<=n; i++)\n    {\n        c = a+b;\n        ans += c;\n        a = b;\n        b = c;\n        if(c>=m) break;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}",
+          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    long long a=0, b=0, m=0, n=0, ans=0, c=0, i;  // a第1天题数、b第2天题数、m停止线、n共几天、ans总题数、c今天题数\n    scanf(\"%lld%lld%lld%lld\", &a, &b, &m, &n);    // 读入a、b、m、n\n    ans = a+b;                      // 先把前两天的题数加起来\n    for(i=3; i<=n; i++)             // 从第3天开始，一直到第n天\n    {\n        c = a+b;                    // 今天做的题 = 前两天做的题相加\n        ans += c;                   // 把今天的题数加进总数\n        a = b;                      // 昨天的题数变成“前天”\n        b = c;                      // 今天的题数变成“昨天”，为下一天做准备\n        if(c>=m) break;             // 如果某天做题数达到m，以后就不做了，结束循环\n    }\n    printf(\"%lld\\n\", ans);         // 输出总共做的题数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4463,7 +4463,7 @@ const QUESTION_BANK = {
           "explanation": "思路：逐行逐列输出字符。先输出上(n+1)/2-1行：每行开头和结尾是|，中间都是a；再输出中间一行：两端是|、中间是-；最后输出下(n+1)/2行：两端是|、中间是a。每行输出完换行。也可用条件判断：列j为1或n输出|，行i为中间行输出-，否则输出a。",
           "source": "GESP2023-12",
           "isJudge": false,
-          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for(i=1; i<=(n+1)/2-1; i++)\n    {\n        printf(\"|\");\n        for(j=2; j<=n-1; j++) printf(\"a\");\n        printf(\"|\\n\");\n    }\n    printf(\"|\");\n    for(j=2; j<=n-1; j++) printf(\"-\");\n    printf(\"|\\n\");\n    for(i=(n+1)/2+1; i<=n; i++)\n    {\n        printf(\"|\");\n        for(j=2; j<=n-1; j++) printf(\"a\");\n        printf(\"|\\n\");\n    }\n    return 0;\n}",
+          "answerText": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int n, i, j;                    // 定义边长n，循环变量i、j\n    scanf(\"%d\", &n);                // 读入n\n    for(i=1; i<=(n+1)/2-1; i++)     // 先画中间横线上面那几行\n    {\n        printf(\"|\");                // 每行最左边输出|\n        for(j=2; j<=n-1; j++) printf(\"a\");  // 中间的位置都输出a\n        printf(\"|\\n\");             // 每行最右边输出|，然后换行\n    }\n    printf(\"|\");                    // 中间那一行最左边输出|\n    for(j=2; j<=n-1; j++) printf(\"-\");   // 中间那一行全部输出-\n    printf(\"|\\n\");                 // 中间一行最右边输出|，换行\n    for(i=(n+1)/2+1; i<=n; i++)     // 再画中间横线下面那几行\n    {\n        printf(\"|\");                // 每行最左边输出|\n        for(j=2; j<=n-1; j++) printf(\"a\");  // 中间的位置都输出a\n        printf(\"|\\n\");             // 每行最右边输出|，然后换行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4683,7 +4683,7 @@ const QUESTION_BANK = {
           "explanation": "思路：逐行逐列判断字符。列j为第1列或第n列输出|；否则若行i为第1行、第n行或中间行(n+1)/2输出-；否则输出x。每行结束输出换行。用双重for循环即可完成。",
           "source": "GESP2024-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            char ch;\n            if (j == 0 || j == n - 1) ch = '|';\n            else if (i == 0 || i == n - 1 || i == n / 2) ch = '-';\n            else ch = 'x';\n            cout << ch;\n        }\n        cout << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;                          // 定义矩阵边长n\n    cin >> n;                       // 读入n\n    for (int i = 0; i < n; ++i) {   // 外层循环：第i行\n        for (int j = 0; j < n; ++j) {   // 内层循环：第j列\n            char ch;                // ch存放这个位置要画的字符\n            if (j == 0 || j == n - 1) ch = '|';        // 最左、最右两列画|\n            else if (i == 0 || i == n - 1 || i == n / 2) ch = '-';  // 第一行、最后一行、中间一行画-\n            else ch = 'x';          // 其余位置画x\n            cout << ch;             // 输出这个字符\n        }\n        cout << endl;               // 一行画完，换行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -4919,7 +4919,7 @@ const QUESTION_BANK = {
           "explanation": "思路：从1到n逐个检查每个数，用一个函数统计该数的十进制表示中数字k出现的次数：每次取个位与k比较，相等则计数加1，然后除以10去掉个位。把所有数的计数累加即得答案。",
           "source": "GESP2024-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint check(int x, int y) {\n    int cnt = 0;\n    while (x > 0) {\n        int tmp = x % 10;\n        if (tmp == y) cnt++;\n        x = x / 10;\n    }\n    return cnt;\n}\nint main() {\n    int n, k;\n    cin >> n >> k;\n    int ans = 0;\n    for (int i = 1; i <= n; i++) ans += check(i, k);\n    cout << ans << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint check(int x, int y) {           // 自定义函数：数一数x这个数里面出现几次数字y\n    int cnt = 0;                    // cnt记录出现次数\n    while (x > 0) {                 // 只要x还没拆完\n        int tmp = x % 10;           // 取出x的最后一位\n        if (tmp == y) cnt++;        // 如果这一位就是y，计数加1\n        x = x / 10;                 // 去掉最后一位\n    }\n    return cnt;                     // 返回一共出现了几次\n}\nint main() {\n    int n, k;                       // 定义：从1数到n，要找数字k\n    cin >> n >> k;                  // 读入n和k\n    int ans = 0;                    // ans记录数字k总共出现的次数\n    for (int i = 1; i <= n; i++) ans += check(i, k);  // 从1到n每个数都数一遍，把次数加起来\n    cout << ans << endl;            // 输出总次数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5189,7 +5189,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对每个读入的数，用while循环不断取个位并累加到tot，再除以10，求出各位数字之和。若tot%7==0输出Yes，否则输出No。外层循环处理n个数。",
           "source": "GESP2024-09",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    int ans=0;\n    for(int i=1;i<=n;i++){\n        int x;\n        cin>>x;\n        int tot=0;\n        while(x){ tot+=(x%10); x/=10; }\n        if(tot%7==0) cout<<\"Yes\\n\";\n        else cout<<\"No\\n\";\n    }\n    return 0;\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;                          // 定义n，表示有几个数\n    cin>>n;                         // 读入n\n    int ans=0;                      // ans记录美丽数字的个数\n    for(int i=1;i<=n;i++){          // 依次处理每个数\n        int x;                      // 定义变量x\n        cin>>x;                     // 读入这个数\n        int tot=0;                  // tot用来存各位数字的和\n        while(x){ tot+=(x%10); x/=10; }  // 把x的每一位都取出来加到tot里，直到x变成0\n        if(tot%7==0) cout<<\"Yes\\n\"; // 如果数位和是7的倍数，就是美丽数字\n        else cout<<\"No\\n\";         // 否则不是\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5209,7 +5209,7 @@ const QUESTION_BANK = {
           "explanation": "思路：逐行逐列判断字符。若列j为第1列或第n列输出+；否则若行i等于列j（主对角线）也输出+；其余位置输出-。每行结束后换行。用双重for循环实现即可。",
           "source": "GESP2024-09",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    for(int i=1;i<=n;i++){\n        for(int j=1;j<=n;j++){\n            if(j==1||j==n) cout<<\"+\";\n            else{\n                if(i==j) cout<<\"+\";\n                else cout<<\"-\";\n            }\n        }\n        cout<<\"\\n\";\n    }\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;                          // 定义矩阵边长n\n    cin>>n;                         // 读入n\n    for(int i=1;i<=n;i++){          // 外层循环：第i行\n        for(int j=1;j<=n;j++){      // 内层循环：第j列\n            if(j==1||j==n) cout<<\"+\";   // 第一列和最后一列画+\n            else{\n                if(i==j) cout<<\"+\"; // 主对角线（行号=列号）画+\n                else cout<<\"-\";     // 其余位置画-\n            }\n        }\n        cout<<\"\\n\";                // 一行画完，换行\n    }\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5267,7 +5267,7 @@ const QUESTION_BANK = {
           "explanation": "思路：把大写字母看成编号0~25。外层循环i控制行数1~n，内层循环j控制第i行输出i个字母；用一个计数器ch从0开始，每次输出(char)('A'+ch%26)后再自增，ch%26保证到Z之后回到A。每行结束输出换行。",
           "source": "GESP2023-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n; cin >> n;\n    int ch = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= i; j++)\n            cout << (char)('A' + (ch++) % 26);\n        cout << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n; cin >> n;                // 读入三角形的行数n\n    int ch = 0;                     // ch用来数已经输出了几个字母，从0开始\n    for (int i = 1; i <= n; i++) {  // 外层循环：画第i行\n        for (int j = 1; j <= i; j++)    // 内层循环：第i行要画i个字母\n            cout << (char)('A' + (ch++) % 26);  // 把计数变成字母：0=A、1=B……25=Z，到Z后回到A\n        cout << endl;               // 这一行画完，换行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5291,7 +5291,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用两层循环枚举公鸡数gj和母鸡数mj，先根据钱数算出能买的小鸡数xj=(n-gj×x-mj×y)*z，再判断三种鸡总数gj+mj+xj是否等于m，相等则方案数加1。枚举时利用gj×x<=n且gj<=m、mj×y+gj×x<=n且mj+gj<=m来减少无效循环。",
           "source": "GESP2023-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int x, y, z, n, m, cnt = 0;\n    cin >> x >> y >> z >> n >> m;\n    for (int gj = 0; gj * x <= n && gj <= m; gj++)\n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) {\n            int xj = (n - gj * x - mj * y) * z;\n            if (gj + mj + xj == m) cnt++;\n        }\n    cout << cnt << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int x, y, z, n, m, cnt = 0;     // 公鸡x元、母鸡y元、z只小鸡1元、钱n元、共m只鸡，cnt记录方案数\n    cin >> x >> y >> z >> n >> m;   // 读入这5个数\n    for (int gj = 0; gj * x <= n && gj <= m; gj++)  // 试公鸡0只、1只、2只……，钱和只数都不能超\n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) {  // 公鸡定了后，再试母鸡的只数\n            int xj = (n - gj * x - mj * y) * z;     // 用剩下的钱算出能买多少只小鸡\n            if (gj + mj + xj == m) cnt++;           // 三种鸡加起来正好m只，方案数加1\n        }\n    cout << cnt << endl;            // 输出方案数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5413,7 +5413,7 @@ const QUESTION_BANK = {
           "explanation": "思路：枚举A到B的每个数n，用isPrime标记它是否为素数，初始为true。判断因数时只需枚举2到根号n，因为因数成对出现；一旦找到n的因数就把isPrime设为false并break。isPrime仍为true则计数加1，最后输出cnt。",
           "source": "GESP2023-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int a = 0, b = 0, cnt = 0;\n    cin >> a >> b;\n    for (int n = a; n <= b; n++) {\n        bool isPrime = true;\n        for (int i = 2; i * i <= n; i++) {\n            if (n % i == 0) { isPrime = false; break; }\n        }\n        if (isPrime) cnt++;\n    }\n    cout << cnt << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int a = 0, b = 0, cnt = 0;      // 范围a到b，cnt记录素数的个数\n    cin >> a >> b;                  // 读入a和b\n    for (int n = a; n <= b; n++) {  // 把a到b之间每个数都检查一遍\n        bool isPrime = true;        // 先假设n是素数\n        for (int i = 2; i * i <= n; i++) {  // 只用试到根号n就行\n            if (n % i == 0) { isPrime = false; break; }  // 能被i整除就不是素数，标记并跳出\n        }\n        if (isPrime) cnt++;         // 还是素数就计数加1\n    }\n    cout << cnt << endl;            // 输出素数个数\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5437,7 +5437,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对每个数n，先用while循环不断除以10数出位数l；再用while循环每次取个位数字d，用内层for循环计算d的l次方并累加到sum；最后如果sum==n就输出T，否则输出F。输入一个判断一个即可。",
           "source": "GESP2023-06",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int m = 0; cin >> m;\n    for (int i = 0; i < m; i++) {\n        int n = 0; cin >> n;\n        int t = n, l = 0;\n        while (t > 0) { t /= 10; l++; }\n        int sum = 0; t = n;\n        while (t > 0) {\n            int d = t % 10; t /= 10;\n            int mul = 1;\n            for (int j = 0; j < l; j++) mul *= d;\n            sum += mul;\n        }\n        if (sum == n) cout << \"T\" << endl;\n        else cout << \"F\" << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int m = 0; cin >> m;            // 读入要判断几个数m\n    for (int i = 0; i < m; i++) {   // 依次处理每个数\n        int n = 0; cin >> n;        // 读入要判断的数n\n        int t = n, l = 0;           // t复制n，l用来数n有几位\n        while (t > 0) { t /= 10; l++; }  // 每次去掉一位，数出位数l\n        int sum = 0; t = n;         // sum存各位数字次方之和，t重新变成n\n        while (t > 0) {             // 取出每一位\n            int d = t % 10; t /= 10;    // 取个位数d，再去掉这一位\n            int mul = 1;            // mul用来算d的l次方\n            for (int j = 0; j < l; j++) mul *= d;  // 连续乘l次得到d的l次方\n            sum += mul;             // 加到总和里\n        }\n        if (sum == n) cout << \"T\" << endl;   // 相等就是自幂数，输出T\n        else cout << \"F\" << endl;   // 否则输出F\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5713,7 +5713,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用两层循环i、j枚举每个位置。主对角线条件是i==j，副对角线条件是i+j==N-1（0下标）。只要满足其中一条就输出+，否则输出-。每行结束后换行。",
           "source": "GESP2023-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0; cin >> n;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j || i + j == n - 1) cout << \"+\";\n            else cout << \"-\";\n        }\n        cout << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0; cin >> n;            // 读入矩阵边长n\n    for (int i = 0; i < n; i++) {   // 外层循环：第i行\n        for (int j = 0; j < n; j++) {   // 内层循环：第j列\n            if (i == j || i + j == n - 1) cout << \"+\";  // 主对角线或副对角线画+\n            else cout << \"-\";       // 其他位置画-\n        }\n        cout << endl;               // 一行画完，换行\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -5737,7 +5737,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用循环t从0开始计数，每轮先判断n是否等于495，是则输出t并退出；否则把n拆成个位、十位、百位三个数字，通过比较大小重新组合出最大数tmax和最小数tmin，令n=tmax-tmin，继续下一轮。",
           "source": "GESP2023-09",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0; cin >> n;\n    for (int t = 0; ; t++) {\n        if (n == 495) { cout << t << endl; break; }\n        int m0 = n % 10, m1 = n / 10 % 10, m2 = n / 100;\n        int tmax = 0, tmin = 0;\n        if (m0 >= m1 && m1 >= m2) { tmax = m0*100+m1*10+m2; tmin = m2*100+m1*10+m0; }\n        else if (m0 >= m2 && m2 >= m1) { tmax = m0*100+m2*10+m1; tmin = m1*100+m2*10+m0; }\n        else if (m1 >= m0 && m0 >= m2) { tmax = m1*100+m0*10+m2; tmin = m2*100+m0*10+m1; }\n        else if (m1 >= m2 && m2 >= m0) { tmax = m1*100+m2*10+m0; tmin = m0*100+m2*10+m1; }\n        else if (m2 >= m0 && m0 >= m1) { tmax = m2*100+m0*10+m1; tmin = m1*100+m0*10+m2; }\n        else { tmax = m2*100+m1*10+m0; tmin = m0*100+m1*10+m2; }\n        n = tmax - tmin;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0; cin >> n;            // 读入初始三位数n\n    for (int t = 0; ; t++) {        // t是变换次数；一直循环直到算出495\n        if (n == 495) { cout << t << endl; break; }  // 已经到495就输出次数并停止\n        int m0 = n % 10, m1 = n / 10 % 10, m2 = n / 100;  // 拆出个位m0、十位m1、百位m2\n        int tmax = 0, tmin = 0;     // tmax存最大数，tmin存最小数\n        if (m0 >= m1 && m1 >= m2) { tmax = m0*100+m1*10+m2; tmin = m2*100+m1*10+m0; }  // 按 大、中、小 排最大数，按 小、中、大 排最小数\n        else if (m0 >= m2 && m2 >= m1) { tmax = m0*100+m2*10+m1; tmin = m1*100+m2*10+m0; }  // 同理：按大小排出最大数和最小数\n        else if (m1 >= m0 && m0 >= m2) { tmax = m1*100+m0*10+m2; tmin = m2*100+m0*10+m1; }  // 同理：按大小排出最大数和最小数\n        else if (m1 >= m2 && m2 >= m0) { tmax = m1*100+m2*10+m0; tmin = m0*100+m2*10+m1; }  // 同理：按大小排出最大数和最小数\n        else if (m2 >= m0 && m0 >= m1) { tmax = m2*100+m0*10+m1; tmin = m1*100+m0*10+m2; }  // 同理：按大小排出最大数和最小数\n        else { tmax = m2*100+m1*10+m0; tmin = m0*100+m1*10+m2; }   // 最后一种顺序：按大小排出最大数和最小数\n        n = tmax - tmin;            // 用最大数减最小数，得到新的三位数\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -6009,7 +6009,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对每个数，用while循环不断取个位tmp%10累加到smu，再tmp/=10去掉个位，循环结束后得到该数的数位和；用x记录所有数位和的最大值，每处理一个数就x=max(x,smu)，最后输出x。",
           "source": "GESP2024-12",
           "isJudge": false,
-          "answerText": "#include <bits/stdc++.h>\nusing namespace std;\n#define ll long long\nint main() {\n    int n; cin >> n;\n    int x = 0;\n    for (int i = 0; i < n; i++) {\n        int smu = 0;\n        ll tmp; cin >> tmp;\n        while (tmp > 0) { smu += tmp % 10; tmp /= 10; }\n        x = max(x, smu);\n    }\n    cout << x << endl;\n    return 0;\n}",
+          "answerText": "#include <bits/stdc++.h>\nusing namespace std;\n#define ll long long               // 把ll当作long long的简写（能存很大的整数）\nint main() {\n    int n; cin >> n;                // 读入一共有几个数\n    int x = 0;                      // x记录目前最大的数位和\n    for (int i = 0; i < n; i++) {   // 依次处理每个数\n        int smu = 0;                // smu存当前这个数的数位和\n        ll tmp; cin >> tmp;         // 读入这个数\n        while (tmp > 0) { smu += tmp % 10; tmp /= 10; }  // 把每一位加起来，直到这个数变成0\n        x = max(x, smu);            // 如果这个数位和比之前的大，就更新最大值\n    }\n    cout << x << endl;              // 输出数位和的最大值\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -6279,7 +6279,7 @@ const QUESTION_BANK = {
           "explanation": "思路：直接用两层循环，第i行第j列输出i×j。注意第i行、第j列从1开始编号，每行最后一个数字后不要输出多余空格（用\" \\n\"[j==m]实现：j是最后一个位置时输出换行，否则输出空格）。",
           "source": "GESP2025-03",
           "isJudge": false,
-          "answerText": "#include <bits/stdc++.h>\nusing namespace std;\nint n, m;\nint main() {\n    scanf(\"%d%d\", &n, &m);\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++)\n            printf(\"%d%c\", i * j, \" \\n\"[j == m]);\n    return 0;\n}",
+          "answerText": "#include <bits/stdc++.h>\nusing namespace std;\nint n, m;                           // 全局变量：行数n、列数m\nint main() {\n    scanf(\"%d%d\", &n, &m);          // 读入n和m\n    for (int i = 1; i <= n; i++)    // 外层循环：第i行\n        for (int j = 1; j <= m; j++)    // 内层循环：第j列\n            printf(\"%d%c\", i * j, \" \\n\"[j == m]);  // 第i行第j列填i×j；不是本行最后一个数就输出空格，是最后一个就换行\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -7748,7 +7748,7 @@ const QUESTION_BANK = {
           "explanation": "思路：用long long保存乘积，初始为1。依次读入每个数，若当前乘积乘以该数会超过1000000，就直接输出>1000000并结束；否则累乘。读完全部数后输出最终乘积。注意判断要在累乘前进行，防止乘积溢出或先越界。",
           "source": "GESP2024-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    long long product = 1;\n    for (int i = 0; i < n; ++i) {\n        int a;\n        cin >> a;\n        if (product * a > 1000000) {\n            cout << \">1000000\" << endl;\n            return 0;\n        }\n        product *= a;\n    }\n    cout << product << endl;\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;                          // 定义n，表示有几个数\n    cin >> n;                       // 读入n\n    long long product = 1;          // product存乘积，从1开始乘（用long long防止数太大）\n    for (int i = 0; i < n; ++i) {   // 依次乘每个数\n        int a;                      // 定义变量a\n        cin >> a;                   // 读入一个数\n        if (product * a > 1000000) {    // 如果乘完后超过1000000\n            cout << \">1000000\" << endl; // 输出>1000000\n            return 0;               // 直接结束程序\n        }\n        product *= a;               // 没超的话就把a乘进乘积里\n    }\n    cout << product << endl;        // 输出最后的乘积\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -8104,7 +8104,7 @@ const QUESTION_BANK = {
           "explanation": "思路：先把小时h加上k，若h>=24则h减24并把日期d加1；再根据当前月份和是否闰年确定当月天数days，若d超过days则减去days并把月份m加1；若m超过12则回到1月且年份y加1。最后输出y、m、d、h。",
           "source": "GESP2025-03",
           "isJudge": false,
-          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int y, m, d, h, k;\n    cin >> y >> m >> d >> h >> k;\n    h += k;\n    if (h >= 24) {\n        h -= 24; d += 1;\n        int days = 0;\n        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) days = 31;\n        else if (m == 4 || m == 6 || m == 9 || m == 11) days = 30;\n        else if (m == 2) {\n            if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) days = 29;\n            else days = 28;\n        }\n        if (d > days) {\n            d -= days; m += 1;\n            if (m > 12) { m = 1; y += 1; }\n        }\n    }\n    cout << y << \" \" << m << \" \" << d << \" \" << h << \"\\n\";\n    return 0;\n}",
+          "answerText": "#include <iostream>\nusing namespace std;\nint main() {\n    int y, m, d, h, k;              // 定义：年y、月m、日d、时h，再过k小时\n    cin >> y >> m >> d >> h >> k;   // 读入这5个数\n    h += k;                         // 把k小时直接加到当前小时上\n    if (h >= 24) {                  // 如果小时达到或超过24，说明要跨到第二天\n        h -= 24; d += 1;            // 减去24小时，日期加1\n        int days = 0;               // days存当前这个月有几天\n        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) days = 31;  // 这些是大月，有31天\n        else if (m == 4 || m == 6 || m == 9 || m == 11) days = 30;  // 这些是小月，有30天\n        else if (m == 2) {          // 2月要分平年闰年\n            if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) days = 29;  // 闰年2月有29天\n            else days = 28;         // 平年2月有28天\n        }\n        if (d > days) {             // 如果日期超过了这个月的天数\n            d -= days; m += 1;      // 减去这个月的天数，月份加1\n            if (m > 12) { m = 1; y += 1; }  // 如果月份超过12，就变成明年的1月\n        }\n    }\n    cout << y << \" \" << m << \" \" << d << \" \" << h << \"\\n\";  // 输出新的年月日时\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -8627,7 +8627,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对每个数n，枚举x从1到sqrt(n-1)（保证y×y>=1），令j=n-x×x，判断j是否是完全平方数（开方后平方等于j）。若存在则输出Yes，否则No。判断完全平方可用int(sqrt(j))*int(sqrt(j))==j，注意用double开方并转为int比较。",
           "source": "GESP2024-06",
           "isJudge": false,
-          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nbool check(int x){\n    int y = sqrt(x);\n    return y*y==x;\n}\nint main(){\n    int t;\n    cin>>t;\n    while(t--){\n        int n;\n        cin>>n;\n        int fl=0;\n        for(int i=1;i*i<n;i++){\n            int j=n-i*i;\n            if(check(j))fl=1;\n        }\n        if(fl)cout<<\"Yes\\n\";\n        else cout<<\"No\\n\";\n    }\n}",
+          "answerText": "#include<bits/stdc++.h>\nusing namespace std;\nbool check(int x){                  // 判断x是不是完全平方数\n    int y = sqrt(x);                // 取x的平方根（自动取整）\n    return y*y==x;                  // 取整后的平方根乘自己正好等于x，就是完全平方数\n}\nint main(){\n    int t;                          // 定义t，表示有几组数据\n    cin>>t;                         // 读入t\n    while(t--){                     // 每组数据都处理一遍\n        int n;                      // 定义n\n        cin>>n;                     // 读入这个数n\n        int fl=0;                   // fl标记有没有找到两个数\n        for(int i=1;i*i<n;i++){     // 试着让第一个数i从1开始，且i的平方必须小于n\n            int j=n-i*i;            // 剩下的部分就是第二个数的平方\n            if(check(j))fl=1;       // 如果剩下部分也是完全平方数，就找到了\n        }\n        if(fl)cout<<\"Yes\\n\";       // 找到了输出Yes\n        else cout<<\"No\\n\";         // 没找到输出No\n    }\n}",
           "starterCode": null,
           "testCases": [
             {
@@ -8797,7 +8797,7 @@ const QUESTION_BANK = {
           "explanation": "思路：对每个a，先取b=int(sqrt(sqrt(a)))（a的四次方根的整数部分），再检查b×b×b×b是否恰好等于a，相等则输出b，否则输出-1。利用cmath的sqrt函数开两次平方即可得到四次方根。",
           "source": "GESP2024-12",
           "isJudge": false,
-          "answerText": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() {\n    int t; cin >> t;\n    while (t--) {\n        int a; cin >> a;\n        int b = (int)(sqrt(sqrt(a)));\n        if (b * b * b * b == a) cout << b << endl;\n        else cout << -1 << endl;\n    }\n    return 0;\n}",
+          "answerText": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() {\n    int t; cin >> t;                // 读入有几组数据t\n    while (t--) {                   // 每组数据处理一遍\n        int a; cin >> a;            // 读入这个数a\n        int b = (int)(sqrt(sqrt(a)));   // 先开两次平方根，大致得到b\n        if (b * b * b * b == a) cout << b << endl;  // 验算：b的四次方正好等于a就输出b\n        else cout << -1 << endl;    // 否则输出-1\n    }\n    return 0;                       // 程序正常结束\n}",
           "starterCode": null,
           "testCases": [
             {
