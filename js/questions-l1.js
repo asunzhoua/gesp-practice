@@ -500,7 +500,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202506_16",
@@ -517,7 +518,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202509_01",
@@ -536,7 +538,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202512_01",
@@ -555,7 +558,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202512_16",
@@ -572,7 +576,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202603_01",
@@ -591,7 +596,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202603_16",
@@ -608,7 +614,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202606_01",
@@ -627,7 +634,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202606_02",
@@ -646,7 +654,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         },
         {
           "id": "l1_202606_16",
@@ -663,7 +672,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_01"
         }
       ]
     },
@@ -947,7 +957,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202506_23",
@@ -964,7 +975,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202509_23",
@@ -981,7 +993,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202512_26",
@@ -1004,7 +1017,8 @@ const QUESTION_BANK = {
               "input": "99.8\n200.9\n60.2\n70.1",
               "expectedOutput": "49.9"
             }
-          ]
+          ],
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202512_27",
@@ -1023,7 +1037,8 @@ const QUESTION_BANK = {
               "input": "5\n10\n1\n20\n99\n19",
               "expectedOutput": "R\nR\nL\n99\nL"
             }
-          ]
+          ],
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_11",
@@ -1042,7 +1057,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_12",
@@ -1061,7 +1077,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_14",
@@ -1080,7 +1097,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_15",
@@ -1099,7 +1117,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_21",
@@ -1116,7 +1135,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_26",
@@ -1135,7 +1155,8 @@ const QUESTION_BANK = {
               "input": "150\n165\n135\n133",
               "expectedOutput": "135"
             }
-          ]
+          ],
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202603_27",
@@ -1158,7 +1179,8 @@ const QUESTION_BANK = {
               "input": "123",
               "expectedOutput": "123"
             }
-          ]
+          ],
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202606_03",
@@ -1177,7 +1199,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         },
         {
           "id": "l1_202606_18",
@@ -1194,7 +1217,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_08"
         }
       ]
     },
@@ -1730,7 +1754,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202506_04",
@@ -1749,7 +1774,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202506_24",
@@ -1766,7 +1792,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202509_03",
@@ -1785,7 +1812,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202512_24",
@@ -1802,7 +1830,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202603_07",
@@ -1821,7 +1850,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202603_13",
@@ -1840,7 +1870,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202606_13",
@@ -1859,7 +1890,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         },
         {
           "id": "l1_202606_15",
@@ -1878,7 +1910,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_06"
         }
       ]
     },
@@ -3112,7 +3145,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202506_07",
@@ -3131,7 +3165,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202506_08",
@@ -3150,7 +3185,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202506_15",
@@ -3169,7 +3205,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202506_17",
@@ -3186,7 +3223,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202506_25",
@@ -3203,7 +3241,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202506_26",
@@ -3226,7 +3265,8 @@ const QUESTION_BANK = {
               "input": "19\n3\n30",
               "expectedOutput": "19"
             }
-          ]
+          ],
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202509_04",
@@ -3245,7 +3285,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202509_05",
@@ -3264,7 +3305,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202509_07",
@@ -3283,7 +3325,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202509_13",
@@ -3302,7 +3345,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202509_17",
@@ -3319,7 +3363,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_09",
@@ -3338,7 +3383,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_10",
@@ -3357,7 +3403,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_11",
@@ -3376,7 +3423,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_12",
@@ -3395,7 +3443,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_13",
@@ -3414,7 +3463,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_14",
@@ -3433,7 +3483,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_15",
@@ -3452,7 +3503,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_18",
@@ -3469,7 +3521,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_19",
@@ -3486,7 +3539,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_20",
@@ -3503,7 +3557,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_21",
@@ -3520,7 +3575,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202512_22",
@@ -3537,7 +3593,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_08",
@@ -3556,7 +3613,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_09",
@@ -3575,7 +3633,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_10",
@@ -3594,7 +3653,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_18",
@@ -3611,7 +3671,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_19",
@@ -3628,7 +3689,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_20",
@@ -3645,7 +3707,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_22",
@@ -3662,7 +3725,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202603_24",
@@ -3679,7 +3743,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202606_04",
@@ -3698,7 +3763,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202606_05",
@@ -3717,7 +3783,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202606_17",
@@ -3734,7 +3801,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         },
         {
           "id": "l1_202606_24",
@@ -3751,7 +3819,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_07"
         }
       ]
     },
@@ -4111,7 +4180,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202509_26",
@@ -4134,7 +4204,8 @@ const QUESTION_BANK = {
               "input": "8\n7\n2\n11",
               "expectedOutput": "2.20"
             }
-          ]
+          ],
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202512_04",
@@ -4153,7 +4224,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202512_05",
@@ -4172,7 +4244,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202512_06",
@@ -4191,7 +4264,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202512_08",
@@ -4210,7 +4284,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202512_17",
@@ -4227,7 +4302,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202603_04",
@@ -4246,7 +4322,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         },
         {
           "id": "l1_202603_17",
@@ -4263,7 +4340,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_04"
         }
       ]
     },
@@ -5711,7 +5789,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_12",
@@ -5730,7 +5809,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_13",
@@ -5749,7 +5829,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_18",
@@ -5766,7 +5847,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_19",
@@ -5783,7 +5865,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_20",
@@ -5800,7 +5883,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_21",
@@ -5817,7 +5901,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_22",
@@ -5834,7 +5919,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202506_27",
@@ -5853,7 +5939,8 @@ const QUESTION_BANK = {
               "input": "4\n6",
               "expectedOutput": "12"
             }
-          ]
+          ],
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_02",
@@ -5872,7 +5959,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_08",
@@ -5891,7 +5979,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_09",
@@ -5910,7 +5999,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_10",
@@ -5929,7 +6019,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_11",
@@ -5948,7 +6039,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_14",
@@ -5967,7 +6059,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_15",
@@ -5986,7 +6079,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_18",
@@ -6003,7 +6097,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_19",
@@ -6020,7 +6115,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_20",
@@ -6037,7 +6133,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_21",
@@ -6054,7 +6151,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_22",
@@ -6071,7 +6169,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_24",
@@ -6088,7 +6187,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_25",
@@ -6105,7 +6205,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202509_27",
@@ -6128,7 +6229,8 @@ const QUESTION_BANK = {
               "input": "5",
               "expectedOutput": "55"
             }
-          ]
+          ],
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202512_07",
@@ -6147,7 +6249,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202512_23",
@@ -6164,7 +6267,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202603_06",
@@ -6183,7 +6287,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202603_23",
@@ -6200,7 +6305,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202603_25",
@@ -6217,7 +6323,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_06",
@@ -6236,7 +6343,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_07",
@@ -6255,7 +6363,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_08",
@@ -6274,7 +6383,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_09",
@@ -6293,7 +6403,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_10",
@@ -6312,7 +6423,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_11",
@@ -6331,7 +6443,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_12",
@@ -6350,7 +6463,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_14",
@@ -6369,7 +6483,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_19",
@@ -6386,7 +6501,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_20",
@@ -6403,7 +6519,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_21",
@@ -6420,7 +6537,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_22",
@@ -6437,7 +6555,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_23",
@@ -6454,7 +6573,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_25",
@@ -6471,7 +6591,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_26",
@@ -6490,7 +6611,8 @@ const QUESTION_BANK = {
               "input": "1\n21",
               "expectedOutput": "4"
             }
-          ]
+          ],
+          "kp": "kp1_05"
         },
         {
           "id": "l1_202606_27",
@@ -6509,7 +6631,8 @@ const QUESTION_BANK = {
               "input": "4",
               "expectedOutput": "...+...\n..+.+..\n.+...+.\n+.....+\n.+...+.\n..+.+..\n...+..."
             }
-          ]
+          ],
+          "kp": "kp1_05"
         }
       ]
     },
@@ -6957,7 +7080,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202506_09",
@@ -6976,7 +7100,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202509_06",
@@ -6995,7 +7120,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202509_12",
@@ -7014,7 +7140,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202512_03",
@@ -7033,7 +7160,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202512_25",
@@ -7050,7 +7178,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202603_03",
@@ -7069,7 +7198,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         },
         {
           "id": "l1_202603_05",
@@ -7088,7 +7218,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_03"
         }
       ]
     },
@@ -7190,7 +7321,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_02"
         },
         {
           "id": "l1_202509_16",
@@ -7207,7 +7339,8 @@ const QUESTION_BANK = {
           "isJudge": true,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_02"
         },
         {
           "id": "l1_202512_02",
@@ -7226,7 +7359,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_02"
         },
         {
           "id": "l1_202603_02",
@@ -7245,7 +7379,8 @@ const QUESTION_BANK = {
           "isJudge": false,
           "answerText": null,
           "starterCode": null,
-          "testCases": null
+          "testCases": null,
+          "kp": "kp1_02"
         }
       ]
     }
