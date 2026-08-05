@@ -68,7 +68,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面代码正确的是（ ）。\n// 在C++中，可以通过函数指针的形式，将一个函数作为另一个函数的参数。\n// bool checkNum(bool (*Fx)(int), int N); 声明了一个函数，\n// 其第一个参数是函数指针类型，指向一个接收一个int参数且返回bool的函数。\n<pre><code>#include <iostream>\nusing namespace std;\nbool isEven(int N) {\nreturn N % 2 == 0;\n}\nbool checkNum(bool (*Fx)(int), int N) {\nreturn Fx(N);\n}\nint main() {\ncout << checkNum(isEven, 10) << endl;\nreturn 0;\n}</code></pre>",
+          "question": "有关下面代码正确的是（ ）。\n<pre><code>// 在C++中，可以通过函数指针的形式，将一个函数作为另一个函数的参数。\n// bool checkNum(bool (*Fx)(int), int N); 声明了一个函数，\n// 其第一个参数是函数指针类型，指向一个接收一个int参数且返回bool的函数。\n#include <iostream>\nusing namespace std;\nbool isEven(int N)\n{\n    return N % 2 == 0;\n}\nbool checkNum(bool (*Fx)(int), int N)\n{\n    return Fx(N);\n}\nint main()\n{\n    cout << checkNum(isEven, 10) << endl;\n    return 0;\n}</code></pre>",
           "options": [
             "A. checkNum()函数定义错误。",
             "B. 将isEven作为checkNum()参数将导致错误。",
@@ -220,7 +220,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面的C++代码能实现十进制正整数N转换为八进制并输出。（ ）\nchar s[10];\n<pre><code>int main()\n{\nint N;\ncin >> N;\nstring rst = \"\";\nwhile (N != 0)\n{\ns[0]=N % 8 + '0';\nrst += string(s);\nN /= 8;\n}\ncout << rst << endl;\nreturn 0;\n}</code></pre>",
+          "question": "下面的C++代码能实现十进制正整数N转换为八进制并输出。（ ）\n<pre><code>char s[10];\nint main()\n{\n    int N;\n    cin >> N;\n    string rst = \"\";\n    while (N != 0)\n    {\n        s[0]=N % 8 + '0';\n        rst += string(s);\n        N /= 8;\n    }\n    cout << rst << endl;\n    return 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -276,7 +276,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "在下面C++代码中，由于删除了变量ptr，因此ptr所对应的数据也随之删除，故执行下述代码时，将报错。\nint* ptr = new int(10);\ncout << *ptr << endl;\ndelete ptr;\ncout << ptr << endl;",
+          "question": "在下面C++代码中，由于删除了变量ptr，因此ptr所对应的数据也随之删除，故执行下述代码时，将报错。\n<pre><code>int* ptr = new int(10);\ncout << *ptr << endl;\ndelete ptr;\ncout << ptr << endl;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -457,7 +457,7 @@ const QUESTION_BANK = {
           "kp": "kp5_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++代码使用数组模拟整数加法，可以处理超出大整数范围的加法运算。横线处应填入代码是（ ）。\nvector<int> operator + (vector<int> a, vector<int> b)\n{\nvector<int> c;\nint t = 0;\nfor(int i = 0; i < a.size() || i < b.size(); i ++)\n{\nif(i < a.size()) t = t + a[i];\nif(i < b.size()) t = t + b[i];\n}\nif(t) c.push_back(t);\nreturn c;\n}",
+          "question": "下面的C++代码使用数组模拟整数加法，可以处理超出大整数范围的加法运算。横线处应填入代码是（ ）。\n<pre><code>vector<int> operator + (vector<int> a, vector<int> b)\n{\n    vector<int> c;\n    int t = 0;\n    for(int i = 0; i < a.size() || i < b.size(); i ++)\n    {\n        if(i < a.size())\n            t = t + a[i];\n        if(i < b.size())\n            t = t + b[i];\n    }\n    if(t)\n        c.push_back(t);\n    return c;\n}</code></pre>",
           "options": [
             "A. c.push_back(t % 10), t = t % 10;",
             "B. c.push_back(t / 10), t = t % 10;",
@@ -497,7 +497,7 @@ const QUESTION_BANK = {
           "kp": "kp5_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "要实现一个高精度减法函数，则下面代码中加划线应该填写的代码为（  ）。\nif (a[i] < b[i]) {  // 借位\n____________  // 在此处填入代码\n}",
+          "question": "要实现一个高精度减法函数，则下面代码中加划线应该填写的代码为（  ）。\n<pre><code>if (a[i] < b[i])\n{ // 借位\n    ____________ // 在此处填入代码\n}</code></pre>",
           "options": [
             "A. a[i + 1]--;",
             "B. a[i]--;",
@@ -537,7 +537,7 @@ const QUESTION_BANK = {
           "kp": "kp5_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨编写了一个如下的高精度减法函数，下面说法，正确的是（  ）。\nvector<int> highPrecisionSubtract(vector<int> a, vector<int> b) {\nvector<int> result; int borrow = 0;\nfor (int i = 0; i < a.size(); ++i) {\nint digitA = a[i];\nint digitB = i < b.size() ? b[i] : 0;\nint diff = digitA - digitB - borrow;\nif (diff < 0) { diff += 10; borrow = 1; } else borrow = 0;\nresult.push_back(diff);\n}\nwhile (result.size() > 1 && result.back() == 0) result.pop_back();\nreturn result;\n}",
+          "question": "小杨编写了一个如下的高精度减法函数，下面说法，正确的是（  ）。\n<pre><code>vector<int> highPrecisionSubtract(vector<int> a, vector<int> b)\n{\n    vector<int> result;\n    int borrow = 0;\n    for (int i = 0; i < a.size(); ++i)\n    {\n        int digitA = a[i];\n        int digitB = i < b.size() ? b[i] : 0;\n        int diff = digitA - digitB - borrow;\n        if (diff < 0)\n        {\n            diff += 10;\n            borrow = 1;\n        }\n        else\n            borrow = 0;\n        result.push_back(diff);\n    }\n    while (result.size() > 1 && result.back() == 0)\n        result.pop_back();\n    return result;\n}</code></pre>",
           "options": [
             "A. 如果数组a表示的整数小于b表示的整数，代码会正确返回二者的差为负数",
             "B. 代码假设输入数字是以倒序存储的，例如500存储为{0, 0, 5}",
@@ -557,7 +557,7 @@ const QUESTION_BANK = {
           "kp": "kp5_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨编写了一个如下的高精度乘法函数，则横线上应填写的代码为（  ）。\nint carry = 0;\nfor (int k = 0; k < c.size(); ++k) {\n____________  // 在此处填入代码\nc[k] = temp % 10;\ncarry = temp / 10;\n}",
+          "question": "小杨编写了一个如下的高精度乘法函数，则横线上应填写的代码为（  ）。\n<pre><code>int carry = 0;\nfor (int k = 0; k < c.size(); ++k)\n{\n    ____________ // 在此处填入代码\n    c[k] = temp % 10;\n    carry = temp / 10;\n}</code></pre>",
           "options": [
             "A. int temp = c[k];",
             "B. int temp = c[k] + carry;",
@@ -720,7 +720,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++代码用于将字符串保存到带头节点的双向链表中，并对重复的串计数，然后将最新访问的串的节点放在链头便于查找。横线处应填入代码是（ ）。\ntypedef struct Node{\nstring str;\nint ref;\nstruct Node *next, *prev;\n}Node;\nNode * Insert(Node *pHead, string s)\n{\nNode *p = pHead->next;\nNode *q;\nwhile(p){\nif(p->str == s){\np->ref++;\np->next->prev = p->prev;\np->prev->next = p->next;\nbreak;\n}\np=p->next;\n}\nif(!p) {\np = new Node;\np->str = s;\np->ref=0;\np->next = p->prev = NULL;\n}\npHead->next = p, p->prev = pHead;\n______________________________;\nreturn pHead;\n}",
+          "question": "下面的C++代码用于将字符串保存到带头节点的双向链表中，并对重复的串计数，然后将最新访问的串的节点放在链头便于查找。横线处应填入代码是（ ）。\n<pre><code>typedef struct Node\n{\n    string str;\n    int ref;\n    struct Node *next, *prev;\n} Node;\nNode * Insert(Node *pHead, string s)\n{\n    Node *p = pHead->next;\n    Node *q;\n    while(p)\n    {\n        if(p->str == s)\n        {\n            p->ref++;\n            p->next->prev = p->prev;\n            p->prev->next = p->next;\n            break;\n        }\n        p=p->next;\n    }\n    if(!p)\n    {\n        p = new Node;\n        p->str = s;\n        p->ref=0;\n        p->next = p->prev = NULL;\n    }\n    pHead->next = p, p->prev = pHead;\n    ______________________________;\n    return pHead;\n}</code></pre>",
           "options": [
             "A. if(pHead) {p->next = pHead->next, pHead->next->prev = p;}",
             "B. if(pHead->next) {p->next = pHead->next, pHead->next->prev = p;}",
@@ -740,7 +740,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面C++代码的说法正确的是（ ）。\nclass Node\n{\npublic:\nint Value;\nNode* Prev;\nNode* Next;\nNode(int Val, Node* Prv = NULL, Node* Nxt = NULL);\n};\nNode::Node(int Val, Node* Prv, Node* Nxt)\n{\nthis->Value = Val;\nthis->Prev = Prv;\nthis->Next = Nxt;\n}\n<pre><code>int main()\n{\nNode firstNode = Node(10);\nfirstNode.Next = new Node(100, &firstNode);\nfirstNode.Next->Next = new Node(111, firstNode.Next);\n}</code></pre>",
+          "question": "有关下面C++代码的说法正确的是（ ）。\n<pre><code>class Node\n{\n    public:\n    int Value;\n    Node* Prev;\n    Node* Next;\n    Node(int Val, Node* Prv = NULL, Node* Nxt = NULL);\n};\nNode::Node(int Val, Node* Prv, Node* Nxt)\n{\n    this->Value = Val;\n    this->Prev = Prv;\n    this->Next = Nxt;\n}\nint main()\n{\n    Node firstNode = Node(10);\n    firstNode.Next = new Node(100, &firstNode);\n    firstNode.Next->Next = new Node(111, firstNode.Next);\n}</code></pre>",
           "options": [
             "A. 上述代码构成单向链表",
             "B. 上述代码构成双向链表",
@@ -836,7 +836,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨想在头指针为head的双链表中查找他喜欢的某首歌曲，采用如下查询函数，该操作的时间复杂度为（  ）。\ndl_node* search(dl_node* head, string my_song) {\ndl_node* temp = head;\nwhile (temp) {\nif (temp->song == my_song) return temp;\ntemp = temp->next;\n}\nreturn nullptr;\n}",
+          "question": "小杨想在头指针为head的双链表中查找他喜欢的某首歌曲，采用如下查询函数，该操作的时间复杂度为（  ）。\n<pre><code>dl_node* search(dl_node* head, string my_song)\n{\n    dl_node* temp = head;\n    while (temp)\n    {\n        if (temp->song == my_song)\n            return temp;\n        temp = temp->next;\n    }\n    return nullptr;\n}</code></pre>",
           "options": [
             "A. O(1)",
             "B. O(n)",
@@ -1028,7 +1028,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "为了方便链表的增删操作，一些算法生成一个虚拟头节点。下面代码实现删除链表中值为val的节点，横线上应填的最佳代码是( )。\nLinkedNode* dummyHead = new LinkedNode(0);\n____________  // 在此处填入代码\nwhile (cur->next != nullptr) { ... }",
+          "question": "为了方便链表的增删操作，一些算法生成一个虚拟头节点。下面代码实现删除链表中值为val的节点，横线上应填的最佳代码是( )。\n<pre><code>LinkedNode* dummyHead = new LinkedNode(0);\n____________ // 在此处填入代码\nwhile (cur->next != nullptr)\n{\n    ...\n}</code></pre>",
           "options": [
             "A. dummyHead->next = head; cur = dummyHead;",
             "B. dummyHead->next = head->next; cur = dummyHead;",
@@ -1595,7 +1595,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面C++代码说法正确的是（ ）。\nint rc;\n<pre><code>int foo(int x, int y)\n{\nint r;\nif(y == 0)\nr = x;\nelse{\nr = foo(y, x % y);\nrc++;\n}\nreturn r;\n}</code></pre>",
+          "question": "有关下面C++代码说法正确的是（ ）。\n<pre><code>int rc;\nint foo(int x, int y)\n{\n    int r;\n    if(y == 0)\n        r = x;\n    else\n    {\n        r = foo(y, x % y);\n        rc++;\n    }\n    return r;\n}</code></pre>",
           "options": [
             "A. 如果x小于10，rc值也不会超过20",
             "B. foo可能无限递归",
@@ -2074,7 +2074,7 @@ const QUESTION_BANK = {
           "kp": "kp5_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下述代码实现素数表的线性筛法，筛选出所有小于等于n的素数，则横线上应填的代码是(  )。\nvector<int> linear_sieve(int n) {\nvector<bool> is_prime(n+1, true);\nvector<int> primes;\nis_prime[0]=is_prime[1]=0;\nfor (int i=2;i<=n;++i) {\nif (is_prime[i]) primes.push_back(i);\n____________ {  // 在此处填入代码\nis_prime[i*primes[j]]=0;\nif (i%primes[j]==0) break;\n}\n}\nreturn primes;\n}",
+          "question": "下述代码实现素数表的线性筛法，筛选出所有小于等于n的素数，则横线上应填的代码是(  )。\n<pre><code>vector<int> linear_sieve(int n)\n{\n    vector<bool> is_prime(n+1, true);\n    vector<int> primes;\n    is_prime[0]=is_prime[1]=0;\n    for (int i=2;i<=n;++i)\n    {\n        if (is_prime[i])\n            primes.push_back(i);\n        ____________\n        { // 在此处填入代码\n            is_prime[i*primes[j]]=0;\n            if (i%primes[j]==0)\n                break;\n        }\n    }\n    return primes;\n}</code></pre>",
           "options": [
             "A. for (int j = 0; j < primes.size() && i * primes[j] <= n; j++)",
             "B. for (int j = 0; j <= sqrt(n) && i * primes[j] <= n; j++)",
@@ -2112,7 +2112,7 @@ const QUESTION_BANK = {
           "kp": "kp5_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下述代码实现素数表的埃拉托斯特尼筛法，筛选出所有小于等于n的素数，则横线上应填的最佳代码是( )。\nfor (int i = 2; i * i <= n; i++) {\nif (is_prime[i]) {\nprimes.push_back(i);\n____________ {  // 在此处填入代码\nis_prime[j] = false;\n}\n}\n}",
+          "question": "下述代码实现素数表的埃拉托斯特尼筛法，筛选出所有小于等于n的素数，则横线上应填的最佳代码是( )。\n<pre><code>for (int i = 2; i * i <= n; i++)\n{\n    if (is_prime[i])\n    {\n        primes.push_back(i);\n        ____________\n        { // 在此处填入代码\n            is_prime[j] = false;\n        }\n    }\n}</code></pre>",
           "options": [
             "A. for (int j = i; j <= n; j++)",
             "B. for (int j = i * i; j <= n; j++)",
@@ -2228,7 +2228,7 @@ const QUESTION_BANK = {
           "kp": "kp5_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下述代码实现素数表的线性筛法，横线上应填的最佳代码是( )。\nfor (int i = 2; i <= n/2; i++) {\nif (is_prime[i]) primes.push_back(i);\nfor (int j = 0; ____________ ; j++) {  // 在此处填入代码\nis_prime[i * primes[j]] = false;\nif (i % primes[j] == 0) break;\n}\n}",
+          "question": "下述代码实现素数表的线性筛法，横线上应填的最佳代码是( )。\n<pre><code>for (int i = 2; i <= n/2; i++)\n{\n    if (is_prime[i])\n        primes.push_back(i);\n    for (int j = 0; ____________ ; j++)\n    { // 在此处填入代码\n        is_prime[i * primes[j]] = false;\n        if (i % primes[j] == 0)\n            break;\n    }\n}</code></pre>",
           "options": [
             "A. j < primes.size()",
             "B. i * primes[j] <= n",
@@ -2649,7 +2649,7 @@ const QUESTION_BANK = {
           "kp": "kp5_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面函数将自然数的所有质因数找出来，横线上能填写的最佳代码是（    ）。\nwhile (n % 2 == 0) { factors.push_back(2); n /= 2; }\n____________  {  // 在此处填入代码\nwhile (n % i == 0) { factors.push_back(i); n /= i; }\n}\nif (n > 2) factors.push_back(n);",
+          "question": "下面函数将自然数的所有质因数找出来，横线上能填写的最佳代码是（    ）。\n<pre><code>while (n % 2 == 0)\n{\n    factors.push_back(2);\n    n /= 2;\n}\n____________\n{ // 在此处填入代码\n    while (n % i == 0)\n    {\n        factors.push_back(i);\n        n /= i;\n    }\n}\nif (n > 2)\n    factors.push_back(n);</code></pre>",
           "options": [
             "A. for (int i = 3; i <= n; i ++)",
             "B. for (int i = 3; i * i <= n; i ++)",
@@ -3098,7 +3098,7 @@ const QUESTION_BANK = {
           "kp": "kp5_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个长度为n的有序数组nums（可能包含重复元素），下面的函数返回target的左边界，若不存在返回-1。例如nums=[5,7,7,8,8,10]中查target=8，返回索引3。则横线上应填写的代码为（  ）。\nwhile (left < right) {\nint middle = left + (right - left) / 2;\nif (target <= nums[middle])\n____________  // 在此处填入代码\nelse\nleft = middle + 1;\n}",
+          "question": "给定一个长度为n的有序数组nums（可能包含重复元素），下面的函数返回target的左边界，若不存在返回-1。例如nums=[5,7,7,8,8,10]中查target=8，返回索引3。则横线上应填写的代码为（  ）。\n<pre><code>while (left < right)\n{\n    int middle = left + (right - left) / 2;\n    if (target <= nums[middle])\n        ____________ // 在此处填入代码\n    else\n        left = middle + 1;\n}</code></pre>",
           "options": [
             "A. right = middle - 1;",
             "B. right = middle;",
@@ -3745,7 +3745,7 @@ const QUESTION_BANK = {
           "kp": "kp5_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "现在有n个人要过河，每只船最多载2人，船的承重为100kg。下列代码中，数组weight中保存有n个人的体重（已按从小到大排序），代码输出过河所需要的船的数目，采用的思想为（  ）。\nint count = 0;\nfor (i = 0, j = n - 1; i < j; j--) {\nif (weight[i] + weight[j] <= 100) i++;\ncount++;\n}",
+          "question": "现在有n个人要过河，每只船最多载2人，船的承重为100kg。下列代码中，数组weight中保存有n个人的体重（已按从小到大排序），代码输出过河所需要的船的数目，采用的思想为（  ）。\n<pre><code>int count = 0;\nfor (i = 0, j = n - 1; i < j; j--)\n{\n    if (weight[i] + weight[j] <= 100)\n        i++;\n    count++;\n}</code></pre>",
           "options": [
             "A. 枚举算法",
             "B. 贪心算法",
@@ -3803,7 +3803,7 @@ const QUESTION_BANK = {
           "kp": "kp5_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "数组g保存所有孩子的胃口值，数组s保存所有饼干的尺寸，饼干尺寸≥孩子胃口时孩子才能满足，目标是尽可能满足更多孩子（贪心）。则横线上应填写的代码为（  ）。\nfor (int i = g.size()-1; i >= 0; i--) {\nif (index >= 0 && s[index] >= g[i]) {\n____________  // 在此处填入代码\n}\n}",
+          "question": "数组g保存所有孩子的胃口值，数组s保存所有饼干的尺寸，饼干尺寸≥孩子胃口时孩子才能满足，目标是尽可能满足更多孩子（贪心）。则横线上应填写的代码为（  ）。\n<pre><code>for (int i = g.size()-1; i >= 0; i--)\n{\n    if (index >= 0 && s[index] >= g[i])\n    {\n        ____________ // 在此处填入代码\n    }\n}</code></pre>",
           "options": [
             "A. result++;  index--;",
             "B. result--;  index--;",
@@ -4310,7 +4310,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++代码实现对list的快速排序，有关说法，错误的是（ ）。\nvector<int> operator +(vector<int>lA, vector<int>lB)\n{\nvector<int>lst;\nfor (int i = 1; i < lA.size(); i++)\nlst.push_back(lA[i]);\nfor (int i = 1; i < lB.size(); i++)\nlst.push_back(lB[i]);\nreturn lst;\n}\nvector<int>qSort(vector<int>lst)\n{\nif (lst.size() < 2)\nreturn lst;\nint pivot = lst[0];\nvector<int>less, greater;\nfor (int i = 1; i < lst.size(); i++)\nif (lst[i] <= pivot) less.push_back(lst[i]);\nelse greater.push_back(lst[i]);\nreturn _______________________________________________________________________;\n}",
+          "question": "下面的C++代码实现对list的快速排序，有关说法，错误的是（ ）。\n<pre><code>vector<int> operator +(vector<int>lA, vector<int>lB)\n{\n    vector<int>lst;\n    for (int i = 1; i < lA.size(); i++)\n        lst.push_back(lA[i]);\n    for (int i = 1; i < lB.size(); i++)\n        lst.push_back(lB[i]);\n    return lst;\n}\nvector<int>qSort(vector<int>lst)\n{\n    if (lst.size() < 2)\n        return lst;\n    int pivot = lst[0];\n    vector<int>less, greater;\n    for (int i = 1; i < lst.size(); i++)\n        if (lst[i] <= pivot)\n            less.push_back(lst[i]);\n        else\n            greater.push_back(lst[i]);\n    return _______________________________________________________________________;\n}</code></pre>",
           "options": [
             "A. qSort(less) + qSort(greater) +  (vector<int>)pivot",
             "B. (vector<int>)pivot + (qSort(less) + qSort(greater))",
@@ -5607,7 +5607,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "阅读下面的C++代码，执行后其输出是( )。\nint stepCount = 0;\nint fracA(int N)\n{\nstepCount += 1;\ncout << stepCount << \"->\";\nint rtn = 1;\nfor (int i = 1; i <= N; i++)\nrtn *= i;\nreturn rtn;\n}\nint fracB(int N)\n{\nstepCount += 1;\ncout << stepCount << \"->\";\nif (N == 1)\nreturn 1;\nreturn N * fracB(N - 1);\n}\n<pre><code>int main()\n{\ncout << fracA(5);\ncout << \"<===>\";\ncout << fracB(5);\nreturn 0;\n}</code></pre>",
+          "question": "阅读下面的C++代码，执行后其输出是( )。\n<pre><code>int stepCount = 0;\nint fracA(int N)\n{\n    stepCount += 1;\n    cout << stepCount << \"->\";\n    int rtn = 1;\n    for (int i = 1; i <= N; i++)\n        rtn *= i;\n    return rtn;\n}\nint fracB(int N)\n{\n    stepCount += 1;\n    cout << stepCount << \"->\";\n    if (N == 1)\n        return 1;\n    return N * fracB(N - 1);\n}\nint main()\n{\n    cout << fracA(5);\n    cout << \"<===>\";\n    cout << fracB(5);\n    return 0;\n}</code></pre>",
           "options": [
             "A. 1->120<===>2->120",
             "B. 1->120<===>1->120",
@@ -6260,7 +6260,7 @@ const QUESTION_BANK = {
           "kp": "kp5_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面函数可以将n的所有质因数找出来，其时间复杂度是（    ）。\nvector<int> get_prime_factors(int n) {\nvector<int> factors;\nwhile (n % 2 == 0) { factors.push_back(2); n /= 2; }\nfor (int i = 3; i * i <= n; i += 2) {\nwhile (n % i == 0) { factors.push_back(i); n /= i; }\n}\nif (n > 2) factors.push_back(n);\nreturn factors;\n}",
+          "question": "下面函数可以将n的所有质因数找出来，其时间复杂度是（    ）。\n<pre><code>vector<int> get_prime_factors(int n)\n{\n    vector<int> factors;\n    while (n % 2 == 0)\n    {\n        factors.push_back(2);\n        n /= 2;\n    }\n    for (int i = 3; i * i <= n; i += 2)\n    {\n        while (n % i == 0)\n        {\n            factors.push_back(i);\n            n /= i;\n        }\n    }\n    if (n > 2)\n        factors.push_back(n);\n    return factors;\n}</code></pre>",
           "options": [
             "A. O(n^2)",
             "B. O(n log n)",

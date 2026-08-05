@@ -48,7 +48,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "小杨准备参加 GESP 七级考试，其中有关于三角函数的内容，他能够通过下面的代码找到结束循环的角度值。\nwhile((int)sin(x)!=0){x+=0.001;}",
+          "question": "小杨准备参加 GESP 七级考试，其中有关于三角函数的内容，他能够通过下面的代码找到结束循环的角度值。\n<pre><code>while((int)sin(x)!=0)\n{\n    x+=0.001;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -326,7 +326,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\nchar a = 'b'; a++; cout << a;",
+          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\n<pre><code>char a = 'b';\na++;\ncout << a;</code></pre>",
           "options": [
             "b",
             "c",
@@ -406,7 +406,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\ncout << (int)log(8) << endl;",
+          "question": "下面程序的输出为（  ）。\n<pre><code>cout << (int)log(8) << endl;</code></pre>",
           "options": [
             "2",
             "3",
@@ -516,7 +516,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\nchar a = 'b'; cout << a + 1;",
+          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\n<pre><code>char a = 'b';\ncout << a + 1;</code></pre>",
           "options": [
             "b",
             "c",
@@ -596,7 +596,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\ncout << (int)exp(2) << endl;",
+          "question": "下面程序的输出为（  ）。\n<pre><code>cout << (int)exp(2) << endl;</code></pre>",
           "options": [
             "4",
             "7",
@@ -806,7 +806,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨在找小于 N 的正整数中有多少个神奇数字：n 满足 n² 可以拆成两段 nl 和 nr，且 nl+nr=n。下面程序横线处应填入的是（  ）。\nfor(n=1;n*n<N;n++){ n2=n*n; s=to_string(n2); for(i=1;i<s.length();i++){ sl=s.substr(0,i); sr=s.substr(i); nl=stoi(sl); nr=stoi(sr); if(_________) cnt++; } }",
+          "question": "小杨在找小于 N 的正整数中有多少个神奇数字：n 满足 n² 可以拆成两段 nl 和 nr，且 nl+nr=n。下面程序横线处应填入的是（  ）。\n<pre><code>for(n=1;n*n<N;n++)\n{\n    n2=n*n;\n    s=to_string(n2);\n    for(i=1;i<s.length();i++)\n    {\n        sl=s.substr(0,i);\n        sr=s.substr(i);\n        nl=stoi(sl);\n        nr=stoi(sr);\n        if(_________)\n            cnt++;\n    }\n}</code></pre>",
           "options": [
             "nl + nr == n",
             "nl + nr == n2",
@@ -916,7 +916,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\nchar a = 'b' ^ 4; cout << a;",
+          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\n<pre><code>char a = 'b' ^ 4;\ncout << a;</code></pre>",
           "options": [
             "b",
             "bbbb",
@@ -1086,7 +1086,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\nchar a = 'b' + 1; cout << a;",
+          "question": "已知小写字母 b 的 ASCII 码为 98，下列 C++ 代码的输出结果是（  ）。\n<pre><code>char a = 'b' + 1;\ncout << a;</code></pre>",
           "options": [
             "b",
             "c",
@@ -1462,7 +1462,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列 C++ 代码的输出结果是（  ）。\ncout << (int)(sqrt(50) + log2(8));",
+          "question": "下列 C++ 代码的输出结果是（  ）。\n<pre><code>cout << (int)(sqrt(50) + log2(8));</code></pre>",
           "options": [
             "9",
             "10",
@@ -1563,7 +1563,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "对于下面的动态规划方法实现的函数（石子合并区间 DP），以下选项中最适合表达其状态转移函数的为（  ）。\n核心代码：f[i][j]=min(f[i][k]+f[k+1][j])+s[j]-s[i-1]，k 在 [i,j) 中枚举，f 数组初始为 INF，只有 f[i][i]=0。",
+          "question": "对于下面的动态规划方法实现的函数（石子合并区间 DP），以下选项中最适合表达其状态转移函数的为（  ）。\n核心代码：\n<pre><code>f[i][j]=min(f[i][k]+f[k+1][j])+s[j]-s[i-1]</code></pre>，k 在 [i,j) 中枚举，f 数组初始为 INF，只有 f[i][i]=0。",
           "options": [
             "f(i,j)=min(f(i,k)+f(k,j))+a(j)",
             "f(i,j)=max(f(i,k)+f(k+1,j))+s(j)-s(i-1)",
@@ -1583,7 +1583,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码可以用来求最长上升子序列（LIS）的长度，如果输入是：5 1 7 3 5 9，则输出是（  ）。\ncin>>n; for(i=1;i<=n;i++){cin>>a[i];f[i]=1;} for(i=1;i<=n;i++)for(j=1;j<i;j++)if(a[j]<a[i])f[i]=max(f[i],f[j]+1); for(i=1;i<=n;i++){ans=max(ans,f[i]);cout<<f[i]<<\" \";} cout<<ans;",
+          "question": "下面代码可以用来求最长上升子序列（LIS）的长度，如果输入是：5 1 7 3 5 9，则输出是（  ）。\n<pre><code>cin>>n;\nfor(i=1;i<=n;i++)\n{\n    cin>>a[i];\n    f[i]=1;\n}\nfor(i=1;i<=n;i++)\n    for(j=1;j<i;j++)\n        if(a[j]<a[i])\n            f[i]=max(f[i],f[j]+1);\nfor(i=1;i<=n;i++)\n{\n    ans=max(ans,f[i]);\n    cout<<f[i]<<\" \";\n}\ncout<<ans;</code></pre>",
           "options": [
             "9 7 5 1 1 9",
             "1 2 2 3 4 4",
@@ -1955,7 +1955,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#define N 10\nint path[N][N]; for(i=1;i<N;i++)path[i][0]=i; for(j=1;j<N;j++)path[0][j]=j; for(i=1;i<N;i++)for(j=1;j<N;j++)path[i][j]=path[i-1][j]+path[i][j-1]; cout<<path[8][4];",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#define N 10\nint path[N][N];\nfor(i=1;i<N;i++)\n    path[i][0]=i;\nfor(j=1;j<N;j++)\n    path[0][j]=j;\nfor(i=1;i<N;i++)\n    for(j=1;j<N;j++)\n        path[i][j]=path[i-1][j]+path[i][j-1];\ncout<<path[8][4];</code></pre>",
           "options": [
             "84",
             "495",
@@ -2073,7 +2073,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#define N 10\nint h[N]; h[0]=h[1]=1; for(n=2;n<N;n++)for(j=0;j<n;j++)h[n]+=h[j]*h[n-j-1]; cout<<h[6];",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#define N 10\nint h[N];\nh[0]=h[1]=1;\nfor(n=2;n<N;n++)\n    for(j=0;j<n;j++)\n        h[n]+=h[j]*h[n-j-1];\ncout<<h[6];</code></pre>",
           "options": [
             "132",
             "1430",
@@ -2229,7 +2229,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个整数数组 nums，找到其中最长的严格上升子序列的长度。下面程序横线处应该填入的是（  ）。\nvector<int> dp(n,1); for(i=1;i<n;i++)for(j=0;j<i;j++) if(nums[i]>nums[j]){ _______; }",
+          "question": "给定一个整数数组 nums，找到其中最长的严格上升子序列的长度。下面程序横线处应该填入的是（  ）。\n<pre><code>vector<int> dp(n,1);\nfor(i=1;i<n;i++)\n    for(j=0;j<i;j++)\n        if(nums[i]>nums[j])\n        {\n            _______;\n        }</code></pre>",
           "options": [
             "dp[i] = max(dp[i], dp[j]);",
             "dp[i] = max(dp[i+1], dp[j] + 1);",
@@ -2269,7 +2269,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个 m×n 的二维网格 grid，找一条从左上角到右下角路径使数字总和最小，每次只能向右或向下。横线处应该填入的是（  ）。\nfor(i=1;i<m;i++)for(j=1;j<n;j++){ _______; }",
+          "question": "给定一个 m×n 的二维网格 grid，找一条从左上角到右下角路径使数字总和最小，每次只能向右或向下。横线处应该填入的是（  ）。\n<pre><code>for(i=1;i<m;i++)\n    for(j=1;j<n;j++)\n    {\n        _______;\n    }</code></pre>",
           "options": [
             "dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][1];",
             "dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j];",
@@ -2289,7 +2289,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个整数数组 nums，找到具有最大和的连续子数组，返回最大和。下面横线处应该填入的是（  ）。\nvector<int> dp(n,0); dp[0]=nums[0]; for(i=1;i<n;i++){ _______; maxSum=max(maxSum,dp[i]); }",
+          "question": "给定一个整数数组 nums，找到具有最大和的连续子数组，返回最大和。下面横线处应该填入的是（  ）。\n<pre><code>vector<int> dp(n,0);\ndp[0]=nums[0];\nfor(i=1;i<n;i++)\n{\n    _______;\n    maxSum=max(maxSum,dp[i]);\n}</code></pre>",
           "options": [
             "dp[i] = max(nums[i+1], dp[i-1] + nums[i]);",
             "dp[i] = max(nums[i], dp[i-1] + nums[i]);",
@@ -2585,7 +2585,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 count_triple 函数（用欧几里得公式枚举勾股三元组）的时间复杂度为(  )。\nfor(v=1;v*v*4<=n;v++) for(u=v+1;u*(u+v)*2<=n;u+=2) if(gcd(u,v)==1){...}",
+          "question": "下面 count_triple 函数（用欧几里得公式枚举勾股三元组）的时间复杂度为(  )。\n<pre><code>for(v=1;v*v*4<=n;v++)\n    for(u=v+1;u*(u+v)*2<=n;u+=2)\n        if(gcd(u,v)==1)\n        {\n            ...\n        }</code></pre>",
           "options": [
             "O(n²)",
             "O(n² log n)",
@@ -2687,7 +2687,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "上题中，函数 query 的时间复杂度是（  ）。\nwhile(l<r){ mid=l+(r-l)/2; ... }",
+          "question": "上题中，函数 query 的时间复杂度是（  ）。\n<pre><code>while(l<r)\n{\n    mid=l+(r-l)/2;\n    ...\n}</code></pre>",
           "options": [
             "O(n)",
             "O(log n)",
@@ -2847,7 +2847,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的运行结果为（  ）。\nint a[]={1,2,8,4,9}; n=5; k=3; solve(n,a,k) 二分求最大最近距离，check 判断能否选 k 个点使间距不小于 dist。",
+          "question": "下面程序的运行结果为（  ）。\n<pre><code>int a[]={1,2,8,4,9};\nn=5;\nk=3;\nsolve(n,a,k)</code></pre> 二分求最大最近距离，check 判断能否选 k 个点使间距不小于 dist。",
           "options": [
             "2",
             "3",
@@ -2983,7 +2983,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码是一维数组优化 0/1 背包的核心片段，其中 w[i] 表示重量、v[i] 表示价值。横线处应填入（  ）。\nfor(i=1;i<=n;i++) for(c=W;c>=w[i];c--){ _______; }",
+          "question": "下面代码是一维数组优化 0/1 背包的核心片段，其中 w[i] 表示重量、v[i] 表示价值。横线处应填入（  ）。\n<pre><code>for(i=1;i<=n;i++)\n    for(c=W;c>=w[i];c--)\n    {\n        _______;\n    }</code></pre>",
           "options": [
             "dp[c] = max(dp[c], dp[c + w[i]] + v[i])",
             "dp[c] = min(dp[c], dp[c - w[i]] + v[i])",
@@ -4118,7 +4118,7 @@ const QUESTION_BANK = {
           "kp": "kp7_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序使用深度优先搜索（DFS）遍历图，并输出遍历顺序。横线处应该填入的是（  ）。\nwhile(!s.empty()){ node=s.top(); s.pop(); for(neighbor: graph[node]) if(!visited[neighbor]){ ______; ______; } }",
+          "question": "下面的程序使用深度优先搜索（DFS）遍历图，并输出遍历顺序。横线处应该填入的是（  ）。\n<pre><code>while(!s.empty())\n{\n    node=s.top();\n    s.pop();\n    for(neighbor: graph[node])\n        if(!visited[neighbor])\n        {\n            ______;\n            ______;\n        }\n}</code></pre>",
           "options": [
             "visited[neighbor]=true; s.push(neighbor-1);",
             "visited[neighbor]=true; s.push(neighbor+1);",
@@ -5039,7 +5039,7 @@ const QUESTION_BANK = {
           "kp": "kp7_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点 0 到顶点 3 的最短距离为（  ）。\nint weight[4][4]={{0,2,5,8},{2,0,1,7},{5,1,0,4},{8,7,4,0}};",
+          "question": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点 0 到顶点 3 的最短距离为（  ）。\n<pre><code>int weight[4][4]={{0,2,5,8},{2,0,1,7},{5,1,0,4},{8,7,4,0}};</code></pre>",
           "options": [
             "6",
             "7",
@@ -5328,7 +5328,7 @@ const QUESTION_BANK = {
           "kp": "kp7_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "哈希表长 31，按照下面的程序依次输入 4 17 28 30 4（第一个 4 是元素个数 n），则最后的 4 存入哪个位置？\ncin>>n; for(i=0;i<n;i++){cin>>x;k=x%13;while(flag[k])k=(k+1)%13;htab[k]=x;flag[k]=1;}",
+          "question": "哈希表长 31，按照下面的程序依次输入 4 17 28 30 4（第一个 4 是元素个数 n），则最后的 4 存入哪个位置？\n<pre><code>cin>>n;\nfor(i=0;i<n;i++)\n{\n    cin>>x;\n    k=x%13;\n    while(flag[k])\n        k=(k+1)%13;\n    htab[k]=x;\n    flag[k]=1;\n}</code></pre>",
           "options": [
             "3",
             "4",

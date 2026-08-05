@@ -527,7 +527,7 @@ const QUESTION_BANK = {
           "kp": "kp8_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的时间复杂度为（  ）。\nint record_choose[MAXN][MAXM];\n<pre><code>int choose(int n, int m) {\nif (m == 0 || m == n) return 1;\nif (record_choose[n][m] == 0)\nrecord_choose[n][m] = choose(n - 1, m - 1) + choose(n - 1, m);\nreturn record_choose[n][m];\n}</code></pre>",
+          "question": "下面程序的时间复杂度为（  ）。\n<pre><code>int record_choose[MAXN][MAXM];\nint choose(int n, int m) {\nif (m == 0 || m == n) return 1;\nif (record_choose[n][m] == 0)\nrecord_choose[n][m] = choose(n - 1, m - 1) + choose(n - 1, m);\nreturn record_choose[n][m];\n}</code></pre>",
           "options": [
             "O(2n)",
             "O(2m×(n-m))",
@@ -1548,7 +1548,7 @@ const QUESTION_BANK = {
           "kp": "kp8_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码用于预处理组合数，横线处应填入的是（  ）。\nfor (int i = 0; i <= n; i++) {\nc[i][0] = c[i][i] = 1;\nfor (int j = 1; j < i; j++)\nc[i][j] = __________;\n}",
+          "question": "下面代码用于预处理组合数，横线处应填入的是（  ）。\n<pre><code>for (int i = 0; i <= n; i++) {\n    c[i][0] = c[i][i] = 1;\n    for (int j = 1; j < i; j++)\n        c[i][j] = __________;\n}</code></pre>",
           "options": [
             "c[i - 1][j - 1] + c[i - 1][j]",
             "c[i][j - 1] + c[i - 1][j - 1]",
@@ -1591,7 +1591,7 @@ const QUESTION_BANK = {
           "kp": "kp8_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的时间复杂度为（  ）。\nlong long power_mod(long long a, long long n, long long mod) {\nif (n == 0) return 1;\na = a % mod;\nif (n == 1) return a;\nlong long pw = power_mod(a, n / 2, mod);\nlong long pw2 = pw * pw % mod;\nif (n % 2 == 0) return pw2;\nreturn pw2 * a % mod;\n}",
+          "question": "下面程序的时间复杂度为（  ）。\n<pre><code>long long power_mod(long long a, long long n, long long mod) {\n    if (n == 0) return 1;\n    a = a % mod;\n    if (n == 1) return a;\n    long long pw = power_mod(a, n / 2, mod);\n    long long pw2 = pw * pw % mod;\n    if (n % 2 == 0) return pw2;\n    return pw2 * a % mod;\n}</code></pre>",
           "options": [
             "O(n)",
             "O(an)",
@@ -1759,7 +1759,7 @@ const QUESTION_BANK = {
           "kp": "kp8_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码实现了快速幂算法，其时间复杂度为（ ）。\nlong long fastPow(long long b, long long e, long long mod) {\nlong long result = 1;\nwhile (e > 0) {\nif (e & 1) result = result * b % mod;\nb = b * b % mod;\ne >>= 1;\n}\nreturn result;\n}",
+          "question": "下列代码实现了快速幂算法，其时间复杂度为（ ）。\n<pre><code>long long fastPow(long long b, long long e, long long mod) {\n    long long result = 1;\n    while (e > 0) {\n        if (e & 1) result = result * b % mod;\n        b = b * b % mod;\n        e >>= 1;\n    }\n    return result;\n}</code></pre>",
           "options": [
             "O(e)",
             "O(log e)",
@@ -2607,7 +2607,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\nint weight[4][4] = {\n{  0,   1,   7, 100},\n{  1,   0,   5,  15},\n{  7,   5,   0,   6},\n{100,  15,   6,   0}};",
+          "question": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\n<pre><code>int weight[4][4] = {\n    {  0,   1,   7, 100},\n    {  1,   0,   5,  15},\n    {  7,   5,   0,   6},\n    {100,  15,   6,   0}\n};</code></pre>",
           "options": [
             "100",
             "16",
@@ -2837,7 +2837,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面最小生成树的Kruskal算法程序中，横线处应该填入的是（  ）。\n（并查集findParent已实现，edges按权值排序）\nfor (const auto & edge : edges) {\nint uParent = findParent(edge.u, parent);\nint vParent = findParent(edge.v, parent);\nif (__________) {\nparent[uParent] = vParent;\ntotalWeight += edge.weight;\n}\n}",
+          "question": "下面最小生成树的Kruskal算法程序中，横线处应该填入的是（  ）。\n（并查集findParent已实现，edges按权值排序）\n<pre><code>for (const auto & edge : edges) {\n    int uParent = findParent(edge.u, parent);\n    int vParent = findParent(edge.v, parent);\n    if (__________) {\n        parent[uParent] = vParent;\n        totalWeight += edge.weight;\n    }\n}</code></pre>",
           "options": [
             "uParent == vParent",
             "uParent >= vParent",
@@ -2857,7 +2857,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面Prim算法程序中，横线处应该填入的是（  ）。\nfor (int v = 0; v < n; v++) {\nif (__________) {\nkey[v] = graph[u][v];\nparent[v] = u;\n}\n}",
+          "question": "下面Prim算法程序中，横线处应该填入的是（  ）。\n<pre><code>for (int v = 0; v < n; v++) {\n    if (__________) {\n        key[v] = graph[u][v];\n        parent[v] = u;\n    }\n}</code></pre>",
           "options": [
             "graph[u][v] >= 0 && key[v] > graph[u][v]",
             "graph[u][v] <= 0 && key[v] > graph[u][v]",
@@ -2877,7 +2877,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列Dijkstra算法中，横线处应该填入的是（  ）。\nfor (int j = 1; j <= n; j++) {\nif (__________) {\nminn = dis[j];\nminx = j;\n}\n}",
+          "question": "下列Dijkstra算法中，横线处应该填入的是（  ）。\n<pre><code>for (int j = 1; j <= n; j++) {\n    if (__________) {\n        minn = dis[j];\n        minx = j;\n    }\n}</code></pre>",
           "options": [
             "dis[j] > minn && cheak[j] == 0",
             "dis[j] < minn && cheak[j] == 0",
@@ -2897,7 +2897,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面Floyd算法中，横线处应该填入的是（  ）。\nfor (int k = 1; k <= n; k++)\nfor (int i = 1; i <= n; i++)\nfor (int j = 1; j <= n; j++)\nif (__________)\nmap[i][j] = map[i][k] + map[k][j];",
+          "question": "下面Floyd算法中，横线处应该填入的是（  ）。\n<pre><code>for (int k = 1; k <= n; k++)\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= n; j++)\n            if (__________)\n                map[i][j] = map[i][k] + map[k][j];</code></pre>",
           "options": [
             "map[i][j] < map[i][k] + map[k][j]",
             "map[i][j] > map[i][k] + map[k][j]",
@@ -2961,7 +2961,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列Dijkstra算法中，横线处应该填入的是（  ）。\nfor (Edge * e = graph[minv]; e != NULL; e = e->next) {\n________;\n}",
+          "question": "下列Dijkstra算法中，横线处应该填入的是（  ）。\n<pre><code>for (Edge * e = graph[minv]; e != NULL; e = e->next) {\n    ________;\n}</code></pre>",
           "options": [
             "if (dis[e->out] > e->len) dis[e->out] = e->len;",
             "if (dis[e->out] > min + e->len) dis[e->out] = min + e->len;",
@@ -3079,7 +3079,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面Floyd算法中，横线处应该填入的是（  ）。\nfor (int k = 1; k <= n; k++)\nfor (int i = 1; i <= n; i++)\nfor (int j = 1; j <= n; j++)\nif (map[i][j] > map[i][k] + map[k][j])\n________;",
+          "question": "下面Floyd算法中，横线处应该填入的是（  ）。\n<pre><code>for (int k = 1; k <= n; k++)\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= n; j++)\n            if (map[i][j] > map[i][k] + map[k][j])\n                ________;</code></pre>",
           "options": [
             "map[i][j] = map[i][k] + map[k][j]",
             "map[i][k] = map[i][j] - map[k][j]",
@@ -3215,7 +3215,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\nint weight[4][4] = {\n{ 0,  5,  8, 10},\n{ 5,  0,  1,  7},\n{ 8,  1,  0,  3},\n{10,  7,  3,  0}};",
+          "question": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\n<pre><code>int weight[4][4] = {\n    { 0,  5,  8, 10},\n    { 5,  0,  1,  7},\n    { 8,  1,  0,  3},\n    {10,  7,  3,  0}\n};</code></pre>",
           "options": [
             "9",
             "10",
@@ -3335,7 +3335,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列Dijkstra算法，假设图G中顶点数V、边数E，则程序的时间复杂度为（  ）。\ntypedef struct Edge { int in, out; int len; struct Edge *next; } Edge;\n<pre><code>void dijkstra(int v, Edge *graph[], int start, int *dis) {\nconst int MAX_DIS = 0x7fffff;\nfor (int i = 0; i < v; i++) dis[i] = MAX_DIS;\ndis[start] = 0;\nint *visited = new int[v];\nfor (int i = 0; i < v; i++) visited[i] = 0;\nvisited[start] = 1;\nfor (int t = 0; ; t++) {\nint min = MAX_DIS, minv = -1;\nfor (int i = 0; i < v; i++)\nif (visited[i] == 0 && min > dis[i]) { min = dis[i]; minv = i; }\nif (minv < 0) break;\nvisited[minv] = 1;\nfor (Edge *e = graph[minv]; e != NULL; e = e->next)\nif (dis[e->out] > e->len) dis[e->out] = e->len;\n}\ndelete[] visited;\n}</code></pre>",
+          "question": "下列Dijkstra算法，假设图G中顶点数V、边数E，则程序的时间复杂度为（  ）。\n<pre><code>typedef struct Edge {\n    int in, out;\n    int len;\n    struct Edge *next;\n} Edge;\nvoid dijkstra(int v, Edge *graph[], int start, int *dis) {\nconst int MAX_DIS = 0x7fffff;\nfor (int i = 0; i < v; i++) dis[i] = MAX_DIS;\ndis[start] = 0;\nint *visited = new int[v];\nfor (int i = 0; i < v; i++) visited[i] = 0;\nvisited[start] = 1;\nfor (int t = 0; ; t++) {\nint min = MAX_DIS, minv = -1;\nfor (int i = 0; i < v; i++)\nif (visited[i] == 0 && min > dis[i]) { min = dis[i]; minv = i; }\nif (minv < 0) break;\nvisited[minv] = 1;\nfor (Edge *e = graph[minv]; e != NULL; e = e->next)\nif (dis[e->out] > e->len) dis[e->out] = e->len;\n}\ndelete[] visited;\n}</code></pre>",
           "options": [
             "O(V^2)",
             "O(V+E)",
@@ -3375,7 +3375,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序使用出边邻接表表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\nclass Graph {\n...\n};\n<pre><code>int main() {\nGraph g(4);\ng.addEdge(0, 1, 8);\ng.addEdge(0, 2, 5);\ng.addEdge(1, 2, 1);\ng.addEdge(1, 3, 3);\ng.addEdge(2, 3, 7);\nreturn 0;\n}</code></pre>",
+          "question": "下面的程序使用出边邻接表表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\n<pre><code>class Graph {\n...\n};\nint main() {\nGraph g(4);\ng.addEdge(0, 1, 8);\ng.addEdge(0, 2, 5);\ng.addEdge(1, 2, 1);\ng.addEdge(1, 3, 3);\ng.addEdge(2, 3, 7);\nreturn 0;\n}</code></pre>",
           "options": [
             "12",
             "11",
@@ -3479,7 +3479,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面是使用邻接矩阵实现的Dijkstra算法的核心片段，用于求单源最短路径。在找到当前距离起点最近的顶点u后，需要更新其邻接点j的距离。横线处应填入的代码是（  ）。\nfor (int j = 1; j <= n; j++) {\nif (!visited[j] && graph[u][j] < INF) {\nif (________) {\ndis[j] = dis[u] + graph[u][j];\n}\n}\n}",
+          "question": "下面是使用邻接矩阵实现的Dijkstra算法的核心片段，用于求单源最短路径。在找到当前距离起点最近的顶点u后，需要更新其邻接点j的距离。横线处应填入的代码是（  ）。\n<pre><code>for (int j = 1; j <= n; j++) {\n    if (!visited[j] && graph[u][j] < INF) {\n        if (________) {\n            dis[j] = dis[u] + graph[u][j];\n        }\n    }\n}</code></pre>",
           "options": [
             "dis[j] < dis[u] + graph[u][j]",
             "dis[j] > dis[u] + graph[u][j]",
@@ -3962,7 +3962,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序中，二维数组h和v分别代表如下图所示的网格中的水平边的时间消耗和垂直边的时间消耗。程序使用动态规划计算从左下角到右上角的最小时间消耗，则横线处应该填写下列哪个选项的代码？（  ）。\nint dis[MAXY][MAXX];\n<pre><code>int shortest_path(int x, int y) {\ndis[0][0] = 0;\nfor (int i = 0; i < y; i++) dis[i + 1][0] = dis[i][0] + v[i][0];\nfor (int j = 0; j < x; j++) dis[0][j + 1] = dis[0][j] + h[0][j];\nfor (int i = 0; i < y; i++)\nfor (int j = 0; j < x; j++)\n________________;\nreturn dis[y][x];\n}</code></pre>",
+          "question": "下面的程序中，二维数组h和v分别代表如下图所示的网格中的水平边的时间消耗和垂直边的时间消耗。程序使用动态规划计算从左下角到右上角的最小时间消耗，则横线处应该填写下列哪个选项的代码？（  ）。\n<pre><code>int dis[MAXY][MAXX];\nint shortest_path(int x, int y) {\ndis[0][0] = 0;\nfor (int i = 0; i < y; i++) dis[i + 1][0] = dis[i][0] + v[i][0];\nfor (int j = 0; j < x; j++) dis[0][j + 1] = dis[0][j] + h[0][j];\nfor (int i = 0; i < y; i++)\nfor (int j = 0; j < x; j++)\n________________;\nreturn dis[y][x];\n}</code></pre>",
           "options": [
             "dis[i][j] = min(dis[i - 1][j] + v[i - 1][j], dis[i][j - 1] + h[i][j - 1]);",
             "dis[i][j] = min(dis[i - 1][j] + h[i - 1][j], dis[i][j - 1] + v[i][j - 1]);",
@@ -4134,7 +4134,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的时间复杂度为（  ）。\nint primes[MAXP], num = 0;\nbool isPrime[MAXN] = {false};\n<pre><code>void sieve() {\nfor (int n = 2; n <= MAXN; n++) {\nif (!isPrime[n]) primes[num++] = n;\nfor (int i = 0; i < num && n * primes[i] <= MAXN; i++) {\nisPrime[n * primes[i]] = true;\nif (n % primes[i] == 0) break;\n}\n}\n}</code></pre>",
+          "question": "下面程序的时间复杂度为（  ）。\n<pre><code>int primes[MAXP], num = 0;\nbool isPrime[MAXN] = {false};\nvoid sieve() {\nfor (int n = 2; n <= MAXN; n++) {\nif (!isPrime[n]) primes[num++] = n;\nfor (int i = 0; i < num && n * primes[i] <= MAXN; i++) {\nisPrime[n * primes[i]] = true;\nif (n % primes[i] == 0) break;\n}\n}\n}</code></pre>",
           "options": [
             "O(n)",
             "O(n×log(n))",
@@ -4248,7 +4248,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的时间复杂度为（  ）。\nbool notPrime[N] = {false};\n<pre><code>void sieve() {\nfor (int n = 2; n * n < N; n++)\nif (!notPrime[n])\nfor (int i = n * n; i < N; i += n)\nnotPrime[i] = true;\n}</code></pre>",
+          "question": "下面程序的时间复杂度为（  ）。\n<pre><code>bool notPrime[N] = {false};\nvoid sieve() {\nfor (int n = 2; n * n < N; n++)\nif (!notPrime[n])\nfor (int i = n * n; i < N; i += n)\nnotPrime[i] = true;\n}</code></pre>",
           "options": [
             "O(N)",
             "O(N×log N)",
@@ -4570,7 +4570,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面最长公共子序列程序中，横线处应该填入的是（  ）。\n#define MAX(A, B) (((A) > (B)) ? (A) : (B))\n#define MIN(A, B) (((A) < (B)) ? (A) : (B))\nint dp[MAX_L + 1][MAX_L + 1];\n<pre><code>int LCS(char str1[], char str2[]) {\nint len1 = strlen(str1);\nint len2 = strlen(str2);\nfor (int i = 0; i < len1; i++)\nfor(int j = 0; j < len2; j++)\nif (str1[i] == str2[j])\ndp[i + 1][j + 1] = dp[i][j] + 1;\nelse\n________;\nreturn dp[len1][len2];\n}</code></pre>",
+          "question": "下面最长公共子序列程序中，横线处应该填入的是（  ）。\n<pre><code>#define MAX(A, B) (((A) > (B)) ? (A) : (B))\n#define MIN(A, B) (((A) < (B)) ? (A) : (B))\nint dp[MAX_L + 1][MAX_L + 1];\nint LCS(char str1[], char str2[]) {\nint len1 = strlen(str1);\nint len2 = strlen(str2);\nfor (int i = 0; i < len1; i++)\nfor(int j = 0; j < len2; j++)\nif (str1[i] == str2[j])\ndp[i + 1][j + 1] = dp[i][j] + 1;\nelse\n________;\nreturn dp[len1][len2];\n}</code></pre>",
           "options": [
             "dp[i + 1][j + 1] = dp[i][j + 1] + dp[i + 1][j];",
             "dp[i + 1][j + 1] = MIN(dp[i][j + 1], dp[i + 1][j]);",
@@ -4780,7 +4780,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的欧氏筛法程序中，两个横线处应填入的分别是（  ）。\nint primes[MAXP], num = 0;\nbool isPrime[MAXN + 1] = {false};\n<pre><code>void sieve() {\nfor (int n = 2; n <= MAXN; n++) {\nif (!isPrime[n]) primes[num++] = n;\nfor (int i = 0; i < num && ________; i++) {\nisPrime[n * primes[i]] = true;\nif (________) break;\n}\n}\n}</code></pre>",
+          "question": "下面的欧氏筛法程序中，两个横线处应填入的分别是（  ）。\n<pre><code>int primes[MAXP], num = 0;\nbool isPrime[MAXN + 1] = {false};\nvoid sieve() {\nfor (int n = 2; n <= MAXN; n++) {\nif (!isPrime[n]) primes[num++] = n;\nfor (int i = 0; i < num && ________; i++) {\nisPrime[n * primes[i]] = true;\nif (________) break;\n}\n}\n}</code></pre>",
           "options": [
             "n * primes[i] < MAXN ; n % primes[i] == 0",
             "n * primes[i] < MAXN ; primes[i] > n",
@@ -5012,7 +5012,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面LIS函数试图求出最长上升子序列的长度，其时间复杂度为（  ）。\n#define INT_MIN (-1000)\n<pre><code>int LIS(vector<int> & nums) {\nint n = nums.size();\nvector<int> tail;\ntail.push_back(INT_MIN);\nfor (int i = 0; i < n; i++) {\nint x = nums[i], l = 0, r = tail.size();\nwhile (l < r) {\nint mid = (l + r) / 2;\nif (tail[mid] < x) l = mid + 1;\nelse r = mid;\n}\nif (r == tail.size()) tail.push_back(x);\nelse tail[r] = x;\n}\nreturn tail.size() - 1;\n}</code></pre>",
+          "question": "下面LIS函数试图求出最长上升子序列的长度，其时间复杂度为（  ）。\n<pre><code>#define INT_MIN (-1000)\nint LIS(vector<int> & nums) {\nint n = nums.size();\nvector<int> tail;\ntail.push_back(INT_MIN);\nfor (int i = 0; i < n; i++) {\nint x = nums[i], l = 0, r = tail.size();\nwhile (l < r) {\nint mid = (l + r) / 2;\nif (tail[mid] < x) l = mid + 1;\nelse r = mid;\n}\nif (r == tail.size()) tail.push_back(x);\nelse tail[r] = x;\n}\nreturn tail.size() - 1;\n}</code></pre>",
           "options": [
             "O(n)",
             "O(n^2)",
@@ -5164,7 +5164,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的时间复杂度为（  ）。\nint primes[MAXP], num = 0;\nbool isPrime[MAXN] = {false};\n<pre><code>void sieve() {\nfor (int n = 2; n <= MAXN; n++) {\nif (!isPrime[n]) primes[num++] = n;\nfor (int i = 0; i < num && n * primes[i] <= MAXN; i++) {\nisPrime[n * primes[i]] = true;\nif (n % primes[i] == 0) break;\n}\n}\n}</code></pre>",
+          "question": "下面程序的时间复杂度为（  ）。\n<pre><code>int primes[MAXP], num = 0;\nbool isPrime[MAXN] = {false};\nvoid sieve() {\nfor (int n = 2; n <= MAXN; n++) {\nif (!isPrime[n]) primes[num++] = n;\nfor (int i = 0; i < num && n * primes[i] <= MAXN; i++) {\nisPrime[n * primes[i]] = true;\nif (n % primes[i] == 0) break;\n}\n}\n}</code></pre>",
           "options": [
             "O(log MAXN)",
             "O(MAXN log MAXN)",
@@ -5242,7 +5242,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列C++语言代码，能够安全地输出arr[5]的值。\nint n = 5;\nint arr[n] = {1, 2, 3};\nstd::cout << arr[5];",
+          "question": "下列C++语言代码，能够安全地输出arr[5]的值。\n<pre><code>int n = 5;\nint arr[n] = {1, 2, 3};\nstd::cout << arr[5];</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5356,7 +5356,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码的时间复杂度（以n为自变量，忽略常数与低阶项）是（  ）。\nlong long s = 0;\nfor (int i = 1; i <= n; i++)\nfor (int j = 1; j * j <= i; j++)\ns += j;",
+          "question": "下列代码的时间复杂度（以n为自变量，忽略常数与低阶项）是（  ）。\n<pre><code>long long s = 0;\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j * j <= i; j++)\n        s += j;</code></pre>",
           "options": [
             "O(n)",
             "O(n^2)",
@@ -5376,7 +5376,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序实现了线性筛法（欧拉筛），用于在O(n)时间内求出1到n之间的所有质数。为了保证每个合数只被其最小质因子筛掉，横线处应填入的语句是（  ）。\nfor (int i = 2; i <= n; i++) {\nif (!not_prime[i]) primes[++cnt] = i;\nfor (int j = 1; j <= cnt && i * primes[j] <= n; j++) {\nnot_prime[i * primes[j]] = true;\nif (________) break;\n}\n}",
+          "question": "下列程序实现了线性筛法（欧拉筛），用于在O(n)时间内求出1到n之间的所有质数。为了保证每个合数只被其最小质因子筛掉，横线处应填入的语句是（  ）。\n<pre><code>for (int i = 2; i <= n; i++) {\n    if (!not_prime[i]) primes[++cnt] = i;\n    for (int j = 1; j <= cnt && i * primes[j] <= n; j++) {\n        not_prime[i * primes[j]] = true;\n        if (________) break;\n    }\n}</code></pre>",
           "options": [
             "i + primes[j] == n",
             "primes[j] > i",
@@ -5682,7 +5682,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码片段的时间复杂度为（  ）。\nlong long s = 0;\nfor (int i = 1; i <= n; i++)\nfor (int j = 1; j * j <= n; j++)\ns += i + j;",
+          "question": "下列代码片段的时间复杂度为（  ）。\n<pre><code>long long s = 0;\nfor (int i = 1; i <= n; i++)\n    for (int j = 1; j * j <= n; j++)\n        s += i + j;</code></pre>",
           "options": [
             "O(n)",
             "O(n log n)",

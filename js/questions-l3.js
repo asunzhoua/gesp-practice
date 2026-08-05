@@ -104,7 +104,7 @@ const QUESTION_BANK = {
           "kp": "kp3_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "C++的数据类型转换让人很难琢磨透，下列代码输出的值是（ ）。代码：int a=3; int b=2; cout<<a/b*1.0<<endl;",
+          "question": "C++的数据类型转换让人很难琢磨透，下列代码输出的值是（ ）。\n<pre><code>int a=3;\nint b=2;\ncout<<a/b*1.0<<endl;\n</code></pre>",
           "options": [
             "A. 1.5",
             "B. 1",
@@ -240,7 +240,7 @@ const QUESTION_BANK = {
           "kp": "kp3_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码可以计算1到100的累加和，采用的是穷举法。代码：for(int i=1;i<=100;i++) sum+=i;",
+          "question": "下面C++代码可以计算1到100的累加和，采用的是穷举法。\n<pre><code>for(int i=1;i<=100;i++)\n    sum+=i;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -388,7 +388,7 @@ const QUESTION_BANK = {
           "kp": "kp3_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面程序是判断是否是闰年的正确程序。代码：cin>>n; cout<<((n%4==0&&n%100!=0)||(n%400==0))?1:0;",
+          "question": "下面程序是判断是否是闰年的正确程序。\n<pre><code>cin>>n;\ncout<<((n%4==0&&n%100!=0)||(n%400==0))?1:0;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1397,7 +1397,7 @@ const QUESTION_BANK = {
           "kp": "kp3_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码将十进制转化成八进制，则横线上应填入（ ）。代码：while (decimal > 0) { ____ } 之后逆序输出oct_number。",
+          "question": "下列代码将十进制转化成八进制，则横线上应填入（ ）。\n<pre><code>while (decimal > 0)\n{\n    ____\n}\n</code></pre> 之后逆序输出oct_number。",
           "options": [
             "oct_number[i] = decimal % 8; decimal /= 8;",
             "oct_number[i] = decimal / 8; decimal %/= 8;",
@@ -1473,7 +1473,7 @@ const QUESTION_BANK = {
           "kp": "kp3_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码后，输出的结果是8。代码：int a=0b1010; int b=01100; int c=a&b; cout<<c<<endl;",
+          "question": "执行下面C++代码后，输出的结果是8。\n<pre><code>int a=0b1010;\nint b=01100;\nint c=a&b;\ncout<<c<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1915,7 +1915,7 @@ const QUESTION_BANK = {
           "kp": "kp3_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "在C++中，以下代码的输出是什么（ ）。代码：int a=-5; unsigned int b=a; cout<<b;",
+          "question": "在C++中，以下代码的输出是什么（ ）。\n<pre><code>int a=-5;\nunsigned int b=a;\ncout<<b;\n</code></pre>",
           "options": [
             "-5",
             "5",
@@ -1935,7 +1935,7 @@ const QUESTION_BANK = {
           "kp": "kp3_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序的作用是（ ）。代码：int decimal=25; cout<<oct<<decimal;",
+          "question": "下列程序的作用是（ ）。\n<pre><code>int decimal=25;\ncout<<oct<<decimal;\n</code></pre>",
           "options": [
             "将十进制数转换成八进制数",
             "将八进制数转换成十进制数",
@@ -1955,7 +1955,7 @@ const QUESTION_BANK = {
           "kp": "kp3_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序是将十进制转十六进制，横线处应该填入的是（ ）。代码：int decimal=255; ____; return 0;",
+          "question": "下面程序是将十进制转十六进制，横线处应该填入的是（ ）。\n<pre><code>int decimal=255;\n____;\nreturn 0;\n</code></pre>",
           "options": [
             "cout << oct << decimal;",
             "cout << decimal << decimal;",
@@ -2676,7 +2676,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出是\"24 12\"。代码：int a=12,b=24; ____; a=a^b; b=a^b; cout<<a<<\" \"<<b<<endl;",
+          "question": "在下列代码的横线处填写（ ），可以使得输出是\"24 12\"。\n<pre><code>int a=12,b=24;\n____;\na=a^b;\nb=a^b;\ncout<<a<<\" \"<<b<<endl;\n</code></pre>",
           "options": [
             "A. a = a ^ b",
             "B. b = a ^ b",
@@ -2696,7 +2696,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出不是\"31\"。代码：int array[5]={1,2,4,8,16}; int res=0; for(i=0;i<5;i++) ____; cout<<res<<endl;",
+          "question": "在下列代码的横线处填写（ ），可以使得输出不是\"31\"。\n<pre><code>int array[5]={1,2,4,8,16};\nint res=0;\nfor(i=0;i<5;i++)\n    ____;\ncout<<res<<endl;\n</code></pre>",
           "options": [
             "A. res = res + array[i]",
             "B. res = res & array[i]",
@@ -2794,7 +2794,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出是\"20 10\"。代码：int a=10,b=20; a=(a<<8)|b; ____; cout<<a<<\" \"<<b<<endl;",
+          "question": "在下列代码的横线处填写（ ），可以使得输出是\"20 10\"。\n<pre><code>int a=10,b=20;\na=(a<<8)|b;\n____;\ncout<<a<<\" \"<<b<<endl;\n</code></pre>",
           "options": [
             "A. a = a >> 8; b = a & 0xff",
             "B. b = a >> 8; a = a & 0xff;",
@@ -2904,7 +2904,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。代码：cout << (3|16) << endl;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>cout << (3|16) << endl;\n</code></pre>",
           "options": [
             "3",
             "16",
@@ -3000,7 +3000,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码的输出结果是（ ）。代码：int a = 12; int result = a >> 2; cout << result << endl;",
+          "question": "下列代码的输出结果是（ ）。\n<pre><code>int a = 12;\nint result = a >> 2;\ncout << result << endl;\n</code></pre>",
           "options": [
             "12",
             "6",
@@ -3020,7 +3020,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码的输出结果是（ ）。代码：int a=5; int b=10; a=a^b; b=a^b; a=a^b; cout<<a<<\", \"<<b<<endl;",
+          "question": "下列代码的输出结果是（ ）。\n<pre><code>int a=5;\nint b=10;\na=a^b;\nb=a^b;\na=a^b;\ncout<<a<<\", \"<<b<<endl;\n</code></pre>",
           "options": [
             "a = 5, b = 10",
             "a = 5, b = 5",
@@ -3098,7 +3098,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码实现的是（ ）。代码：void Swap(int &a, int &b){ if(a!=b){ a^=b; b^=a; a^=b; } }",
+          "question": "下列代码实现的是（ ）。\n<pre><code>void Swap(int &a, int &b)\n{\n    if(a!=b)\n    {\n        a^=b;\n        b^=a;\n        a^=b;\n    }\n}\n</code></pre>",
           "options": [
             "a和b的异或",
             "a和b的同或",
@@ -3158,7 +3158,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序中，result和result2输出分别是( )。代码：long a=123; int b=1; long result=a&b; long a2=-123; unsigned int b2=-1; long result2=a2&b2;",
+          "question": "下列程序中，result和result2输出分别是( )。\n<pre><code>long a=123;\nint b=1;\nlong result=a&b;\nlong a2=-123;\nunsigned int b2=-1;\nlong result2=a2&b2;\n</code></pre>",
           "options": [
             "123 -1",
             "123 -123",
@@ -3292,7 +3292,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列程序输出的是 A。代码：char x=65; x=x&00001111; cout<<x<<endl;",
+          "question": "下列程序输出的是 A。\n<pre><code>char x=65;\nx=x&00001111;\ncout<<x<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3310,7 +3310,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码的说法正确的是什么（ ）。代码：int a=0b1101; int b=0b1011; cout<<(a^b);",
+          "question": "以下代码的说法正确的是什么（ ）。\n<pre><code>int a=0b1101;\nint b=0b1011;\ncout<<(a^b);\n</code></pre>",
           "options": [
             "进行的是整体异或运算",
             "进行的是按位同或运算",
@@ -3330,7 +3330,7 @@ const QUESTION_BANK = {
           "kp": "kp3_02",
           "type": "judge",
           "difficulty": 1,
-          "question": "这段程序进行的是判断一个从键盘输入的字符的ASCII是否是奇数，若是，输出YES，否则，输出NO。代码：char x; scanf(\"%c\",&x); cout<<(x&1?\"YES\":\"NO\");",
+          "question": "这段程序进行的是判断一个从键盘输入的字符的ASCII是否是奇数，若是，输出YES，否则，输出NO。\n<pre><code>char x;\nscanf(\"%c\",&x);\ncout<<(x&1?\"YES\":\"NO\");\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3861,7 +3861,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码后，输出是（ ）。代码：string str(\"chen\"); int x=str.length(); int temp=0; for(i=0;i<=x;i++) temp++; cout<<temp<<endl;",
+          "question": "执行下面C++代码后，输出是（ ）。\n<pre><code>string str(\"chen\");\nint x=str.length();\nint temp=0;\nfor(i=0;i<=x;i++)\n    temp++;\ncout<<temp<<endl;\n</code></pre>",
           "options": [
             "A. 4",
             "B. 2",
@@ -3881,7 +3881,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码后输出的是（ ）。代码：string str(\"chen\"); int x=str.length(); cout<<x<<endl;",
+          "question": "执行下面C++代码后输出的是（ ）。\n<pre><code>string str(\"chen\");\nint x=str.length();\ncout<<x<<endl;\n</code></pre>",
           "options": [
             "A. 4",
             "B. 3",
@@ -3901,7 +3901,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码后输出的是（ ）。代码：string str(\"chen\"); cout<<str[5]<<endl;",
+          "question": "执行下面C++代码后输出的是（ ）。\n<pre><code>string str(\"chen\");\ncout<<str[5]<<endl;\n</code></pre>",
           "options": [
             "A. 输出未知的数",
             "B. 输出'n'",
@@ -3921,7 +3921,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于统计每种字符出现的次数，当输出为3时，横线上不能填入的代码是（ ）。代码：string str=\"GESP is a good programming test!\"; int x=0; for(i=0;i<str.length();i++) if(____) x++; cout<<x<<endl;",
+          "question": "下面C++代码用于统计每种字符出现的次数，当输出为3时，横线上不能填入的代码是（ ）。\n<pre><code>string str=\"GESP is a good programming test!\";\nint x=0;\nfor(i=0;i<str.length();i++)\n    if(____)\n        x++;\ncout<<x<<endl;\n</code></pre>",
           "options": [
             "A. str[i]=='o'",
             "B. str[i]=='a'+14",
@@ -3941,7 +3941,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "C++代码用于抽取字符串中的电话号码。约定：电话号码全部是数字，数字之间没有其他符号如连字符或空格等。代码中变量strSrc仅仅是示例，可以包含更多字符。下面有关代码说法，正确的说法是（ ）。代码：string strSrc=\"红十字: 01084025890火警电话: 119急救电话: 120紧急求助: 110\"; string tel=\"\"; for(i=0;i<=strSrc.length();i++) { if(strSrc[i]>='0'&&strSrc[i]<='9') tel=tel+strSrc[i]; else if(tel!=\"\") { cout<<tel<<endl; tel=\"\"; } }",
+          "question": "C++代码用于抽取字符串中的电话号码。约定：电话号码全部是数字，数字之间没有其他符号如连字符或空格等。代码中变量strSrc仅仅是示例，可以包含更多字符。下面有关代码说法，正确的说法是（ ）。\n<pre><code>string strSrc=\"红十字: 01084025890火警电话: 119急救电话: 120紧急求助: 110\";\nstring tel=\"\";\nfor(i=0;i<=strSrc.length();i++)\n{\n    if(strSrc[i]>='0'&&strSrc[i]<='9')\n        tel=tel+strSrc[i];\n    else if(tel!=\"\")\n    {\n        cout<<tel<<endl;\n        tel=\"\";\n    }\n}\n</code></pre>",
           "options": [
             "A. 代码将换行输出各个含有数字的电话号码。",
             "B. 代码将不换行输出各个含有数字的电话号码，号码中间没有分隔。",
@@ -3961,7 +3961,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "C++程序执行后，输入chen a dai输出应该为：chen。（ ）代码：string str; cin>>str; cout<<str;",
+          "question": "C++程序执行后，输入chen a dai输出应该为：chen。（ ）\n<pre><code>string str;\ncin>>str;\ncout<<str;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3979,7 +3979,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码后将输出\"China\"。（ ）代码：string a=\"china\"; a.replace(0,1,\"C\"); cout<<a<<endl;",
+          "question": "执行下面C++代码后将输出\"China\"。（ ）\n<pre><code>string a=\"china\";\na.replace(0,1,\"C\");\ncout<<a<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3997,7 +3997,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知字符'0'的ASCII编码的十进制表示为48，则执行下面C++代码后，输出是（ ）。代码：string s=\"316\"; int n=s.length(); int x=0; for(int i=0;i<n;i++) x+=s[i]; cout<<x<<endl;",
+          "question": "已知字符'0'的ASCII编码的十进制表示为48，则执行下面C++代码后，输出是（ ）。\n<pre><code>string s=\"316\";\nint n=s.length();\nint x=0;\nfor(int i=0;i<n;i++)\n    x+=s[i];\ncout<<x<<endl;\n</code></pre>",
           "options": [
             "10",
             "58",
@@ -4017,7 +4017,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出是GESP IS INTERESTING。代码：string str=\"gEsP is Interesting\"; int x=str.length(); for(int i=0;i<x;i++) if((str[i]>='a')&&(str[i]<='z')) ____; cout<<str<<endl;",
+          "question": "在下列代码的横线处填写（ ），可以使得输出是GESP IS INTERESTING。\n<pre><code>string str=\"gEsP is Interesting\";\nint x=str.length();\nfor(int i=0;i<x;i++)\n    if((str[i]>='a')&&(str[i]<='z'))\n        ____;\ncout<<str<<endl;\n</code></pre>",
           "options": [
             "str[i]+='a'-'A'",
             "str[i]+=20",
@@ -4037,7 +4037,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设英文句子由若干词构成。下面C++代码统计输出的词数是（ ）。代码：string str=\"gEsP is  Interesting  !\"; int x=str.length(); int nwords=0; for(int i=0;i<x;i++) if(str[i]==' '){nwords++; while(str[++i]==' ');} cout<<nwords<<endl;",
+          "question": "假设英文句子由若干词构成。下面C++代码统计输出的词数是（ ）。\n<pre><code>string str=\"gEsP is  Interesting  !\";\nint x=str.length();\nint nwords=0;\nfor(int i=0;i<x;i++)\n    if(str[i]==' ')\n    {\n        nwords++;\n        while(str[++i]==' ');\n    }\ncout<<nwords<<endl;\n</code></pre>",
           "options": [
             "1",
             "2",
@@ -4077,7 +4077,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码后将输出2 。（ ）代码：string str=\"gEsP is Interesting\"; int x=str.find(\"s\"); cout<<x<<endl;",
+          "question": "执行下面C++代码后将输出2 。（ ）\n<pre><code>string str=\"gEsP is Interesting\";\nint x=str.find(\"s\");\ncout<<x<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4135,7 +4135,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知字符'0'的ASCII编码的十进制表示为48，则执行下面C++代码后，输出是( )。代码：string s=\"0629\"; int n=s.length(); int x=0; for(int i=0;i<n;i++) x+=s[i]; cout<<x<<endl;",
+          "question": "已知字符'0'的ASCII编码的十进制表示为48，则执行下面C++代码后，输出是( )。\n<pre><code>string s=\"0629\";\nint n=s.length();\nint x=0;\nfor(int i=0;i<n;i++)\n    x+=s[i];\ncout<<x<<endl;\n</code></pre>",
           "options": [
             "17",
             "158",
@@ -4175,7 +4175,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "如果执行下面C++代码后，输出的结果是\"gesp ccf org cn \"，则横线上应填入哪个代码？代码：string str=\"gesp.ccf.org.cn\"; ... while(found!=string::npos){ token=str.substr(0,found); result+=token; result+=\" \"; ____; found=str.find(delimiter);} result+=str; result+=\" \";",
+          "question": "如果执行下面C++代码后，输出的结果是\"gesp ccf org cn \"，则横线上应填入哪个代码？\n<pre><code>string str=\"gesp.ccf.org.cn\";\n...\nwhile(found!=string::npos)\n{\n    token=str.substr(0,found);\n    result+=token;\n    result+=\" \";\n    ____;\n    found=str.find(delimiter);\n}\nresult+=str;\nresult+=\" \";\n</code></pre>",
           "options": [
             "str = str.substr(found + delimiter.length(), str.length() - 1);",
             "str = str.substr(found, str.length());",
@@ -4233,7 +4233,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序输出的是（ ）。代码：string str = \"Hello,陈A歹\"; cout << str.find(\"A\") << '\\n';",
+          "question": "下列程序输出的是（ ）。\n<pre><code>string str = \"Hello,陈A歹\";\ncout << str.find(\"A\") << '\\n';\n</code></pre>",
           "options": [
             "9",
             "8",
@@ -4252,7 +4252,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列程序输出的是A 。（ ）代码：char x=65; x++; cout<<x++<<endl;",
+          "question": "下列程序输出的是A 。（ ）\n<pre><code>char x=65;\nx++;\ncout<<x++<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4270,7 +4270,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列程序输出的是3 。（ ）代码：string str=\"陈ADai\"; size_t pos = str.find('D'); cout<<pos<<endl;",
+          "question": "下列程序输出的是3 。（ ）\n<pre><code>string str=\"陈ADai\";\nsize_t pos = str.find('D');\ncout<<pos<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4288,7 +4288,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列程序将输出A 。（ ）代码：int a=65; cout<<(char)a<<endl;",
+          "question": "下列程序将输出A 。（ ）\n<pre><code>int a=65;\ncout<<(char)a<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4326,7 +4326,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码输出的是（ ）。代码：string s=\"1234@@chenadai\"; string str=\"12345\"; s.replace(1,5,str); cout<<s<<endl;",
+          "question": "下列代码输出的是（ ）。\n<pre><code>string s=\"1234@@chenadai\";\nstring str=\"12345\";\ns.replace(1,5,str);\ncout<<s<<endl;\n</code></pre>",
           "options": [
             "12345",
             "2345@",
@@ -4346,7 +4346,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序输出的是（ ）。代码：string ch=\"hello\"; if(ch[5]==NULL) cout<<\"right\"; else if(ch[5]=='\\0') cout<<\"wrong\"; else cout<<\"hello\";",
+          "question": "下列程序输出的是（ ）。\n<pre><code>string ch=\"hello\";\nif(ch[5]==NULL)\n    cout<<\"right\";\nelse if(ch[5]=='\\0')\n    cout<<\"wrong\";\nelse\n    cout<<\"hello\";\n</code></pre>",
           "options": [
             "right",
             "wrong",
@@ -4366,7 +4366,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序中，假设一个字符占用的内存空间是1，下列程序中，ch占用的内存空间是( )。代码：char ch[] = \"hello world\"; size_t ret=strlen(ch); cout<<ret<<endl;",
+          "question": "下列程序中，假设一个字符占用的内存空间是1，下列程序中，ch占用的内存空间是( )。\n<pre><code>char ch[] = \"hello world\";\nsize_t ret=strlen(ch);\ncout<<ret<<endl;\n</code></pre>",
           "options": [
             "11",
             "10",
@@ -4386,7 +4386,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序最后输出的是（ ）。代码：int a=65; cout<<tolower(a)<<endl;",
+          "question": "下列程序最后输出的是（ ）。\n<pre><code>int a=65;\ncout<<tolower(a)<<endl;\n</code></pre>",
           "options": [
             "65",
             "A",
@@ -4406,7 +4406,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列可执行程序段中，最后 pos 的值是 4。代码：string str=\"chenADai\"; int pos=str.find('D'); --pos&11;",
+          "question": "下列可执行程序段中，最后 pos 的值是 4。\n<pre><code>string str=\"chenADai\";\nint pos=str.find('D');\n--pos&11;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4424,7 +4424,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "该段程序将不能正确执行。代码：string ch=\"chen\"; cout<<ch[4]<<endl;",
+          "question": "该段程序将不能正确执行。\n<pre><code>string ch=\"chen\";\ncout<<ch[4]<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4442,7 +4442,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "将输出 97。代码：char a='A'; a=a+32; cout<<(int)a<<endl;",
+          "question": "将输出 97。\n<pre><code>char a='A';\na=a+32;\ncout<<(int)a<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4460,7 +4460,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序最后能够得到HelloC++ 的是（ ）。代码：string str=\"HelloWorld\"; ____; cout<<str;",
+          "question": "下面程序最后能够得到HelloC++ 的是（ ）。\n<pre><code>string str=\"HelloWorld\";\n____;\ncout<<str;\n</code></pre>",
           "options": [
             "str.replace(0, 5, \"C++\");",
             "str.replace(5, 5, \"C++\");",
@@ -4480,7 +4480,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "想要得到字符串world，下面程序横线处应该填入的是（ ）。代码：string str=\"HelloC++\"; ____; ____; return 0;",
+          "question": "想要得到字符串world，下面程序横线处应该填入的是（ ）。\n<pre><code>string str=\"HelloC++\";\n____;\n____;\nreturn 0;\n</code></pre>",
           "options": [
             "str.insert(4, \"World\"); cout << str.substr(4, 4);",
             "cout << str.substr(5, 5);",
@@ -4970,10 +4970,10 @@ const QUESTION_BANK = {
           "difficulty": 1,
           "question": "关于字符串和字符数组，下列说法正确的是（  ）。",
           "options": [
-            "A对应代码：char str[]=\"GESP\"; int len1=sizeof(str); int len2=strlen(str); 上面程序能够正确执行，len1 与 len2 相等。",
-            "B对应代码：char str1[4]=\"GESP\"; char str2[4]={'G','E','S','P'}; 这段程序将能够正确执行。",
-            "C对应代码：char str2[4]={'G','E','S','P'}; strcpy(str2,\"HELLO,GESP\"); cout<<str2; 这段程序即使能够运行，但是存在覆盖数组以外的内存空间的行为，可能会引起严重错误。",
-            "D对应代码：char dest[4]={'G','E','S','P'}; char src[]=\"HELLO\"; strcat(dest,src); cout<<dest; 这段程序能够正确执行，不存在数组越界行为。"
+            "A对应\n<pre><code>char str[]=\"GESP\";\nint len1=sizeof(str);\nint len2=strlen(str);\n</code></pre> 上面程序能够正确执行，len1 与 len2 相等。",
+            "B对应\n<pre><code>char str1[4]=\"GESP\";\nchar str2[4]={'G','E','S','P'};\n</code></pre> 这段程序将能够正确执行。",
+            "C对应\n<pre><code>char str2[4]={'G','E','S','P'};\nstrcpy(str2,\"HELLO,GESP\");\ncout<<str2;\n</code></pre> 这段程序即使能够运行，但是存在覆盖数组以外的内存空间的行为，可能会引起严重错误。",
+            "D对应\n<pre><code>char dest[4]={'G','E','S','P'};\nchar src[]=\"HELLO\";\nstrcat(dest,src);\ncout<<dest;\n</code></pre> 这段程序能够正确执行，不存在数组越界行为。"
           ],
           "answer": 2,
           "explanation": "C项strcpy把\"HELLO,GESP\"共11个字符拷进只有4字节的str2，必然越界覆盖相邻内存，可能引起严重错误，说法正确。A中sizeof(str)=5不等于strlen(str)=4；B中str1[4]装不下5个字符编译失败；D的strcat同样越界。",
@@ -5129,7 +5129,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出是\"2\"。代码：int array[5]={3,7,5,2,4}; int min=0; for(i=0;i<5;i++) if(____) min=array[i]; cout<<min<<endl;",
+          "question": "在下列代码的横线处填写（ ），可以使得输出是\"2\"。\n<pre><code>int array[5]={3,7,5,2,4};\nint min=0;\nfor(i=0;i<5;i++)\n    if(____)\n        min=array[i];\ncout<<min<<endl;\n</code></pre>",
           "options": [
             "A. min > array[i]",
             "B. min < array[i]",
@@ -5283,7 +5283,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出是\"120\"。代码：int array[5]={1,2,3,4,5}; int res=0; for(i=0;i<5;i++) ____; cout<<res<<endl;",
+          "question": "在下列代码的横线处填写（ ），可以使得输出是\"120\"。\n<pre><code>int array[5]={1,2,3,4,5};\nint res=0;\nfor(i=0;i<5;i++)\n    ____;\ncout<<res<<endl;\n</code></pre>",
           "options": [
             "A. res += array[i];",
             "B. res *= array[i];",
@@ -5303,7 +5303,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的输出是（ ）。代码：array[i]=i（i=0..9）；for(p=2;p<10;p++) if(array[p]==p) for(n=p;n<10;n+=p) array[n]=array[n]/p*(p-1); res=array[1]+...+array[9];",
+          "question": "在下列代码的输出是（ ）。\n<pre><code>array[i]=i（i=0..9）；\nfor(p=2;p<10;p++)\n    if(array[p]==p)\n        for(n=p;n<10;n+=p)\n            array[n]=array[n]/p*(p-1);\nres=array[1]+...+array[9];\n</code></pre>",
           "options": [
             "A. 15",
             "B. 28",
@@ -5421,7 +5421,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。代码：char ch[10]={'1'}; cout<<ch[2]<<endl;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>char ch[10]={'1'};\ncout<<ch[2]<<endl;\n</code></pre>",
           "options": [
             "A. 0",
             "B. 1",
@@ -5441,7 +5441,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行C++代码将输出0 5，5之后还有一个空格。（ ）代码：int list[10]={1,2,3,4,5,6,7,8,9,10}; for(i=0;i<10;i++) if(i%5==0) cout<<list[i]<<\" \";",
+          "question": "执行C++代码将输出0 5，5之后还有一个空格。（ ）\n<pre><code>int list[10]={1,2,3,4,5,6,7,8,9,10};\nfor(i=0;i<10;i++)\n    if(i%5==0)\n        cout<<list[i]<<\" \";\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5459,7 +5459,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码将输出1（ ）。代码：int list[10]={1}; cout<<list<<endl;",
+          "question": "下面C++代码将输出1（ ）。\n<pre><code>int list[10]={1};\ncout<<list<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5477,7 +5477,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++程序将输出1。（ ）代码：int arr[10]={1}; cout<<arr[0]<<endl;",
+          "question": "下面C++程序将输出1。（ ）\n<pre><code>int arr[10]={1};\ncout<<arr[0]<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5495,7 +5495,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行C++代码，将输出1 3 5 7 9，9之后还有一个空格。（ ）代码：for(i=0;i<10;i+=2) cout<<list[i]<<\" \";",
+          "question": "执行C++代码，将输出1 3 5 7 9，9之后还有一个空格。（ ）\n<pre><code>for(i=0;i<10;i+=2)\n    cout<<list[i]<<\" \";\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5513,7 +5513,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后数组中大于0的数的特征是（ ）。代码：int a[20],i; for(i=0;i<20;i++) a[i]=i+1; for(int i=0;i<20;i++) if((a[i]%2)&&(a[i]%3)) a[i]=0; for(i=0;i<20;i++) if(a[i]) cout<<a[i]<<\" \";",
+          "question": "下面C++代码执行后数组中大于0的数的特征是（ ）。\n<pre><code>int a[20],i;\nfor(i=0;i<20;i++)\n    a[i]=i+1;\nfor(int i=0;i<20;i++)\n    if((a[i]%2)&&(a[i]%3))\n        a[i]=0;\nfor(i=0;i<20;i++)\n    if(a[i])\n        cout<<a[i]<<\" \";\n</code></pre>",
           "options": [
             "2的倍数",
             "3的倍数",
@@ -5533,7 +5533,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码后输出的第一个数是（ ）。代码：int a[20],i; for(i=0;i<20;i++) a[i]=i+1; for(;i>0;i--) cout<<a[i-1]<<\" \";",
+          "question": "执行下面C++代码后输出的第一个数是（ ）。\n<pre><code>int a[20],i;\nfor(i=0;i<20;i++)\n    a[i]=i+1;\nfor(;i>0;i--)\n    cout<<a[i-1]<<\" \";\n</code></pre>",
           "options": [
             "20",
             "19",
@@ -5553,7 +5553,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++程序执行的结果是（ ）。代码：int a[20],i; int cnt=0; for(i=0;i<20;i++) a[i]=i+1; for(;i>1;i--) if((a[i-1]+a[i-2])%3) cnt++; cout<<cnt<<endl;",
+          "question": "下面C++程序执行的结果是（ ）。\n<pre><code>int a[20],i;\nint cnt=0;\nfor(i=0;i<20;i++)\n    a[i]=i+1;\nfor(;i>1;i--)\n    if((a[i-1]+a[i-2])%3)\n        cnt++;\ncout<<cnt<<endl;\n</code></pre>",
           "options": [
             "5",
             "6",
@@ -5609,7 +5609,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写( )，可以使得输出是\"7\"。代码：int array[5]={3,7,5,2,4}; int max=0; for(int i=0;i<5;i++) if(____) max=array[i]; cout<<max<<endl;",
+          "question": "在下列代码的横线处填写( )，可以使得输出是\"7\"。\n<pre><code>int array[5]={3,7,5,2,4};\nint max=0;\nfor(int i=0;i<5;i++)\n    if(____)\n        max=array[i];\ncout<<max<<endl;\n</code></pre>",
           "options": [
             "max > array[i]",
             "max < array[i]",
@@ -5629,7 +5629,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "某小学男子篮球队要求身高在135厘米以上（不含135厘米）。报名10人身高是125、127、136、134、137、138、126、135、140、145。完善以下代码，求出能招募的人数？代码：int count=0; for(int i=0;i<10;i++) ____; cout<<count<<endl;",
+          "question": "某小学男子篮球队要求身高在135厘米以上（不含135厘米）。报名10人身高是125、127、136、134、137、138、126、135、140、145。完善以下代码，求出能招募的人数？\n<pre><code>int count=0;\nfor(int i=0;i<10;i++)\n    ____;\ncout<<count<<endl;\n</code></pre>",
           "options": [
             "count = arr[i]>135? 1: 0;",
             "count += arr[i]>135? 1: 0;",
@@ -5705,7 +5705,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序中，会输出（ ）。代码：int a[10]={1,2,3,4,5,6,7,8,9,10}; cout<<a[10]<<endl;",
+          "question": "下面的程序中，会输出（ ）。\n<pre><code>int a[10]={1,2,3,4,5,6,7,8,9,10};\ncout<<a[10]<<endl;\n</code></pre>",
           "options": [
             "1",
             "0",
@@ -5725,7 +5725,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列程序将输出1 。（ ）代码：int a[10]={1}; cout<<a[1]<<endl;",
+          "question": "下列程序将输出1 。（ ）\n<pre><code>int a[10]={1};\ncout<<a[1]<<endl;\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5763,7 +5763,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面枚举法查找最大值索引程序中，横线处应该填写的是（ ）。代码：int arr[]={3,7,2,9,5}; int maxIndex=0; for(int i=1;i<5;i++){ ____ { maxIndex=i; } } cout<<maxIndex;",
+          "question": "下面枚举法查找最大值索引程序中，横线处应该填写的是（ ）。\n<pre><code>int arr[]={3,7,2,9,5};\nint maxIndex=0;\nfor(int i=1;i<5;i++)\n{\n    ____\n    {\n        maxIndex=i;\n    }\n}\ncout<<maxIndex;\n</code></pre>",
           "options": [
             "if (arr[maxIndex] > arr[i])",
             "if (arr[i]-1 > arr[maxIndex])",
@@ -5783,7 +5783,7 @@ const QUESTION_BANK = {
           "kp": "kp3_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码的功能是将数组中的奇数和偶数分别放在数组的前半部分和后半部分，横线处应该填入的是（ ）。代码：int arr[]={1,2,3,4,5}; int left=0,right=4; while(left<right){ while(arr[left]%2==1&&left<right) left++; ____; if(left<right) swap(arr[left],arr[right]); }",
+          "question": "以下代码的功能是将数组中的奇数和偶数分别放在数组的前半部分和后半部分，横线处应该填入的是（ ）。\n<pre><code>int arr[]={1,2,3,4,5};\nint left=0,right=4;\nwhile(left<right)\n{\n    while(arr[left]%2==1&&left<right)\n        left++;\n    ____;\n    if(left<right)\n        swap(arr[left],arr[right]);\n}\n</code></pre>",
           "options": [
             "while (arr[left] % 2 == 0 && left < right) right--;",
             "while (arr[right] % 2 == 0 && left < right) left--;",
@@ -6160,7 +6160,7 @@ const QUESTION_BANK = {
           "kp": "kp3_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码输出是（ ）。代码：int temp=0; for(i=1;i<7;i++) for(j=1;j<5;j++) if(i/j==2) temp++; cout<<temp<<endl;",
+          "question": "执行下面C++代码输出是（ ）。\n<pre><code>int temp=0;\nfor(i=1;i<7;i++)\n    for(j=1;j<5;j++)\n        if(i/j==2)\n            temp++;\ncout<<temp<<endl;\n</code></pre>",
           "options": [
             "A. 10",
             "B. 8",
@@ -6180,7 +6180,7 @@ const QUESTION_BANK = {
           "kp": "kp3_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++程序执行的结果是（ ）。代码：int cnt=0; for(i=0;i<=20;i++) if(i%3==0&&i%5==0) cnt++; cout<<cnt;",
+          "question": "下面C++程序执行的结果是（ ）。\n<pre><code>int cnt=0;\nfor(i=0;i<=20;i++)\n    if(i%3==0&&i%5==0)\n        cnt++;\ncout<<cnt;\n</code></pre>",
           "options": [
             "A. 2",
             "B. 3",
@@ -6224,7 +6224,7 @@ const QUESTION_BANK = {
           "kp": "kp3_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码后，输出的结果不可能是89781。（ ）代码：srand(time(NULL)); while(i<=5){int a=rand()%10; if(a%3==(i+1)%3) s[i++]=a;} for(int i=1;i<=5;i++) cout<<s[i];",
+          "question": "执行下面C++代码后，输出的结果不可能是89781。（ ）\n<pre><code>srand(time(NULL));\nwhile(i<=5)\n{\n    int a=rand()%10;\n    if(a%3==(i+1)%3)\n        s[i++]=a;\n}\nfor(int i=1;i<=5;i++)\n    cout<<s[i];\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -6242,7 +6242,7 @@ const QUESTION_BANK = {
           "kp": "kp3_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码中，输出结果是（ ）。代码：double a=0.9; double b=1.0; if(((b-a)==0.1)) cout<<\"Equal\"; else cout<<\"Not equal\";",
+          "question": "下列代码中，输出结果是（ ）。\n<pre><code>double a=0.9;\ndouble b=1.0;\nif(((b-a)==0.1))\n    cout<<\"Equal\";\nelse\n    cout<<\"Not equal\";\n</code></pre>",
           "options": [
             "Equal",
             "Not equal",
@@ -6322,7 +6322,7 @@ const QUESTION_BANK = {
           "kp": "kp3_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "该段程序将n不停地除以2，并输出此时的商和余数，直到n=0为止。代码：long long n; cin>>n; while(n!=0){ cout<<n/2<<' '<<n%2<<'\\n'; n/=2; }",
+          "question": "该段程序将n不停地除以2，并输出此时的商和余数，直到n=0为止。\n<pre><code>long long n;\ncin>>n;\nwhile(n!=0)\n{\n    cout<<n/2<<' '<<n%2<<'\\n';\n    n/=2;\n}\n</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -6340,7 +6340,7 @@ const QUESTION_BANK = {
           "kp": "kp3_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下程序模拟了一个简单的小球反弹过程，横线处应该填入的是（ ）。程序片段：int height=10, distance=0; for(i=1;i<=5;i++){ ____; height/=2; distance+=height; }",
+          "question": "以下程序模拟了一个简单的小球反弹过程，横线处应该填入的是（ ）。\n<pre><code>int height=10, distance=0;\nfor(i=1;i<=5;i++)\n{\n    ____;\n    height/=2;\n    distance+=height;\n}\n</code></pre>",
           "options": [
             "distance += height/2;",
             "distance += height;",
@@ -6557,7 +6557,7 @@ const QUESTION_BANK = {
           "kp": "kp3_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨在做数学题，题目要求找出从1到35中能被7整除的数字，即[7, 14, 21, 28, 35]，则横线处应填入哪个代码？代码：for(int i=1;i<=35;i++) if(i%7==0) ____;",
+          "question": "小杨在做数学题，题目要求找出从1到35中能被7整除的数字，即[7, 14, 21, 28, 35]，则横线处应填入哪个代码？\n<pre><code>for(int i=1;i<=35;i++)\n    if(i%7==0)\n        ____;\n</code></pre>",
           "options": [
             "arr[count++] = i;",
             "arr[i] = count++;",
@@ -6695,7 +6695,7 @@ const QUESTION_BANK = {
           "kp": "kp3_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "有 n 个正整数，假设一个正整数是美丽数字当且仅当该正整数是 9 的倍数但不是 8 的倍数。下面的程序是编写计算 n 个正整数中美丽数字的数量，横线处应该填入的是（ ）。代码：for(int i=1;i<=n;i++){ cin>>a; ____; cnt++; }",
+          "question": "有 n 个正整数，假设一个正整数是美丽数字当且仅当该正整数是 9 的倍数但不是 8 的倍数。下面的程序是编写计算 n 个正整数中美丽数字的数量，横线处应该填入的是（ ）。\n<pre><code>for(int i=1;i<=n;i++)\n{\n    cin>>a;\n    ____;\n    cnt++;\n}\n</code></pre>",
           "options": [
             "if (a % 9 != 0 && a % 8 != 0)",
             "if (a % 9 == 0 & a % 8 == 0)",
@@ -6715,7 +6715,7 @@ const QUESTION_BANK = {
           "kp": "kp3_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下程序使用枚举法（穷举法）求解满足条件的三位数，横线处应该填入的是（ ）。程序片段：for(i=100;i<=999;i++){ int a=i/100; ____; int c=i%10; if(a*a+b*b==c*c) count++; }",
+          "question": "以下程序使用枚举法（穷举法）求解满足条件的三位数，横线处应该填入的是（ ）。\n<pre><code>for(i=100;i<=999;i++)\n{\n    int a=i/100;\n    ____;\n    int c=i%10;\n    if(a*a+b*b==c*c)\n        count++;\n}\n</code></pre>",
           "options": [
             "int b = (i / 10) / 10;",
             "int b = (i / 10) % 10;",

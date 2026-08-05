@@ -288,7 +288,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "如下为线性筛法，用于高效生成素数表，其核心思想是每个合数只被它的最小质因数筛掉一次，时间复杂度为 O(n)。\nfor (int i = 2; i <= n; ++i) {\nif (is_prime[i]) primes.push_back(i);\nfor (int j = 0; j < primes.size() && i * primes[j] <= n; ++j) {\nis_prime[i * primes[j]] = false;\nif (i % primes[j] == 0) break;\n}\n}",
+          "question": "如下为线性筛法，用于高效生成素数表，其核心思想是每个合数只被它的最小质因数筛掉一次，时间复杂度为 O(n)。\n<pre><code>for (int i = 2; i <= n; ++i)\n{\n    if (is_prime[i])\n        primes.push_back(i);\n    for (int j = 0; j < primes.size() && i * primes[j] <= n; ++j)\n    {\n        is_prime[i * primes[j]] = false;\n        if (i % primes[j] == 0)\n            break;\n    }\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -645,7 +645,7 @@ const QUESTION_BANK = {
           "kp": "kp6_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现了哈夫曼编码，则横线处应填写的代码是（   ）。\nfor (int k = 1; k < n; k++) {\nint x = PopMinNode(nodes, leafIdx, n, pA, internalIdx, pB);\nint y = PopMinNode(nodes, leafIdx, n, pA, internalIdx, pB);\nint z = (int)nodes.size();\n________________________\n}",
+          "question": "下面代码实现了哈夫曼编码，则横线处应填写的代码是（   ）。\n<pre><code>for (int k = 1; k < n; k++)\n{\n    int x = PopMinNode(nodes, leafIdx, n, pA, internalIdx, pB);\n    int y = PopMinNode(nodes, leafIdx, n, pA, internalIdx, pB);\n    int z = (int)nodes.size();\n    ________________________\n}</code></pre>",
           "options": [
             "A. nodes.push_back(Node(nodes[x].w + nodes[y].w, x, y, -1)); internalIdx.push_back(z);",
             "B. nodes.push_back(Node(nodes[x].w + nodes[y].w, x, y, -1)); leafIdx.push_back(z);",
@@ -862,7 +862,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码构建的树一定是完全二叉树：\nTreeNode* root=new TreeNode{1}; root->left=new TreeNode{2}; root->right=new TreeNode{3}; root->left->left=new TreeNode{4}; root->left->right=new TreeNode{5}; root->right->left=new TreeNode{6};",
+          "question": "下面代码构建的树一定是完全二叉树：\n<pre><code>TreeNode* root=new TreeNode{1};\nroot->left=new TreeNode{2};\nroot->right=new TreeNode{3};\nroot->left->left=new TreeNode{4};\nroot->left->right=new TreeNode{5};\nroot->right->left=new TreeNode{6};</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -900,7 +900,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码创建的树是一棵完全二叉树：\nTreeNode* root=new TreeNode{1}; root->left=new TreeNode{2}; root->right=new TreeNode{3}; root->left->left=new TreeNode{4};",
+          "question": "以下代码创建的树是一棵完全二叉树：\n<pre><code>TreeNode* root=new TreeNode{1};\nroot->left=new TreeNode{2};\nroot->right=new TreeNode{3};\nroot->left->left=new TreeNode{4};</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -958,7 +958,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列代码中的 tree 向量，表示的是一棵完全二叉树（-1 代表空节点）按照层序遍历的结果。\nstd::vector<int> tree = {1, 2, 3, 4, -1, 6, 7};",
+          "question": "下列代码中的 tree 向量，表示的是一棵完全二叉树（-1 代表空节点）按照层序遍历的结果。\n<pre><code>std::vector<int> tree = {1, 2, 3, 4, -1, 6, 7};</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -976,7 +976,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下函数 createTree() 构造的树是什么类型？\nstruct TreeNode {\nint val;\nTreeNode* left;\nTreeNode* right;\nTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n};\nTreeNode* createTree() {\nTreeNode* root = new TreeNode(1);\nroot->left = new TreeNode(2);\nroot->right = new TreeNode(3);\nroot->left->left = new TreeNode(4);\nroot->left->right = new TreeNode(5);\nreturn root;\n}",
+          "question": "以下函数 createTree() 构造的树是什么类型？\n<pre><code>struct TreeNode\n{\n    int val;\n    TreeNode* left;\n    TreeNode* right;\n    TreeNode(int x) : val(x), left(nullptr), right(nullptr){}\n};\nTreeNode* createTree()\n{\n    TreeNode* root = new TreeNode(1);\n    root->left = new TreeNode(2);\n    root->right = new TreeNode(3);\n    root->left->left = new TreeNode(4);\n    root->left->right = new TreeNode(5);\n    return root;\n}</code></pre>",
           "options": [
             "A. 满二叉树",
             "B. 完全二叉树",
@@ -1193,7 +1193,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码希望能在一棵二叉排序树中搜索特定的值，请在横线处填入（ ），使其能正确实现相应功能。\nTreeNode* search(TreeNode* root, int target) { if(root==NULL||root->val==target) return root; if(_______) return search(root->left,target); else return search(root->right,target); }",
+          "question": "以下代码希望能在一棵二叉排序树中搜索特定的值，请在横线处填入（ ），使其能正确实现相应功能。\n<pre><code>TreeNode* search(TreeNode* root, int target)\n{\n    if(root==NULL||root->val==target)\n        return root;\n    if(_______)\n        return search(root->left,target);\n    else\n        return search(root->right,target);\n}</code></pre>",
           "options": [
             "A. target < root->left",
             "B. target < root->val",
@@ -1213,7 +1213,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "二叉搜索树中的每个结点，其左子树的所有结点值都小于该结点值，右子树的所有结点值都大于该结点值。以下代码对给定的整数数组（假设数组中没有数值相等的元素），构造一个对应的二叉搜索树，横线上应填写（ ）。\ntree_node* insert(tree_node* root, int val){ if(root==nullptr) return new tree_node(val); ______ return root; }",
+          "question": "二叉搜索树中的每个结点，其左子树的所有结点值都小于该结点值，右子树的所有结点值都大于该结点值。以下代码对给定的整数数组（假设数组中没有数值相等的元素），构造一个对应的二叉搜索树，横线上应填写（ ）。\n<pre><code>tree_node* insert(tree_node* root, int val)\n{\n    if(root==nullptr)\n        return new tree_node(val);\n    ______ return root;\n}</code></pre>",
           "options": [
             "A. if(val<root->val) root->left=insert(root->left,val); else root->right=insert(root->right,val);",
             "B. if(val>root->val) root->left=insert(root->left,val); else root->right=insert(root->right,val);",
@@ -1271,7 +1271,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了二叉排序树的哪种操作？\nTreeNode* op(TreeNode* root,int val){ if(root==nullptr) return new TreeNode(val); if(val<root->val) root->left=op(root->left,val); else root->right=op(root->right,val); return root; }",
+          "question": "以下代码实现了二叉排序树的哪种操作？\n<pre><code>TreeNode* op(TreeNode* root,int val)\n{\n    if(root==nullptr)\n        return new TreeNode(val);\n    if(val<root->val)\n        root->left=op(root->left,val);\n    else\n        root->right=op(root->right,val);\n    return root;\n}</code></pre>",
           "options": [
             "A. 查找",
             "B. 插入",
@@ -1365,7 +1365,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "删除二叉排序树中的节点时，如果节点有两个孩子，则横线处应填入（   ），其中 findMax 和 findMin 分别为寻找树的最大值和最小值的函数。\nTreeNode* deleteNode(TreeNode* root, int key) {\nif (!root) return nullptr;\nif (key < root->val) {\nroot->left = deleteNode(root->left, key);\n}\nelse if (key > root->val) {\nroot->right = deleteNode(root->right, key);\n}\nelse {\nif (!root->left) return root->right;\nif (!root->right) return root->left;\nTreeNode* temp = ____________;\nroot->val = temp->val;\nroot->right = deleteNode(root->right, temp->val);\n}\nreturn root;\n}",
+          "question": "删除二叉排序树中的节点时，如果节点有两个孩子，则横线处应填入（   ），其中 findMax 和 findMin 分别为寻找树的最大值和最小值的函数。\n<pre><code>TreeNode* deleteNode(TreeNode* root, int key)\n{\n    if (!root)\n        return nullptr;\n    if (key < root->val)\n    {\n        root->left = deleteNode(root->left, key);\n    }\n    else if (key > root->val)\n    {\n        root->right = deleteNode(root->right, key);\n    }\n    else\n    {\n        if (!root->left)\n            return root->right;\n        if (!root->right)\n            return root->left;\n        TreeNode* temp = ____________;\n        root->val = temp->val;\n        root->right = deleteNode(root->right, temp->val);\n    }\n    return root;\n}</code></pre>",
           "options": [
             "A. root->left",
             "B. root->right",
@@ -1385,7 +1385,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下函数实现了二叉排序树（BST）的（   ）操作。\nTreeNode* op(TreeNode* root, int x) {\nif (!root) return new TreeNode(x);\nif (x < root->val)\nroot->left = op(root->left, x);\nelse\nroot->right = op(root->right, x);\nreturn root;\n}",
+          "question": "以下函数实现了二叉排序树（BST）的（   ）操作。\n<pre><code>TreeNode* op(TreeNode* root, int x)\n{\n    if (!root)\n        return new TreeNode(x);\n    if (x < root->val)\n        root->left = op(root->left, x);\n    else\n        root->right = op(root->right, x);\n    return root;\n}</code></pre>",
           "options": [
             "A. 查找",
             "B. 插入",
@@ -1461,7 +1461,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现二叉搜索树的插入操作。假设树中不存在重复值，横线处应填写（  ）。\nTreeNode* insertNode(TreeNode* root, int x) {\nif (root == nullptr) {\nreturn new TreeNode(x);\n}\nif (x < root->val) {\n__________________________\n} else {\nroot->right = insertNode(root->right, x);\n}\nreturn root;\n}",
+          "question": "下面代码实现二叉搜索树的插入操作。假设树中不存在重复值，横线处应填写（  ）。\n<pre><code>TreeNode* insertNode(TreeNode* root, int x)\n{\n    if (root == nullptr)\n    {\n        return new TreeNode(x);\n    }\n    if (x < root->val)\n    {\n        __________________________\n    }\n    else\n    {\n        root->right = insertNode(root->right, x);\n    }\n    return root;\n}</code></pre>",
           "options": [
             "A. root->left = insertNode(root->left, x);",
             "B. root = insertNode(root->left, x);",
@@ -1481,7 +1481,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列函数试图将整数 x 插入到一棵二叉搜索树中。假设二叉搜索树满足：对于任意结点，左子树中所有结点的值均小于该结点，右子树中所有结点的值均大于或等于该结点。判断该函数是否能够在插入后保持二叉搜索树性质。\nTreeNode* insertNode(TreeNode* root, int x) {\nif (root == nullptr) return new TreeNode(x);\nif (x < root->val) {\nroot->right = insertNode(root->right, x);\n} else {\nroot->left = insertNode(root->left, x);\n}\nreturn root;\n}",
+          "question": "下列函数试图将整数 x 插入到一棵二叉搜索树中。假设二叉搜索树满足：对于任意结点，左子树中所有结点的值均小于该结点，右子树中所有结点的值均大于或等于该结点。判断该函数是否能够在插入后保持二叉搜索树性质。\n<pre><code>TreeNode* insertNode(TreeNode* root, int x)\n{\n    if (root == nullptr)\n        return new TreeNode(x);\n    if (x < root->val)\n    {\n        root->right = insertNode(root->right, x);\n    }\n    else\n    {\n        root->left = insertNode(root->left, x);\n    }\n    return root;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1969,7 +1969,7 @@ const QUESTION_BANK = {
           "kp": "kp6_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码实现n位的格雷码，则横线上应填写（ ）。\nvector<string> generate_graycode(int n){ vector<string> graycode_list; graycode_list.push_back(\"0\"); graycode_list.push_back(\"1\"); for(int i=2;i<=n;i++){ int current_size=graycode_list.size(); for(int j=current_size-1;j>=0;j--){ graycode_list.push_back(\"1\"+graycode_list[j]); } for(int j=0;j<current_size;j++){ ______ } } return graycode_list; }",
+          "question": "以下C++代码实现n位的格雷码，则横线上应填写（ ）。\n<pre><code>vector<string> generate_graycode(int n)\n{\n    vector<string> graycode_list;\n    graycode_list.push_back(\"0\");\n    graycode_list.push_back(\"1\");\n    for(int i=2;i<=n;i++)\n    {\n        int current_size=graycode_list.size();\n        for(int j=current_size-1;j>=0;j--)\n        {\n            graycode_list.push_back(\"1\"+graycode_list[j]);\n        }\n        for(int j=0;j<current_size;j++)\n        {\n            ______\n        }\n    }\n    return graycode_list;\n}</code></pre>",
           "options": [
             "A. graycode_list.push_back(\"0\" + graycode_list[j]);",
             "B. graycode_list[j] = \"0\" + graycode_list[j];",
@@ -2009,7 +2009,7 @@ const QUESTION_BANK = {
           "kp": "kp6_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码用于生成n位格雷编码。横线上应填写（ ）。\nvector<string> generateGrayCode(int n){ if(n==0) return {\"0\"}; if(n==1) return {\"0\",\"1\"}; vector<string> prev=generateGrayCode(n-1); vector<string> result; for(string s:prev) result.push_back(\"0\"+s); for(int i=prev.size()-1;i>=0;i--){ ______ } return result; }",
+          "question": "以下代码用于生成n位格雷编码。横线上应填写（ ）。\n<pre><code>vector<string> generateGrayCode(int n)\n{\n    if(n==0)\n        return {\"0\"};\n    if(n==1)\n        return {\"0\",\"1\"};\n    vector<string> prev=generateGrayCode(n-1);\n    vector<string> result;\n    for(string s:prev)\n        result.push_back(\"0\"+s);\n    for(int i=prev.size()-1;i>=0;i--)\n    {\n        ______\n    }\n    return result;\n}</code></pre>",
           "options": [
             "A. result.push_back(\"1\" + prev[i]);",
             "B. result.push_back(\"0\" + prev[i]);",
@@ -2067,7 +2067,7 @@ const QUESTION_BANK = {
           "kp": "kp6_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码生成格雷编码，则横线上应填写（   ）。\nvector<string> grayCode(int n) {\nif (n == 0) return {\"0\"};\nif (n == 1) return {\"0\", \"1\"};\nvector<string> prev = grayCode(n-1);\nvector<string> result;\nfor (string s : prev) {\nresult.push_back(\"0\" + s);\n}\nfor (_______________) {\nresult.push_back(\"1\" + prev[i]);\n}\nreturn result;\n}",
+          "question": "下面代码生成格雷编码，则横线上应填写（   ）。\n<pre><code>vector<string> grayCode(int n)\n{\n    if (n == 0)\n        return {\"0\"};\n    if (n == 1)\n        return {\"0\", \"1\"};\n    vector<string> prev = grayCode(n-1);\n    vector<string> result;\n    for (string s : prev)\n    {\n        result.push_back(\"0\" + s);\n    }\n    for (_______________)\n    {\n        result.push_back(\"1\" + prev[i]);\n    }\n    return result;\n}</code></pre>",
           "options": [
             "A. int i = 0; i < prev.size(); i++",
             "B. int i = prev.size()-1; i >= 0; i--",
@@ -2787,7 +2787,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了二叉树的广度优先搜索（BFS），并查找特定值的节点，则横线上应填写（ ）。\nTreeNode* findNode(TreeNode* root,int target){ if(root==nullptr) return nullptr; queue<TreeNode*> q; q.push(root); while(!q.empty()){ TreeNode* current=q.front(); q.pop(); if(current->val==target) return current; ______ } return nullptr; }",
+          "question": "以下代码实现了二叉树的广度优先搜索（BFS），并查找特定值的节点，则横线上应填写（ ）。\n<pre><code>TreeNode* findNode(TreeNode* root,int target)\n{\n    if(root==nullptr)\n        return nullptr;\n    queue<TreeNode*> q;\n    q.push(root);\n    while(!q.empty())\n    {\n        TreeNode* current=q.front();\n        q.pop();\n        if(current->val==target)\n            return current;\n        ______\n    }\n    return nullptr;\n}</code></pre>",
           "options": [
             "A. if (current->left) q.push(current->left); if (current->right) q.push(current->right);",
             "B. if (current->left) q.pop(current->left); if (current->right) q.pop(current->right);",
@@ -2807,7 +2807,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个二叉树，返回每一层中最大的节点值，结果以数组形式返回，横线处应填入（   ）。\nvector<int> largestValues(TreeNode* root) {\nvector<int> result;\nif (!root) return result;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nint sz = q.size();\nint maxVal = INT_MIN;\nfor (int i = 0; i < sz; ++i) {\nTreeNode* node;\n_______________________________\nmaxVal = max(maxVal, node->val);\nif (node->left) q.push(node->left);\nif (node->right) q.push(node->right);\n}\nresult.push_back(maxVal);\n}\nreturn result;\n}",
+          "question": "给定一个二叉树，返回每一层中最大的节点值，结果以数组形式返回，横线处应填入（   ）。\n<pre><code>vector<int> largestValues(TreeNode* root)\n{\n    vector<int> result;\n    if (!root)\n        return result;\n    queue<TreeNode*> q;\n    q.push(root);\n    while (!q.empty())\n    {\n        int sz = q.size();\n        int maxVal = INT_MIN;\n        for (int i = 0; i < sz; ++i)\n        {\n            TreeNode* node;\n            _______________________________\n            maxVal = max(maxVal, node->val);\n            if (node->left)\n                q.push(node->left);\n            if (node->right)\n                q.push(node->right);\n        }\n        result.push_back(maxVal);\n    }\n    return result;\n}</code></pre>",
           "options": [
             "A. node = q.end();",
             "B. node = q.front();",
@@ -2847,7 +2847,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一棵普通二叉树（节点值没有大小规律），下面代码判断是否存在值为 x 的结点，则横线处应填入（   ）。\nTreeNode* bfsFind(TreeNode* root, int x) {\nif (!root) return nullptr;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nTreeNode* cur = q.front(); q.pop();\nif (cur->val == x) return cur;\n________________________\n}\nreturn nullptr;\n}",
+          "question": "给定一棵普通二叉树（节点值没有大小规律），下面代码判断是否存在值为 x 的结点，则横线处应填入（   ）。\n<pre><code>TreeNode* bfsFind(TreeNode* root, int x)\n{\n    if (!root)\n        return nullptr;\n    queue<TreeNode*> q;\n    q.push(root);\n    while (!q.empty())\n    {\n        TreeNode* cur = q.front();\n        q.pop();\n        if (cur->val == x)\n            return cur;\n        ________________________\n    }\n    return nullptr;\n}</code></pre>",
           "options": [
             "A. q.push(cur);",
             "B. if (cur->right) q.push(cur->right);",
@@ -2885,7 +2885,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一棵二叉树，采用广度优先搜索（BFS）算法，返回右视图所有节点的值。其中右视图定义为从树的右侧看过去时可见的节点集合，即右视图中的每个节点都是某一层中最右侧的节点。\nvector<int> rightSideView(TreeNode* root) {\nunordered_map<int, int> rightmostValueAtDepth;\nint max_depth = -1;\nqueue<TreeNode*> nodeQueue;\nqueue<int> depthQueue;\nnodeQueue.push(root); depthQueue.push(0);\nwhile (!nodeQueue.empty()) {\nTreeNode* node = nodeQueue.front(); nodeQueue.pop();\nint depth = depthQueue.front(); depthQueue.pop();\nif (node != NULL) {\nmax_depth = max(max_depth, depth);\nrightmostValueAtDepth[depth] = node->val;\nnodeQueue.push(node->left);  depthQueue.push(________);\nnodeQueue.push(node->right); depthQueue.push(________);\n}\n}\nvector<int> rightView;\nfor (int depth = 0; ________; ++depth) {\nrightView.push_back(rightmostValueAtDepth[depth]);\n}\nreturn rightView;\n}",
+          "question": "给定一棵二叉树，采用广度优先搜索（BFS）算法，返回右视图所有节点的值。其中右视图定义为从树的右侧看过去时可见的节点集合，即右视图中的每个节点都是某一层中最右侧的节点。\n<pre><code>vector<int> rightSideView(TreeNode* root)\n{\n    unordered_map<int, int> rightmostValueAtDepth;\n    int max_depth = -1;\n    queue<TreeNode*> nodeQueue;\n    queue<int> depthQueue;\n    nodeQueue.push(root);\n    depthQueue.push(0);\n    while (!nodeQueue.empty())\n    {\n        TreeNode* node = nodeQueue.front();\n        nodeQueue.pop();\n        int depth = depthQueue.front();\n        depthQueue.pop();\n        if (node != NULL)\n        {\n            max_depth = max(max_depth, depth);\n            rightmostValueAtDepth[depth] = node->val;\n            nodeQueue.push(node->left);\n            depthQueue.push(________);\n            nodeQueue.push(node->right);\n            depthQueue.push(________);\n        }\n    }\n    vector<int> rightView;\n    for (int depth = 0; ________; ++depth)\n    {\n        rightView.push_back(rightmostValueAtDepth[depth]);\n    }\n    return rightView;\n}</code></pre>",
           "options": [
             "A. depth; depth; depth < max_depth",
             "B. depth + 1; depth + 1; depth <= max_depth",
@@ -2905,7 +2905,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一棵二叉树，采用广度优先搜索 BFS 返回其右视图，其中右视图中的每个节点都是该层最右侧的节点。横线处应填写（  ）。\nvector<int> rightSideView(TreeNode* root) {\nvector<int> result;\nif (!root) return result;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nint sz = q.size();\nfor (int i = 0; i < sz; ++i) {\nTreeNode* node = q.front();\nq.pop();\n__________________________\nif (node->left) q.push(node->left);\nif (node->right) q.push(node->right);\n}\n}\nreturn result;\n}",
+          "question": "给定一棵二叉树，采用广度优先搜索 BFS 返回其右视图，其中右视图中的每个节点都是该层最右侧的节点。横线处应填写（  ）。\n<pre><code>vector<int> rightSideView(TreeNode* root)\n{\n    vector<int> result;\n    if (!root)\n        return result;\n    queue<TreeNode*> q;\n    q.push(root);\n    while (!q.empty())\n    {\n        int sz = q.size();\n        for (int i = 0; i < sz; ++i)\n        {\n            TreeNode* node = q.front();\n            q.pop();\n            __________________________\n            if (node->left)\n                q.push(node->left);\n            if (node->right)\n                q.push(node->right);\n        }\n    }\n    return result;\n}</code></pre>",
           "options": [
             "A. if (i == 0) result.push_back(node->val);",
             "B. if (i == sz - 1) result.push_back(node->val);",
@@ -3004,7 +3004,7 @@ const QUESTION_BANK = {
           "kp": "kp6_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "根据下面二叉树和给定的代码，给定以下二叉搜索树，调用函数search(root,7)时，输出的结果是（ ）。\nTreeNode* search(TreeNode* root,int val){ cout<<root->val<<\" \"; if(root==NULL||root->val==val) return root; if(val<root->val) return search(root->left,val); else return search(root->right,val); }\n【图为二叉搜索树】\n5\n/ \\\n3   7\n/ \\ / \\\n2  4 6  8",
+          "question": "根据下面二叉树和给定的代码，给定以下二叉搜索树，调用函数search(root,7)时，输出的结果是（ ）。\n<pre><code>TreeNode* search(TreeNode* root,int val)\n{\n    cout<<root->val<<\" \";\n    if(root==NULL||root->val==val)\n        return root;\n    if(val<root->val)\n        return search(root->left,val);\n    else\n        return search(root->right,val);\n}</code></pre>\n【图为二叉搜索树】\n5\n/ \\\n3   7\n/ \\ / \\\n2  4 6  8",
           "options": [
             "A. 5 3 2 4",
             "B. 5 7",
@@ -3044,7 +3044,7 @@ const QUESTION_BANK = {
           "kp": "kp6_09",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码实现的二叉排序树的查找操作时间复杂度是 O(h)，其中 h 为树高。\nTreeNode* searchBST(TreeNode* root, int val) {\nwhile (root && root->val != val) {\nroot = (val < root->val) ? root->left : root->right;\n}\nreturn root;\n}",
+          "question": "下面代码实现的二叉排序树的查找操作时间复杂度是 O(h)，其中 h 为树高。\n<pre><code>TreeNode* searchBST(TreeNode* root, int val)\n{\n    while (root && root->val != val)\n    {\n        root = (val < root->val) ? root->left : root->right;\n    }\n    return root;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3567,7 +3567,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了0/1背包问题的动态规划解法。假设物品重量为weights[]，价值为values[]，背包容量为W，横线上应填写（ ）。\nfor(int i=1;i<=n;i++) for(int j=1;j<=W;j++){ if(weights[i-1]>j) dp[i][j]=dp[i-1][j]; else dp[i][j]=max(______); }",
+          "question": "以下代码实现了0/1背包问题的动态规划解法。假设物品重量为weights[]，价值为values[]，背包容量为W，横线上应填写（ ）。\n<pre><code>for(int i=1;i<=n;i++)\n    for(int j=1;j<=W;j++)\n    {\n        if(weights[i-1]>j)\n            dp[i][j]=dp[i-1][j];\n        else\n            dp[i][j]=max(______);\n    }</code></pre>",
           "options": [
             "A. dp[i-1][j], values[i-1]",
             "B. dp[i-1][j], dp[i-1][j - weights[i-1]] + values[i-1]",
@@ -3707,7 +3707,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "judge",
           "difficulty": 1,
-          "question": "有一排香蕉，每个香蕉有不同的甜度值。小猴子想吃香蕉，但不能吃相邻的香蕉。以下代码能找到小猴子吃到最甜的香蕉组合。\nvector<int> bananas = {1, 2, 3, 1};\nvector<int> dp(bananas.size());\ndp[0] = bananas[0];\ndp[1] = max(bananas[0], bananas[1]);\nfor (int i = 2; i < bananas.size(); i++) {\ndp[i] = max(bananas[i] + dp[i-2], dp[i-1]);\n}",
+          "question": "有一排香蕉，每个香蕉有不同的甜度值。小猴子想吃香蕉，但不能吃相邻的香蕉。以下代码能找到小猴子吃到最甜的香蕉组合。\n<pre><code>vector<int> bananas = {1, 2, 3, 1};\nvector<int> dp(bananas.size());\ndp[0] = bananas[0];\ndp[1] = max(bananas[0], bananas[1]);\nfor (int i = 2; i < bananas.size(); i++)\n{\n    dp[i] = max(bananas[i] + dp[i-2], dp[i-1]);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3749,7 +3749,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "0/1 背包（每件物品最多选一次）问题通常可用一维动态规划求解，核心代码如下。则下面说法正确的是（   ）。\nfor each item (w, v):\nfor (int j = W; j >= w; --j)\ndp[j] = max(dp[j], dp[j-w] + v);",
+          "question": "0/1 背包（每件物品最多选一次）问题通常可用一维动态规划求解，核心代码如下。则下面说法正确的是（   ）。\n<pre><code>for each item (w, v):\n    for (int j = W; j >= w; --j)\n        dp[j] = max(dp[j], dp[j-w] + v);</code></pre>",
           "options": [
             "A. 内层 j 必须从小到大，否则会漏解",
             "B. 内层 j 必须从大到小，否则同一件物品会被用多次",
@@ -3871,7 +3871,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列代码实现了一个 0-1 背包的一维动态规划代码，内层循环是经典的逆序写法。若将内层循环改成正序遍历（即 for (int j = w[i]; j <= W; j++)），仍能得到正确答案。\nfor (int i = 0; i < n; i++) {\nfor (int j = W; j >= w[i]; j--) {\ndp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n}\n}",
+          "question": "下列代码实现了一个 0-1 背包的一维动态规划代码，内层循环是经典的逆序写法。若将内层循环改成正序遍历（即 for (int j = w[i]; j <= W; j++)），仍能得到正确答案。\n<pre><code>for (int i = 0; i < n; i++)\n{\n    for (int j = W; j >= w[i]; j--)\n    {\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n    }\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4542,7 +4542,7 @@ const QUESTION_BANK = {
           "kp": "kp6_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码中，s1->draw(); 和 s2->draw(); 输出不同结果的主要原因是（ ）。\nclass Shape {\npublic:\nvirtual void draw() { cout << \"绘制图形\" << endl; }\nvirtual ~Shape() {}\n};\nclass Circle : public Shape {\npublic:\nvoid draw() override { cout << \"绘制圆形\" << endl; }\n};\nclass Rectangle : public Shape {\npublic:\nvoid draw() override { cout << \"绘制矩形\" << endl; }\n};",
+          "question": "下列代码中，s1->draw(); 和 s2->draw(); 输出不同结果的主要原因是（ ）。\n<pre><code>class Shape\n{\n    public:\n    virtual void draw()\n    {\n        cout << \"绘制图形\" << endl;\n    }\n    virtual ~Shape(){}\n};\nclass Circle : public Shape\n{\n    public:\n    void draw() override\n    {\n        cout << \"绘制圆形\" << endl;\n    }\n};\nclass Rectangle : public Shape\n{\n    public:\n    void draw() override\n    {\n        cout << \"绘制矩形\" << endl;\n    }\n};</code></pre>",
           "options": [
             "A. draw() 是普通成员函数",
             "B. Shape 中的 draw() 被声明为虚函数",
@@ -4580,7 +4580,7 @@ const QUESTION_BANK = {
           "kp": "kp6_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码中，d1->work(); 和 d2->work(); 输出不同结果的主要原因是（  ）。\nclass Device {\npublic:\nvirtual void work() { cout << \"Device is working\" << endl; }\nvirtual ~Device() {}\n};\nclass Printer : public Device {\npublic:\nvoid work() override { cout << \"Printer is printing\" << endl; }\n};\nclass Scanner : public Device {\npublic:\nvoid work() override { cout << \"Scanner is scanning\" << endl; }\n};",
+          "question": "下列代码中，d1->work(); 和 d2->work(); 输出不同结果的主要原因是（  ）。\n<pre><code>class Device\n{\n    public:\n    virtual void work()\n    {\n        cout << \"Device is working\" << endl;\n    }\n    virtual ~Device(){}\n};\nclass Printer : public Device\n{\n    public:\n    void work() override\n    {\n        cout << \"Printer is printing\" << endl;\n    }\n};\nclass Scanner : public Device\n{\n    public:\n    void work() override\n    {\n        cout << \"Scanner is scanning\" << endl;\n    }\n};</code></pre>",
           "options": [
             "A. Printer 和 Scanner 使用了相同的构造函数。",
             "B. work() 是虚函数，且 d1 和 d2 实际指向不同派生类对象，发生动态绑定。",
@@ -4855,7 +4855,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个简单的类定义如下，（ ）语句在类的外部正确地创建了一个Circle对象并调用了getArea函数？\nclass Circle { private: double radius; public: Circle(double r) : radius(r) {} double getArea() { return 3.14*radius*radius; } };",
+          "question": "给定一个简单的类定义如下，（ ）语句在类的外部正确地创建了一个Circle对象并调用了getArea函数？\n<pre><code>class Circle\n{\n    private:\n    double radius;\n    public:\n    Circle(double r) : radius(r){}\n    double getArea()\n    {\n        return 3.14*radius*radius;\n    }\n};</code></pre>",
           "options": [
             "A. Circle c = Circle(5.0); c.getArea(c);",
             "B. Circle c(5.0); getArea(c);",
@@ -4987,7 +4987,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于以下C++代码，（ ）行代码会引起编译错误。\nclass Base { private: int a; protected: int b; public: int c; Base():a(1),b(2),c(3){} }; class Derived: public Base { public: void show(){ cout<<a<<endl; //Line 1 cout<<b<<endl; //Line 2 cout<<c<<endl; //Line 3 } };",
+          "question": "关于以下C++代码，（ ）行代码会引起编译错误。\n<pre><code>class Base\n{\n    private:\n    int a;\n    protected:\n    int b;\n    public:\n    int c;\n    Base():a(1),b(2),c(3){}\n};\nclass Derived: public Base\n{\n    public:\n    void show()\n    {\n        cout<<a<<endl; //Line 1 cout<<b<<endl; //Line 2 cout<<c<<endl; //Line 3 } };</code></pre>",
           "options": [
             "A. Line 1",
             "B. Line 2",
@@ -5025,7 +5025,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "运行以下C++代码，屏幕将输出“derived class”。\nbase* b; derived d; b=&d; b->show(); 其中show为虚函数，derived重写为输出derived class。",
+          "question": "运行以下C++代码，屏幕将输出“derived class”。\n<pre><code>base* b;\nderived d;\nb=&d;\nb->show();</code></pre> 其中show为虚函数，derived重写为输出derived class。",
           "options": [
             "正确",
             "错误"
@@ -5213,7 +5213,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "为了让 Dog 类的构造函数能正确地调用其父类 Animal 的构造方法，横线处应填入（   ）。\nclass Animal {\npublic:\nstd::string name;\nAnimal(std::string str) : name(str) {\nstd::cout << \"Animal created\\n\";\n}\nvirtual void speak() {\ncout << \"Animal speaks\" << endl;\n}\n};\nclass Dog : public Animal {\nstd::string breed;\npublic:\nDog(std::string name, std::string b) : _________________, breed(b) {\nstd::cout << \"Dog created\\n\";\n}\nvoid speak() override {\ncout << \"Dog barks\" << endl;\n}\n};",
+          "question": "为了让 Dog 类的构造函数能正确地调用其父类 Animal 的构造方法，横线处应填入（   ）。\n<pre><code>class Animal\n{\n    public:\n    std::string name;\n    Animal(std::string str) : name(str)\n    {\n        std::cout << \"Animal created\\n\";\n    }\n    virtual void speak()\n    {\n        cout << \"Animal speaks\" << endl;\n    }\n};\nclass Dog : public Animal\n{\n    std::string breed;\n    public:\n    Dog(std::string name, std::string b) : _________________, breed(b)\n    {\n        std::cout << \"Dog created\\n\";\n    }\n    void speak() override\n    {\n        cout << \"Dog barks\" << endl;\n    }\n};</code></pre>",
           "options": [
             "A. Animal(name)",
             "B. super(name)",
@@ -5271,7 +5271,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下列代码，my_dog.name 的最终值是 Charlie。\nclass Dog {\npublic:\nstd::string name;\nDog(std::string str) : name(str) {}\n};\n<pre><code>int main() {\nDog my_dog(\"Buddy\");\nmy_dog.name = \"Charlie\";\nreturn 0;\n}</code></pre>",
+          "question": "执行下列代码，my_dog.name 的最终值是 Charlie。\n<pre><code>class Dog\n{\n    public:\n    std::string name;\n    Dog(std::string str) : name(str){}\n};\nint main()\n{\n    Dog my_dog(\"Buddy\");\n    my_dog.name = \"Charlie\";\n    return 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5289,7 +5289,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列 C++ 代码可以成功编译，并且子类 Child 的实例能通过其成员函数访问父类 Parent 的属性 value。\nclass Parent {\nprivate:\nint value = 100;\n};\nclass Child : public Parent {\npublic:\n<pre><code>int get_private_val() {\nreturn value;\n}\n};</code></pre>",
+          "question": "下列 C++ 代码可以成功编译，并且子类 Child 的实例能通过其成员函数访问父类 Parent 的属性 value。\n<pre><code>class Parent\n{\n    private:\n    int value = 100;\n};\nclass Child : public Parent\n{\n    public:\n    int get_private_val()\n    {\n        return value;\n    }\n};</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5365,7 +5365,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于以下代码，说法正确的是（   ）。\nclass Instrument {\npublic:\n<pre><code>void play() {\ncout << \"乐器在演奏声音\" << endl;\n}\nvirtual ~Instrument() {}\n};\nclass Piano : public Instrument {\npublic:\nvoid play() override {\ncout << \"钢琴：叮咚叮咚\" << endl;\n}\n};</code></pre>",
+          "question": "关于以下代码，说法正确的是（   ）。\n<pre><code>class Instrument\n{\n    public:\n    void play()\n    {\n        cout << \"乐器在演奏声音\" << endl;\n    }\n    virtual ~Instrument(){}\n};\nclass Piano : public Instrument\n{\n    public:\n    void play() override\n    {\n        cout << \"钢琴：叮咚叮咚\" << endl;\n    }\n};</code></pre>",
           "options": [
             "A. 执行代码会输出两行，内容分别为：钢琴：叮咚叮咚 和 吉他：咚咚当当",
             "B. 执行代码会输出两行，内容分别为：乐器在演奏声音 和 乐器在演奏声音",
@@ -5385,7 +5385,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码中，构造函数被调用的次数是 1 次。\nclass Test {\npublic:\nTest() { cout << \"T \"; }\n};\n<pre><code>int main() {\nTest a;\nTest b = a;\n}</code></pre>",
+          "question": "以下代码中，构造函数被调用的次数是 1 次。\n<pre><code>class Test\n{\n    public:\n    Test()\n    {\n        cout << \"T \";\n    }\n};\nint main()\n{\n    Test a;\n    Test b = a;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5423,7 +5423,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码在 main() 中有一行会导致编译错误，请找出来。\nclass Pet {\npublic:\nPet(string n, int a) : name(n), age(a) {}\n<pre><code>string getName() { return name; }\nvoid birthday() { age++; }\nprivate:\nstring name;\nint age;\n};\nint main() {\nPet cat(\"奶茶\", 2);\ncout << cat.getName();  // ①\ncat.birthday();         // ②\ncat.name = \"大橘\";      // ③\ncout << cat.getName();  // ④\n}</code></pre>",
+          "question": "下面的代码在 main() 中有一行会导致编译错误，请找出来。\n<pre><code>class Pet\n{\n    public:\n    Pet(string n, int a) : name(n), age(a){}\n    string getName()\n    {\n        return name;\n    }\n    void birthday()\n    {\n        age++;\n    }\n    private:\n    string name;\n    int age;\n};\nint main()\n{\n    Pet cat(\"奶茶\", 2);\n    cout << cat.getName(); // ①\n    cat.birthday(); // ②\n    cat.name = \"大橘\"; // ③\n    cout << cat.getName(); // ④\n}</code></pre>",
           "options": [
             "A. 第①行",
             "B. 第②行",
@@ -5443,7 +5443,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面定义了一个表示二维坐标点的类 Point，并提供了一个带参数的构造函数，但第②行 Point b; 会调用编译器自动生成的默认构造函数，将 b.x 和 b.y 初始化为 0.0，程序可以正常编译运行。\nclass Point {\npublic:\ndouble x, y;\nPoint(double px, double py) : x(px), y(py) {}\n};\n<pre><code>int main() {\nPoint a(3.0, 4.0);  // ①\nPoint b;            // ②\n}</code></pre>",
+          "question": "下面定义了一个表示二维坐标点的类 Point，并提供了一个带参数的构造函数，但第②行 Point b; 会调用编译器自动生成的默认构造函数，将 b.x 和 b.y 初始化为 0.0，程序可以正常编译运行。\n<pre><code>class Point\n{\n    public:\n    double x, y;\n    Point(double px, double py) : x(px), y(py){}\n};\nint main()\n{\n    Point a(3.0, 4.0); // ①\n    Point b; // ②\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5481,7 +5481,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码在 main() 中有一行会导致编译错误，请找出来。\nclass Student {\npublic:\nStudent(string n, int s) : name(n), score(s) {}\n<pre><code>string getName() { return name; }\nvoid setScore(int s) { score = s; }\nprivate:\nstring name;\nint score;\n};\nint main() {\nStudent stu(\"Tom\", 85);\ncout << stu.getName();   // ①\nstu.setScore(90);       // ②\nstu.score = 100;        // ③\ncout << stu.getName();  // ④\n}</code></pre>",
+          "question": "下面代码在 main() 中有一行会导致编译错误，请找出来。\n<pre><code>class Student\n{\n    public:\n    Student(string n, int s) : name(n), score(s){}\n    string getName()\n    {\n        return name;\n    }\n    void setScore(int s)\n    {\n        score = s;\n    }\n    private:\n    string name;\n    int score;\n};\nint main()\n{\n    Student stu(\"Tom\", 85);\n    cout << stu.getName(); // ①\n    stu.setScore(90); // ②\n    stu.score = 100; // ③\n    cout << stu.getName(); // ④\n}</code></pre>",
           "options": [
             "A. 第①行",
             "B. 第②行",
@@ -5519,7 +5519,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "通过指向 Base 的指针删除 Derived 对象时，一定会先调用 Derived 的析构函数，再调用 Base 的析构函数。\nclass Base {\npublic:\n~Base() { cout << \"Base destructor\" << endl; }\n};\nclass Derived : public Base {\npublic:\n~Derived() { cout << \"Derived destructor\" << endl; }\n};\n<pre><code>int main() {\nBase* p = new Derived();\ndelete p;\n}</code></pre>",
+          "question": "通过指向 Base 的指针删除 Derived 对象时，一定会先调用 Derived 的析构函数，再调用 Base 的析构函数。\n<pre><code>class Base\n{\n    public:\n    ~Base()\n    {\n        cout << \"Base destructor\" << endl;\n    }\n};\nclass Derived : public Base\n{\n    public:\n    ~Derived()\n    {\n        cout << \"Derived destructor\" << endl;\n    }\n};\nint main()\n{\n    Base* p = new Derived();\n    delete p;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5658,7 +5658,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码片段用于反转单链表，请进行（ ）修改，使其能正确实现相应功能。\nListNode* reverseLinkedList(ListNode* head){ ListNode* prev=nullptr; ListNode* current=head; while(current!=nullptr){ ListNode* next=current->next; current->next=next; prev=current; current=next; } return prev; }",
+          "question": "下面的代码片段用于反转单链表，请进行（ ）修改，使其能正确实现相应功能。\n<pre><code>ListNode* reverseLinkedList(ListNode* head)\n{\n    ListNode* prev=nullptr;\n    ListNode* current=head;\n    while(current!=nullptr)\n    {\n        ListNode* next=current->next;\n        current->next=next;\n        prev=current;\n        current=next;\n    }\n    return prev;\n}</code></pre>",
           "options": [
             "A. current->next = next; 应该改为 current->next = prev;",
             "B. ListNode* next = current->next; 应该改为 ListNode* next = prev->next;",
@@ -5798,7 +5798,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面定义了一个循环队列的类，请补全判断队列是否满的函数，横向上应填写（ ）。\nclass circular_queue { int *arr; int capacity,front,rear; circular_queue(int size){ capacity=size+1; arr=new int[capacity]; front=rear=0; } bool is_empty(){ return front==rear; } bool is_full(){ ______ } ... };",
+          "question": "下面定义了一个循环队列的类，请补全判断队列是否满的函数，横向上应填写（ ）。\n<pre><code>class circular_queue\n{\n    int *arr;\n    int capacity,front,rear;\n    circular_queue(int size)\n    {\n        capacity=size+1;\n        arr=new int[capacity];\n        front=rear=0;\n    }\n    bool is_empty()\n    {\n        return front==rear;\n    }\n    bool is_full()\n    {\n        ______\n    }\n    ...\n};</code></pre>",
           "options": [
             "A. return (rear + 1) % capacity == front;",
             "B. return rear % capacity == front;",
@@ -6010,7 +6010,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了循环队列的哪种操作？\nclass CircularQueue{ int* arr; int front,rear,size; public: CircularQueue(int k){ size=k; arr=new int[k]; front=rear=-1;} bool enQueue(int value){ if(isFull()) return false; if(isEmpty()) front=0; rear=(rear+1)%size; arr[rear]=value; return true; } };",
+          "question": "以下代码实现了循环队列的哪种操作？\n<pre><code>class CircularQueue\n{\n    int* arr;\n    int front,rear,size;\n    public:\n    CircularQueue(int k)\n    {\n        size=k;\n        arr=new int[k];\n        front=rear=-1;\n    }\n    bool enQueue(int value)\n    {\n        if(isFull())\n            return false;\n        if(isEmpty())\n            front=0;\n        rear=(rear+1)%size;\n        arr[rear]=value;\n        return true;\n    }\n};</code></pre>",
           "options": [
             "A. 入队",
             "B. 出队",
@@ -6092,7 +6092,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下关于栈和队列的代码，执行后输出是（   ）。\nstack<int> s;\nqueue<int> q;\nfor (int i = 1; i <= 3; ++i) {\ns.push(i);\nq.push(i);\n}\ncout << s.top() << \" \" << q.front() << endl;",
+          "question": "以下关于栈和队列的代码，执行后输出是（   ）。\n<pre><code>stack<int> s;\nqueue<int> q;\nfor (int i = 1; i <= 3; ++i)\n{\n    s.push(i);\n    q.push(i);\n}\ncout << s.top() << \" \" << q.front() << endl;</code></pre>",
           "options": [
             "A. 1 3",
             "B. 3 1",
@@ -6284,7 +6284,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "游乐园的过山车每次限坐 4 人，用循环队列管理排队（容量 MAX=5，空一格判满）。下面代码执行后，循环队列是否已满？rear 的值是多少？\nconst int MAX = 5;\nint queue[MAX];\nint front = 0, rear = 0;\n<pre><code>void enqueue(int x) { queue[rear] = x; rear = (rear + 1) % MAX; }\nvoid dequeue() { front = (front + 1) % MAX; }\nint main() {\nenqueue(1); enqueue(2); enqueue(3); enqueue(4);\ndequeue(); dequeue();\nenqueue(5); enqueue(6);\n}</code></pre>",
+          "question": "游乐园的过山车每次限坐 4 人，用循环队列管理排队（容量 MAX=5，空一格判满）。下面代码执行后，循环队列是否已满？rear 的值是多少？\n<pre><code>const int MAX = 5;\nint queue[MAX];\nint front = 0, rear = 0;\nvoid enqueue(int x)\n{\n    queue[rear] = x;\n    rear = (rear + 1) % MAX;\n}\nvoid dequeue()\n{\n    front = (front + 1) % MAX;\n}\nint main()\n{\n    enqueue(1);\n    enqueue(2);\n    enqueue(3);\n    enqueue(4);\n    dequeue();\n    dequeue();\n    enqueue(5);\n    enqueue(6);\n}</code></pre>",
           "options": [
             "A. 已满，rear = 1",
             "B. 未满，rear = 1",
@@ -6344,7 +6344,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设循环队列数组长度为 N=7，队空判断条件为 front==rear。入队和出队操作如下：\nconst int N = 7;\nint q[N];\nint front = 3, rear = 3;\n<pre><code>void enqueue(int x) { q[rear] = x; rear = (rear + 1) % N; }\nvoid dequeue() { front = (front + 1) % N; }\n依次执行：enqueue(10); enqueue(20); enqueue(30); dequeue(); enqueue(40); dequeue(); enqueue(50);\n最终 (front, rear) 的值是（  ）。</code></pre>",
+          "question": "假设循环队列数组长度为 N=7，队空判断条件为 front==rear。入队和出队操作如下：\n<pre><code>const int N = 7;\nint q[N];\nint front = 3, rear = 3;\nvoid enqueue(int x)\n{\n    q[rear] = x;\n    rear = (rear + 1) % N;\n}\nvoid dequeue()\n{\n    front = (front + 1) % N;\n}</code></pre>\n依次执行：enqueue(10); enqueue(20); enqueue(30); dequeue(); enqueue(40); dequeue(); enqueue(50);\n最终 (front, rear) 的值是（  ）。",
           "options": [
             "A. (5, 1)",
             "B. (4, 0)",
