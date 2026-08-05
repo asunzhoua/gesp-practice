@@ -4154,13 +4154,13 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "已知int类型的变量a和b，则执行语句a, b = b, a; 后，变量a和b的值会互换。",
+          "question": "已知int类型的变量a和b，则执行语句a = b, b = a; 后，变量a和b的值会互换。",
           "options": [
             "正确",
             "错误"
           ],
           "answer": 1,
-          "explanation": "逗号运算符优先级低于赋值，a, b = b, a;等价于a, (b=b), a，即先计算a并丢弃，再执行b=b，最后计算a丢弃。a和b的值均未互换，说法错误。分析时空复杂度要抓住循环层数与数据规模，选对排序、哈希、DP与筛法等优化手段。",
+          "explanation": "逗号运算符优先级低于赋值，a = b, b = a; 等价于(a = b), (b = a)。先执行 a = b，a 变为 b 原来的值；再执行 b = a，此时 a 已经是 b 原来的值，所以 b 也变为 b 原来的值。最终 a、b 都等于 b 原来的值，并没有互换，说法错误。",
           "source": "GESP2024-03",
           "isJudge": true,
           "answerText": null,
