@@ -40,15 +40,17 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
   const now = new Date();
   const today = now.toISOString().slice(0, 10);
 
-  // 1. Get all wrong question_ids (not yet corrected) for this level, excluding coding
+  // 1. Get all wrong question_ids (latest answer is wrong) for this level, excluding coding
   const wrongIds = db.prepare(`
     SELECT DISTINCT a.question_id FROM answers a
     JOIN questions q ON a.question_id = q.id
     WHERE a.user_id = ? AND a.is_correct = 0 AND q.type != 'coding' AND ${kp}
-    AND a.question_id NOT IN (
-      SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
+    AND a.id = (
+      SELECT a2.id FROM answers a2
+      WHERE a2.user_id = a.user_id AND a2.question_id = a.question_id
+      ORDER BY a2.answered_at DESC, a2.id DESC LIMIT 1
     )
-  `).all(userId, userId).map(r => r.question_id);
+  `).all(userId).map(r => r.question_id);
 
   if (wrongIds.length === 0) {
     return res.json({
@@ -124,11 +126,16 @@ router.get('/review/schedule', authMiddleware, (req, res) => {
     )
   `).get(userId, today, userId).c;
 
-  // Mastered: questions that were once wrong (had is_correct=0) but have since been answered correctly
+  // Mastered: ever-wrong questions whose LATEST answer is correct
   const mastered = db.prepare(`
     SELECT COUNT(DISTINCT a.question_id) as c FROM answers a
     JOIN questions q ON a.question_id = q.id
     WHERE a.user_id = ? AND a.is_correct = 1 AND q.type != 'coding' AND ${kp}
+    AND a.id = (
+      SELECT a2.id FROM answers a2
+      WHERE a2.user_id = a.user_id AND a2.question_id = a.question_id
+      ORDER BY a2.answered_at DESC, a2.id DESC LIMIT 1
+    )
     AND a.question_id IN (
       SELECT DISTINCT question_id FROM answers WHERE user_id = ? AND is_correct = 0
     )
@@ -179,10 +186,12 @@ router.get('/wrong-ids', authMiddleware, (req, res) => {
     SELECT DISTINCT a.question_id FROM answers a
     JOIN questions q ON a.question_id = q.id
     WHERE a.user_id = ? AND a.is_correct = 0 AND ${kp}
-    AND a.question_id NOT IN (
-      SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
+    AND a.id = (
+      SELECT a2.id FROM answers a2
+      WHERE a2.user_id = a.user_id AND a2.question_id = a.question_id
+      ORDER BY a2.answered_at DESC, a2.id DESC LIMIT 1
     )
-  `).all(req.user.id, req.user.id);
+  `).all(req.user.id);
 
   res.json(rows.map(r => r.question_id));
 });
@@ -194,11 +203,13 @@ router.get('/wrong-questions', authMiddleware, (req, res) => {
     SELECT DISTINCT q.* FROM questions q
     JOIN answers a ON q.id = a.question_id
     WHERE a.user_id = ? AND a.is_correct = 0 AND ${kp}
-    AND q.id NOT IN (
-      SELECT question_id FROM answers WHERE user_id = ? AND is_correct = 1
+    AND a.id = (
+      SELECT a2.id FROM answers a2
+      WHERE a2.user_id = a.user_id AND a2.question_id = a.question_id
+      ORDER BY a2.answered_at DESC, a2.id DESC LIMIT 1
     )
     ORDER BY q.kp, q.id
-  `).all(req.user.id, req.user.id);
+  `).all(req.user.id);
 
   const questions = rows.map(q => ({
     id: q.id, kp: q.kp, type: q.type, difficulty: q.difficulty,

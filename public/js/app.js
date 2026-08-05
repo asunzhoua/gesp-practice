@@ -1721,7 +1721,7 @@ function renderWrongPracticeQuestion() {
     const fbText = isCorrect ? cheer(true) + ' 已从错题库移除' : cheer(false) + ' 正确答案是 ' + (labels[q.answer] ?? '?');
     feedbackHtml = `<div class="feedback show ${fbClass}">
       <span class="fb-icon">${fbIcon}</span> ${fbText}
-      ${!isCorrect && q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
+      ${q.explanation ? `<div class="explanation">${escapeHtml(q.explanation)}</div>` : ''}
     </div>`;
   }
 

@@ -63,6 +63,8 @@ async function initDb() {
     )
   `);
 
+  sqlDb.run(`CREATE INDEX IF NOT EXISTS idx_answers_user_q ON answers(user_id, question_id, answered_at)`);
+
   sqlDb.run(`
     CREATE TABLE IF NOT EXISTS exam_sessions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
