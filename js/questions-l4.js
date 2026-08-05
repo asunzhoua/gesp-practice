@@ -818,7 +818,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码正确声明了一个返回int 类型、接受两个int 参数的函数。\nint add(int, int);",
+          "question": "下面C++代码正确声明了一个返回int 类型、接受两个int 参数的函数。\n<pre><code>int add(int, int);</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -836,7 +836,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面这段代码会输出（   ）。\nint add(int a, int b = 1); // 函数声明\n<pre><code>int main()\n{\n    cout << add(2) << \" \" << add(2, 3);\n    return 0;\n}\nint add(int a, int b)\n{ // 函数定义\n    return a + b;\n}</code></pre>",
+          "question": "下面这段代码会输出（   ）。\n<pre><code>int add(int a, int b = 1); // 函数声明</code></pre>\n<pre><code>int main()\n{\n    cout << add(2) << \" \" << add(2, 3);\n    return 0;\n}\nint add(int a, int b)\n{ // 函数定义\n    return a + b;\n}</code></pre>",
           "options": [
             "3 5",
             "编译失败：定义处少了默认参数",
@@ -1990,7 +1990,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下定义的数组arr ，则*(*(arr + 1) + 2) 的值是（   ）。\nint arr[2][3] = {{1, 2, 3}, {4, 5, 6}};",
+          "question": "给定如下定义的数组arr ，则*(*(arr + 1) + 2) 的值是（   ）。\n<pre><code>int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};</code></pre>",
           "options": [
             "2",
             "5",
@@ -2162,7 +2162,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "已知：\nint a[3][4] = {\n{1,2,3,4},\n{5,6,7,8},\n{9,10,11,12}\n};\nint (*p)[4] = a;\n则表达式 *(*(p + 2) + 1) 的值为（ ）。",
+          "question": "已知：\n<pre><code>int a[3][4] = {\n{1,2,3,4},\n{5,6,7,8},\n{9,10,11,12}\n};\nint (*p)[4] = a;</code></pre>\n则表达式 *(*(p + 2) + 1) 的值为（ ）。",
           "options": [
             "6",
             "10",
@@ -2988,7 +2988,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于结构体初始化，以下哪个选项中正确的是（   ）。\nstruct Point {int x,y;};",
+          "question": "关于结构体初始化，以下哪个选项中正确的是（   ）。\n<pre><code>struct Point {int x,y;};</code></pre>",
           "options": [
             "Point p = (1,2);",
             "Point p = {1,2};",
@@ -3084,7 +3084,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列关于结构体初始化的写法，正确的是（ ）。\nstruct Point { int x, y; };",
+          "question": "下列关于结构体初始化的写法，正确的是（ ）。\n<pre><code>struct Point { int x, y; };</code></pre>",
           "options": [
             "Point p = (1,2);",
             "Point p = {1,2};",
@@ -3889,7 +3889,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面这段代码不合法，因为每一行都必须显式初始化个元素。\nint arr[2][3] = {{1, 2}, {3}};",
+          "question": "下面这段代码不合法，因为每一行都必须显式初始化个元素。\n<pre><code>int arr[2][3] = {{1, 2}, {3}};</code></pre>",
           "options": [
             "正确",
             "错误"

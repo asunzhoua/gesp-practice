@@ -2513,7 +2513,7 @@ const QUESTION_BANK = {
           "kp": "kp2_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "假定变量a和b可能是整型、字符型或浮点型，则下面C++代码执行时先后输入-2和3.14后，其输出不可能是（ ）。[已知字符'+'、'-'、'='的ASCII码值分别是43、45和61]\ncin>>a;\ncin>>b;\ncout<<(a+b);",
+          "question": "假定变量a和b可能是整型、字符型或浮点型，则下面C++代码执行时先后输入-2和3.14后，其输出不可能是（ ）。[已知字符'+'、'-'、'='的ASCII码值分别是43、45和61]\n<pre><code>cin>>a;\ncin>>b;\ncout<<(a+b);</code></pre>",
           "options": [
             "1",
             "1.14",
@@ -3380,7 +3380,7 @@ const QUESTION_BANK = {
           "kp": "kp2_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面图形每一行从字母A开始，以ABC方式重复。行数为输入的整数。请在C++代码段横线处填入合适代码（　）。\n```cpp\nint N = 0;\ncout << \"请输入行列数量:\";\ncin >> N;\nfor (int i = 1; i < N + 1; i++) {\nfor (int j = 0; j < i; j++)\ncout << __________; // 此处填写代码\ncout << endl;\n}\n```",
+          "question": "下面图形每一行从字母A开始，以ABC方式重复。行数为输入的整数。请在C++代码段横线处填入合适代码（　）。\n```cpp\n<pre><code>int N = 0;\ncout << \"请输入行列数量:\";\ncin >> N;\nfor (int i = 1; i < N + 1; i++) {\nfor (int j = 0; j < i; j++)\ncout << __________; // 此处填写代码\ncout << endl;\n}\n```</code></pre>",
           "options": [
             "'A' + j÷3",
             "(char)('A' + j÷3)",
@@ -3897,7 +3897,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码实现从大到小的顺序输出 N 的所有因子。例如，输入 N = 18 时输出 18 9 6 3 2 1 ，横线处应填入（　）。\n```cpp\nint N = 0;\ncin >> N;\nfor (________________) // 此处填写代码\nif (!(N % i))\ncout << i << ' ';\n```",
+          "question": "以下C++代码实现从大到小的顺序输出 N 的所有因子。例如，输入 N = 18 时输出 18 9 6 3 2 1 ，横线处应填入（　）。\n```cpp\n<pre><code>int N = 0;\ncin >> N;\nfor (________________) // 此处填写代码\nif (!(N % i))\ncout << i << ' ';\n```</code></pre>",
           "options": [
             "; ;",
             "int i = 1; i < N; i++",
@@ -3917,7 +3917,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "如下图 所示，输出 N 行 N 列的矩阵，对角线为1，横线处应填入（　）。\n```cpp\nint N = 0;\ncout << \"请输入行列数量:\";\ncin >> N;\nfor (int i = 1; i < N + 1; i++) {\nfor (int j = 1; j < N + 1; j++)\nif (___________) // 此处填写代码\ncout << 1 << \" \";\nelse\ncout << 0 << \" \";\ncout << endl;\n}\n```",
+          "question": "如下图 所示，输出 N 行 N 列的矩阵，对角线为1，横线处应填入（　）。\n```cpp\n<pre><code>int N = 0;\ncout << \"请输入行列数量:\";\ncin >> N;\nfor (int i = 1; i < N + 1; i++) {\nfor (int j = 1; j < N + 1; j++)\nif (___________) // 此处填写代码\ncout << 1 << \" \";\nelse\ncout << 0 << \" \";\ncout << endl;\n}\n```</code></pre>",
           "options": [
             "i = j",
             "j != j",
@@ -3937,7 +3937,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于判断 N 是否为质数（素数），约定输入 N 为大于等于2的正整数，请在横线处填入合适的代码（　）。\n```cpp\nint N = 0, i = 0;\ncout << \"请输入一个大于等于2的正整数：\";\ncin >> N;\nfor (i = 2; i < N; i++)\nif (N % i == 0) {\ncout << \"非质数\";\n_________; // 此处填写代码\n}\nif (i == N)\ncout << \"是质数\";\n```",
+          "question": "下面C++代码用于判断 N 是否为质数（素数），约定输入 N 为大于等于2的正整数，请在横线处填入合适的代码（　）。\n```cpp\n<pre><code>int N = 0, i = 0;\ncout << \"请输入一个大于等于2的正整数：\";\ncin >> N;\nfor (i = 2; i < N; i++)\nif (N % i == 0) {\ncout << \"非质数\";\n_________; // 此处填写代码\n}\nif (i == N)\ncout << \"是质数\";\n```</code></pre>",
           "options": [
             "break",
             "continue",
@@ -3957,7 +3957,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（　）。\n```cpp\nint N = 9;\nfor (int i = 2; i < N; i++)\nif (N % i)\ncout << \"1#\";\ncout << \"0\" << endl;\n```",
+          "question": "下面C++代码执行后的输出是（　）。\n```cpp\n<pre><code>int N = 9;\nfor (int i = 2; i < N; i++)\nif (N % i)\ncout << \"1#\";\ncout << \"0\" << endl;\n```</code></pre>",
           "options": [
             "1#0",
             "1#",
@@ -3977,7 +3977,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（　）。\n```cpp\nint cnt = 0;\nfor (int i = 1; i < 9; i++)\nfor (int j = 1; j < i; j += 2)\ncnt += 1;\ncout << cnt;\n```",
+          "question": "下面C++代码执行后的输出是（　）。\n```cpp\n<pre><code>int cnt = 0;\nfor (int i = 1; i < 9; i++)\nfor (int j = 1; j < i; j += 2)\ncnt += 1;\ncout << cnt;\n```</code></pre>",
           "options": [
             "16",
             "28",
@@ -3997,7 +3997,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（　）。\n```cpp\nint cnt = 0;\nfor (int i = 1; i < 13; i += 3)\nfor (int j = 1; j < i; j += 2)\nif (i * j % 2 == 0)\nbreak;\nelse\ncnt += 1;\ncout << cnt;\n```",
+          "question": "下面C++代码执行后的输出是（　）。\n```cpp\n<pre><code>int cnt = 0;\nfor (int i = 1; i < 13; i += 3)\nfor (int j = 1; j < i; j += 2)\nif (i * j % 2 == 0)\nbreak;\nelse\ncnt += 1;\ncout << cnt;\n```</code></pre>",
           "options": [
             "1",
             "3",
@@ -4017,7 +4017,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（　）。\n```cpp\nint x = 1;\nwhile (x < 100) {\nif (!(x % 3))\ncout << x << \",\";\nelse if (x / 10)\nbreak;\nx += 2;\n}\ncout << x;\n```",
+          "question": "下面C++代码执行后的输出是（　）。\n```cpp\n<pre><code>int x = 1;\nwhile (x < 100) {\nif (!(x % 3))\ncout << x << \",\";\nelse if (x / 10)\nbreak;\nx += 2;\n}\ncout << x;\n```</code></pre>",
           "options": [
             "1",
             "3,9,11",
@@ -4037,7 +4037,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "输入行数，约定1≤ lineCount ≤ 9，输出以下图形。应在C++代码横线处填入（　）。\n```cpp\nint lineCount = 0;\ncout << \"请输入行数量:\";\ncin >> lineCount;\nfor (int i = 0; i < lineCount; i++) {\nfor (int j = 0; j < ____________; j++) // 此处填写代码\ncout << ' ';\nfor (int j = 1; j < i + 1; j++)\ncout << j << \" \";\nfor (int j = i + 1; j > 0; j--)\ncout << j << \" \";\ncout << endl;\n}\n```",
+          "question": "输入行数，约定1≤ lineCount ≤ 9，输出以下图形。应在C++代码横线处填入（　）。\n```cpp\n<pre><code>int lineCount = 0;\ncout << \"请输入行数量:\";\ncin >> lineCount;\nfor (int i = 0; i < lineCount; i++) {\nfor (int j = 0; j < ____________; j++) // 此处填写代码\ncout << ' ';\nfor (int j = 1; j < i + 1; j++)\ncout << j << \" \";\nfor (int j = i + 1; j > 0; j--)\ncout << j << \" \";\ncout << endl;\n}\n```</code></pre>",
           "options": [
             "(lineCount - i - 1) * 2",
             "(lineCount - i) * 2",
@@ -4057,7 +4057,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "某班级人数不知，连续输入成绩直到输入负数停止，输入结束后求出平均成绩。在以下C++代码横线处应填入是（　）。\n```cpp\ndouble totalScore = 0;\nint studCount = 0;\nwhile (______) { // 此处填写代码\ncin >> score;\nif (score < 0)\nbreak;\ntotalScore += score;\nstudCount += 1;\n}\ncout << \"平均分=\" << totalScore / studCount;\n```",
+          "question": "某班级人数不知，连续输入成绩直到输入负数停止，输入结束后求出平均成绩。在以下C++代码横线处应填入是（　）。\n```cpp\n<pre><code>double totalScore = 0;\nint studCount = 0;\nwhile (______) { // 此处填写代码\ncin >> score;\nif (score < 0)\nbreak;\ntotalScore += score;\nstudCount += 1;\n}\ncout << \"平均分=\" << totalScore / studCount;\n```</code></pre>",
           "options": [
             "true",
             "false",
@@ -4077,7 +4077,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出为 10 。\n```cpp\nint cnt = 0;\nfor (int i = 1; i < 10; i++) {\ncnt += 1;\ni += 1;\n}\ncout << cnt;\n```",
+          "question": "下面C++代码执行后的输出为 10 。\n```cpp\n<pre><code>int cnt = 0;\nfor (int i = 1; i < 10; i++) {\ncnt += 1;\ni += 1;\n}\ncout << cnt;\n```</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4095,7 +4095,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行以下C++代码后的输出为 0 。\n```cpp\nint rst = 0;\nfor (int i = -100; i < 100; i += 2)\nrst += i;\ncout << rst;\n```",
+          "question": "执行以下C++代码后的输出为 0 。\n```cpp\n<pre><code>int rst = 0;\nfor (int i = -100; i < 100; i += 2)\nrst += i;\ncout << rst;\n```</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4113,7 +4113,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行以下C++代码后的输出为 30 。\n```cpp\nint rst = 0;\nfor (int i = 0; i < 10; i += 2)\nrst += i;\ncout << rst;\n```",
+          "question": "执行以下C++代码后的输出为 30 。\n```cpp\n<pre><code>int rst = 0;\nfor (int i = 0; i < 10; i += 2)\nrst += i;\ncout << rst;\n```</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4199,7 +4199,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码实现从小到大的顺序输出能整除N的数（N的因子），例如N=18时输出1 2 3 6 9 18，横线处应填入（ ）。\ncin>>N;\nfor(___) if(N%i==0) cout<<i<<\" \";",
+          "question": "以下C++代码实现从小到大的顺序输出能整除N的数（N的因子），例如N=18时输出1 2 3 6 9 18，横线处应填入（ ）。\n<pre><code>cin>>N;\nfor(___) if(N%i==0) cout<<i<<\" \";</code></pre>",
           "options": [
             "int i=0; i<N; i++",
             "int i=1; i<N; i++",
@@ -4219,7 +4219,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于判断输入的整数是否为对称数，如1221、12321是对称数，但123、972不是对称数。下面对该题对应代码的说法，正确的是（ ）。\ncin>>N;\nnewNum=0;\nwhile(N){ newNum=newNum*10+N%10; N=N/10; }\nif(newNum==N) cout<<N<<\"为对称数\";",
+          "question": "下面C++代码用于判断输入的整数是否为对称数，如1221、12321是对称数，但123、972不是对称数。下面对该题对应代码的说法，正确的是（ ）。\n<pre><code>cin>>N;\nnewNum=0;\nwhile(N){ newNum=newNum*10+N%10; N=N/10; }\nif(newNum==N) cout<<N<<\"为对称数\";</code></pre>",
           "options": [
             "代码没有语法错误，如果N为对称数，第8行将能正确输出。",
             "代码没有语法错误，但如果N为负数，将导致死循环。",
@@ -4239,7 +4239,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于判断N（大于等于2的正整数）是否为质数（素数）。下面对如下代码的说法，正确的是（ ）。\ncin>>N;\nfor(i=2;i<N/2;i++) if(N%i==0){ cout<<N<<\" 不是质数\"; break; }\nif(i>=N/2) cout<<N<<\" 是质数\";",
+          "question": "下面C++代码用于判断N（大于等于2的正整数）是否为质数（素数）。下面对如下代码的说法，正确的是（ ）。\n<pre><code>cin>>N;\nfor(i=2;i<N/2;i++) if(N%i==0){ cout<<N<<\" 不是质数\"; break; }\nif(i>=N/2) cout<<N<<\" 是质数\";</code></pre>",
           "options": [
             "代码能正确判断N是否为质数。",
             "代码总是不能判断N是否质数。",
@@ -4259,7 +4259,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nN=4;\nfor(int i=0;i<N;i++){ for(int j=1;j<i;j++) if(i*j%2==0) cout<<i<<\"#\"; continue; }\ncout<<\"0\";",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>N=4;\nfor(int i=0;i<N;i++){ for(int j=1;j<i;j++) if(i*j%2==0) cout<<i<<\"#\"; continue; }\ncout<<\"0\";</code></pre>",
           "options": [
             "2#3#0",
             "1#2#0",
@@ -4279,7 +4279,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\ncnt=0;\nfor(i=1;i<10;i++) for(j=1;j<i;j+=2) if(i*j%2==0){ cnt++; break; }\nif(i>=10) cout<<cnt<<\"#\";\ncout<<cnt;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>cnt=0;\nfor(i=1;i<10;i++) for(j=1;j<i;j+=2) if(i*j%2==0){ cnt++; break; }\nif(i>=10) cout<<cnt<<\"#\";\ncout<<cnt;</code></pre>",
           "options": [
             "0",
             "8#8",
@@ -4299,7 +4299,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nint N=100;\nwhile(N>0){ if(N%2) break; else if(N%3==0) N-=5; else N-=20; }\ncout<<N;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>int N=100;\nwhile(N>0){ if(N%2) break; else if(N%3==0) N-=5; else N-=20; }\ncout<<N;</code></pre>",
           "options": [
             "100",
             "95",
@@ -4319,7 +4319,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\ncnt=0;\nfor(i=0;i<5;i++) for(j=0;j<i;j++) cnt+=1;\ncout<<cnt;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>cnt=0;\nfor(i=0;i<5;i++) for(j=0;j<i;j++) cnt+=1;\ncout<<cnt;</code></pre>",
           "options": [
             "5",
             "10",
@@ -4339,7 +4339,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++代码用于实现如左图所示的数字三角效果，应在右图C++代码中填入（ ）。\ncin>>N;\nfor(i=0;i<N;i++){\nnowNum=0;\nfor(j=0;j<i+1;j++){ cout<<nowNum<<\" \"; nowNum+=1; if(nowNum==10) nowNum=0; }\n}",
+          "question": "下面的C++代码用于实现如左图所示的数字三角效果，应在右图C++代码中填入（ ）。\n<pre><code>cin>>N;\nfor(i=0;i<N;i++){\nnowNum=0;\nfor(j=0;j<i+1;j++){ cout<<nowNum<<\" \"; nowNum+=1; if(nowNum==10) nowNum=0; }\n}</code></pre>",
           "options": [
             "与第8行下面填入一行：cout<<nowNum;",
             "与第2行下面填入一行：cout<<endl;",
@@ -4397,7 +4397,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行以下C++代码后将输出0。（ ）\nSum=0;\nfor(i=-500;i<500;i++) Sum+=i;\ncout<<Sum;",
+          "question": "执行以下C++代码后将输出0。（ ）\n<pre><code>Sum=0;\nfor(i=-500;i<500;i++) Sum+=i;\ncout<<Sum;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4501,7 +4501,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是？（ ）\nint n,a,m,i;\nn=3, a=5;\nm=(a-1)*2;\nfor(i=0;i<n-1;i++) m=(m-1)*2;\ncout<<m;",
+          "question": "下面C++代码执行后的输出是？（ ）\n<pre><code>int n,a,m,i;\nn=3, a=5;\nm=(a-1)*2;\nfor(i=0;i<n-1;i++) m=(m-1)*2;\ncout<<m;</code></pre>",
           "options": [
             "8",
             "14",
@@ -4521,7 +4521,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是？（ ）\nint n,i,result;\nn=81;\ni=1, result=1;\nwhile(i*i<=n){ if(n%(i*i)==0) result=i*i; i+=1; }\ncout<<result;",
+          "question": "下面C++代码执行后的输出是？（ ）\n<pre><code>int n,i,result;\nn=81;\ni=1, result=1;\nwhile(i*i<=n){ if(n%(i*i)==0) result=i*i; i+=1; }\ncout<<result;</code></pre>",
           "options": [
             "16",
             "36",
@@ -4541,7 +4541,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是？（ ）\nint s,t,ans;\ns=2, t=10;\nans=0;\nwhile(s!=t){ if(t%2==0 && t/2>=s) t/=2; else t-=1; ans+=1; }\ncout<<ans;",
+          "question": "下面C++代码执行后的输出是？（ ）\n<pre><code>int s,t,ans;\ns=2, t=10;\nans=0;\nwhile(s!=t){ if(t%2==0 && t/2>=s) t/=2; else t-=1; ans+=1; }\ncout<<ans;</code></pre>",
           "options": [
             "2",
             "3",
@@ -4561,7 +4561,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是？（ ）\nint n,masks,days,cur;\nn=17, masks=10, days=0;\ncur=2;\nwhile(masks!=n){ if(cur==0||cur==1) masks+=7; masks-=1; days+=1; cur=(cur+1)%7; }\ncout<<days;",
+          "question": "下面C++代码执行后的输出是？（ ）\n<pre><code>int n,masks,days,cur;\nn=17, masks=10, days=0;\ncur=2;\nwhile(masks!=n){ if(cur==0||cur==1) masks+=7; masks-=1; days+=1; cur=(cur+1)%7; }\ncout<<days;</code></pre>",
           "options": [
             "5",
             "6",
@@ -4581,7 +4581,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码判断一个正整数N的各个数位是否都是偶数。如果都是，则输出“是”，否则输出“否”。例如N=2024时输出“是”。则横线处应填入（ ）。\nint N,Flag;\ncin>>N;\nFlag=true;\nwhile(N!=0){ if(N%2!=0){ Flag=false; ______ } else N/=10; }\nif(Flag==true) cout<<\"是\"; else cout<<\"否\";",
+          "question": "以下C++代码判断一个正整数N的各个数位是否都是偶数。如果都是，则输出“是”，否则输出“否”。例如N=2024时输出“是”。则横线处应填入（ ）。\n<pre><code>int N,Flag;\ncin>>N;\nFlag=true;\nwhile(N!=0){ if(N%2!=0){ Flag=false; ______ } else N/=10; }\nif(Flag==true) cout<<\"是\"; else cout<<\"否\";</code></pre>",
           "options": [
             "break",
             "continue",
@@ -4601,7 +4601,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "一个数的所有数字倒序排列后这个数的大小保持不变，这个数就是回文数，比如101与6886都是回文数，而100不是回文数。以下程序代码用于判断一个数是否为回文数，横线处应填写？（ ）\nint n,a,k;\ncin>>n;\na=0;\nk=n;\nwhile(n>0){ a=______; n/=10; }\nif(a==k) cout<<\"是回文数\"; else cout<<\"不是回文数\";",
+          "question": "一个数的所有数字倒序排列后这个数的大小保持不变，这个数就是回文数，比如101与6886都是回文数，而100不是回文数。以下程序代码用于判断一个数是否为回文数，横线处应填写？（ ）\n<pre><code>int n,a,k;\ncin>>n;\na=0;\nk=n;\nwhile(n>0){ a=______; n/=10; }\nif(a==k) cout<<\"是回文数\"; else cout<<\"不是回文数\";</code></pre>",
           "options": [
             "10×a+n%10",
             "a+n%10",
@@ -4621,7 +4621,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定两个整数n与k，打印出一个栅栏图形，这个栅栏分成n段，段与段之间的间隔为+，段内的填充为k个-。以下程序代码用于绘制该图形，横线处应填写？（ ）\nint n,k,i,j;\nn=5, k=6;\nfor(i=0;i<n;i++){ ______ for(j=1;j<k;j++) cout<<'-'; }\ncout<<'+';",
+          "question": "给定两个整数n与k，打印出一个栅栏图形，这个栅栏分成n段，段与段之间的间隔为+，段内的填充为k个-。以下程序代码用于绘制该图形，横线处应填写？（ ）\n<pre><code>int n,k,i,j;\nn=5, k=6;\nfor(i=0;i<n;i++){ ______ for(j=1;j<k;j++) cout<<'-'; }\ncout<<'+';</code></pre>",
           "options": [
             "cout<<'+'<<endl;",
             "cout<<'+'<<' '<<endl;",
@@ -4721,7 +4721,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nint loopCount=0;\nfor(int i=0;i<10;i++) for(int j=1;j<i;j++) loopCount+=1;\ncout<<loopCount;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>int loopCount=0;\nfor(int i=0;i<10;i++) for(int j=1;j<i;j++) loopCount+=1;\ncout<<loopCount;</code></pre>",
           "options": [
             "55",
             "45",
@@ -4741,7 +4741,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nint loopCount=0;\nfor(int i=0;i<10;i++){ for(int j=0;j<i;j++) if(i*j%2) break; loopCount+=1; }\ncout<<loopCount;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>int loopCount=0;\nfor(int i=0;i<10;i++){ for(int j=0;j<i;j++) if(i*j%2) break; loopCount+=1; }\ncout<<loopCount;</code></pre>",
           "options": [
             "25",
             "16",
@@ -4761,7 +4761,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设下面C++代码执行过程中仅输入正负整数或0，有关说法错误的是（ ）。\nint N,Sum=0;\ncin>>N;\nwhile(N){ Sum+=N; cin>>N; }\ncout<<Sum;",
+          "question": "假设下面C++代码执行过程中仅输入正负整数或0，有关说法错误的是（ ）。\n<pre><code>int N,Sum=0;\ncin>>N;\nwhile(N){ Sum+=N; cin>>N; }\ncout<<Sum;</code></pre>",
           "options": [
             "执行上面代码如果输入0，将终止循环",
             "执行上面代码能实现所有非0整数的求和",
@@ -4781,7 +4781,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面的C++代码，有关说法正确的是（ ）【质数是指仅能被1和它本身整除的正整数】。\nint N; cin>>N;\nbool Flag=true;\nfor(int i=2;i<N;i++){ if(i*i>N) break; if(N%i==0){ Flag=false; break; } }\nif(Flag) cout<<N<<\"是质数\"; else cout<<N<<\"不是质数\";",
+          "question": "执行下面的C++代码，有关说法正确的是（ ）【质数是指仅能被1和它本身整除的正整数】。\n<pre><code>int N; cin>>N;\nbool Flag=true;\nfor(int i=2;i<N;i++){ if(i*i>N) break; if(N%i==0){ Flag=false; break; } }\nif(Flag) cout<<N<<\"是质数\"; else cout<<N<<\"不是质数\";</code></pre>",
           "options": [
             "如果输入正整数，上面代码能正确判断N是否为质数",
             "如果输入整数，上面代码能正确判断N是否为质数",
@@ -4801,7 +4801,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于实现如下图所示的乘法表效果，其有关说法正确的是（ ）。\nfor(int i=1;i<6;i++){ for(int j=1;j<i+1;j++) cout<<i*j<<\" \"; cout<<endl; }",
+          "question": "下面C++代码用于实现如下图所示的乘法表效果，其有关说法正确的是（ ）。\n<pre><code>for(int i=1;i<6;i++){ for(int j=1;j<i+1;j++) cout<<i*j<<\" \"; cout<<endl; }</code></pre>",
           "options": [
             "当前代码能实现预期效果，无需调整代码",
             "如果cout<<endl;移到循环L2内部，则可实现预期效果",
@@ -4821,7 +4821,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后，输出是（ ）。\nint cnt1=0,cnt2=0;\nfor(int i=0;i<10;i++){ if(i%2==0) continue; if(i%2) cnt1+=1; else if(i%3==0) cnt2+=1; }\ncout<<cnt1<<\" \"<<cnt2;",
+          "question": "下面C++代码执行后，输出是（ ）。\n<pre><code>int cnt1=0,cnt2=0;\nfor(int i=0;i<10;i++){ if(i%2==0) continue; if(i%2) cnt1+=1; else if(i%3==0) cnt2+=1; }\ncout<<cnt1<<\" \"<<cnt2;</code></pre>",
           "options": [
             "5 2",
             "5 0",
@@ -4841,7 +4841,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码执行后将导致死循环。（ ）\nfor(int i=0;i<10;i++) continue;",
+          "question": "下面C++代码执行后将导致死循环。（ ）\n<pre><code>for(int i=0;i<10;i++) continue;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4859,7 +4859,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码执行后将输出10。（ ）\nint cnt=0;\nfor(int i=0;i<10;i++) for(int j=0;j<i;j++){ cnt+=1; break; }\ncout<<cnt;",
+          "question": "下面C++代码执行后将输出10。（ ）\n<pre><code>int cnt=0;\nfor(int i=0;i<10;i++) for(int j=0;j<i;j++){ cnt+=1; break; }\ncout<<cnt;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4877,7 +4877,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码执行后，将输出5。（ ）\nint cnt=0;\nfor(int i=1;i<5;i++) for(int j=i;j<5;j+=i) if(i*j%2==0) cnt+=1;\ncout<<cnt;",
+          "question": "下面C++代码执行后，将输出5。（ ）\n<pre><code>int cnt=0;\nfor(int i=1;i<5;i++) for(int j=i;j<5;j+=i) if(i*j%2==0) cnt+=1;\ncout<<cnt;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4895,7 +4895,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码能实现正整数各位数字之和。（ ）\nint N,Sum=0;\ncin>>N;\nwhile(N){ Sum+=N%10; N/=10; }\ncout<<Sum;",
+          "question": "下面C++代码能实现正整数各位数字之和。（ ）\n<pre><code>int N,Sum=0;\ncin>>N;\nwhile(N){ Sum+=N%10; N/=10; }\ncout<<Sum;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4953,7 +4953,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nint i;\nfor(i=0;i<10;i++){ if(i%2) break; cout<<\"0#\"; }\nif(i==10) cout<<\"1#\";",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>int i;\nfor(i=0;i<10;i++){ if(i%2) break; cout<<\"0#\"; }\nif(i==10) cout<<\"1#\";</code></pre>",
           "options": [
             "0#",
             "1#",
@@ -4973,7 +4973,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nint loopCount=0;\nfor(int i=1;i<5;i+=2) loopCount+=1;\ncout<<(loopCount);",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>int loopCount=0;\nfor(int i=1;i<5;i+=2) loopCount+=1;\ncout<<(loopCount);</code></pre>",
           "options": [
             "1",
             "2",
@@ -4993,7 +4993,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下图是C++程序执行后的输出（数字三角形：第1行1，第2行2 3，第3行3 4 5，...，第7行7 8 9 10 11 12 13）。为实现其功能，横线处应填入代码是（ ）。\nint lineNum;\ncin>>lineNum;\nfor(int i=1;i<lineNum+1;i++){ for(int ______) cout<<j<<\" \"; cout<<endl; }",
+          "question": "下图是C++程序执行后的输出（数字三角形：第1行1，第2行2 3，第3行3 4 5，...，第7行7 8 9 10 11 12 13）。为实现其功能，横线处应填入代码是（ ）。\n<pre><code>int lineNum;\ncin>>lineNum;\nfor(int i=1;i<lineNum+1;i++){ for(int ______) cout<<j<<\" \"; cout<<endl; }</code></pre>",
           "options": [
             "j=i; j<i; j++",
             "j=1; j<i; j++",
@@ -5013,7 +5013,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后输出逆序数，如输入123则输出321。如输入120则输出21。横线处先后应填入的代码是（ ）。\nint N; cin>>N;\nint rst=0;\nwhile(N){ ______; ______; }\ncout<<(rst);",
+          "question": "下面C++代码执行后输出逆序数，如输入123则输出321。如输入120则输出21。横线处先后应填入的代码是（ ）。\n<pre><code>int N; cin>>N;\nint rst=0;\nwhile(N){ ______; ______; }\ncout<<(rst);</code></pre>",
           "options": [
             "rst=rst×10+N%10  和  N=N÷10",
             "rst+=N%10  和  N=N÷10",
@@ -5033,7 +5033,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++代码用于输入学生成绩，并根据人数计算出平均成绩，有关说法错误的是（ ）。\nfloat Sum=0;\nint cnt=0;\nwhile(1){ int score; cin>>score; if(score<0) break; cnt+=1; Sum+=score; }\ncout<<\"总学生数：\"<<cnt<<\"平均分：\"<<Sum/cnt;",
+          "question": "下面的C++代码用于输入学生成绩，并根据人数计算出平均成绩，有关说法错误的是（ ）。\n<pre><code>float Sum=0;\nint cnt=0;\nwhile(1){ int score; cin>>score; if(score<0) break; cnt+=1; Sum+=score; }\ncout<<\"总学生数：\"<<cnt<<\"平均分：\"<<Sum/cnt;</code></pre>",
           "options": [
             "代码while(1)写法错误",
             "如果输入负数，将结束输入，并正确输出",
@@ -5053,7 +5053,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码判断输入的正整数是否为质数，如果该数字是质数，则输出YES，否则输出NO。请在横线上填写代码。（ ）\nint num,i;\ncin>>num;\nfor(i=2;i<num;i++) if(______){ cout<<\"NO\"; break; }\nif(i==num) cout<<\"YES\";",
+          "question": "以下C++代码判断输入的正整数是否为质数，如果该数字是质数，则输出YES，否则输出NO。请在横线上填写代码。（ ）\n<pre><code>int num,i;\ncin>>num;\nfor(i=2;i<num;i++) if(______){ cout<<\"NO\"; break; }\nif(i==num) cout<<\"YES\";</code></pre>",
           "options": [
             "num % i",
             "num % i == 0",
@@ -5073,7 +5073,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "一个数如果能被某个数（比如7）整除，或者含有该数，则说该数是某个数的相关数。下面C++代码用于判定输入的数与7是否有关。下列说法错误的是（ ）。\nint N,M; bool Flag=false;\ncin>>N; M=N;\nif(M%7==0) Flag=true;\nwhile(!Flag && M){ if(M%10==7){ Flag=true; break; } M/=10; }\nif(Flag) cout<<N<<\"与7有关\"; else cout<<N<<\"与7无关\";",
+          "question": "一个数如果能被某个数（比如7）整除，或者含有该数，则说该数是某个数的相关数。下面C++代码用于判定输入的数与7是否有关。下列说法错误的是（ ）。\n<pre><code>int N,M; bool Flag=false;\ncin>>N; M=N;\nif(M%7==0) Flag=true;\nwhile(!Flag && M){ if(M%10==7){ Flag=true; break; } M/=10; }\nif(Flag) cout<<N<<\"与7有关\"; else cout<<N<<\"与7无关\";</code></pre>",
           "options": [
             "删除break语句不会导致死循环，但有时会导致结果错误",
             "删除M/=10将可能导致死循环",
@@ -5093,7 +5093,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码执行后将输出10。（ ）\nint i;\nfor(i=0;i<10;i++) continue;\nif(i==10) cout<<i;",
+          "question": "下面C++代码执行后将输出10。（ ）\n<pre><code>int i;\nfor(i=0;i<10;i++) continue;\nif(i==10) cout<<i;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5111,7 +5111,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码能求整数N和M之间所有整数之和，包含N和M。（ ）\nint N,M,Sum;\ncin>>N>>M;\nif(N>M){ int tmp=N; N=M, M=tmp; }\nfor(int i=N;i<M+1;i++) Sum+=i;\ncout<<Sum;",
+          "question": "下面C++代码能求整数N和M之间所有整数之和，包含N和M。（ ）\n<pre><code>int N,M,Sum;\ncin>>N>>M;\nif(N>M){ int tmp=N; N=M, M=tmp; }\nfor(int i=N;i<M+1;i++) Sum+=i;\ncout<<Sum;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5129,7 +5129,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "将下面C++代码中的L3标记的代码行调整为for(int i=0;i<5;i++)后输出结果相同。（ ）\nint loopCount=0;\nfor(int i=1;i<5;i++) for(int j=0;j<i;j++) loopCount+=1;\ncout<<loopCount;",
+          "question": "将下面C++代码中的L3标记的代码行调整为for(int i=0;i<5;i++)后输出结果相同。（ ）\n<pre><code>int loopCount=0;\nfor(int i=1;i<5;i++) for(int j=0;j<i;j++) loopCount+=1;\ncout<<loopCount;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5147,7 +5147,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "某一系列数据的规律是从第3个数值开始是前两个数之和。下面的代码求第N个数的值，N限定为大于2。（ ）\nint start1,start2,N,tmp;\ncin>>start1>>start2>>N;\nfor(int i=2;i<N;i++){ tmp=start1+start2; start1=start2; start2=tmp; }\ncout<<start2;",
+          "question": "某一系列数据的规律是从第3个数值开始是前两个数之和。下面的代码求第N个数的值，N限定为大于2。（ ）\n<pre><code>int start1,start2,N,tmp;\ncin>>start1>>start2>>N;\nfor(int i=2;i<N;i++){ tmp=start1+start2; start1=start2; start2=tmp; }\ncout<<start2;</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5165,7 +5165,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码执行时如果输入2024，则输出是4202。（ ）\nint N,flag=0;\ncin>>N;\nwhile(N){ if(!flag) cout<<N%10; N/=10; flag=(flag+1)%2; }\ncout<<\"\\n\";",
+          "question": "下面C++代码执行时如果输入2024，则输出是4202。（ ）\n<pre><code>int N,flag=0;\ncin>>N;\nwhile(N){ if(!flag) cout<<N%10; N/=10; flag=(flag+1)%2; }\ncout<<\"\\n\";</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -7664,7 +7664,7 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后的输出是（ ）。\nx=1;\nwhile(x<100){ if(x%3!=0) cout<<x<<\",\"; else if(x/10) break; else x+=5; x+=2; }\ncout<<x;",
+          "question": "下面C++代码执行后的输出是（ ）。\n<pre><code>x=1;\nwhile(x<100){ if(x%3!=0) cout<<x<<\",\"; else if(x/10) break; else x+=5; x+=2; }\ncout<<x;</code></pre>",
           "options": [
             "1",
             "1,3",
@@ -7722,7 +7722,7 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "有句俗话叫“三天打渔，两天晒网”。如果小杨前三天打渔，后两天晒网，一直重复这个过程，以下程序代码用于判断，第n天小杨是在打鱼还是晒网，横线处应填写？（ ）\nint n,i;\ncin>>n;\ni=n%5;\nif(______) cout<<\"晒网\"; else cout<<\"打鱼\";",
+          "question": "有句俗话叫“三天打渔，两天晒网”。如果小杨前三天打渔，后两天晒网，一直重复这个过程，以下程序代码用于判断，第n天小杨是在打鱼还是晒网，横线处应填写？（ ）\n<pre><code>int n,i;\ncin>>n;\ni=n%5;\nif(______) cout<<\"晒网\"; else cout<<\"打鱼\";</code></pre>",
           "options": [
             "i==0",
             "i==4",
@@ -7770,7 +7770,7 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面的C++代码时输入1，则输出是（ ）。\nint month;\ncin>>month;\nswitch(month){\ncase 1: cout<<\"Jan \";\ncase 3: cout<<\"Mar \"; break;\ndefault: ;\n}",
+          "question": "执行下面的C++代码时输入1，则输出是（ ）。\n<pre><code>int month;\ncin>>month;\nswitch(month){\ncase 1: cout<<\"Jan \";\ncase 3: cout<<\"Mar \"; break;\ndefault: ;\n}</code></pre>",
           "options": [
             "Jan",
             "Mar",
@@ -7790,7 +7790,7 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码后，有关说法错误的是（ ）。\nint a,b;\ncin>>a>>b;\nif(a&&b) cout<<\"1\";\nelse if(!(a||b)) cout<<\"2\";\nelse if(a||b) cout<<\"3\";\nelse cout<<\"4\";",
+          "question": "执行下面C++代码后，有关说法错误的是（ ）。\n<pre><code>int a,b;\ncin>>a>>b;\nif(a&&b) cout<<\"1\";\nelse if(!(a||b)) cout<<\"2\";\nelse if(a||b) cout<<\"3\";\nelse cout<<\"4\";</code></pre>",
           "options": [
             "如果先后输入1和1，则将输出1",
             "如果先后输入0和1或者1和0，则将输出3",
@@ -7810,7 +7810,7 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "某货币由5元、2元和1元组成。输入金额（假设为正整数），计算出最少数量。为实现其功能，横线处应填入代码是（ ）。\nint N; cin>>N;\nint M5,M2,M1;\nM5=N/5;\nM2=______;\nM1=______;\nprintf(\"5*%d+2*%d+1*%d\",M5,M2,M1);",
+          "question": "某货币由5元、2元和1元组成。输入金额（假设为正整数），计算出最少数量。为实现其功能，横线处应填入代码是（ ）。\n<pre><code>int N; cin>>N;\nint M5,M2,M1;\nM5=N/5;\nM2=______;\nM1=______;\nprintf(\"5*%d+2*%d+1*%d\",M5,M2,M1);</code></pre>",
           "options": [
             "N÷2  和  N-M5-M2",
             "(N-M5×5)/2  和  N-M5×5-M2×2",
@@ -7850,7 +7850,7 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码并输入1和0，有关说法正确的是（ ）。\nint a,b;\ncin>>a>>b;\nif(a&&b) cout<<\"1\";\nelse if(!(a||b)) cout<<\"2\";\nelse if(a||b) cout<<\"3\";\nelse cout<<\"4\";",
+          "question": "执行下面C++代码并输入1和0，有关说法正确的是（ ）。\n<pre><code>int a,b;\ncin>>a>>b;\nif(a&&b) cout<<\"1\";\nelse if(!(a||b)) cout<<\"2\";\nelse if(a||b) cout<<\"3\";\nelse cout<<\"4\";</code></pre>",
           "options": [
             "1",
             "2",
@@ -8507,7 +8507,7 @@ const QUESTION_BANK = {
           "kp": "kp2_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码用于输出1-100（含）的整数平方数（完全平方数），如16是4的平方，横线处应填写（ ）。\nfor(i=1;i<100+1;i++) if(______) cout<<i<<\" \";",
+          "question": "以下C++代码用于输出1-100（含）的整数平方数（完全平方数），如16是4的平方，横线处应填写（ ）。\n<pre><code>for(i=1;i<100+1;i++) if(______) cout<<i<<\" \";</code></pre>",
           "options": [
             "int(sqrt(i))*int(sqrt(i))=i",
             "int(sqrt(i))==sqrt(i)",
