@@ -423,7 +423,7 @@ async function renderDashboard() {
     </div>
     <div class="section animate-in">
       <div class="quick-actions">
-        <a href="#/mock" class="action-card"><div class="action-icon">🎓</div><div class="action-title">模拟考试</div><div class="action-desc">30题 · 45分钟</div></a>
+        <a href="#/mock" class="action-card"><div class="action-icon">🎓</div><div class="action-title">模拟考试</div><div class="action-desc">27题 · 45分钟</div></a>
         <a href="#/coding" class="action-card"><div class="action-icon">💻</div><div class="action-title">编程练习</div><div class="action-desc">8个模块 · 在线编译</div></a>
         <a href="#/review" class="action-card"><div class="action-icon">📖</div><div class="action-title">错题复习</div><div class="action-desc">${stats.totalWrong} 题待复习</div></a>
         ${user?.role === 'teacher' ? '<a href="#/teacher" class="action-card"><div class="action-icon">👩‍🏫</div><div class="action-title">教师面板</div><div class="action-desc">查看学生进度</div></a>' : ''}
@@ -1145,7 +1145,7 @@ async function renderMock() {
         <h2>模拟考试</h2>
         <p class="text-muted">模拟真实 GESP L${currentLevel} 考试环境</p>
         <div class="rules">
-          <li>共 30 题（选择 + 编程）</li>
+          <li>共 27 题（单选 15 + 判断 10 + 编程 2）</li>
           <li>时间限制：45 分钟</li>
           <li>选择题即时评分，编程题需提交代码运行</li>
           <li>时间到自动提交</li>
@@ -1156,7 +1156,7 @@ async function renderMock() {
           <div class="paper-grid">
             <div class="paper-card random" onclick="selectExamPaper(0)">
               <div class="paper-title">🎲 随机组卷</div>
-              <div class="paper-desc text-muted">从题库随机抽取30道题</div>
+              <div class="paper-desc text-muted">按官方题型随机抽取27道题</div>
             </div>
             ${papersHtml}
           </div>

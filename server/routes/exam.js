@@ -86,26 +86,22 @@ router.get('/paper/:id', authMiddleware, (req, res) => {
   res.json({ paper, questions });
 });
 
-// Get random paper (for quick start) - guaranteed at least 2 coding questions
+// Get random paper (for quick start) - follows official GESP format: 15 choice, 10 judge, 2 coding
 router.get('/paper', authMiddleware, (req, res) => {
   const level = levelInt(req.query.level);
-  // Step 1: Pick 2 random coding questions from this level
+  // Pick random questions per official GESP type order: 单选 → 判断 → 编程
+  const choiceQs = db.prepare(`
+    SELECT * FROM questions WHERE type = 'choice' AND ${kpWhere(level)} ORDER BY RANDOM() LIMIT 15
+  `).all();
+  const judgeQs = db.prepare(`
+    SELECT * FROM questions WHERE type = 'judge' AND ${kpWhere(level)} ORDER BY RANDOM() LIMIT 10
+  `).all();
   const codingQs = db.prepare(`
     SELECT * FROM questions WHERE type = 'coding' AND ${kpWhere(level)} ORDER BY RANDOM() LIMIT 2
   `).all();
-  const codingIds = new Set(codingQs.map(q => q.id));
 
-  // Step 2: Fill remaining 28 with choice/judge questions from this level
-  const remaining = db.prepare(`
-    SELECT * FROM questions WHERE type != 'coding' AND ${kpWhere(level)} ORDER BY RANDOM() LIMIT 30
-  `).all();
-
-  // Step 3: Combine and shuffle
-  const all = [...codingQs, ...remaining.slice(0, 30 - codingQs.length)];
-  for (let i = all.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [all[i], all[j]] = [all[j], all[i]];
-  }
+  // Concatenate in official order (no cross-type shuffle)
+  const all = [...choiceQs, ...judgeQs, ...codingQs];
 
   const questions = all.map(q => ({
     id: q.id, type: q.type, difficulty: q.difficulty,
@@ -115,7 +111,7 @@ router.get('/paper', authMiddleware, (req, res) => {
     isJudge: q.is_judge === 1
   }));
 
-  res.json({ paper: { id: 0, title: '随机组卷', description: '从题库随机抽取30道题' }, questions });
+  res.json({ paper: { id: 0, title: '随机组卷', description: `按官方题型随机抽取${questions.length}道题` }, questions });
 });
 
 router.post('/submit', authMiddleware, async (req, res) => {
