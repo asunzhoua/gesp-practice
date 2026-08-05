@@ -152,7 +152,7 @@ function handleRoute() {
 
   switch (path) {
     case '': renderDashboard(); break;
-    case 'practice': renderPractice(rest[0] || levelKps(currentLevel)[0] || 'kp1_01'); break;
+    case 'practice': rest[0] ? renderPractice(rest[0]) : renderPracticeHome(); break;
     case 'coding': rest[0] ? renderCodingPractice(rest[0]) : renderCodingHome(); break;
     case 'mock': renderMock(); break;
     case 'review': renderReview(); break;
@@ -643,6 +643,36 @@ function formatQuestionTitle(html) {
 /* ============================================================
    Practice
    ============================================================ */
+async function renderPracticeHome() {
+  const app = document.getElementById('app');
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">知识点练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  let stats = { byKp: [], kpCounts: {} };
+  try { stats = await API.getStats(currentLevel); } catch {}
+  const kps = levelKps(currentLevel);
+  let cards = '';
+  kps.forEach((k, i) => {
+    const total = stats.kpCounts?.[k] || 0;
+    const kpStat = (stats.byKp || []).find(x => x.kp === k);
+    const done = kpStat ? kpStat.answered : 0;
+    const pct = total > 0 ? Math.round(done / total * 100) : 0;
+    cards += `
+      <div class="kp-card animate-in ${pct >= 100 ? 'completed' : ''}" data-kp="${k}" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
+        <div class="kp-card-header">
+          <span class="kp-num">${kpLabelOf(k)}</span>
+          ${pct >= 100 ? '<span class="kp-star">⭐</span>' : `<span class="kp-progress-text">${pct}%</span>`}
+        </div>
+        <div class="kp-card-title">${KP_NAMES[k] || ('模块 ' + kpLabelOf(k))}</div>
+        <div class="kp-progress-bar"><div class="kp-progress-fill" style="width:${pct}%"></div></div>
+        <div class="kp-card-stats">${done}/${total} 题</div>
+      </div>`;
+  });
+  app.innerHTML = `
+    <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">知识点练习</span></div>
+    <div class="kp-grid">${cards}</div>`;
+  renderBottomTab('practice');
+  setActiveNav('practice');
+}
+
 async function renderPractice(kp) {
   const app = document.getElementById('app');
   app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp}</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
