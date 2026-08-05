@@ -4148,7 +4148,7 @@ const QUESTION_BANK = {
           "kp": "kp1_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的框架在L1和L2标记的两行处分别填写选项中的代码，哪组不能通过编译（    ）。\n代码：\nint main() {\nint i = 0;\n______________ // L1\nbreak;\n______________ // L2\nreturn 0;\n}\nA选项：\ndo {\n} while (i != 0);\nB选项：\nfor (; i < 10; i++) {\n}\nC选项：\nif (i == 0) {\n}\nD选项：\nswitch (i) {\n}",
+          "question": "下面的框架在L1和L2标记的两行处分别填写选项中的代码，哪组不能通过编译（    ）。\n代码：\n<pre><code>int main() {\nint i = 0;\n______________ // L1\nbreak;\n______________ // L2\nreturn 0;\n}\nA选项：\ndo {\n} while (i != 0);\nB选项：\nfor (; i < 10; i++) {\n}\nC选项：\nif (i == 0) {\n}\nD选项：\nswitch (i) {\n}</code></pre>",
           "options": [
             "A组",
             "B组",
@@ -4525,7 +4525,7 @@ const QUESTION_BANK = {
           "kp": "kp1_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "对下面的代码，描述正确的是（      ）。\n```cpp\n#include <stdlib.h>\nusing namespace std;\nint main(){\nint arr[] = {2,6,3,5,4,8,1,0,9,10};\nfor(int i = 0;i < 10;i++)\ncout << arr[i] << \" \";\ncout << i << endl;\ncout << endl;\nreturn 0;\n}\n```",
+          "question": "对下面的代码，描述正确的是（      ）。\n```cpp\n<pre><code>#include <stdlib.h>\nusing namespace std;\nint main(){\nint arr[] = {2,6,3,5,4,8,1,0,9,10};\nfor(int i = 0;i < 10;i++)\ncout << arr[i] << \" \";\ncout << i << endl;\ncout << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "输出2 6 3 5 4 8 1 0 9 10 10",
             "输出2 6 3 5 4 8 1 0 9 9",

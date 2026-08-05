@@ -644,7 +644,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面函数不能正常执行的是（  ）。\nA. int func(){...} 定义在前，int main(){...} 中未调用 func。\nB. int main(){ func(); } 在前，int func(){...} 定义在后，且无函数声明。\nC. int func(){...} 定义在前，int main(){ func(); }。\nD. int func(); 声明在前，int main(){ func(); }，int func(){...} 定义在后。",
+          "question": "下面函数不能正常执行的是（  ）。\n<pre><code>A. int func(){...} 定义在前，int main(){...} 中未调用 func。\nB. int main(){ func(); } 在前，int func(){...} 定义在后，且无函数声明。\nC. int func(){...} 定义在前，int main(){ func(); }。\nD. int func(); 声明在前，int main(){ func(); }，int func(){...} 定义在后。</code></pre>",
           "options": [
             "A",
             "B",
@@ -742,7 +742,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于下述代码，说法错误的是（  ）。\nint multiply(int x, int y);\nint main() {\nint a = 4, b = 5;\nint result = multiply(a, b);\nstd::cout << \"The result is: \" << result << std::endl;\n}\nint multiply(int x, int y) { return x * y; }",
+          "question": "关于下述代码，说法错误的是（  ）。\nint multiply(int x, int y);\n<pre><code>int main() {\nint a = 4, b = 5;\nint result = multiply(a, b);\nstd::cout << \"The result is: \" << result << std::endl;\n}\nint multiply(int x, int y) { return x * y; }</code></pre>",
           "options": [
             "函数 multiply 的定义应该放到函数 main 之前。",
             "函数声明 int multiply(int x, int y); 中明确指定了函数 multiply() 的返回值为整数类型。",
@@ -798,7 +798,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于以下 C++ 代码，说法正确的是（    ）。\nint main() {\ngreet();\nreturn 0;\n}\nvoid greet() {\ncout << \"Hello!\" << endl;\n}",
+          "question": "关于以下 C++ 代码，说法正确的是（    ）。\n<pre><code>int main() {\ngreet();\nreturn 0;\n}\nvoid greet() {\ncout << \"Hello!\" << endl;\n}</code></pre>",
           "options": [
             "正确编译并输出 Hello!",
             "编译错误：找不到函数 greet()",
@@ -836,7 +836,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面这段代码会输出（   ）。\nint add(int a, int b = 1); // 函数声明\nint main() {\ncout << add(2) << \" \" << add(2, 3);\nreturn 0;\n}\nint add(int a, int b) { // 函数定义\nreturn a + b;\n}",
+          "question": "下面这段代码会输出（   ）。\nint add(int a, int b = 1); // 函数声明\n<pre><code>int main() {\ncout << add(2) << \" \" << add(2, 3);\nreturn 0;\n}\nint add(int a, int b) { // 函数定义\nreturn a + b;\n}</code></pre>",
           "options": [
             "3 5",
             "编译失败：定义处少了默认参数",
@@ -856,7 +856,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码可以正常编译并输出 10 。\nint calculate(int x, int y = 10);\nint main() {\ncout << calculate(5);  // 调用1\nreturn 0;\n}\nint calculate(int x, int y) { return x * y; }\nint calculate(int x) {  // 重载函数\nreturn x * 2;\n}",
+          "question": "下面代码可以正常编译并输出 10 。\nint calculate(int x, int y = 10);\n<pre><code>int main() {\ncout << calculate(5);  // 调用1\nreturn 0;\n}\nint calculate(int x, int y) { return x * y; }\nint calculate(int x) {  // 重载函数\nreturn x * 2;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -874,7 +874,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面程序后，输出为（ ）。\nint f(int x = 2){\nreturn x * 3;\n}\nint main(){\ncout << f() << \" \" << f(4);\n}",
+          "question": "执行下面程序后，输出为（ ）。\n<pre><code>int f(int x = 2){\nreturn x * 3;\n}\nint main(){\ncout << f() << \" \" << f(4);\n}</code></pre>",
           "options": [
             "2 12",
             "6 12",
@@ -894,7 +894,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面程序可以正常编译并输出 10 。\nint calc(int x, int y = 10);\nint calc(int x) { return x * 2; }\nint calc(int x, int y) { return x * y; }\nint main() {\ncout << calc(5);\n}",
+          "question": "下面程序可以正常编译并输出 10 。\nint calc(int x, int y = 10);\n<pre><code>int calc(int x) { return x * 2; }\nint calc(int x, int y) { return x * y; }\nint main() {\ncout << calc(5);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -912,7 +912,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序想通过函数计算三门课总分，横线处应填入的是（  ）。\nint sumScore(int a, int b, int c) {\nreturn a + b + c;\n}\nint main() {\nint chinese = 88, math = 95, english = 90;\nint total = __________;\ncout << total;\nreturn 0;\n}",
+          "question": "下面程序想通过函数计算三门课总分，横线处应填入的是（  ）。\n<pre><code>int sumScore(int a, int b, int c) {\nreturn a + b + c;\n}\nint main() {\nint chinese = 88, math = 95, english = 90;\nint total = __________;\ncout << total;\nreturn 0;\n}</code></pre>",
           "options": [
             "sumScore",
             "sumScore(chinese, math, english)",
@@ -932,7 +932,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序输出结果是（  ）。\nint addOne(int x) {\nreturn x + 1;\n}\nint main() {\nint a = 6;\ncout << addOne(a) + addOne(3);\nreturn 0;\n}",
+          "question": "下面程序输出结果是（  ）。\n<pre><code>int addOne(int x) {\nreturn x + 1;\n}\nint main() {\nint a = 6;\ncout << addOne(a) + addOne(3);\nreturn 0;\n}</code></pre>",
           "options": [
             "9",
             "10",
@@ -1071,7 +1071,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序输出的是（  ）。\nint main() {\nint i=2;\ncout<<i<<endl;\nfor(int x=0;x<1;x++) { int i=10; cout<<i<<endl; }\ni=i+1;\ncout<<i<<endl;\n{ i=i*i; cout<<i<<endl; }\n}",
+          "question": "下面程序输出的是（  ）。\n<pre><code>int main() {\nint i=2;\ncout<<i<<endl;\nfor(int x=0;x<1;x++) { int i=10; cout<<i<<endl; }\ni=i+1;\ncout<<i<<endl;\n{ i=i*i; cout<<i<<endl; }\n}</code></pre>",
           "options": [
             "2 2 3 9",
             "2 10 3 9",
@@ -1111,7 +1111,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行以下代码，屏幕上将输出（  ）。\nint var = 100;\nvoid function() {\nint var = 200;\ncout << var << \" \";\ncout << ::var << \" \";\n}\nint main() {\ncout << var << \" \";\nfunction();\nvar += 100;\ncout << var << \" \";\n}",
+          "question": "运行以下代码，屏幕上将输出（  ）。\nint var = 100;\n<pre><code>void function() {\nint var = 200;\ncout << var << \" \";\ncout << ::var << \" \";\n}\nint main() {\ncout << var << \" \";\nfunction();\nvar += 100;\ncout << var << \" \";\n}</code></pre>",
           "options": [
             "100 200 100 200",
             "100 200 100 300",
@@ -1131,7 +1131,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下述代码将输出（  ）。\nint x = 10;\nvoid func() { int x = 20; std::cout << x; }\nint main() {\nfunc();\nstd::cout << x;\n}",
+          "question": "执行下述代码将输出（  ）。\nint x = 10;\n<pre><code>void func() { int x = 20; std::cout << x; }\nint main() {\nfunc();\nstd::cout << x;\n}</code></pre>",
           "options": [
             "2020",
             "2010",
@@ -1191,7 +1191,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面这段代码会输出（   ）。\nint x = 5;\nvoid foo() { int x = 10; cout << x << \" \"; }\nvoid bar() { cout << x << \" \"; }\nint main() { foo(); bar(); }",
+          "question": "下面这段代码会输出（   ）。\nint x = 5;\n<pre><code>void foo() { int x = 10; cout << x << \" \"; }\nvoid bar() { cout << x << \" \"; }\nint main() { foo(); bar(); }</code></pre>",
           "options": [
             "5 5",
             "10 10",
@@ -1211,7 +1211,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码将输出 11 。\nint x = 10;\nvoid f() {\nint x = x + 1;\ncout << x << endl;\n}\nint main() {\nf();\n}",
+          "question": "执行下面C++代码将输出 11 。\nint x = 10;\n<pre><code>void f() {\nint x = x + 1;\ncout << x << endl;\n}\nint main() {\nf();\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1229,7 +1229,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行完下面的代码后，输出是（  ）。\nint a = 1;\nvoid test() {\nint a = 2;\n{\nint a = 3;\na++;\n}\na++;\ncout << a << \" \";\n}\nint main() {\ntest();\ncout << a;\nreturn 0;\n}",
+          "question": "执行完下面的代码后，输出是（  ）。\nint a = 1;\n<pre><code>void test() {\nint a = 2;\n{\nint a = 3;\na++;\n}\na++;\ncout << a << \" \";\n}\nint main() {\ntest();\ncout << a;\nreturn 0;\n}</code></pre>",
           "options": [
             "3 1",
             "4 1",
@@ -1249,7 +1249,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面程序后输出为（ ）。\nint x = 3;\nvoid f(int& x){\nx += 2;\n}\nint main(){\nint x = 10;\nf(x);\ncout << x << \" \" << ::x;\n}",
+          "question": "执行下面程序后输出为（ ）。\nint x = 3;\n<pre><code>void f(int& x){\nx += 2;\n}\nint main(){\nint x = 10;\nf(x);\ncout << x << \" \" << ::x;\n}</code></pre>",
           "options": [
             "12 3",
             "10 5",
@@ -1269,7 +1269,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面程序执行后输出 2010 。\nint x = 10;\nvoid f() { int x = 20; cout << x; }\nint main() {\nf();\ncout << x;\n}",
+          "question": "下面程序执行后输出 2010 。\nint x = 10;\n<pre><code>void f() { int x = 20; cout << x; }\nint main() {\nf();\ncout << x;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1287,7 +1287,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于下面程序，说法正确的是（  ）。\nvoid show() {\nint stars = 5;\n}\nint main() {\ncout << stars;\nreturn 0;\n}",
+          "question": "关于下面程序，说法正确的是（  ）。\n<pre><code>void show() {\nint stars = 5;\n}\nint main() {\ncout << stars;\nreturn 0;\n}</code></pre>",
           "options": [
             "程序输出 5",
             "程序可以通过编译，但输出随机值",
@@ -1372,7 +1372,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（ ），可以使得输出是“20 10”。\n```cpp\n#include <iostream>\nusing namespace std;\nvoid xchg(__________) { // 在此处填入代码\nint t = *x;\n*x = *y;\n*y = t;\n}\nint main() {\nint a = 10, b = 20;\nxchg(&a, &b);\ncout << a << \" \" << b << endl;\nreturn 0;\n}\n```",
+          "question": "在下列代码的横线处填写（ ），可以使得输出是“20 10”。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nvoid xchg(__________) { // 在此处填入代码\nint t = *x;\n*x = *y;\n*y = t;\n}\nint main() {\nint a = 10, b = 20;\nxchg(&a, &b);\ncout << a << \" \" << b << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "A. int x, int y",
             "B. int * x, int * y",
@@ -1470,7 +1470,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 C++ 代码最后执行后输出是( )。\n```cpp\nint fun1(int *n)\n{\nreturn *n**n;\n}\nint main()\n{\nint arr[10]={2};\narr[1]=fun1(arr);\ncout<<arr[1]<<endl;\n}\n```",
+          "question": "下面 C++ 代码最后执行后输出是( )。\n```cpp\nint fun1(int *n)\n{\nreturn *n**n;\n}\n<pre><code>int main()\n{\nint arr[10]={2};\narr[1]=fun1(arr);\ncout<<arr[1]<<endl;\n}\n```</code></pre>",
           "options": [
             "A. 1",
             "B. 2",
@@ -1530,7 +1530,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "在 C++ 中，执行下面代码后，输出的是（ ）。\n```cpp\nint point(int *p)\n{\nreturn *p**p;\n}\nint main()\n{\nint a=20;\nint *p=&a;\n*p=point(p);\ncout<<*p<<endl;\n}\n```",
+          "question": "在 C++ 中，执行下面代码后，输出的是（ ）。\n```cpp\nint point(int *p)\n{\nreturn *p**p;\n}\n<pre><code>int main()\n{\nint a=20;\nint *p=&a;\n*p=point(p);\ncout<<*p<<endl;\n}\n```</code></pre>",
           "options": [
             "A. 400",
             "B. 200",
@@ -1550,7 +1550,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后输出是（  ）。\nint foo(float *f) {\nreturn int(*f*2);\n}\nint main() {\nfloat fnum[10]={1.1};\nfnum[1]=foo(fnum);\ncout << fnum[0]+fnum[1] << endl;\n}",
+          "question": "下面C++代码执行后输出是（  ）。\n<pre><code>int foo(float *f) {\nreturn int(*f*2);\n}\nint main() {\nfloat fnum[10]={1.1};\nfnum[1]=foo(fnum);\ncout << fnum[0]+fnum[1] << endl;\n}</code></pre>",
           "options": [
             "1",
             "1.1",
@@ -1570,7 +1570,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后输出是（  ）。\nint main() {\nchar *p=\"I love GESP!\";\ncout << p+5 << endl;\n}",
+          "question": "下面C++代码执行后输出是（  ）。\n<pre><code>int main() {\nchar *p=\"I love GESP!\";\ncout << p+5 << endl;\n}</code></pre>",
           "options": [
             "e",
             "I lov",
@@ -1590,7 +1590,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下列C++代码时输出中的第2行是（  ）。\nint main() {\nchar *s[]={(char*)\"2024\",(char*)\"3.16\",(char*)\"GESP\"};\nfor (int i=0; i<2; i++){\ncout << *s+i << endl;\n}\n}",
+          "question": "执行下列C++代码时输出中的第2行是（  ）。\n<pre><code>int main() {\nchar *s[]={(char*)\"2024\",(char*)\"3.16\",(char*)\"GESP\"};\nfor (int i=0; i<2; i++){\ncout << *s+i << endl;\n}\n}</code></pre>",
           "options": [
             "2024",
             "3.16",
@@ -1628,7 +1628,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设变量 a 的地址是 0x6ffe14，下面程序的输出是（  ）。\nint main() {\nint *p;\nint a=10;\np=&a;\np++;\ncout<<p<<endl;\n}",
+          "question": "假设变量 a 的地址是 0x6ffe14，下面程序的输出是（  ）。\n<pre><code>int main() {\nint *p;\nint a=10;\np=&a;\np++;\ncout<<p<<endl;\n}</code></pre>",
           "options": [
             "10",
             "0x6ffe14",
@@ -1686,7 +1686,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码不能够正确执行。\nint main() {\nint a=20;\nint& ra;\nra=&a;\ncout<<ra<<endl;\n}",
+          "question": "以下代码不能够正确执行。\n<pre><code>int main() {\nint a=20;\nint& ra;\nra=&a;\ncout<<ra<<endl;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1722,7 +1722,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码输出的值等于 0。\nint main() {\nint *p=NULL;\ncout<<p<<endl;\n}",
+          "question": "下面代码输出的值等于 0。\n<pre><code>int main() {\nint *p=NULL;\ncout<<p<<endl;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -1816,7 +1816,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码后，输出的是 20。\nint point(int* p){ return *p * 2; }\nint main() {\nint a = 10;\nint* p = &a;\n*p = point(p);\ncout << *p << endl;\n}",
+          "question": "执行下面C++代码后，输出的是 20。\n<pre><code>int point(int* p){ return *p * 2; }\nint main() {\nint a = 10;\nint* p = &a;\n*p = point(p);\ncout << *p << endl;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2028,7 +2028,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面C++代码将输出 10 。\nvoid func(int* p) {\n*p = 10;\n}\nint main() {\nint a = 5;\nfunc(&a);\ncout << a << endl;\nreturn 0;\n}",
+          "question": "执行下面C++代码将输出 10 。\n<pre><code>void func(int* p) {\n*p = 10;\n}\nint main() {\nint a = 5;\nfunc(&a);\ncout << a << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2142,7 +2142,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面代码后，输出为（ ）。\nint main() {\nint a = 5;\nint* p = &a;\nint** q = &p;\n**q += 7;\ncout << a << \" \" << *p;\n}",
+          "question": "执行下面代码后，输出为（ ）。\n<pre><code>int main() {\nint a = 5;\nint* p = &a;\nint** q = &p;\n**q += 7;\ncout << a << \" \" << *p;\n}</code></pre>",
           "options": [
             "5 5",
             "12 12",
@@ -2258,7 +2258,7 @@ const QUESTION_BANK = {
           "kp": "kp4_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "运行以下程序后，变量 a 的值最终会变为 20 。\nvoid modify(int *p) {\n*p = *p + 10;\n}\nint main() {\nint a = 10;\nmodify(&a);\nreturn 0;\n}",
+          "question": "运行以下程序后，变量 a 的值最终会变为 20 。\n<pre><code>void modify(int *p) {\n*p = *p + 10;\n}\nint main() {\nint a = 10;\nmodify(&a);\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2411,7 +2411,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码中，输出结果是（  ）。\n#include<iostream>\nusing namespace std;\nint func(int x,int y) {\nint a=x,b=y,t;\nt=a; a=b; b=t;\ncout<<a<<\" \"<<b<<\" \";\n}\nint main() {\nint c,d; c=12; d=24;\nfunc(12,24);\ncout<<c<<\" \"<<d<<endl;\n}",
+          "question": "下列代码中，输出结果是（  ）。\n<pre><code>#include<iostream>\nusing namespace std;\nint func(int x,int y) {\nint a=x,b=y,t;\nt=a; a=b; b=t;\ncout<<a<<\" \"<<b<<\" \";\n}\nint main() {\nint c,d; c=12; d=24;\nfunc(12,24);\ncout<<c<<\" \"<<d<<endl;\n}</code></pre>",
           "options": [
             "12 24 24 12",
             "24 12 12 24",
@@ -2525,7 +2525,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下述代码，将输出（  ）。\nvoid swap(int a, int &b) {\nint temp = a;\na = b;\nb = temp;\n}\nint main() {\nint x = 1, y = 2;\nswap(x, y);\nstd::cout << x << y;\n}",
+          "question": "执行下述代码，将输出（  ）。\n<pre><code>void swap(int a, int &b) {\nint temp = a;\na = b;\nb = temp;\n}\nint main() {\nint x = 1, y = 2;\nswap(x, y);\nstd::cout << x << y;\n}</code></pre>",
           "options": [
             "12",
             "21",
@@ -2603,7 +2603,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面C++代码的输出是15 。\nvoid foo(int x) { x += 5; }\nint main() {\nint a = 10;\nfoo(a);\ncout << a << endl;\n}",
+          "question": "下面C++代码的输出是15 。\n<pre><code>void foo(int x) { x += 5; }\nint main() {\nint a = 10;\nfoo(a);\ncout << a << endl;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2639,7 +2639,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序运行的结果是（   ）。\nvoid increaseA(int x) { x++; }\nvoid increaseB(int* p) { (*p)++; }\nint main() {\nint a = 5;\nincreaseA(a);\ncout << a << \" \";\nincreaseB(&a);\ncout << a;\n}",
+          "question": "下面程序运行的结果是（   ）。\n<pre><code>void increaseA(int x) { x++; }\nvoid increaseB(int* p) { (*p)++; }\nint main() {\nint a = 5;\nincreaseA(a);\ncout << a << \" \";\nincreaseB(&a);\ncout << a;\n}</code></pre>",
           "options": [
             "6 7",
             "6 6",
@@ -2677,7 +2677,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行完下面的代码后，a 、b 和 c 的值分别是（   ）。\nvoid byValue(int x) { x = 100; }\nvoid byRef(int& x) { x = 200; }\nvoid byPointer(int* x) { *x = 300; }\nint main() {\nint a = 1, b = 2, c = 3;\nbyValue(a);\nbyRef(b);\nbyPointer(&c);\nreturn 0;\n}",
+          "question": "执行完下面的代码后，a 、b 和 c 的值分别是（   ）。\n<pre><code>void byValue(int x) { x = 100; }\nvoid byRef(int& x) { x = 200; }\nvoid byPointer(int* x) { *x = 300; }\nint main() {\nint a = 1, b = 2, c = 3;\nbyValue(a);\nbyRef(b);\nbyPointer(&c);\nreturn 0;\n}</code></pre>",
           "options": [
             "100 200 300",
             "1 2 3",
@@ -2715,7 +2715,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面程序后，输出为（ ）。\nvoid fun(int a, int &b, int *c){\na += 1;\nb += 2;\n*c += 3;\n}\nint main(){\nint x = 1, y = 1, z = 1;\nfun(x, y, &z);\ncout << x << \" \" << y << \" \" << z;\n}",
+          "question": "执行下面程序后，输出为（ ）。\n<pre><code>void fun(int a, int &b, int *c){\na += 1;\nb += 2;\n*c += 3;\n}\nint main(){\nint x = 1, y = 1, z = 1;\nfun(x, y, &z);\ncout << x << \" \" << y << \" \" << z;\n}</code></pre>",
           "options": [
             "2 3 4",
             "1 3 4",
@@ -2735,7 +2735,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面代码后输出为（ ）。\nstruct S { int a; int b; };\nvoid g(S s){ s.a += 10; }\nvoid h(S& s){ s.b += 10; }\nint main(){\nS s{1,2};\ng(s);\nh(s);\ncout << s.a << \" \" << s.b;\n}",
+          "question": "执行下面代码后输出为（ ）。\nstruct S { int a; int b; };\n<pre><code>void g(S s){ s.a += 10; }\nvoid h(S& s){ s.b += 10; }\nint main(){\nS s{1,2};\ng(s);\nh(s);\ncout << s.a << \" \" << s.b;\n}</code></pre>",
           "options": [
             "11 12",
             "1 12",
@@ -2755,7 +2755,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码执行结束时，变量 a 的值变成 15。\nvoid add10(int &x) { x += 10; }\nint main() {\nint a = 5;\nadd10(a);\n}",
+          "question": "下面代码执行结束时，变量 a 的值变成 15。\n<pre><code>void add10(int &x) { x += 10; }\nint main() {\nint a = 5;\nadd10(a);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2773,7 +2773,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨正在编写一个“数字交换器”程序，他希望通过函数交换两个变量的值。请问运行以下代码后，屏幕上输出的是（  ）。\nvoid exchange(int *a, int &b) {\nint t = *a;\n*a = b;\nb = t;\n}\nint main() {\nint x = 100, y = 200;\nexchange(&x, y);\ncout << x << \" \" << y;\nreturn 0;\n}",
+          "question": "小杨正在编写一个“数字交换器”程序，他希望通过函数交换两个变量的值。请问运行以下代码后，屏幕上输出的是（  ）。\n<pre><code>void exchange(int *a, int &b) {\nint t = *a;\n*a = b;\nb = t;\n}\nint main() {\nint x = 100, y = 200;\nexchange(&x, y);\ncout << x << \" \" << y;\nreturn 0;\n}</code></pre>",
           "options": [
             "100 200",
             "200 100",
@@ -2793,7 +2793,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "小杨想通过下面程序给饭卡充值，程序会输出 70 。\nvoid recharge(int money) {\nmoney += 20;\n}\nint main() {\nint card = 50;\nrecharge(card);\ncout << card;\nreturn 0;\n}",
+          "question": "小杨想通过下面程序给饭卡充值，程序会输出 70 。\n<pre><code>void recharge(int money) {\nmoney += 20;\n}\nint main() {\nint card = 50;\nrecharge(card);\ncout << card;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2852,7 +2852,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "在如下的C++代码执行后，设第11和12行的输出地址值分别为X和Y，则下面正确的是（  ）。\nstruct pass{ int no; char name[20]; int level; };\nint main() {\nstruct pass XiaoYang;\ncout << \"&XiaoYang=\" << &XiaoYang << endl;  //第11行\ncout << \"&(XiaoYang.no)=\" << &(XiaoYang.no) << endl; //第12行\n}",
+          "question": "在如下的C++代码执行后，设第11和12行的输出地址值分别为X和Y，则下面正确的是（  ）。\nstruct pass{ int no; char name[20]; int level; };\n<pre><code>int main() {\nstruct pass XiaoYang;\ncout << \"&XiaoYang=\" << &XiaoYang << endl;  //第11行\ncout << \"&(XiaoYang.no)=\" << &(XiaoYang.no) << endl; //第12行\n}</code></pre>",
           "options": [
             "X>Y",
             "X==Y",
@@ -3008,7 +3008,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行如下代码会输出（  ）。\nstruct Cat { string name; int age; };\nvoid birthday(Cat& c) { c.age++; }\nint main() {\nCat kitty{\"Mimi\", 2};\nbirthday(kitty);\ncout << kitty.name << \" \" << kitty.age;\n}",
+          "question": "运行如下代码会输出（  ）。\nstruct Cat { string name; int age; };\n<pre><code>void birthday(Cat& c) { c.age++; }\nint main() {\nCat kitty{\"Mimi\", 2};\nbirthday(kitty);\ncout << kitty.name << \" \" << kitty.age;\n}</code></pre>",
           "options": [
             "Mimi 2",
             "Mimi 3",
@@ -3046,7 +3046,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行如下代码会输出（  ）。\nstruct Point { int x, y; };\nstruct Rectangle { Point topLeft; Point bottomRight; };\nint main() {\nRectangle rect = {{10, 10}, {20, 20}};\nrect.topLeft.x = 5;\nPoint* p = &rect.bottomRight;\np->y = 5;\ncout << rect.topLeft.x + rect.bottomRight.y;\nreturn 0;\n}",
+          "question": "运行如下代码会输出（  ）。\nstruct Point { int x, y; };\nstruct Rectangle { Point topLeft; Point bottomRight; };\n<pre><code>int main() {\nRectangle rect = {{10, 10}, {20, 20}};\nrect.topLeft.x = 5;\nPoint* p = &rect.bottomRight;\np->y = 5;\ncout << rect.topLeft.x + rect.bottomRight.y;\nreturn 0;\n}</code></pre>",
           "options": [
             "10",
             "30",
@@ -3142,7 +3142,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序输出结果是（  ）。\nstruct Book {\nstring title;\nint pages;\n};\nint main() {\nBook books[2] = {{\"Math\", 120}, {\"Science\", 150}};\ncout << books[1].title;\nreturn 0;\n}",
+          "question": "下面程序输出结果是（  ）。\nstruct Book {\nstring title;\nint pages;\n};\n<pre><code>int main() {\nBook books[2] = {{\"Math\", 120}, {\"Science\", 150}};\ncout << books[1].title;\nreturn 0;\n}</code></pre>",
           "options": [
             "Math",
             "Science",
@@ -3162,7 +3162,7 @@ const QUESTION_BANK = {
           "kp": "kp4_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面程序可以正确计算并输出 3 名学生的平均成绩。\nstruct Student {\nint id;\nint score;\n};\nint main() {\nStudent students[3] = {\n{1, 90},\n{2, 80},\n{3, 100}\n};\nint sum = 0;\nfor (int i = 0; i < 3; i++) {\nsum += students[i].score;\n}\ndouble average = sum / 3.0;\ncout << average << endl;\nreturn 0;\n}",
+          "question": "下面程序可以正确计算并输出 3 名学生的平均成绩。\nstruct Student {\nint id;\nint score;\n};\n<pre><code>int main() {\nStudent students[3] = {\n{1, 90},\n{2, 80},\n{3, 100}\n};\nint sum = 0;\nfor (int i = 0; i < 3; i++) {\nsum += students[i].score;\n}\ndouble average = sum / 3.0;\ncout << average << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3245,7 +3245,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行以下 C++ 语言程序后，输出结果是（ ）。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nint array[3][3];\nfor (int i = 0; i < 3; i++)\nfor (int j = 0; j < 3; j++)\narray[i][j] = i * 10 + j;\nint sum;\nfor (int i = 0; i < 3; i++)\nsum += array[i][i];\ncout << sum << endl;\nreturn 0;\n}\n```",
+          "question": "执行以下 C++ 语言程序后，输出结果是（ ）。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint array[3][3];\nfor (int i = 0; i < 3; i++)\nfor (int j = 0; j < 3; j++)\narray[i][j] = i * 10 + j;\nint sum;\nfor (int i = 0; i < 3; i++)\nsum += array[i][i];\ncout << sum << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "A. 3",
             "B. 30",
@@ -3381,7 +3381,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行以下 C++ 语言程序后，输出结果是（ ）。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nint fib[10];\nfib[0] = 0;\nfib[1] = 1;\nfor (int i = 2; i < 10; i++)\nfib[i] = fib[i - 1] + fib[i - 2];\ncout << fib[10] << endl;\nreturn 0;\n}\n```",
+          "question": "执行以下 C++ 语言程序后，输出结果是（ ）。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint fib[10];\nfib[0] = 0;\nfib[1] = 1;\nfor (int i = 2; i < 10; i++)\nfib[i] = fib[i - 1] + fib[i - 2];\ncout << fib[10] << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "A. 0",
             "B. 5",
@@ -3499,7 +3499,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行后，输出的是（  ）。\nint main() {\nint x[]={2, 0, 2, 4};\nchar geSP[]=\"Grade Examination of SP\";\ncout << geSP[sizeof(x)] << endl;\n}",
+          "question": "下面C++代码执行后，输出的是（  ）。\n<pre><code>int main() {\nint x[]={2, 0, 2, 4};\nchar geSP[]=\"Grade Examination of SP\";\ncout << geSP[sizeof(x)] << endl;\n}</code></pre>",
           "options": [
             "G",
             "e",
@@ -3577,7 +3577,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "如果下列程序输出的地址是 0x6ffe00 ，则 cout<<a+1<<endl; 输出的是（  ）。\nint main() {\nint a[2][3]={0};\ncout<<a<<endl;\n}",
+          "question": "如果下列程序输出的地址是 0x6ffe00 ，则 cout<<a+1<<endl; 输出的是（  ）。\n<pre><code>int main() {\nint a[2][3]={0};\ncout<<a<<endl;\n}</code></pre>",
           "options": [
             "0x6ffe04",
             "0x6ffe0C",
@@ -3597,7 +3597,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面程序两个输出结果是一样的。\nint main() {\nint a[2][3]={0};\ncout<<a<<endl;\ncout<<&a[0][0]<<endl;\n}",
+          "question": "下面程序两个输出结果是一样的。\n<pre><code>int main() {\nint a[2][3]={0};\ncout<<a<<endl;\ncout<<&a[0][0]<<endl;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4033,7 +4033,7 @@ const QUESTION_BANK = {
           "kp": "kp4_06",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面代码，输出结果为 5 。\nint main() {\nint a[2][3];\ncout << &a[1][2] - &a[0][1] << endl;\nreturn 0;\n}",
+          "question": "执行下面代码，输出结果为 5 。\n<pre><code>int main() {\nint a[2][3];\ncout << &a[1][2] - &a[0][1] << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5046,7 +5046,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序横线处，应该输入的是（  ）。\nvoid swap(int &a,int &b){ int t=a; a=b; b=t; }\nint main() {\ncin>>n;\nfor(int i=1;i<=n;i++) cin>>a[i];\nfor(int i=n;i>1;i--)\nfor(int j=1;j<i;j++)\nif(a[j]>a[j+1]) { ________ }\n}",
+          "question": "下列程序横线处，应该输入的是（  ）。\n<pre><code>void swap(int &a,int &b){ int t=a; a=b; b=t; }\nint main() {\ncin>>n;\nfor(int i=1;i<=n;i++) cin>>a[i];\nfor(int i=n;i>1;i--)\nfor(int j=1;j<i;j++)\nif(a[j]>a[j+1]) { ________ }\n}</code></pre>",
           "options": [
             "swap(a[j],a[j+1]);",
             "swap(a[j-1],a[j]);",
@@ -6288,7 +6288,7 @@ const QUESTION_BANK = {
           "kp": "kp4_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨用文件重定向实现在 log.txt 文件中输出日志，则下面横线上应填写（  ）。\nint main() {\nofstream log_file(\"log.txt\");\nstreambuf* original_cout = cout.rdbuf();\ncout.rdbuf(log_file.rdbuf());\n________  // 在此处填入代码\ncout.rdbuf(original_cout);\n}",
+          "question": "小杨用文件重定向实现在 log.txt 文件中输出日志，则下面横线上应填写（  ）。\n<pre><code>int main() {\nofstream log_file(\"log.txt\");\nstreambuf* original_cout = cout.rdbuf();\ncout.rdbuf(log_file.rdbuf());\n________  // 在此处填入代码\ncout.rdbuf(original_cout);\n}</code></pre>",
           "options": [
             "cout << \"This output will go to the log file.\" << endl;",
             "log_file << \"This output will go to the log file.\" << endl;",
@@ -6404,7 +6404,7 @@ const QUESTION_BANK = {
           "kp": "kp4_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面 C++ 程序，会输出（    ）。\nint main() {\nofstream fout(\"test.txt\");\nfout << \"Happy\" << endl;\nfout << \"New Year\";\nfout.close();\nifstream fin(\"test.txt\");\nstring s1, s2;\nfin >> s1;\ngetline(fin, s2);\nfin.close();\ncout << s1 << \"|\" << s2;\nreturn 0;\n}",
+          "question": "执行下面 C++ 程序，会输出（    ）。\n<pre><code>int main() {\nofstream fout(\"test.txt\");\nfout << \"Happy\" << endl;\nfout << \"New Year\";\nfout.close();\nifstream fin(\"test.txt\");\nstring s1, s2;\nfin >> s1;\ngetline(fin, s2);\nfin.close();\ncout << s1 << \"|\" << s2;\nreturn 0;\n}</code></pre>",
           "options": [
             "Happy|New Year",
             "Happy| New Year",
@@ -6424,7 +6424,7 @@ const QUESTION_BANK = {
           "kp": "kp4_11",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面代码会输出 100 。\nint main() {\nofstream fout(\"data.txt\");\nfout << 10 << \" \" << 20 << endl;\nfout << 30 << \" \" << 40;\nfout.close();\nifstream fin(\"data.txt\");\nint a, b, c, d;\nfin >> a >> b >> c >> d;\nfin.close();\ncout << a + b + c + d;\nreturn 0;\n}",
+          "question": "执行下面代码会输出 100 。\n<pre><code>int main() {\nofstream fout(\"data.txt\");\nfout << 10 << \" \" << 20 << endl;\nfout << 30 << \" \" << 40;\nfout.close();\nifstream fin(\"data.txt\");\nint a, b, c, d;\nfin >> a >> b >> c >> d;\nfin.close();\ncout << a + b + c + d;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -6597,7 +6597,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序中，如果输入 10 0 ，会输出（  ）。\ndouble Division(int a,int b) {\nif (b == 0) throw \"Division by zero condition!\";\nelse return ((double)a/(double)b);\n}\nint main() {\ntry { func(); }\ncatch (const char* errmsg) { cout << errmsg << endl; }\ncatch (const int errmsg) { cout << errmsg << endl; }\n}",
+          "question": "下面的程序中，如果输入 10 0 ，会输出（  ）。\n<pre><code>double Division(int a,int b) {\nif (b == 0) throw \"Division by zero condition!\";\nelse return ((double)a/(double)b);\n}\nint main() {\ntry { func(); }\ncatch (const char* errmsg) { cout << errmsg << endl; }\ncatch (const int errmsg) { cout << errmsg << endl; }\n}</code></pre>",
           "options": [
             "Division by zero condition!",
             "0",
@@ -6617,7 +6617,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行下面的代码，屏幕上将输出（  ）。\nint divide(int a, int b) {\nif (b == 0) throw runtime_error(\"division by zero error \");\nreturn a / b;\n}\nint main() {\nint x = 10, y = 0;\ntry {\nint result = divide(x, y);\ncout << \"result: \" << result << endl;\n} catch (const runtime_error& e) {\ncout << \"caught an exception: \" << e.what() << endl;\n}\n}",
+          "question": "运行下面的代码，屏幕上将输出（  ）。\n<pre><code>int divide(int a, int b) {\nif (b == 0) throw runtime_error(\"division by zero error \");\nreturn a / b;\n}\nint main() {\nint x = 10, y = 0;\ntry {\nint result = divide(x, y);\ncout << \"result: \" << result << endl;\n} catch (const runtime_error& e) {\ncout << \"caught an exception: \" << e.what() << endl;\n}\n}</code></pre>",
           "options": [
             "division by zero error result: caught an exception:",
             "result: caught an exception: division by zero error",
@@ -6655,7 +6655,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行下面的代码，将出现什么情况？（  ）\ndouble hmean(double a, double b) {\nif (a == -b) throw runtime_error(\"Runtime error occurred\");\nreturn 2.0*a*b/(a + b);\n}\nint main() {\ndouble x = 10, y = -10;\ntry {\nint result = hmean(x, y);\ncout << \"hmean: \" << result << endl;\n} catch (const runtime_error& e) {\ncout << \"Caught: \" << e.what() << endl;\n} catch (...) {\ncout << \"Caught an unknown exception.\" << endl;\n}\n}",
+          "question": "运行下面的代码，将出现什么情况？（  ）\n<pre><code>double hmean(double a, double b) {\nif (a == -b) throw runtime_error(\"Runtime error occurred\");\nreturn 2.0*a*b/(a + b);\n}\nint main() {\ndouble x = 10, y = -10;\ntry {\nint result = hmean(x, y);\ncout << \"hmean: \" << result << endl;\n} catch (const runtime_error& e) {\ncout << \"Caught: \" << e.what() << endl;\n} catch (...) {\ncout << \"Caught an unknown exception.\" << endl;\n}\n}</code></pre>",
           "options": [
             "屏幕上输出 Caught: Runtime error occurred",
             "屏幕上输出 Caught an unknown exception",
@@ -6693,7 +6693,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行下面的代码，将出现（  ）。\ndouble hmean(double a, double b) {\nif (a == -b) throw runtime_error(\"Runtime error occurred.\");\nreturn 2.0*a*b/(a + b);\n}\nint main() {\ndouble x = 10, y = -10;\ntry {\nint result = hmean(x, y);\ncout << \"hmean: \" << result << endl;\n} catch (const runtime_error& e) {\ncout << \"Caught: \" << e.what() << endl;\n} catch (...) {\ncout << \"Caught an unknown exception.\" << endl;\n}\n}",
+          "question": "运行下面的代码，将出现（  ）。\n<pre><code>double hmean(double a, double b) {\nif (a == -b) throw runtime_error(\"Runtime error occurred.\");\nreturn 2.0*a*b/(a + b);\n}\nint main() {\ndouble x = 10, y = -10;\ntry {\nint result = hmean(x, y);\ncout << \"hmean: \" << result << endl;\n} catch (const runtime_error& e) {\ncout << \"Caught: \" << e.what() << endl;\n} catch (...) {\ncout << \"Caught an unknown exception.\" << endl;\n}\n}</code></pre>",
           "options": [
             "屏幕上输出 Caught: Runtime error occurred.",
             "屏幕上输出 Caught an unknown exception.",
@@ -6789,7 +6789,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码只能捕获int 类型异常。\nint main() {\ntry {\nthrow 42;\n} catch (...) {\ncout << \"Caught\" << endl;\n}\n}",
+          "question": "以下代码只能捕获int 类型异常。\n<pre><code>int main() {\ntry {\nthrow 42;\n} catch (...) {\ncout << \"Caught\" << endl;\n}\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -6807,7 +6807,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面C++代码，会输出(  )。\nint divide(int a, int b) {\nif(b == 0) throw \"Division by zero\";\nreturn a / b;\n}\nint main() {\nint result = 0;\ntry {\nresult = divide(10, 0);\ncout << \"A\";\n}\ncatch(const char* msg) {\ncout << \"B\";\nresult = -1;\n}\ncout << result;\nreturn 0;\n}",
+          "question": "执行下面C++代码，会输出(  )。\n<pre><code>int divide(int a, int b) {\nif(b == 0) throw \"Division by zero\";\nreturn a / b;\n}\nint main() {\nint result = 0;\ntry {\nresult = divide(10, 0);\ncout << \"A\";\n}\ncatch(const char* msg) {\ncout << \"B\";\nresult = -1;\n}\ncout << result;\nreturn 0;\n}</code></pre>",
           "options": [
             "A0",
             "B-1",
@@ -6827,7 +6827,7 @@ const QUESTION_BANK = {
           "kp": "kp4_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行下面程序，输出结果是（ ）。\nint divi(int a,int b){\nif(b==0) throw 0;\nreturn a/b;\n}\nint main(){\ntry{\ncout << divi(10,0);\n}catch(const char* msg){\ncout << \"A\";\n}catch(int){\ncout << \"B\";\n}\n}",
+          "question": "执行下面程序，输出结果是（ ）。\n<pre><code>int divi(int a,int b){\nif(b==0) throw 0;\nreturn a/b;\n}\nint main(){\ntry{\ncout << divi(10,0);\n}catch(const char* msg){\ncout << \"A\";\n}catch(int){\ncout << \"B\";\n}\n}</code></pre>",
           "options": [
             "A",
             "B",

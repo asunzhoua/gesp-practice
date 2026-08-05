@@ -28,7 +28,7 @@ const QUESTION_BANK = {
           "kp": "kp8_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (int a = 1; a <= 10; a++)\nfor (int b = 1; b <= 10; b++)\nfor (int h = 1; h <= 10; h++)\nif ((a + b) * h == 20) cnt++;\ncout << cnt << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (int a = 1; a <= 10; a++)\nfor (int b = 1; b <= 10; b++)\nfor (int h = 1; h <= 10; h++)\nif ((a + b) * h == 20) cnt++;\ncout << cnt << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "12",
             "18",
@@ -68,7 +68,7 @@ const QUESTION_BANK = {
           "kp": "kp8_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (int x = 0; x <= 10; x++)\nfor (int y = 0; y <= 10; y++)\nfor (int z = 0; z <= 10; z++)\nif (x + y + z == 15) cnt++;\ncout << cnt << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (int x = 0; x <= 10; x++)\nfor (int y = 0; y <= 10; y++)\nfor (int z = 0; z <= 10; z++)\nif (x + y + z == 15) cnt++;\ncout << cnt << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "90",
             "91",
@@ -170,7 +170,7 @@ const QUESTION_BANK = {
           "kp": "kp8_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (int x = 0; x <= 10; x++)\nfor (int y = 0; y <= 10; y++)\nfor (int z = 0; z <= 10; z++)\nif (x + y + z <= 15) cnt++;\ncout << cnt << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (int x = 0; x <= 10; x++)\nfor (int y = 0; y <= 10; y++)\nfor (int z = 0; z <= 10; z++)\nif (x + y + z <= 15) cnt++;\ncout << cnt << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "90",
             "91",
@@ -286,7 +286,7 @@ const QUESTION_BANK = {
           "kp": "kp8_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nint N = 15, cnt = 0;\nfor (int x = 0; x + x + x <= N; x++)\nfor (int y = x; x + y + y <= N; y++)\nfor (int z = y; x + y + z <= N; z++)\ncnt++;\ncout << cnt << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint N = 15, cnt = 0;\nfor (int x = 0; x + x + x <= N; x++)\nfor (int y = x; x + y + y <= N; y++)\nfor (int z = y; x + y + z <= N; z++)\ncnt++;\ncout << cnt << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "174",
             "447",
@@ -707,7 +707,7 @@ const QUESTION_BANK = {
           "kp": "kp8_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面pailie函数是一个实现排列的程序，横线处可以填入的是（  ）。\n#include <iostream>\nusing namespace std;\nint sum = 0;\nvoid swap(int & a, int & b) {\nint temp = a; a = b; b = temp;\n}\nvoid pailie(int begin, int end, int a[]) {\nif (begin == end) {\nfor (int i = 0; i < end; i++) cout << a[i];\ncout << endl;\n}\nfor (int i = begin; i < end; i++) {\n__________\n}\n}",
+          "question": "下面pailie函数是一个实现排列的程序，横线处可以填入的是（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint sum = 0;\nvoid swap(int & a, int & b) {\nint temp = a; a = b; b = temp;\n}\nvoid pailie(int begin, int end, int a[]) {\nif (begin == end) {\nfor (int i = 0; i < end; i++) cout << a[i];\ncout << endl;\n}\nfor (int i = begin; i < end; i++) {\n__________\n}\n}</code></pre>",
           "options": [
             "swap(a[begin + 1], a[i]); pailie(begin + 1, end, a); swap(a[i], a[begin]);",
             "swap(a[begin], a[i]); pailie(begin, end, a); swap(a[i], a[begin]);",
@@ -727,7 +727,7 @@ const QUESTION_BANK = {
           "kp": "kp8_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "上一题中，如果主函数为如下的程序，则最后的排列数是多少个？（  ）。\nint main() {\nint a[5] = {1, 2, 3, 4, 5};\npailie(0, 5, a);\nreturn 0;\n}",
+          "question": "上一题中，如果主函数为如下的程序，则最后的排列数是多少个？（  ）。\n<pre><code>int main() {\nint a[5] = {1, 2, 3, 4, 5};\npailie(0, 5, a);\nreturn 0;\n}</code></pre>",
           "options": [
             "120",
             "60",
@@ -1294,7 +1294,7 @@ const QUESTION_BANK = {
           "kp": "kp8_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint a[10][10];\nint main() {\nint m = 5, n = 4;\nfor (int x = 0; x <= m; x++) a[x][0] = 1;\nfor (int y = 1; y <= n; y++) a[0][y] = 1;\nfor (int x = 1; x <= m; x++)\nfor (int y = 1; y <= n; y++)\na[x][y] = a[x - 1][y] + a[x][y - 1];\ncout << a[m][n] << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint a[10][10];\nint main() {\nint m = 5, n = 4;\nfor (int x = 0; x <= m; x++) a[x][0] = 1;\nfor (int y = 1; y <= n; y++) a[0][y] = 1;\nfor (int x = 1; x <= m; x++)\nfor (int y = 1; y <= n; y++)\na[x][y] = a[x - 1][y] + a[x][y - 1];\ncout << a[m][n] << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "4",
             "5",
@@ -1334,7 +1334,7 @@ const QUESTION_BANK = {
           "kp": "kp8_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序实现了输出杨辉三角形，代码中横线部分应该填入的是（  ）。\n#include <iostream>\nusing namespace std;\n#define N 35\nint a[N][N];\nint main() {\nint n;\ncin >> n;\nfor (int i = 1; i <= n; i++)\nfor (int j = 1; j <= i; j++) {\nif (j == 1 || j == i) a[i][j] = 1;\nelse __________\n}\nfor (int i = 1; i <= n; i++) {\nfor (int j = 1; j <= i; j++) cout << a[i][j];\ncout << endl;\n}\nreturn 0;\n}",
+          "question": "下列程序实现了输出杨辉三角形，代码中横线部分应该填入的是（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\n#define N 35\nint a[N][N];\nint main() {\nint n;\ncin >> n;\nfor (int i = 1; i <= n; i++)\nfor (int j = 1; j <= i; j++) {\nif (j == 1 || j == i) a[i][j] = 1;\nelse __________\n}\nfor (int i = 1; i <= n; i++) {\nfor (int j = 1; j <= i; j++) cout << a[i][j];\ncout << endl;\n}\nreturn 0;\n}</code></pre>",
           "options": [
             "a[i][j] = a[i - 1][j - 1] + a[i - 1][j];",
             "a[i][j] = a[i][j - 1] + a[i - 1][j];",
@@ -1392,7 +1392,7 @@ const QUESTION_BANK = {
           "kp": "kp8_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序实现了输出杨辉三角形，代码中横线部分应该填入的是（  ）。\n#include <iostream>\nusing namespace std;\n#define N 35\nint a[N];\nint main() {\nint n;\ncin >> n;\nfor (int i = 0; i < n; i++) {\na[i] = 1;\nfor (int j = i - 1; j > 0; j--)\n________;\nfor (int j = 0; j <= i; j++)\ncout << a[j] << \" \";\ncout << endl;\n}\nreturn 0;\n}",
+          "question": "下列程序实现了输出杨辉三角形，代码中横线部分应该填入的是（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\n#define N 35\nint a[N];\nint main() {\nint n;\ncin >> n;\nfor (int i = 0; i < n; i++) {\na[i] = 1;\nfor (int j = i - 1; j > 0; j--)\n________;\nfor (int j = 0; j <= i; j++)\ncout << a[j] << \" \";\ncout << endl;\n}\nreturn 0;\n}</code></pre>",
           "options": [
             "a[j] += a[j + 1]",
             "a[j] += a[j - 1]",
@@ -1797,7 +1797,7 @@ const QUESTION_BANK = {
           "kp": "kp8_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列程序输出的值为（  ）。\n#include <iostream>\nusing namespace std;\nlong long qpow(long long a, long long b, long long mod) {\nlong long ans = 1 % mod;\nwhile (b) {\nif (b & 1) ans = ans * a % mod;\na = a * a % mod;\nb >>= 1;\n}\nreturn ans;\n}\nint main() {\ncout << qpow(3, 20, 17) << endl;\nreturn 0;\n}",
+          "question": "下列程序输出的值为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nlong long qpow(long long a, long long b, long long mod) {\nlong long ans = 1 % mod;\nwhile (b) {\nif (b & 1) ans = ans * a % mod;\na = a * a % mod;\nb >>= 1;\n}\nreturn ans;\n}\nint main() {\ncout << qpow(3, 20, 17) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "1",
             "4",
@@ -1860,7 +1860,7 @@ const QUESTION_BANK = {
           "kp": "kp8_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nconst int N = 30;\nint cnt = 0;\nfor (int a = 1; a <= N; a++)\nfor (int b = a; a + b <= N; b++)\nfor (int c = b; a + b + c <= N; c++)\nif (a * a + b * b == c * c) cnt++;\ncout << cnt << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nconst int N = 30;\nint cnt = 0;\nfor (int a = 1; a <= N; a++)\nfor (int b = a; a + b <= N; b++)\nfor (int c = b; a + b + c <= N; c++)\nif (a * a + b * b == c * c) cnt++;\ncout << cnt << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "3",
             "6",
@@ -2182,7 +2182,7 @@ const QUESTION_BANK = {
           "kp": "kp8_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "2025是个神奇的数字，因为它是由两个数20和25拼接而成，而且2025=(20+25)²。小杨决定写个程序找找小于N的正整数中共有多少这样神奇的数字。下面程序横线处应填入的是（  ）。\n#include <string>\nint count_miracle(int N) {\nint cnt = 0;\nfor (int n = 1; n * n < N; n++) {\nint n2 = n * n;\nstd::string s = std::to_string(n2);\nfor (int i = 1; i < s.length(); i++)\nif (s[i] != '0') {\nstd::string sl = s.substr(0, i);\nstd::string sr = s.substr(i);\nint nl = std::stoi(sl);\nint nr = std::stoi(sr);\nif (_________) cnt++;\n}\n}\nreturn cnt;\n}",
+          "question": "2025是个神奇的数字，因为它是由两个数20和25拼接而成，而且2025=(20+25)²。小杨决定写个程序找找小于N的正整数中共有多少这样神奇的数字。下面程序横线处应填入的是（  ）。\n<pre><code>#include <string>\nint count_miracle(int N) {\nint cnt = 0;\nfor (int n = 1; n * n < N; n++) {\nint n2 = n * n;\nstd::string s = std::to_string(n2);\nfor (int i = 1; i < s.length(); i++)\nif (s[i] != '0') {\nstd::string sl = s.substr(0, i);\nstd::string sr = s.substr(i);\nint nl = std::stoi(sl);\nint nr = std::stoi(sr);\nif (_________) cnt++;\n}\n}\nreturn cnt;\n}</code></pre>",
           "options": [
             "nl + nr == n",
             "nl + nr == n2",
@@ -3375,7 +3375,7 @@ const QUESTION_BANK = {
           "kp": "kp8_06",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序使用出边邻接表表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\nclass Graph {\n...\n};\nint main() {\nGraph g(4);\ng.addEdge(0, 1, 8);\ng.addEdge(0, 2, 5);\ng.addEdge(1, 2, 1);\ng.addEdge(1, 3, 3);\ng.addEdge(2, 3, 7);\nreturn 0;\n}",
+          "question": "下面的程序使用出边邻接表表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\nclass Graph {\n...\n};\n<pre><code>int main() {\nGraph g(4);\ng.addEdge(0, 1, 8);\ng.addEdge(0, 2, 5);\ng.addEdge(1, 2, 1);\ng.addEdge(1, 3, 3);\ng.addEdge(2, 3, 7);\nreturn 0;\n}</code></pre>",
           "options": [
             "12",
             "11",
@@ -4912,7 +4912,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的sum_digit函数试图求出从1到n（包含1和n）的数中，包含数字d的个数。该函数的时间复杂度为（  ）。\n#include <string>\nint count_digit(int n, char d) {\nint cnt = 0;\nstd::string s = std::to_string(n);\nfor (int i = 0; i < s.length(); i++)\nif (s[i] == d) cnt++;\nreturn cnt;\n}\nint sum_digit(int n, char d) {\nint sum = 0;\nfor (int i = 1; i <= n; i++)\nsum += count_digit(i, d);\nreturn sum;\n}",
+          "question": "下面的sum_digit函数试图求出从1到n（包含1和n）的数中，包含数字d的个数。该函数的时间复杂度为（  ）。\n<pre><code>#include <string>\nint count_digit(int n, char d) {\nint cnt = 0;\nstd::string s = std::to_string(n);\nfor (int i = 0; i < s.length(); i++)\nif (s[i] == d) cnt++;\nreturn cnt;\n}\nint sum_digit(int n, char d) {\nint sum = 0;\nfor (int i = 1; i <= n; i++)\nsum += count_digit(i, d);\nreturn sum;\n}</code></pre>",
           "options": [
             "O(n log n)",
             "O(n)",
@@ -4932,7 +4932,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nconst int N = 10;\nint ch[N][N][N];\nint main() {\nfor (int x = 0; x < N; x++)\nfor (int y = 0; y < N; y++)\nfor (int z = 0; z < N; z++)\nif (x == 0 && y == 0 && z == 0) ch[x][y][z] = 1;\nelse {\nif (x > 0) ch[x][y][z] += ch[x - 1][y][z];\nif (y > 0) ch[x][y][z] += ch[x][y - 1][z];\nif (z > 0) ch[x][y][z] += ch[x][y][z - 1];\n}\nstd::cout << ch[1][2][3] << std::endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nconst int N = 10;\nint ch[N][N][N];\nint main() {\nfor (int x = 0; x < N; x++)\nfor (int y = 0; y < N; y++)\nfor (int z = 0; z < N; z++)\nif (x == 0 && y == 0 && z == 0) ch[x][y][z] = 1;\nelse {\nif (x > 0) ch[x][y][z] += ch[x - 1][y][z];\nif (y > 0) ch[x][y][z] += ch[x][y - 1][z];\nif (z > 0) ch[x][y][z] += ch[x][y][z - 1];\n}\nstd::cout << ch[1][2][3] << std::endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "60",
             "20",
@@ -5144,7 +5144,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nint N = 15, cnt = 0;\nfor (int x = 1; x + x + x <= N; x++)\nfor (int y = x; x + y + y <= N; y++)\nfor (int z = y; x + y + z <= N; z++)\ncnt++;\ncout << cnt << endl;\nreturn 0;\n}",
+          "question": "下面程序的输出为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint N = 15, cnt = 0;\nfor (int x = 1; x + x + x <= N; x++)\nfor (int y = x; x + y + y <= N; y++)\nfor (int z = y; x + y + z <= N; z++)\ncnt++;\ncout << cnt << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "45",
             "102",
@@ -5416,7 +5416,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "当输入 6 时，下列程序的输出结果为（  ）。\n#include <iostream>\nusing namespace std;\nint f(int n) {\nif (n <= 3) return n;\nreturn f(n - 1) + f(n - 2) + 2 * f(n - 3);\n}\nint main() {\nint n;\ncin >> n;\ncout << f(n) << endl;\nreturn 0;\n}",
+          "question": "当输入 6 时，下列程序的输出结果为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint f(int n) {\nif (n <= 3) return n;\nreturn f(n - 1) + f(n - 2) + 2 * f(n - 3);\n}\nint main() {\nint n;\ncin >> n;\ncout << f(n) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "14",
             "27",
@@ -5436,7 +5436,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "当输入 2023 时，下列程序的输出结果为（  ）。\n#include <iostream>\nusing namespace std;\nint main() {\nint x, ans = 0;\ncin >> x;\nwhile (x != 0) {\nx -= x & -x;\nans++;\n}\ncout << ans << endl;\nreturn 0;\n}",
+          "question": "当输入 2023 时，下列程序的输出结果为（  ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint x, ans = 0;\ncin >> x;\nwhile (x != 0) {\nx -= x & -x;\nans++;\n}\ncout << ans << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "7",
             "8",
@@ -5546,7 +5546,7 @@ const QUESTION_BANK = {
           "kp": "kp8_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "在64位操作系统下（LP64/LLP64模型），下面代码的输出结果是（ ）。\nint main() {\nint a[4] = {1, 2, 3, 4};\nint (*p)[4] = &a;\nint *q = a;\ncout << sizeof(a) << \" \";\ncout << sizeof(p) << \" \";\ncout << sizeof(p + 1) << \" \";\ncout << sizeof(q + 1) << \" \";\ncout << (p + 1) - p << \" \";\ncout << (q + 1) - q << endl;\n}",
+          "question": "在64位操作系统下（LP64/LLP64模型），下面代码的输出结果是（ ）。\n<pre><code>int main() {\nint a[4] = {1, 2, 3, 4};\nint (*p)[4] = &a;\nint *q = a;\ncout << sizeof(a) << \" \";\ncout << sizeof(p) << \" \";\ncout << sizeof(p + 1) << \" \";\ncout << sizeof(q + 1) << \" \";\ncout << (p + 1) - p << \" \";\ncout << (q + 1) - q << endl;\n}</code></pre>",
           "options": [
             "16 8 8 8 1 1",
             "16 8 16 8 1 1",

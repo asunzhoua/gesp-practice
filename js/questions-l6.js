@@ -4875,7 +4875,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行下列代码，屏幕上输出（ ）。\nclass my_class { public: static int count; my_class(){count++;} ~my_class(){count--;} static void print_count(){ cout<<count<<\" \"; } }; int my_class::count=0; int main(){ my_class obj1; my_class::print_count(); my_class obj2; obj2.print_count(); my_class obj3; obj3.print_count(); return 0; }",
+          "question": "运行下列代码，屏幕上输出（ ）。\n<pre><code>class my_class { public: static int count; my_class(){count++;} ~my_class(){count--;} static void print_count(){ cout<<count<<\" \"; } }; int my_class::count=0; int main(){ my_class obj1; my_class::print_count(); my_class obj2; obj2.print_count(); my_class obj3; obj3.print_count(); return 0; }</code></pre>",
           "options": [
             "A. 1 1 1",
             "B. 1 2 3",
@@ -4895,7 +4895,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行下列代码，屏幕上输出（ ）。\nshape为基类含virtual area()，rectangle和triangle继承并重写area()。int main(){ shape* pshape; rectangle rec(10,7); triangle tri(10,5); pshape=&rec; pshape->area(); pshape=&tri; pshape->area(); return 0; }",
+          "question": "运行下列代码，屏幕上输出（ ）。\n<pre><code>shape为基类含virtual area()，rectangle和triangle继承并重写area()。int main(){ shape* pshape; rectangle rec(10,7); triangle tri(10,5); pshape=&rec; pshape->area(); pshape=&tri; pshape->area(); return 0; }</code></pre>",
           "options": [
             "A. rectangle area: triangle area:",
             "B. parent class area: parent class area:",
@@ -5081,7 +5081,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下C++代码段中存在语法错误或逻辑错误，（ ）是正确的。\nclass MyClass { public: MyClass(){ cout<<\"Constructor called!\"<<endl; } void display(){ cout<<\"Display function called!\"<<endl; } }; int main(){ MyClass* obj = NULL; obj->display(); return 0; }",
+          "question": "以下C++代码段中存在语法错误或逻辑错误，（ ）是正确的。\n<pre><code>class MyClass { public: MyClass(){ cout<<\"Constructor called!\"<<endl; } void display(){ cout<<\"Display function called!\"<<endl; } }; int main(){ MyClass* obj = NULL; obj->display(); return 0; }</code></pre>",
           "options": [
             "A. NULL在C++中无法用于指针初始化，应使用nullptr。",
             "B. obj的定义应该是MyClass obj; 而不是指针类型。",
@@ -5155,7 +5155,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码中，类的构造函数被调用了（ ）次。\nclass MyClass { public: MyClass(){ cout<<\"Constructor called!\"<<endl; } }; int main(){ MyClass obj1; MyClass obj2 = obj1; return 0; }",
+          "question": "以下代码中，类的构造函数被调用了（ ）次。\n<pre><code>class MyClass { public: MyClass(){ cout<<\"Constructor called!\"<<endl; } }; int main(){ MyClass obj1; MyClass obj2 = obj1; return 0; }</code></pre>",
           "options": [
             "A. 1",
             "B. 2",
@@ -5175,7 +5175,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于下面代码，说法错误的是（ ）。\nclass Shape { protected: string name; public: Shape(const string& n):name(n){} virtual double area() const{ return 0.0; } }; class Circle:public Shape { private: double radius; public: Circle(const string& n,double r):Shape(n),radius(r){} double area() const override{ return 3.14159*radius*radius; } }; class Rectangle:public Shape { ... }; int main(){ Circle circle(\"MyCircle\",5.0); Rectangle rectangle(\"MyRectangle\",4.0,6.0); Shape* shapePtr=&circle; cout<<\"Area: \"<<shapePtr->area()<<endl; shapePtr=&rectangle; cout<<\"Area: \"<<shapePtr->area()<<endl; return 0; }",
+          "question": "关于下面代码，说法错误的是（ ）。\n<pre><code>class Shape { protected: string name; public: Shape(const string& n):name(n){} virtual double area() const{ return 0.0; } }; class Circle:public Shape { private: double radius; public: Circle(const string& n,double r):Shape(n),radius(r){} double area() const override{ return 3.14159*radius*radius; } }; class Rectangle:public Shape { ... }; int main(){ Circle circle(\"MyCircle\",5.0); Rectangle rectangle(\"MyRectangle\",4.0,6.0); Shape* shapePtr=&circle; cout<<\"Area: \"<<shapePtr->area()<<endl; shapePtr=&rectangle; cout<<\"Area: \"<<shapePtr->area()<<endl; return 0; }</code></pre>",
           "options": [
             "A. 语句Shape* shapePtr = &circle; 和shapePtr = &rectangle; 出现编译错误",
             "B. Shape为基类，Circle和Rectangle是派生类",
@@ -5271,7 +5271,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下列代码，my_dog.name 的最终值是 Charlie。\nclass Dog {\npublic:\nstd::string name;\nDog(std::string str) : name(str) {}\n};\nint main() {\nDog my_dog(\"Buddy\");\nmy_dog.name = \"Charlie\";\nreturn 0;\n}",
+          "question": "执行下列代码，my_dog.name 的最终值是 Charlie。\nclass Dog {\npublic:\nstd::string name;\nDog(std::string str) : name(str) {}\n};\n<pre><code>int main() {\nDog my_dog(\"Buddy\");\nmy_dog.name = \"Charlie\";\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5385,7 +5385,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码中，构造函数被调用的次数是 1 次。\nclass Test {\npublic:\nTest() { cout << \"T \"; }\n};\nint main() {\nTest a;\nTest b = a;\n}",
+          "question": "以下代码中，构造函数被调用的次数是 1 次。\nclass Test {\npublic:\nTest() { cout << \"T \"; }\n};\n<pre><code>int main() {\nTest a;\nTest b = a;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5423,7 +5423,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码在 main() 中有一行会导致编译错误，请找出来。\nclass Pet {\npublic:\nPet(string n, int a) : name(n), age(a) {}\nstring getName() { return name; }\nvoid birthday() { age++; }\nprivate:\nstring name;\nint age;\n};\nint main() {\nPet cat(\"奶茶\", 2);\ncout << cat.getName();  // ①\ncat.birthday();         // ②\ncat.name = \"大橘\";      // ③\ncout << cat.getName();  // ④\n}",
+          "question": "下面的代码在 main() 中有一行会导致编译错误，请找出来。\nclass Pet {\npublic:\nPet(string n, int a) : name(n), age(a) {}\n<pre><code>string getName() { return name; }\nvoid birthday() { age++; }\nprivate:\nstring name;\nint age;\n};\nint main() {\nPet cat(\"奶茶\", 2);\ncout << cat.getName();  // ①\ncat.birthday();         // ②\ncat.name = \"大橘\";      // ③\ncout << cat.getName();  // ④\n}</code></pre>",
           "options": [
             "A. 第①行",
             "B. 第②行",
@@ -5443,7 +5443,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面定义了一个表示二维坐标点的类 Point，并提供了一个带参数的构造函数，但第②行 Point b; 会调用编译器自动生成的默认构造函数，将 b.x 和 b.y 初始化为 0.0，程序可以正常编译运行。\nclass Point {\npublic:\ndouble x, y;\nPoint(double px, double py) : x(px), y(py) {}\n};\nint main() {\nPoint a(3.0, 4.0);  // ①\nPoint b;            // ②\n}",
+          "question": "下面定义了一个表示二维坐标点的类 Point，并提供了一个带参数的构造函数，但第②行 Point b; 会调用编译器自动生成的默认构造函数，将 b.x 和 b.y 初始化为 0.0，程序可以正常编译运行。\nclass Point {\npublic:\ndouble x, y;\nPoint(double px, double py) : x(px), y(py) {}\n};\n<pre><code>int main() {\nPoint a(3.0, 4.0);  // ①\nPoint b;            // ②\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5481,7 +5481,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码在 main() 中有一行会导致编译错误，请找出来。\nclass Student {\npublic:\nStudent(string n, int s) : name(n), score(s) {}\nstring getName() { return name; }\nvoid setScore(int s) { score = s; }\nprivate:\nstring name;\nint score;\n};\nint main() {\nStudent stu(\"Tom\", 85);\ncout << stu.getName();   // ①\nstu.setScore(90);       // ②\nstu.score = 100;        // ③\ncout << stu.getName();  // ④\n}",
+          "question": "下面代码在 main() 中有一行会导致编译错误，请找出来。\nclass Student {\npublic:\nStudent(string n, int s) : name(n), score(s) {}\n<pre><code>string getName() { return name; }\nvoid setScore(int s) { score = s; }\nprivate:\nstring name;\nint score;\n};\nint main() {\nStudent stu(\"Tom\", 85);\ncout << stu.getName();   // ①\nstu.setScore(90);       // ②\nstu.score = 100;        // ③\ncout << stu.getName();  // ④\n}</code></pre>",
           "options": [
             "A. 第①行",
             "B. 第②行",
@@ -5519,7 +5519,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "通过指向 Base 的指针删除 Derived 对象时，一定会先调用 Derived 的析构函数，再调用 Base 的析构函数。\nclass Base {\npublic:\n~Base() { cout << \"Base destructor\" << endl; }\n};\nclass Derived : public Base {\npublic:\n~Derived() { cout << \"Derived destructor\" << endl; }\n};\nint main() {\nBase* p = new Derived();\ndelete p;\n}",
+          "question": "通过指向 Base 的指针删除 Derived 对象时，一定会先调用 Derived 的析构函数，再调用 Base 的析构函数。\nclass Base {\npublic:\n~Base() { cout << \"Base destructor\" << endl; }\n};\nclass Derived : public Base {\npublic:\n~Derived() { cout << \"Derived destructor\" << endl; }\n};\n<pre><code>int main() {\nBase* p = new Derived();\ndelete p;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5778,7 +5778,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "要实现将一个输入的十进制正整数转化为二进制表示，下面横线上应填入的代码为（ ）。\nstack<int> ten2bin(int n){ stack<int> st; int r,m; r=n%2; m=n/2; st.push(r); while(m!=1){ r=m%2; st.push(r); m=m/2; } st.push(m); return st; } int main(){ int n; cin>>n; stack<int> bin; bin=ten2bin(n); while(!bin.empty()){ ______ } return 0; }",
+          "question": "要实现将一个输入的十进制正整数转化为二进制表示，下面横线上应填入的代码为（ ）。\n<pre><code>stack<int> ten2bin(int n){ stack<int> st; int r,m; r=n%2; m=n/2; st.push(r); while(m!=1){ r=m%2; st.push(r); m=m/2; } st.push(m); return st; } int main(){ int n; cin>>n; stack<int> bin; bin=ten2bin(n); while(!bin.empty()){ ______ } return 0; }</code></pre>",
           "options": [
             "A. cout << bin.top(); bin.pop();",
             "B. bin.pop(); cout << bin.top();",
@@ -6284,7 +6284,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "游乐园的过山车每次限坐 4 人，用循环队列管理排队（容量 MAX=5，空一格判满）。下面代码执行后，循环队列是否已满？rear 的值是多少？\nconst int MAX = 5;\nint queue[MAX];\nint front = 0, rear = 0;\nvoid enqueue(int x) { queue[rear] = x; rear = (rear + 1) % MAX; }\nvoid dequeue() { front = (front + 1) % MAX; }\nint main() {\nenqueue(1); enqueue(2); enqueue(3); enqueue(4);\ndequeue(); dequeue();\nenqueue(5); enqueue(6);\n}",
+          "question": "游乐园的过山车每次限坐 4 人，用循环队列管理排队（容量 MAX=5，空一格判满）。下面代码执行后，循环队列是否已满？rear 的值是多少？\nconst int MAX = 5;\nint queue[MAX];\nint front = 0, rear = 0;\n<pre><code>void enqueue(int x) { queue[rear] = x; rear = (rear + 1) % MAX; }\nvoid dequeue() { front = (front + 1) % MAX; }\nint main() {\nenqueue(1); enqueue(2); enqueue(3); enqueue(4);\ndequeue(); dequeue();\nenqueue(5); enqueue(6);\n}</code></pre>",
           "options": [
             "A. 已满，rear = 1",
             "B. 未满，rear = 1",
@@ -6382,7 +6382,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "judge",
           "difficulty": 1,
-          "question": "程序运行后会输出 2。\nint main() {\nqueue<int> q;\nq.push(1); q.push(2); q.push(3);\nq.pop();\ncout << q.front() << endl;\n}",
+          "question": "程序运行后会输出 2。\n<pre><code>int main() {\nqueue<int> q;\nq.push(1); q.push(2); q.push(3);\nq.pop();\ncout << q.front() << endl;\n}</code></pre>",
           "options": [
             "正确",
             "错误"

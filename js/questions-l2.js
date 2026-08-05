@@ -1122,7 +1122,7 @@ const QUESTION_BANK = {
           "kp": "kp2_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（　），使得输出是“50 10”。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nint a = 10, b = 50;\n__________; // 在此处填入代码\nb -= a;\na += b;\ncout << a << \" \" << b << endl;\nreturn 0;\n}\n```",
+          "question": "在下列代码的横线处填写（　），使得输出是“50 10”。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint a = 10, b = 50;\n__________; // 在此处填入代码\nb -= a;\na += b;\ncout << a << \" \" << b << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "a -= b",
             "a += b",
@@ -3266,7 +3266,7 @@ const QUESTION_BANK = {
           "kp": "kp2_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（　），可以使得输出是5。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (char ch = '1'; ch <= '9'; ch++)\nif (____) // 在此处填入代码\ncnt++;\ncout << cnt << endl;\nreturn 0;\n}\n```",
+          "question": "在下列代码的横线处填写（　），可以使得输出是5。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint cnt = 0;\nfor (char ch = '1'; ch <= '9'; ch++)\nif (____) // 在此处填入代码\ncnt++;\ncout << cnt << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "ch < '5'",
             "ch >= 5",
@@ -3342,7 +3342,7 @@ const QUESTION_BANK = {
           "kp": "kp2_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（　），使得输出是9。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nchar a = '3', b = '6';\ncout << ________; // 在此处填入代码\nreturn 0;\n}\n```",
+          "question": "在下列代码的横线处填写（　），使得输出是9。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nchar a = '3', b = '6';\ncout << ________; // 在此处填入代码\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "(a + b)",
             "(a + b - '0')",
@@ -3705,7 +3705,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行以下C++语言程序后，输出结果是（　）。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nint n = 17;\nbool isprime = true;\nfor (int i = 2; i <= n; i++)\nif (n % i == 0)\nisprime = false;\ncout << isprime << endl;\nreturn 0;\n}\n```",
+          "question": "执行以下C++语言程序后，输出结果是（　）。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint n = 17;\nbool isprime = true;\nfor (int i = 2; i <= n; i++)\nif (n % i == 0)\nisprime = false;\ncout << isprime << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "false",
             "true",
@@ -3791,7 +3791,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "在下列代码的横线处填写（　），可以使得输出是42。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nint sum = 0;\nfor (int i = 1; i <= 20; i++)\nif (______) // 在此处填入代码\nsum += i;\ncout << sum << endl;\nreturn 0;\n}\n```",
+          "question": "在下列代码的横线处填写（　），可以使得输出是42。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nint sum = 0;\nfor (int i = 1; i <= 20; i++)\nif (______) // 在此处填入代码\nsum += i;\ncout << sum << endl;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "i % 3 == 0",
             "20 % i == 0",
@@ -3811,7 +3811,7 @@ const QUESTION_BANK = {
           "kp": "kp2_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行以下C++语言程序后，输出结果是（　）。\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\nfor (char x = 'A'; x <= 'D'; x++)\nif ((x != 'A') + (x == 'C') + (x == 'D') + (x != 'D') == 3)\ncout << x;\nreturn 0;\n}\n```",
+          "question": "执行以下C++语言程序后，输出结果是（　）。\n```cpp\n<pre><code>#include <iostream>\nusing namespace std;\nint main() {\nfor (char x = 'A'; x <= 'D'; x++)\nif ((x != 'A') + (x == 'C') + (x == 'D') + (x != 'D') == 3)\ncout << x;\nreturn 0;\n}\n```</code></pre>",
           "options": [
             "A",
             "B",

@@ -68,7 +68,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面代码正确的是（ ）。\n// 在C++中，可以通过函数指针的形式，将一个函数作为另一个函数的参数。\n// bool checkNum(bool (*Fx)(int), int N); 声明了一个函数，\n// 其第一个参数是函数指针类型，指向一个接收一个int参数且返回bool的函数。\n#include <iostream>\nusing namespace std;\nbool isEven(int N) {\nreturn N % 2 == 0;\n}\nbool checkNum(bool (*Fx)(int), int N) {\nreturn Fx(N);\n}\nint main() {\ncout << checkNum(isEven, 10) << endl;\nreturn 0;\n}",
+          "question": "有关下面代码正确的是（ ）。\n// 在C++中，可以通过函数指针的形式，将一个函数作为另一个函数的参数。\n// bool checkNum(bool (*Fx)(int), int N); 声明了一个函数，\n// 其第一个参数是函数指针类型，指向一个接收一个int参数且返回bool的函数。\n<pre><code>#include <iostream>\nusing namespace std;\nbool isEven(int N) {\nreturn N % 2 == 0;\n}\nbool checkNum(bool (*Fx)(int), int N) {\nreturn Fx(N);\n}\nint main() {\ncout << checkNum(isEven, 10) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "A. checkNum()函数定义错误。",
             "B. 将isEven作为checkNum()参数将导致错误。",
@@ -88,7 +88,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面C++代码正确的是（ ）。\n#include <iostream>\nusing namespace std;\nbool isOdd(int N) {\nreturn N % 2 == 1;\n}\nint Square(int N) {\nreturn N * N;\n}\nbool checkNum(bool (*Fx)(int), int x) {\nreturn Fx(x);\n}\nint main() {\ncout << checkNum(isOdd, 10) << endl;   // 输出行A\ncout << checkNum(Square, 10) << endl;  // 输出行B\nreturn 0;\n}",
+          "question": "有关下面C++代码正确的是（ ）。\n<pre><code>#include <iostream>\nusing namespace std;\nbool isOdd(int N) {\nreturn N % 2 == 1;\n}\nint Square(int N) {\nreturn N * N;\n}\nbool checkNum(bool (*Fx)(int), int x) {\nreturn Fx(x);\n}\nint main() {\ncout << checkNum(isOdd, 10) << endl;   // 输出行A\ncout << checkNum(Square, 10) << endl;  // 输出行B\nreturn 0;\n}</code></pre>",
           "options": [
             "A. checkNum()函数定义错误。",
             "B. 输出行A的语句将导致编译错误。",
@@ -162,7 +162,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面的C++代码执行后将输出0 5 1 6 2 3 4。\n#include <iostream>\n#include <algorithm>\nusing namespace std;\nbool compareModulo5(int a, int b) {\nreturn a % 5 < b % 5;\n}\nint main() {\nint lst[7];\nfor (int i = 0; i < 7; i++)\nlst[i] = i;\n// 对序列所有元素按compareModulo5结果排序\nsort(lst, lst + 7, compareModulo5);\nfor (int i = 0; i < 7; i++)\ncout << lst[i] << \" \";\ncout << endl;\nreturn 0;\n}",
+          "question": "下面的C++代码执行后将输出0 5 1 6 2 3 4。\n<pre><code>#include <iostream>\n#include <algorithm>\nusing namespace std;\nbool compareModulo5(int a, int b) {\nreturn a % 5 < b % 5;\n}\nint main() {\nint lst[7];\nfor (int i = 0; i < 7; i++)\nlst[i] = i;\n// 对序列所有元素按compareModulo5结果排序\nsort(lst, lst + 7, compareModulo5);\nfor (int i = 0; i < 7; i++)\ncout << lst[i] << \" \";\ncout << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -220,7 +220,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面的C++代码能实现十进制正整数N转换为八进制并输出。（ ）\nchar s[10];\nint main()\n{\nint N;\ncin >> N;\nstring rst = \"\";\nwhile (N != 0)\n{\ns[0]=N % 8 + '0';\nrst += string(s);\nN /= 8;\n}\ncout << rst << endl;\nreturn 0;\n}",
+          "question": "下面的C++代码能实现十进制正整数N转换为八进制并输出。（ ）\nchar s[10];\n<pre><code>int main()\n{\nint N;\ncin >> N;\nstring rst = \"\";\nwhile (N != 0)\n{\ns[0]=N % 8 + '0';\nrst += string(s);\nN /= 8;\n}\ncout << rst << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -682,7 +682,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面代码的说法正确的是（ ）。\n#include <iostream>\nclass Node {\npublic:\nint Value;\nNode * Next;\nNode(int Val, Node * Nxt = nullptr) {\nValue = Val;\nNext = Nxt;\n}\n};\nint main() {\nNode * firstNode = new Node(10);\nfirstNode->Next = new Node(100);\nfirstNode->Next->Next = new Node(111, firstNode);\nreturn 0;\n}",
+          "question": "有关下面代码的说法正确的是（ ）。\n<pre><code>#include <iostream>\nclass Node {\npublic:\nint Value;\nNode * Next;\nNode(int Val, Node * Nxt = nullptr) {\nValue = Val;\nNext = Nxt;\n}\n};\nint main() {\nNode * firstNode = new Node(10);\nfirstNode->Next = new Node(100);\nfirstNode->Next->Next = new Node(111, firstNode);\nreturn 0;\n}</code></pre>",
           "options": [
             "A. 上述代码构成单向链表。",
             "B. 上述代码构成双向链表。",
@@ -740,7 +740,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面C++代码的说法正确的是（ ）。\nclass Node\n{\npublic:\nint Value;\nNode* Prev;\nNode* Next;\nNode(int Val, Node* Prv = NULL, Node* Nxt = NULL);\n};\nNode::Node(int Val, Node* Prv, Node* Nxt)\n{\nthis->Value = Val;\nthis->Prev = Prv;\nthis->Next = Nxt;\n}\nint main()\n{\nNode firstNode = Node(10);\nfirstNode.Next = new Node(100, &firstNode);\nfirstNode.Next->Next = new Node(111, firstNode.Next);\n}",
+          "question": "有关下面C++代码的说法正确的是（ ）。\nclass Node\n{\npublic:\nint Value;\nNode* Prev;\nNode* Next;\nNode(int Val, Node* Prv = NULL, Node* Nxt = NULL);\n};\nNode::Node(int Val, Node* Prv, Node* Nxt)\n{\nthis->Value = Val;\nthis->Prev = Prv;\nthis->Next = Nxt;\n}\n<pre><code>int main()\n{\nNode firstNode = Node(10);\nfirstNode.Next = new Node(100, &firstNode);\nfirstNode.Next->Next = new Node(111, firstNode.Next);\n}</code></pre>",
           "options": [
             "A. 上述代码构成单向链表",
             "B. 上述代码构成双向链表",
@@ -4154,7 +4154,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "根据下面C++代码的注释，两个横线处应分别填入（ ）。\n#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\nbool isOdd(int N) {\nreturn N % 2 == 1;\n}\nbool compare(int a, int b) {\nif (a % 2 == 0 && b % 2 == 1)\nreturn true;\nreturn false;\n}\nint main() {\nvector<int> lstA; // lstA是一个整型向量\nfor (int i = 1; i < 100; i++)\nlstA.push_back(i);\n// 对lstA成员按比较函数执行结果排序\nsort(lstA.begin(), lstA.end(), ________); // 此处填写代码1\nvector<int> lstB;\nfor (int i = 0; i < lstA.size(); i++) // lstB成员全为奇数\nif (____________) // 此处填写代码2\nlstB.push_back(lstA[i]);\nreturn 0;\n}",
+          "question": "根据下面C++代码的注释，两个横线处应分别填入（ ）。\n<pre><code>#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\nbool isOdd(int N) {\nreturn N % 2 == 1;\n}\nbool compare(int a, int b) {\nif (a % 2 == 0 && b % 2 == 1)\nreturn true;\nreturn false;\n}\nint main() {\nvector<int> lstA; // lstA是一个整型向量\nfor (int i = 1; i < 100; i++)\nlstA.push_back(i);\n// 对lstA成员按比较函数执行结果排序\nsort(lstA.begin(), lstA.end(), ________); // 此处填写代码1\nvector<int> lstB;\nfor (int i = 0; i < lstA.size(); i++) // lstB成员全为奇数\nif (____________) // 此处填写代码2\nlstB.push_back(lstA[i]);\nreturn 0;\n}</code></pre>",
           "options": [
             "A. compare和isOdd(lstA[i])",
             "B. compare(x1,y1)和isOdd",
@@ -4174,7 +4174,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码用于归并排序，其中merge()函数被调用次数为（ ）。\n#include <iostream>\nusing namespace std;\nvoid mergeSort(int * listData, int start, int end);\nvoid merge(int * listData, int start, int middle, int end);\nvoid mergeSort(int * listData, int start, int end) {\nif (start >= end)\nreturn;\nint middle = (start + end) / 2;\nmergeSort(listData, start, middle);\nmergeSort(listData, middle + 1, end);\nmerge(listData, start, middle, end);\n}\nvoid merge(int * listData, int start, int middle, int end) {\nint leftSize = middle - start + 1;\nint rightSize = end - middle;\nint * left = new int[leftSize];\nint * right = new int[rightSize];\nfor (int i = 0; i < leftSize; i++)\nleft[i] = listData[start + i];\nfor (int j = 0; j < rightSize; j++)\nright[j] = listData[middle + 1 + j];\nint i = 0, j = 0, k = start;\nwhile (i < leftSize && j < rightSize) {\nif (left[i] <= right[j]) {\nlistData[k] = left[i];\ni++;\n} else {\nlistData[k] = right[j];\nj++;\n}\nk++;\n}\nwhile (i < leftSize) {\nlistData[k] = left[i];\ni++;\nk++;\n}\nwhile (j < rightSize) {\nlistData[k] = right[j];\nj++;\nk++;\n}\ndelete[] left;\ndelete[] right;\n}\nint main() {\nint lstA[] = {1, 3, 2, 7, 11, 5, 3};\nint size = sizeof(lstA) / sizeof(lstA[0]);\nmergeSort(lstA, 0, size - 1); // 对lstA执行归并排序\nfor (int i = 0; i < size; i++)\ncout << lstA[i] << \" \";\ncout << endl;\nreturn 0;\n}",
+          "question": "下面代码用于归并排序，其中merge()函数被调用次数为（ ）。\n<pre><code>#include <iostream>\nusing namespace std;\nvoid mergeSort(int * listData, int start, int end);\nvoid merge(int * listData, int start, int middle, int end);\nvoid mergeSort(int * listData, int start, int end) {\nif (start >= end)\nreturn;\nint middle = (start + end) / 2;\nmergeSort(listData, start, middle);\nmergeSort(listData, middle + 1, end);\nmerge(listData, start, middle, end);\n}\nvoid merge(int * listData, int start, int middle, int end) {\nint leftSize = middle - start + 1;\nint rightSize = end - middle;\nint * left = new int[leftSize];\nint * right = new int[rightSize];\nfor (int i = 0; i < leftSize; i++)\nleft[i] = listData[start + i];\nfor (int j = 0; j < rightSize; j++)\nright[j] = listData[middle + 1 + j];\nint i = 0, j = 0, k = start;\nwhile (i < leftSize && j < rightSize) {\nif (left[i] <= right[j]) {\nlistData[k] = left[i];\ni++;\n} else {\nlistData[k] = right[j];\nj++;\n}\nk++;\n}\nwhile (i < leftSize) {\nlistData[k] = left[i];\ni++;\nk++;\n}\nwhile (j < rightSize) {\nlistData[k] = right[j];\nj++;\nk++;\n}\ndelete[] left;\ndelete[] right;\n}\nint main() {\nint lstA[] = {1, 3, 2, 7, 11, 5, 3};\nint size = sizeof(lstA) / sizeof(lstA[0]);\nmergeSort(lstA, 0, size - 1); // 对lstA执行归并排序\nfor (int i = 0; i < size; i++)\ncout << lstA[i] << \" \";\ncout << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "A. 0",
             "B. 1",
@@ -5507,7 +5507,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面C++代码说法错误的是（ ）。\n// sumA()和sumB()用于求从1到N之和\n#include <iostream>\nusing namespace std;\nint sumA(int n) {\nint sum = 0;\nfor (int i = 1; i < n + 1; i++)\nsum += i;\nreturn sum;\n}\nint sumB(int n) {\nif (n == 1)\nreturn 1;\nelse\nreturn n + sumB(n - 1);\n}\nint main() {\nint n = 0;\ncin >> n;\ncout << sumA(n) << \" \" << sumB(n) << endl;\nreturn 0;\n}",
+          "question": "有关下面C++代码说法错误的是（ ）。\n// sumA()和sumB()用于求从1到N之和\n<pre><code>#include <iostream>\nusing namespace std;\nint sumA(int n) {\nint sum = 0;\nfor (int i = 1; i < n + 1; i++)\nsum += i;\nreturn sum;\n}\nint sumB(int n) {\nif (n == 1)\nreturn 1;\nelse\nreturn n + sumB(n - 1);\n}\nint main() {\nint n = 0;\ncin >> n;\ncout << sumA(n) << \" \" << sumB(n) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "A. sumA()用循环方式求从1到N之和，sumB()用递归方式求从1到N之和。",
             "B. 默认情况下，如果输入正整数1000，能实现求从1到1000之和。",
@@ -5527,7 +5527,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码以递归方式实现字符串反序，横线处应填上代码是（ ）。\n// 字符串反序\n#include <iostream>\n#include <string>\nusing namespace std;\nstring sReverse(string sIn) {\nif (sIn.length() <= 1) {\nreturn sIn;\n} else {\nreturn __________ // 此处填写代码\n}\n}\nint main() {\nstring sIn;\ncin >> sIn;\ncout << sReverse(sIn) << endl;\nreturn 0;\n}",
+          "question": "下面C++代码以递归方式实现字符串反序，横线处应填上代码是（ ）。\n// 字符串反序\n<pre><code>#include <iostream>\n#include <string>\nusing namespace std;\nstring sReverse(string sIn) {\nif (sIn.length() <= 1) {\nreturn sIn;\n} else {\nreturn __________ // 此处填写代码\n}\n}\nint main() {\nstring sIn;\ncin >> sIn;\ncout << sReverse(sIn) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "A. sIn[sIn.length() - 1] + sReverse(sIn.substr(0, sIn.length() - 1));",
             "B. sIn[0] + sReverse(sIn.substr(1, sIn.length() - 1));",
@@ -5547,7 +5547,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "印度古老的汉诺塔传说：创世时有三根金刚柱，其中一柱从下往上按照大小顺序摞着64片黄金圆盘，当圆盘逐一从一柱借助另外一柱全部移动到另外一柱时，宇宙毁灭。移动规则：在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。下面的C++代码以递归方式实现汉诺塔，横线处应填入代码是（ ）。\n#include <iostream>\nusing namespace std;\n// 递归实现汉诺塔，将N个圆盘从A通过B移动C\nvoid Hanoi(string A, string B, string C, int N) {\nif (N == 1) {\ncout << A << \" -> \" << C << endl;\n} else {\nHanoi(A, C, B, N - 1);\ncout << A << \" -> \" << C << endl;\n__________; // 此处填写代码\n}\n}\nint main() {\nHanoi(\"甲\", \"乙\", \"丙\", 3);\nreturn 0;\n}",
+          "question": "印度古老的汉诺塔传说：创世时有三根金刚柱，其中一柱从下往上按照大小顺序摞着64片黄金圆盘，当圆盘逐一从一柱借助另外一柱全部移动到另外一柱时，宇宙毁灭。移动规则：在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。下面的C++代码以递归方式实现汉诺塔，横线处应填入代码是（ ）。\n<pre><code>#include <iostream>\nusing namespace std;\n// 递归实现汉诺塔，将N个圆盘从A通过B移动C\nvoid Hanoi(string A, string B, string C, int N) {\nif (N == 1) {\ncout << A << \" -> \" << C << endl;\n} else {\nHanoi(A, C, B, N - 1);\ncout << A << \" -> \" << C << endl;\n__________; // 此处填写代码\n}\n}\nint main() {\nHanoi(\"甲\", \"乙\", \"丙\", 3);\nreturn 0;\n}</code></pre>",
           "options": [
             "A. Hanoi(B, C, A, N - 2)",
             "B. Hanoi(B, A, C, N - 1)",
@@ -5567,7 +5567,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码执行后的输出是（ ）。\n#include <iostream>\nusing namespace std;\nint jumpFloor(int N) {\ncout << N << \"#\";\nif (N == 1 || N == 2) {\nreturn N;\n} else {\nreturn jumpFloor(N - 1) + jumpFloor(N - 2);\n}\n}\nint main() {\ncout << jumpFloor(4) << endl;\nreturn 0;\n}",
+          "question": "下面代码执行后的输出是（ ）。\n<pre><code>#include <iostream>\nusing namespace std;\nint jumpFloor(int N) {\ncout << N << \"#\";\nif (N == 1 || N == 2) {\nreturn N;\n} else {\nreturn jumpFloor(N - 1) + jumpFloor(N - 2);\n}\n}\nint main() {\ncout << jumpFloor(4) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "A. 4#3#2#2#4",
             "B. 4#3#2#2#1#5",
@@ -5607,7 +5607,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "阅读下面的C++代码，执行后其输出是( )。\nint stepCount = 0;\nint fracA(int N)\n{\nstepCount += 1;\ncout << stepCount << \"->\";\nint rtn = 1;\nfor (int i = 1; i <= N; i++)\nrtn *= i;\nreturn rtn;\n}\nint fracB(int N)\n{\nstepCount += 1;\ncout << stepCount << \"->\";\nif (N == 1)\nreturn 1;\nreturn N * fracB(N - 1);\n}\nint main()\n{\ncout << fracA(5);\ncout << \"<===>\";\ncout << fracB(5);\nreturn 0;\n}",
+          "question": "阅读下面的C++代码，执行后其输出是( )。\nint stepCount = 0;\nint fracA(int N)\n{\nstepCount += 1;\ncout << stepCount << \"->\";\nint rtn = 1;\nfor (int i = 1; i <= N; i++)\nrtn *= i;\nreturn rtn;\n}\nint fracB(int N)\n{\nstepCount += 1;\ncout << stepCount << \"->\";\nif (N == 1)\nreturn 1;\nreturn N * fracB(N - 1);\n}\n<pre><code>int main()\n{\ncout << fracA(5);\ncout << \"<===>\";\ncout << fracB(5);\nreturn 0;\n}</code></pre>",
           "options": [
             "A. 1->120<===>2->120",
             "B. 1->120<===>1->120",
@@ -6144,7 +6144,7 @@ const QUESTION_BANK = {
           "kp": "kp5_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码中的isPrimeA()和isPrimeB()都用于判断参数N是否素数，有关其时间复杂度的正确说法是（ ）。\n#include <iostream>\n#include <cmath>\nusing namespace std;\nbool isPrimeA(int N) {\nif (N < 2)\nreturn false;\nfor (int i = 2; i < N; i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}\nbool isPrimeB(int N) {\nif (N < 2)\nreturn false;\nint endNum = int(sqrt(N));\nfor (int i = 2; i <= endNum; i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}\nint main() {\ncout << boolalpha;\ncout << isPrimeA(13) << \" \" << isPrimeB(13) << endl;\nreturn 0;\n}",
+          "question": "下面代码中的isPrimeA()和isPrimeB()都用于判断参数N是否素数，有关其时间复杂度的正确说法是（ ）。\n<pre><code>#include <iostream>\n#include <cmath>\nusing namespace std;\nbool isPrimeA(int N) {\nif (N < 2)\nreturn false;\nfor (int i = 2; i < N; i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}\nbool isPrimeB(int N) {\nif (N < 2)\nreturn false;\nint endNum = int(sqrt(N));\nfor (int i = 2; i <= endNum; i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}\nint main() {\ncout << boolalpha;\ncout << isPrimeA(13) << \" \" << isPrimeB(13) << endl;\nreturn 0;\n}</code></pre>",
           "options": [
             "A. isPrimeA()的最坏时间复杂度是O(N)，isPrimeB()的最坏时间复杂度是O(logN)，isPrimeB()优于isPrimeA()。",
             "B. isPrimeA()的最坏时间复杂度是O(N)，isPrimeB()的最坏时间复杂度是O(√N)，isPrimeB()优于isPrimeA()。",

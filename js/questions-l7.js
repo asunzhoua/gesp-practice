@@ -8,7 +8,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "定义变量 double x，如果下面代码输入为 100，输出最接近（  ）。\n#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() { double x; cin >> x; cout << log10(x) - log2(x); return 0; }",
+          "question": "定义变量 double x，如果下面代码输入为 100，输出最接近（  ）。\n<pre><code>#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() { double x; cin >> x; cout << log10(x) - log2(x); return 0; }</code></pre>",
           "options": [
             "0",
             "-5",
@@ -214,7 +214,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列 C++ 代码的输出结果是（  ）。\n#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() { cout << sin(3.1415926 / 2); return 0; }",
+          "question": "下列 C++ 代码的输出结果是（  ）。\n<pre><code>#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() { cout << sin(3.1415926 / 2); return 0; }</code></pre>",
           "options": [
             "0",
             "1",
@@ -726,7 +726,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码输出的是（  ）。\nint main(){ int a=5, b=2; cout << (a >> b) << endl; }",
+          "question": "下面代码输出的是（  ）。\n<pre><code>int main(){ int a=5, b=2; cout << (a >> b) << endl; }</code></pre>",
           "options": [
             "1",
             "2",
@@ -746,7 +746,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码的输出是什么？\nint main(){ int a=10; int *p=&a; int *&q=p; *q=20; cout << a << endl; }",
+          "question": "以下代码的输出是什么？\n<pre><code>int main(){ int a=10; int *p=&a; int *&q=p; *q=20; cout << a << endl; }</code></pre>",
           "options": [
             "10",
             "20",
@@ -766,7 +766,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码输出的是（  ）。\nint main(){ int arr[5]={1,2,3,4,5}; int *p=arr+2; cout << *p << endl; }",
+          "question": "下面代码输出的是（  ）。\n<pre><code>int main(){ int arr[5]={1,2,3,4,5}; int *p=arr+2; cout << *p << endl; }</code></pre>",
           "options": [
             "1",
             "2",
@@ -976,7 +976,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列 C++ 代码的输出是（  ）。\nint main(){ int arr[5]={2,4,6,8,10}; int *p=arr+2; cout << p[3] << endl; }",
+          "question": "下列 C++ 代码的输出是（  ）。\n<pre><code>int main(){ int arr[5]={2,4,6,8,10}; int *p=arr+2; cout << p[3] << endl; }</code></pre>",
           "options": [
             "6",
             "8",
@@ -1276,7 +1276,7 @@ const QUESTION_BANK = {
           "kp": "kp7_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的运行结果为（  ）。\nint query(int n,int*a,int x){ int l=0,r=n; while(l<r){ int mid=l+(r-l)/2; if(a[mid]>=x)r=mid; else l=mid+1; } if(l==n)return -1; return l; } int main(){ int num[]={1,2,2,3,3,4,5,5,6,7}; cout<<query(10,num,3); }",
+          "question": "下面程序的运行结果为（  ）。\n<pre><code>int query(int n,int*a,int x){ int l=0,r=n; while(l<r){ int mid=l+(r-l)/2; if(a[mid]>=x)r=mid; else l=mid+1; } if(l==n)return -1; return l; } int main(){ int num[]={1,2,2,3,3,4,5,5,6,7}; cout<<query(10,num,3); }</code></pre>",
           "options": [
             "2",
             "3",
@@ -1763,7 +1763,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\nint down(int n){ if(n<=1)return n; return down(n-1)+down(n-2)+down(n-3); } int main(){ cout<<down(6); }",
+          "question": "下面程序的输出为（  ）。\n<pre><code>int down(int n){ if(n<=1)return n; return down(n-1)+down(n-2)+down(n-3); } int main(){ cout<<down(6); }</code></pre>",
           "options": [
             "6",
             "13",
@@ -1859,7 +1859,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\nint fib(int n){ if(n<=1)return n; return fib(n-1)+fib(n-2); } int main(){ cout<<fib(6); }",
+          "question": "下面程序的输出为（  ）。\n<pre><code>int fib(int n){ if(n<=1)return n; return fib(n-1)+fib(n-2); } int main(){ cout<<fib(6); }</code></pre>",
           "options": [
             "5",
             "8",
@@ -2365,7 +2365,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\nint rec_fib[100];\nint fib(int n){ if(n<=1)return n; if(rec_fib[n]==0)rec_fib[n]=fib(n-1)+fib(n-2); return rec_fib[n]; } int main(){ cout<<fib(6); }",
+          "question": "下面程序的输出为（  ）。\nint rec_fib[100];\n<pre><code>int fib(int n){ if(n<=1)return n; if(rec_fib[n]==0)rec_fib[n]=fib(n-1)+fib(n-2); return rec_fib[n]; } int main(){ cout<<fib(6); }</code></pre>",
           "options": [
             "8",
             "13",
@@ -2525,7 +2525,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的输出为（  ）。\nint fib(int n){ if(n==0)return 1; return fib(n-1)+fib(n-2); } int main(){ cout<<fib(6); }",
+          "question": "下面程序的输出为（  ）。\n<pre><code>int fib(int n){ if(n==0)return 1; return fib(n-1)+fib(n-2); } int main(){ cout<<fib(6); }</code></pre>",
           "options": [
             "8",
             "13",
@@ -2707,7 +2707,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的运行结果为（  ）。\nint f(int n){ if(n<=2)return n*2; return f(n-1)+f(n-2); } int main(){ cout<<f(5); }",
+          "question": "下面程序的运行结果为（  ）。\n<pre><code>int f(int n){ if(n<=2)return n*2; return f(n-1)+f(n-2); } int main(){ cout<<f(5); }</code></pre>",
           "options": [
             "10",
             "16",

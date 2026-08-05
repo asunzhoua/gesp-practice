@@ -1006,7 +1006,7 @@ const QUESTION_BANK = {
           "kp": "kp3_03",
           "type": "judge",
           "difficulty": 1,
-          "question": "某个初学 C++ 的学生，在对照参考程序写了一个程序以后，信心满满地进行编译，他敲进编译器的全部代码为：1 #include<bits/stdc++.h> 2 using namespace std; 3 int main(){ 4 cout<<\"Hello world!\"<<endl; 5 return 0; }，这个程序能够正常编译运行。",
+          "question": "<pre><code>某个初学 C++ 的学生，在对照参考程序写了一个程序以后，信心满满地进行编译，他敲进编译器的全部代码为：1 #include<bits/stdc++.h> 2 using namespace std; 3 int main(){ 4 cout<<\"Hello world!\"<<endl; 5 return 0; }，这个程序能够正常编译运行。</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5008,7 +5008,7 @@ const QUESTION_BANK = {
           "kp": "kp3_05",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列程序如果能够正确执行，那么输出的结果是 GESP。int main() { string name=\"GESP\"; cout << name[false] << name[true] << name[1<<1] << name[7>>1] << endl; }",
+          "question": "<pre><code>下列程序如果能够正确执行，那么输出的结果是 GESP。int main() { string name=\"GESP\"; cout << name[false] << name[true] << name[1<<1] << name[7>>1] << endl; }</code></pre>",
           "options": [
             "正确",
             "错误"
