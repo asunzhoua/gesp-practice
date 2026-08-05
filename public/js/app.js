@@ -152,7 +152,7 @@ function handleRoute() {
 
   switch (path) {
     case '': renderDashboard(); break;
-    case 'practice': renderPractice(rest[0] || 'kp01'); break;
+    case 'practice': renderPractice(rest[0] || levelKps(currentLevel)[0] || 'kp1_01'); break;
     case 'coding': rest[0] ? renderCodingPractice(rest[0]) : renderCodingHome(); break;
     case 'mock': renderMock(); break;
     case 'review': renderReview(); break;
@@ -651,6 +651,12 @@ async function renderPractice(kp) {
   try { questions = await API.getQuestions(kp); } catch {}
   // Skip coding questions in practice mode (no code editor available)
   questions = questions.filter(q => q.type !== 'coding');
+
+  if (questions.length === 0) {
+    app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">${KP_NAMES[kp] || kp}</span></div>
+      <div class="review-empty"><div class="empty-icon">📝</div><h3>该模块暂无题目</h3><p class="text-muted">请返回首页选择其它知识点练习</p></div>`;
+    return;
+  }
 
   practiceState = { questions, current: 0, answers: {}, kp, selectedIdx: -1 };
   renderBottomTab('practice');
