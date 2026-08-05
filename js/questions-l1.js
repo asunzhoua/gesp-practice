@@ -3435,7 +3435,7 @@ const QUESTION_BANK = {
             "N = N - M\nM = M - N",
             "M = M - N\nN = N - M",
             "M = N - M\nN = M - N",
-            "N, M = M, N\nM, N = N, M"
+            "N = M, M = N\nM = N, N = M"
           ],
           "answer": 0,
           "explanation": "这是“更相减损”法。当N>M时，用大的减小的，执行N=N-M；当M>N时，执行M=M-N。重复直到两数相等。选项A的第一行填在N>M分支、第二行填在else分支，正好对应这两种情况，故选A。",
@@ -7127,15 +7127,15 @@ const QUESTION_BANK = {
           "id": "l1_202509_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于交换两个正整数a和b的值，不能实现交换的代码是（　　）。\n\nA组：\n```\ncin >> a; cin >> b;\ntemp = a; a = b; b = temp;\n```\nB组：\n```\ncin >> a; cin >> b;\nb = a - b; a = a - b; b = a + b;\n```\nC组：\n```\ncin >> a; cin >> b;\na = a + b; b = a - b; a = a - b;\n```\nD组：\n```\ncin >> a; cin >> b;\na, b = b, a;\n```",
+          "question": "下面C++代码用于交换两个正整数a和b的值，不能实现交换的代码是（　　）。\n\nA组：\n```\ncin >> a; cin >> b;\ntemp = a; a = b; b = temp;\n```\nB组：\n```\ncin >> a; cin >> b;\nb = a - b; a = a - b; b = a + b;\n```\nC组：\n```\ncin >> a; cin >> b;\na = a + b; b = a - b; a = a - b;\n```\nD组：\n```\ncin >> a; cin >> b;\na = b, b = a;\n```",
           "options": [
             "A. 用第三个变量temp作为中转完成交换",
             "B. 用减法完成交换：b=a-b; a=a-b; b=a+b;",
             "C. 用加减法完成交换：a=a+b; b=a-b; a=a-b;",
-            "D. 用逗号表达式 a, b = b, a; 完成交换"
+            "D. 用逗号表达式 a = b, b = a; 完成交换"
           ],
           "answer": 3,
-          "explanation": "A用第三个变量temp先保存a再交换，B、C用加减法都能正确交换两个数的值。D写的是a, b = b, a，这不是C++中合法的交换写法，逗号表达式不会让a和b互换，所以D不能实现交换。",
+          "explanation": "A用第三个变量temp先保存a再交换，B、C用加减法都能正确交换两个数的值。D写的是a = b, b = a，这是逗号表达式，按顺序先执行a = b使a变成b原来的值，再执行b = a，此时a已经是b原来的值，所以b也变成b原来的值，两个数都变成b原来的值，并没有完成交换，所以D不能实现交换。",
           "source": "GESP2025-09",
           "isJudge": false,
           "answerText": null,
@@ -7205,15 +7205,15 @@ const QUESTION_BANK = {
           "id": "l1_202603_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "整型变量 a 、b 的初值都是 4，则下面的C++代码执行后的输出是（　　）。\n\na, b = 3, 4;\ncout << (a + 2) << (b - 2) << endl;\ncout << a << b << endl;",
+          "question": "整型变量 a 、b 的初值都是 4，则下面的C++代码执行后的输出是（　　）。\n<pre><code>int a = 4, b = 4;\na = 3;\nb = 4;\ncout << (a + 2) << (b - 2) << endl;\ncout << a << b << endl;</code></pre>",
           "options": [
             "A. 61\n43",
             "B. 52\n34",
             "C. 62\n44",
             "D. 62\n32"
           ],
-          "answer": 0,
-          "explanation": "逗号表达式 a, b = 3, 4 从左往右依次执行：先看a，a没有变化，还是原来的4；再把b变成3；最后是数字4，不起作用。所以第一行输出(4+2)和(3-2)，即6和1；第二行输出a和b，即4和3，两行结果是61和43，选A。",
+          "answer": 1,
+          "explanation": "a、b 初值都是 4。执行 a = 3 后 a 变为 3；执行 b = 4 后 b 保持 4。第一行输出 (a + 2) 即 5、(b - 2) 即 2，得到 52；第二行输出 a、b，即 34。两行输出是 52 和 34，选 B。",
           "source": "GESP2026-03",
           "isJudge": false,
           "answerText": null,

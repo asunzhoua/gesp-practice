@@ -2971,18 +2971,18 @@ const QUESTION_BANK = {
           "kp": "kp2_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行，其输出是（　）。\n<pre><code>a, b = 3, 4;\nc = a == b;\ncout << a << ' ' << b << ' ' << c;</code></pre>",
+          "question": "下面C++代码执行，其输出是（　）。\n<pre><code>int a, b, c;\na = 3;\nb = 4;\nc = a == b;\ncout << a << ' ' << b << ' ' << c;</code></pre>",
           "options": [
             "A. 3 4 0",
             "B. 3 3 3",
             "C. 4 4 4",
             "D. 以上都不对"
           ],
-          "answer": 3,
-          "explanation": "逗号表达式a,b=3,4中只有b被赋为3，a未被赋值（未初始化），读未初始化的a结果是未知的，c=a==b也因而无法确定。所以输出不是A、B、C中的任何一个，故选D。",
+          "answer": 0,
+          "explanation": "声明整型变量 a、b、c。a = 3 使 a 为 3，b = 4 使 b 为 4。c = a == b 是比较 a 与 b 是否相等：3 不等于 4，结果为假，输出 0。所以输出为 3 4 0，选 A。",
           "source": "GESP2025-09",
           "isJudge": false,
-          "answerText": "D",
+          "answerText": "A",
           "starterCode": null,
           "testCases": null
         },
@@ -8196,13 +8196,13 @@ const QUESTION_BANK = {
           "kp": "kp2_06",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面的C++代码中变量都是整型，则执行后将输出1。\n<pre><code>x, y, z = 5, 10, 15;\nresult = x < y < z;\ncout << result;</code></pre>",
+          "question": "下面的C++代码中变量都是整型，则执行后将输出1。\n<pre><code>int x, y, z, result;\nx = 5;\ny = 10;\nz = 15;\nresult = x < y < z;\ncout << result;</code></pre>",
           "options": [
             "正确",
             "错误"
           ],
           "answer": 0,
-          "explanation": "x,y,z=5,10,15是逗号表达式，实际只有z被赋值为5，x和y未赋值（整型变量在常见环境中默认值为0）。此时x<y<z即0<0<5，先算0<0得0，再算0<5得1，故输出1。题面结论正确。",
+          "explanation": "x、y、z、result 都是整型。x = 5、y = 10、z = 15。x < y < z 从左往右计算：先算 x < y，即 5 < 10 为真(1)；再算 1 < z，即 1 < 15 为真(1)，所以 result 为 1，输出 1。题面结论正确。",
           "source": "GESP2025-09",
           "isJudge": true,
           "answerText": "正确",
