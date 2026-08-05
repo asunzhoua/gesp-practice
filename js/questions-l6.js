@@ -192,7 +192,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面的代码实现了二叉树的前序遍历，它通过递归方法访问每个节点并打印节点值。\nvoid preorder(TreeNode* root){ if(root==NULL) return; cout<<root->val<<\" \"; preorder(root->left); preorder(root->right); }",
+          "question": "下面的代码实现了二叉树的前序遍历，它通过递归方法访问每个节点并打印节点值。\n<pre><code>void preorder(TreeNode* root){ if(root==NULL) return; cout<<root->val<<\" \"; preorder(root->left); preorder(root->right); }</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -230,7 +230,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了树的哪种遍历方式？\nvoid traverse(TreeNode* root){ if(root==nullptr) return; cout<<root->val<<\" \"; traverse(root->left); traverse(root->right); }",
+          "question": "以下代码实现了树的哪种遍历方式？\n<pre><code>void traverse(TreeNode* root){ if(root==nullptr) return; cout<<root->val<<\" \"; traverse(root->left); traverse(root->right); }</code></pre>",
           "options": [
             "A. 前序遍历",
             "B. 中序遍历",
@@ -250,7 +250,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码实现的是二叉树的中序遍历：\nvoid traverse(TreeNode* root){ if(root==nullptr) return; traverse(root->left); cout<<root->val<<\" \"; traverse(root->right); }",
+          "question": "以下代码实现的是二叉树的中序遍历：\n<pre><code>void traverse(TreeNode* root){ if(root==nullptr) return; traverse(root->left); cout<<root->val<<\" \"; traverse(root->right); }</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -386,7 +386,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了二叉树的（  ）。\nvoid traverse(TreeNode* root) {\nif (!root) return;\ntraverse(root->left);\ntraverse(root->right);\ncout << root->val << \" \";\n}",
+          "question": "以下代码实现了二叉树的（  ）。\n<pre><code>void traverse(TreeNode* root) {\nif (!root) return;\ntraverse(root->left);\ntraverse(root->right);\ncout << root->val << \" \";\n}</code></pre>",
           "options": [
             "A. 前序遍历",
             "B. 中序遍历",
@@ -406,7 +406,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码能够正确统计二叉树中叶子结点的数量。\nint countLeaf(TreeNode* root) {\nif (!root) return 0;\nif (!root->left && !root->right) return 1;\nreturn countLeaf(root->left) + countLeaf(root->right);\n}",
+          "question": "以下代码能够正确统计二叉树中叶子结点的数量。\n<pre><code>int countLeaf(TreeNode* root) {\nif (!root) return 0;\nif (!root->left && !root->right) return 1;\nreturn countLeaf(root->left) + countLeaf(root->right);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -464,7 +464,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "judge",
           "difficulty": 1,
-          "question": "设二叉树共有 n 个结点，函数 preorderTraversal 以下代码的时间复杂度为 O(n)，空间复杂度为 O(n)。\nvoid preorder(TreeNode* root, vector<int>& res) {\nif (root == nullptr) return;\nres.push_back(root->val);\npreorder(root->left, res);\npreorder(root->right, res);\n}",
+          "question": "设二叉树共有 n 个结点，函数 preorderTraversal 以下代码的时间复杂度为 O(n)，空间复杂度为 O(n)。\n<pre><code>void preorder(TreeNode* root, vector<int>& res) {\nif (root == nullptr) return;\nres.push_back(root->val);\npreorder(root->left, res);\npreorder(root->right, res);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -482,7 +482,7 @@ const QUESTION_BANK = {
           "kp": "kp6_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了二叉树的哪种遍历方式？\nvoid traverse(TreeNode* root) {\nif (root == nullptr) return;\ncout << root->val << \" \";\ntraverse(root->left);\ntraverse(root->right);\n}",
+          "question": "以下代码实现了二叉树的哪种遍历方式？\n<pre><code>void traverse(TreeNode* root) {\nif (root == nullptr) return;\ncout << root->val << \" \";\ntraverse(root->left);\ntraverse(root->right);\n}</code></pre>",
           "options": [
             "A. 前序遍历",
             "B. 中序遍历",
@@ -880,7 +880,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下关于完全二叉树的代码描述，正确的是（ ）。\nbool isCompleteTree(TreeNode* root){ if(root==nullptr) return true; queue<TreeNode*> q; q.push(root); bool hasNull=false; while(!q.empty()){ TreeNode* node=q.front(); q.pop(); if(node==nullptr) hasNull=true; else { if(hasNull) return false; q.push(node->left); q.push(node->right); } } return true; }",
+          "question": "以下关于完全二叉树的代码描述，正确的是（ ）。\n<pre><code>bool isCompleteTree(TreeNode* root){ if(root==nullptr) return true; queue<TreeNode*> q; q.push(root); bool hasNull=false; while(!q.empty()){ TreeNode* node=q.front(); q.pop(); if(node==nullptr) hasNull=true; else { if(hasNull) return false; q.push(node->left); q.push(node->right); } } return true; }</code></pre>",
           "options": [
             "A. 该代码用于判断一棵树是否为满二叉树",
             "B. 该代码用于判断一棵树是否为完全二叉树",
@@ -1034,7 +1034,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下函数 check() 用于判断一棵二叉树是否为（   ）。\nbool check(TreeNode* root) {\nif (!root) return true;\nqueue<TreeNode*> q;\nq.push(root);\nbool hasNull = false;\nwhile (!q.empty()) {\nTreeNode* cur = q.front(); q.pop();\nif (!cur) hasNull = true;\nelse {\nif (hasNull) return false;\nq.push(cur->left);\nq.push(cur->right);\n}\n}\nreturn true;\n}",
+          "question": "以下函数 check() 用于判断一棵二叉树是否为（   ）。\n<pre><code>bool check(TreeNode* root) {\nif (!root) return true;\nqueue<TreeNode*> q;\nq.push(root);\nbool hasNull = false;\nwhile (!q.empty()) {\nTreeNode* cur = q.front(); q.pop();\nif (!cur) hasNull = true;\nelse {\nif (hasNull) return false;\nq.push(cur->left);\nq.push(cur->right);\n}\n}\nreturn true;\n}</code></pre>",
           "options": [
             "A. 满二叉树",
             "B. 完全二叉树",
@@ -1114,7 +1114,7 @@ const QUESTION_BANK = {
           "kp": "kp6_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下函数 check() 用于判断一棵二叉树是否为（  ）。\nbool check(TreeNode* root) {\nif (!root) return true;\nqueue<TreeNode*> q;\nq.push(root);\nbool hasNull = false;\nwhile (!q.empty()) {\nTreeNode* cur = q.front(); q.pop();\nif (cur == nullptr) hasNull = true;\nelse {\nif (hasNull) return false;\nq.push(cur->left);\nq.push(cur->right);\n}\n}\nreturn true;\n}",
+          "question": "以下函数 check() 用于判断一棵二叉树是否为（  ）。\n<pre><code>bool check(TreeNode* root) {\nif (!root) return true;\nqueue<TreeNode*> q;\nq.push(root);\nbool hasNull = false;\nwhile (!q.empty()) {\nTreeNode* cur = q.front(); q.pop();\nif (cur == nullptr) hasNull = true;\nelse {\nif (hasNull) return false;\nq.push(cur->left);\nq.push(cur->right);\n}\n}\nreturn true;\n}</code></pre>",
           "options": [
             "A. 满二叉树",
             "B. 完全二叉树",
@@ -1233,7 +1233,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "对上题中的二叉搜索树，当输入数组为【数组见原卷图】时，构建二叉搜索树，并采用如下代码实现的遍历方式，得到的输出是（ ）。\nvoid traversal(tree_node* root){ if(root==nullptr) return; traversal(root->left); cout<<root->val<<\" \"; traversal(root->right); } 【输出选项见原卷】",
+          "question": "对上题中的二叉搜索树，当输入数组为【数组见原卷图】时，构建二叉搜索树，并采用如下代码实现的遍历方式，得到的输出是（ ）。\n<pre><code>void traversal(tree_node* root){ if(root==nullptr) return; traversal(root->left); cout<<root->val<<\" \"; traversal(root->right); } 【输出选项见原卷】</code></pre>",
           "options": [
             "A. 【选项见原卷】",
             "B. 【选项见原卷】",
@@ -1309,7 +1309,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现一个二叉排序树的插入函数（没有相同的数值），横线处应填入（   ）。\nvoid insert(TreeNode*& root, int key) {\nif (!root) {\nroot = new TreeNode(key);\nreturn;\n}\n_______________________________\n}",
+          "question": "下面代码实现一个二叉排序树的插入函数（没有相同的数值），横线处应填入（   ）。\n<pre><code>void insert(TreeNode*& root, int key) {\nif (!root) {\nroot = new TreeNode(key);\nreturn;\n}\n_______________________________\n}</code></pre>",
           "options": [
             "A. if (key < root->val) insert(root->left, key); else if (key > root->val) insert(root->right, key);",
             "B. if (key < root->val) insert(root->right, key); else if (key > root->val) insert(root->left, key);",
@@ -1423,7 +1423,7 @@ const QUESTION_BANK = {
           "kp": "kp6_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面的函数能正确判断一棵树是不是二叉排序树（左边的数字要比当前数字小，右边的数字要比当前数字大）。\nbool isBST(TreeNode* root, int minVal, int maxVal) {\nif (!root) return true;\nif (root->val <= minVal || root->val >= maxVal) return false;\nreturn isBST(root->left, minVal, root->val) &&\nisBST(root->right, root->val, maxVal);\n}",
+          "question": "下面的函数能正确判断一棵树是不是二叉排序树（左边的数字要比当前数字小，右边的数字要比当前数字大）。\n<pre><code>bool isBST(TreeNode* root, int minVal, int maxVal) {\nif (!root) return true;\nif (root->val <= minVal || root->val >= maxVal) return false;\nreturn isBST(root->left, minVal, root->val) &&\nisBST(root->right, root->val, maxVal);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2308,7 +2308,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "二叉树的深度定义为从根结点到叶结点的最长路径上的结点数，则以下基于二叉树的深度优先搜索实现的深度计算函数中横线上应填写（ ）。\nint max_depth(tree_node* root){ if(root==nullptr) return 0; int left_depth=max_depth(root->left); int right_depth=max_depth(root->right); ______ }",
+          "question": "二叉树的深度定义为从根结点到叶结点的最长路径上的结点数，则以下基于二叉树的深度优先搜索实现的深度计算函数中横线上应填写（ ）。\n<pre><code>int max_depth(tree_node* root){ if(root==nullptr) return 0; int left_depth=max_depth(root->left); int right_depth=max_depth(root->right); ______ }</code></pre>",
           "options": [
             "A. return left_depth + right_depth;",
             "B. return max(left_depth, right_depth);",
@@ -2328,7 +2328,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "阅读以下二叉树的深度优先搜索算法，横线上应填写（ ）。\nvoid dfs(TreeNode* root){ if(root==nullptr) return; stack<TreeNode*> s; s.push(root); while(!s.empty()){ ______ cout<<node->value<<\" \"; if(node->right) s.push(node->right); if(node->left) s.push(node->left); } }",
+          "question": "阅读以下二叉树的深度优先搜索算法，横线上应填写（ ）。\n<pre><code>void dfs(TreeNode* root){ if(root==nullptr) return; stack<TreeNode*> s; s.push(root); while(!s.empty()){ ______ cout<<node->value<<\" \"; if(node->right) s.push(node->right); if(node->left) s.push(node->left); } }</code></pre>",
           "options": [
             "A. TreeNode* node = s.top();",
             "B. TreeNode* node = s.top(); s.pop();",
@@ -2348,7 +2348,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码实现了二叉树的深度优先搜索（DFS），并统计叶子结点的数量，则横线上应填写（ ）。\nint countLeafNodes(TreeNode* root){ if(root==nullptr) return 0; stack<TreeNode*> s; s.push(root); int count=0; while(!s.empty()){ TreeNode* node=s.top(); s.pop(); if(node->left==nullptr&&node->right==nullptr) count++; if(node->right) s.push(node->right); ______ } return count; }",
+          "question": "以下代码实现了二叉树的深度优先搜索（DFS），并统计叶子结点的数量，则横线上应填写（ ）。\n<pre><code>int countLeafNodes(TreeNode* root){ if(root==nullptr) return 0; stack<TreeNode*> s; s.push(root); int count=0; while(!s.empty()){ TreeNode* node=s.top(); s.pop(); if(node->left==nullptr&&node->right==nullptr) count++; if(node->right) s.push(node->right); ______ } return count; }</code></pre>",
           "options": [
             "A. if (node->left) s.push(node->left);",
             "B. if (node->left) s.pop(node->left);",
@@ -2410,7 +2410,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "请将下列 C++ 实现的深度优先搜索（DFS）代码补充完整，横线处应填入（   ）。\nvoid dfs(TreeNode* root, vector<int>& result) {\nif (root == nullptr) return;\n__________________________\n}",
+          "question": "请将下列 C++ 实现的深度优先搜索（DFS）代码补充完整，横线处应填入（   ）。\n<pre><code>void dfs(TreeNode* root, vector<int>& result) {\nif (root == nullptr) return;\n__________________________\n}</code></pre>",
           "options": [
             "A. result.push_back(root->val); dfs(root->left); dfs(root->right);",
             "B. result.push_back(root->left->val); dfs(root->right); dfs(root->left);",
@@ -2430,7 +2430,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "函数 puzzle 定义如下，则调用 puzzle(7) 程序会无限递归。\nint puzzle(int n) {\nif (n == 1) return 1;\nif (n % 2 == 0) return puzzle(n / 2);\nreturn puzzle(3 * n + 1);\n}",
+          "question": "函数 puzzle 定义如下，则调用 puzzle(7) 程序会无限递归。\n<pre><code>int puzzle(int n) {\nif (n == 1) return 1;\nif (n % 2 == 0) return puzzle(n / 2);\nreturn puzzle(3 * n + 1);\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2448,7 +2448,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "请将下列树的深度优先遍历代码补充完整，横线处应填入（   ）。\nvoid dfs(TreeNode* root) {\nif (!root) return;\n______<TreeNode*> temp;\ntemp.push(root);\nwhile (!temp.empty()) {\nTreeNode* node = temp.top();\ntemp.pop();\ncout << node->val << \" \";\nif (node->right) temp.push(node->right);\nif (node->left) temp.push(node->left);\n}\n}",
+          "question": "请将下列树的深度优先遍历代码补充完整，横线处应填入（   ）。\n<pre><code>void dfs(TreeNode* root) {\nif (!root) return;\n______<TreeNode*> temp;\ntemp.push(root);\nwhile (!temp.empty()) {\nTreeNode* node = temp.top();\ntemp.pop();\ncout << node->val << \" \";\nif (node->right) temp.push(node->right);\nif (node->left) temp.push(node->left);\n}\n}</code></pre>",
           "options": [
             "A. vector",
             "B. list",
@@ -2492,7 +2492,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列代码实现了树的深度优先遍历，则横线处应填入（   ）。\nvoid dfs(TreeNode* root) {\nif (!root) return;\nstack<TreeNode*> st;\nst.push(root);\nwhile (!st.empty()) {\nTreeNode* node = st.top(); st.pop();\ncout << node->val << \" \";\nif (node->right) st.push(node->right);\n________________________\n}\n}",
+          "question": "下列代码实现了树的深度优先遍历，则横线处应填入（   ）。\n<pre><code>void dfs(TreeNode* root) {\nif (!root) return;\nstack<TreeNode*> st;\nst.push(root);\nwhile (!st.empty()) {\nTreeNode* node = st.top(); st.pop();\ncout << node->val << \" \";\nif (node->right) st.push(node->right);\n________________________\n}\n}</code></pre>",
           "options": [
             "A. if (node->left) st.push(node->left);",
             "B. if (node->left) st.pop(node->left);",
@@ -2556,7 +2556,7 @@ const QUESTION_BANK = {
           "kp": "kp6_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "对如下结构的树，执行 travel 函数，输出结果是 1 2 3 4 5。\n//       1\n//      / \\\n//     2   3\n//    / \\\n//   4   5\nvoid travel(Node* root) {\nif (!root) return;\nstack<Node*> s;\ns.push(root);\nwhile (!s.empty()) {\nNode* cur = s.top(); s.pop();\ncout << cur->val << \" \";\nif (cur->right) s.push(cur->right);\nif (cur->left)  s.push(cur->left);\n}\n}",
+          "question": "对如下结构的树，执行 travel 函数，输出结果是 1 2 3 4 5。\n//       1\n//      / \\\n//     2   3\n//    / \\\n//   4   5\n<pre><code>void travel(Node* root) {\nif (!root) return;\nstack<Node*> s;\ns.push(root);\nwhile (!s.empty()) {\nNode* cur = s.top(); s.pop();\ncout << cur->val << \" \";\nif (cur->right) s.push(cur->right);\nif (cur->left)  s.push(cur->left);\n}\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2691,7 +2691,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "上一题的二叉树深度计算还可以采用二叉树的广度优先搜索来实现。以下基于二叉树的广度优先搜索实现的深度计算函数中横线上应填写（ ）。\nint max_depth_bfs(tree_node* root){ if(root==nullptr) return 0; queue<tree_node*> q; q.push(root); int depth=0; while(!q.empty()){ ______ for(int i=0;i<level_size;++i){ tree_node* node=q.front(); q.pop(); if(node->left) q.push(node->left); if(node->right) q.push(node->right); } } return depth; }",
+          "question": "上一题的二叉树深度计算还可以采用二叉树的广度优先搜索来实现。以下基于二叉树的广度优先搜索实现的深度计算函数中横线上应填写（ ）。\n<pre><code>int max_depth_bfs(tree_node* root){ if(root==nullptr) return 0; queue<tree_node*> q; q.push(root); int depth=0; while(!q.empty()){ ______ for(int i=0;i<level_size;++i){ tree_node* node=q.front(); q.pop(); if(node->left) q.push(node->left); if(node->right) q.push(node->right); } } return depth; }</code></pre>",
           "options": [
             "A. int level_size = q.size(); depth++;",
             "B. int level_size = 2; depth++;",
@@ -2729,7 +2729,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "阅读以下二叉树的广度优先搜索的代码，横线上应填写（ ）。\nvoid bfs(TreeNode* root){ if(root==NULL) return; queue<TreeNode*> q; q.push(root); while(!q.empty()){ ______ cout<<node->val<<\" \"; if(node->left) q.push(node->left); if(node->right) q.push(node->right); } }",
+          "question": "阅读以下二叉树的广度优先搜索的代码，横线上应填写（ ）。\n<pre><code>void bfs(TreeNode* root){ if(root==NULL) return; queue<TreeNode*> q; q.push(root); while(!q.empty()){ ______ cout<<node->val<<\" \"; if(node->left) q.push(node->left); if(node->right) q.push(node->right); } }</code></pre>",
           "options": [
             "A. TreeNode* node = q.top();",
             "B. TreeNode* node = q.top(); q.pop();",
@@ -2827,7 +2827,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "choice",
           "difficulty": 1,
-          "question": "令 n 是树的节点数目，下列代码实现了树的广度优先遍历，其时间复杂度是（   ）。\nvoid bfs(TreeNode* root) {\nif (!root) return;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nTreeNode* node = q.front();\nq.pop();\ncout << node->val << \" \";\nif (node->left) q.push(node->left);\nif (node->right) q.push(node->right);\n}\n}",
+          "question": "令 n 是树的节点数目，下列代码实现了树的广度优先遍历，其时间复杂度是（   ）。\n<pre><code>void bfs(TreeNode* root) {\nif (!root) return;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nTreeNode* node = q.front();\nq.pop();\ncout << node->val << \" \";\nif (node->left) q.push(node->left);\nif (node->right) q.push(node->right);\n}\n}</code></pre>",
           "options": [
             "A. O(n)",
             "B. O(log n)",
@@ -2925,7 +2925,7 @@ const QUESTION_BANK = {
           "kp": "kp6_08",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码可以正确地按层换行输出二叉树的节点值。\nvoid printByLevel(TreeNode* root) {\nif (!root) return;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nfor (int i = 0; i < q.size(); ++i) {\nTreeNode* cur = q.front(); q.pop();\ncout << cur->val << \" \";\nif (cur->left) q.push(cur->left);\nif (cur->right) q.push(cur->right);\n}\ncout << endl;\n}\n}",
+          "question": "以下代码可以正确地按层换行输出二叉树的节点值。\n<pre><code>void printByLevel(TreeNode* root) {\nif (!root) return;\nqueue<TreeNode*> q;\nq.push(root);\nwhile (!q.empty()) {\nfor (int i = 0; i < q.size(); ++i) {\nTreeNode* cur = q.front(); q.pop();\ncout << cur->val << \" \";\nif (cur->left) q.push(cur->left);\nif (cur->right) q.push(cur->right);\n}\ncout << endl;\n}\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3062,7 +3062,7 @@ const QUESTION_BANK = {
           "kp": "kp6_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "在二叉排序树（Binary Search Tree, BST）中，假设节点值互不相同。给定如下搜索函数，以下说法一定正确的是（   ）。\nbool find(Node* root, int x) {\nwhile (root) {\nif (root->val == x) return true;\nroot = (x < root->val) ? root->left : root->right;\n}\nreturn false;\n}",
+          "question": "在二叉排序树（Binary Search Tree, BST）中，假设节点值互不相同。给定如下搜索函数，以下说法一定正确的是（   ）。\n<pre><code>bool find(Node* root, int x) {\nwhile (root) {\nif (root->val == x) return true;\nroot = (x < root->val) ? root->left : root->right;\n}\nreturn false;\n}</code></pre>",
           "options": [
             "A. 最坏情况下，访问结点数是 O(log n)",
             "B. 最坏情况下，访问结点数是 O(n)",
@@ -3197,7 +3197,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下动态规划算法的含义与目的是（ ）。\nint function(vector<int>& nums){ int n=nums.size(); if(n==0) return 0; if(n==1) return nums[0]; vector<int> dp(n,0); dp[0]=nums[0]; dp[1]=max(nums[0],nums[1]); for(int i=2;i<n;++i) dp[i]=max(dp[i-1], nums[i]+dp[i-2]); return dp[n-1]; }",
+          "question": "以下动态规划算法的含义与目的是（ ）。\n<pre><code>int function(vector<int>& nums){ int n=nums.size(); if(n==0) return 0; if(n==1) return nums[0]; vector<int> dp(n,0); dp[0]=nums[0]; dp[1]=max(nums[0],nums[1]); for(int i=2;i<n;++i) dp[i]=max(dp[i-1], nums[i]+dp[i-2]); return dp[n-1]; }</code></pre>",
           "options": [
             "A. 计算数组nums中的所有元素的和",
             "B. 计算数组nums中相邻元素的最大和",
@@ -3303,7 +3303,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "青蛙每次能跳1或2步，下面代码计算青蛙跳到第n步台阶有多少种不同跳法。则下列说法，错误的是（ ）。\nint jump_recur(int n){ if(n==1) return 1; if(n==2) return 2; return jump_recur(n-1)+jump_recur(n-2);} int jump_dp(int n){ vector<int> dp(n+1); dp[1]=1; dp[2]=2; for(int i=3;i<=n;++i) dp[i]=dp[i-1]+dp[i-2]; return dp[n];}",
+          "question": "青蛙每次能跳1或2步，下面代码计算青蛙跳到第n步台阶有多少种不同跳法。则下列说法，错误的是（ ）。\n<pre><code>int jump_recur(int n){ if(n==1) return 1; if(n==2) return 2; return jump_recur(n-1)+jump_recur(n-2);} int jump_dp(int n){ vector<int> dp(n+1); dp[1]=1; dp[2]=2; for(int i=3;i<=n;++i) dp[i]=dp[i-1]+dp[i-2]; return dp[n];}</code></pre>",
           "options": [
             "A. 函数jump_recur()采用递归方式。",
             "B. 函数jump_dp()采用动态规划方法。",
@@ -3381,7 +3381,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "阅读以下用动态规划解决的0-1背包问题的函数，假设背包的容量是10kg，假设输入4个物品的重量分别为【见原卷】（单位为kg），每个物品对应的价值分别为【见原卷】，则函数的输出为（ ）。\nint knapsack(int W, vector<int>& weights, vector<int>& values, int n){ vector<vector<int>> dp(n+1, vector<int>(W+1,0)); for(int i=1;i<=n;++i) for(int w=0;w<=W;++w){ if(weights[i-1]<=w) dp[i][w]=max(dp[i-1][w], dp[i-1][w-weights[i-1]]+values[i-1]); else dp[i][w]=dp[i-1][w]; } return dp[n][W]; }",
+          "question": "阅读以下用动态规划解决的0-1背包问题的函数，假设背包的容量是10kg，假设输入4个物品的重量分别为【见原卷】（单位为kg），每个物品对应的价值分别为【见原卷】，则函数的输出为（ ）。\n<pre><code>int knapsack(int W, vector<int>& weights, vector<int>& values, int n){ vector<vector<int>> dp(n+1, vector<int>(W+1,0)); for(int i=1;i<=n;++i) for(int w=0;w<=W;++w){ if(weights[i-1]<=w) dp[i][w]=max(dp[i-1][w], dp[i-1][w-weights[i-1]]+values[i-1]); else dp[i][w]=dp[i-1][w]; } return dp[n][W]; }</code></pre>",
           "options": [
             "A. 90",
             "B. 100",
@@ -3625,7 +3625,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定 n 个物品和一个最大承重为 W 的背包，每个物品只能选择放或不放，目标是总价值最大且总重量不超过 W。关于下面代码，说法正确的是（   ）。\nint knapsack1D(int W, vector<int>& wt, vector<int>& val, int n) {\nvector<int> dp(W+1, 0);\nfor (int i = 0; i < n; ++i) {\nfor (int w = W; w >= wt[i]; --w) {\ndp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\n}\n}\nreturn dp[W];\n}",
+          "question": "给定 n 个物品和一个最大承重为 W 的背包，每个物品只能选择放或不放，目标是总价值最大且总重量不超过 W。关于下面代码，说法正确的是（   ）。\n<pre><code>int knapsack1D(int W, vector<int>& wt, vector<int>& val, int n) {\nvector<int> dp(W+1, 0);\nfor (int i = 0; i < n; ++i) {\nfor (int w = W; w >= wt[i]; --w) {\ndp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\n}\n}\nreturn dp[W];\n}</code></pre>",
           "options": [
             "A. 该算法不能处理背包容量为 0 的情况",
             "B. 外层循环 i 遍历背包容量，内层遍历物品",
@@ -3669,7 +3669,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定 n 个物品和一个最大承重为 W 的背包，每个物品只能选择放或不放，目标是总价值最大且总重量不超过 W，则横线上应填写（   ）。\nint knapsack(int W, vector<int>& wt, vector<int>& val, int n) {\nvector<int> dp(W+1, 0);\nfor (int i = 0; i < n; ++i) {\nfor (int w = W; w >= wt[i]; --w) {\n________________________\n}\n}\nreturn dp[W];\n}",
+          "question": "给定 n 个物品和一个最大承重为 W 的背包，每个物品只能选择放或不放，目标是总价值最大且总重量不超过 W，则横线上应填写（   ）。\n<pre><code>int knapsack(int W, vector<int>& wt, vector<int>& val, int n) {\nvector<int> dp(W+1, 0);\nfor (int i = 0; i < n; ++i) {\nfor (int w = W; w >= wt[i]; --w) {\n________________________\n}\n}\nreturn dp[W];\n}</code></pre>",
           "options": [
             "A. dp[w] = max(dp[w], dp[w] + val[i]);",
             "B. dp[w] = dp[w - wt[i]] + val[i];",
@@ -3689,7 +3689,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码实现了动态规划版本的斐波那契数列计算，其时间复杂度是 O(2^n)。\nint fib_dp(int n) {\nif (n <= 1) return n;\nvector<int> dp(n+1);\ndp[0] = 0; dp[1] = 1;\nfor (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];\nreturn dp[n];\n}",
+          "question": "下面代码实现了动态规划版本的斐波那契数列计算，其时间复杂度是 O(2^n)。\n<pre><code>int fib_dp(int n) {\nif (n <= 1) return n;\nvector<int> dp(n+1);\ndp[0] = 0; dp[1] = 1;\nfor (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];\nreturn dp[n];\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -3831,7 +3831,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "小朋友们去邻里拜年，每个家里有不同数量的糖果。规则是：不能连续进入两个相邻的房子（即不能同时取相邻两家的糖果）。目标是拿到最多糖果。以下是代码实现，请补全横线。\nint visit(vector<int>& nums) {\nif (nums.empty()) return 0;\nint size = nums.size();\nif (size == 1) return nums[0];\nvector<int> dp = vector<int>(size, 0);\ndp[0] = nums[0];\ndp[1] = max(nums[0], nums[1]);\nfor (int i = 2; i < size; i++) {\ndp[i] = ______;\n}\nreturn dp[size - 1];\n}",
+          "question": "小朋友们去邻里拜年，每个家里有不同数量的糖果。规则是：不能连续进入两个相邻的房子（即不能同时取相邻两家的糖果）。目标是拿到最多糖果。以下是代码实现，请补全横线。\n<pre><code>int visit(vector<int>& nums) {\nif (nums.empty()) return 0;\nint size = nums.size();\nif (size == 1) return nums[0];\nvector<int> dp = vector<int>(size, 0);\ndp[0] = nums[0];\ndp[1] = max(nums[0], nums[1]);\nfor (int i = 2; i < size; i++) {\ndp[i] = ______;\n}\nreturn dp[size - 1];\n}</code></pre>",
           "options": [
             "A. dp[i] = dp[i - 1] + nums[i];",
             "B. dp[i] = max(dp[i - 1], dp[i - 2] * nums[i]);",
@@ -3931,7 +3931,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个整数数组 a，每个元素表示一个位置上的数值。要求从数组中选择若干个元素，使得任意两个被选择的元素在原数组中都不相邻，并且所选元素的总和最大。函数 choose(vector<int>& a) 返回能够得到的最大总和，则横线处应填写（  ）。\nint choose(vector<int>& a) {\nif (a.empty()) return 0;\nint n = a.size();\nif (n == 1) return a[0];\nvector<int> dp(n, 0);\ndp[0] = a[0];\ndp[1] = max(a[0], a[1]);\nfor (int i = 2; i < n; ++i) {\ndp[i] = __________________________;\n}\nreturn dp[n - 1];\n}",
+          "question": "给定一个整数数组 a，每个元素表示一个位置上的数值。要求从数组中选择若干个元素，使得任意两个被选择的元素在原数组中都不相邻，并且所选元素的总和最大。函数 choose(vector<int>& a) 返回能够得到的最大总和，则横线处应填写（  ）。\n<pre><code>int choose(vector<int>& a) {\nif (a.empty()) return 0;\nint n = a.size();\nif (n == 1) return a[0];\nvector<int> dp(n, 0);\ndp[0] = a[0];\ndp[1] = max(a[0], a[1]);\nfor (int i = 2; i < n; ++i) {\ndp[i] = __________________________;\n}\nreturn dp[n - 1];\n}</code></pre>",
           "options": [
             "A. dp[i - 1] + a[i]",
             "B. max(dp[i - 1], dp[i - 2] + a[i])",
@@ -3951,7 +3951,7 @@ const QUESTION_BANK = {
           "kp": "kp6_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现 0/1 背包的一维动态规划。第 i 个物品重量为 wt[i]，价值为 val[i]，背包容量为 W。横线处应填写（  ）。\nint knapsack(int W, vector<int>& wt, vector<int>& val) {\nint n = wt.size();\nvector<int> dp(W + 1, 0);\nfor (int i = 0; i < n; ++i) {\nfor (int w = W; w >= wt[i]; --w) {\n__________________________\n}\n}\nreturn dp[W];\n}",
+          "question": "下面代码实现 0/1 背包的一维动态规划。第 i 个物品重量为 wt[i]，价值为 val[i]，背包容量为 W。横线处应填写（  ）。\n<pre><code>int knapsack(int W, vector<int>& wt, vector<int>& val) {\nint n = wt.size();\nvector<int> dp(W + 1, 0);\nfor (int i = 0; i < n; ++i) {\nfor (int w = W; w >= wt[i]; --w) {\n__________________________\n}\n}\nreturn dp[W];\n}</code></pre>",
           "options": [
             "A. dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);",
             "B. dp[w] = max(dp[w - 1], dp[w - wt[i]] + val[i]);",
@@ -4290,7 +4290,7 @@ const QUESTION_BANK = {
           "kp": "kp6_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码使用了辗转相除法求解最大公因数，请在横线处填入（ ），使其能正确实现相应功能。\nint gcd(int a, int b) { while (b != 0) { ______ } return a; }",
+          "question": "以下代码使用了辗转相除法求解最大公因数，请在横线处填入（ ），使其能正确实现相应功能。\n<pre><code>int gcd(int a, int b) { while (b != 0) { ______ } return a; }</code></pre>",
           "options": [
             "A. int temp = b; b = a / b; a = temp;",
             "B. int temp = a; a = b / a; b = temp;",
@@ -5289,7 +5289,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "judge",
           "difficulty": 1,
-          "question": "下列 C++ 代码可以成功编译，并且子类 Child 的实例能通过其成员函数访问父类 Parent 的属性 value。\nclass Parent {\nprivate:\nint value = 100;\n};\nclass Child : public Parent {\npublic:\nint get_private_val() {\nreturn value;\n}\n};",
+          "question": "下列 C++ 代码可以成功编译，并且子类 Child 的实例能通过其成员函数访问父类 Parent 的属性 value。\nclass Parent {\nprivate:\nint value = 100;\n};\nclass Child : public Parent {\npublic:\n<pre><code>int get_private_val() {\nreturn value;\n}\n};</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5365,7 +5365,7 @@ const QUESTION_BANK = {
           "kp": "kp6_12",
           "type": "choice",
           "difficulty": 1,
-          "question": "关于以下代码，说法正确的是（   ）。\nclass Instrument {\npublic:\nvoid play() {\ncout << \"乐器在演奏声音\" << endl;\n}\nvirtual ~Instrument() {}\n};\nclass Piano : public Instrument {\npublic:\nvoid play() override {\ncout << \"钢琴：叮咚叮咚\" << endl;\n}\n};",
+          "question": "关于以下代码，说法正确的是（   ）。\nclass Instrument {\npublic:\n<pre><code>void play() {\ncout << \"乐器在演奏声音\" << endl;\n}\nvirtual ~Instrument() {}\n};\nclass Piano : public Instrument {\npublic:\nvoid play() override {\ncout << \"钢琴：叮咚叮咚\" << endl;\n}\n};</code></pre>",
           "options": [
             "A. 执行代码会输出两行，内容分别为：钢琴：叮咚叮咚 和 吉他：咚咚当当",
             "B. 执行代码会输出两行，内容分别为：乐器在演奏声音 和 乐器在演奏声音",
@@ -5856,7 +5856,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "采用如下代码实现检查输入的字符串括号是否匹配，横线上应填入的代码为（ ）。\nbool is_valid(string s){ stack<char> st; char top; for(char& ch:s){ if(ch=='('||ch=='{'||ch=='['){ st.push(ch); } else { if(st.empty()) return false; ______; if((ch==')'&&top!='(')||(ch=='}'&&top!='{')||(ch==']'&&top!='[')) return false; } } return st.empty(); }",
+          "question": "采用如下代码实现检查输入的字符串括号是否匹配，横线上应填入的代码为（ ）。\n<pre><code>bool is_valid(string s){ stack<char> st; char top; for(char& ch:s){ if(ch=='('||ch=='{'||ch=='['){ st.push(ch); } else { if(st.empty()) return false; ______; if((ch==')'&&top!='(')||(ch=='}'&&top!='{')||(ch==']'&&top!='[')) return false; } } return st.empty(); }</code></pre>",
           "options": [
             "A. top = st.top(); st.pop();",
             "B. st.pop(); top = st.top();",
@@ -5876,7 +5876,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码判断队列的第一个元素是否等于a，并删除该元素，横向上应填写（ ）。\nbool is_front_equal(queue<int>& q, int a){ bool is_equal=false; if(!q.empty()){ ______ } return is_equal; }",
+          "question": "下面代码判断队列的第一个元素是否等于a，并删除该元素，横向上应填写（ ）。\n<pre><code>bool is_front_equal(queue<int>& q, int a){ bool is_equal=false; if(!q.empty()){ ______ } return is_equal; }</code></pre>",
           "options": [
             "A. is_equal = (q.front() == a);",
             "B. is_equal = (q.front() == a); q.pop();",
@@ -5914,7 +5914,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "阅读以下代码，下面哪一项是正确的？\nvoid processData(){ stack<int> s; queue<int> q; for(int i=1;i<=5;++i){ s.push(i); q.push(i);} while(!s.empty()){ cout<<\"Stack pop: \"<<s.top()<<endl; s.pop();} while(!q.empty()){ cout<<\"Queue pop: \"<<q.front()<<endl; q.pop();} }",
+          "question": "阅读以下代码，下面哪一项是正确的？\n<pre><code>void processData(){ stack<int> s; queue<int> q; for(int i=1;i<=5;++i){ s.push(i); q.push(i);} while(!s.empty()){ cout<<\"Stack pop: \"<<s.top()<<endl; s.pop();} while(!q.empty()){ cout<<\"Queue pop: \"<<q.front()<<endl; q.pop();} }</code></pre>",
           "options": [
             "A. 栈s的输出顺序是1 2 3 4 5，队列q的输出顺序是5 4 3 2 1。",
             "B. 栈s的输出顺序是5 4 3 2 1，队列q的输出顺序是1 2 3 4 5。",
@@ -6030,7 +6030,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "以下代码用于检查字符串中的括号是否匹配，横线上应填写（ ）。\nbool isBalanced(string s){ stack<char> st; for(char c:s){ if(c=='('||c=='['||c=='{') st.push(c); else { if(st.empty()) return false; char top=st.top(); st.pop(); if((c==')'&&top!='(')||(c==']'&&top!='[')||(c=='}'&&top!='{')) return false; } } return ______; }",
+          "question": "以下代码用于检查字符串中的括号是否匹配，横线上应填写（ ）。\n<pre><code>bool isBalanced(string s){ stack<char> st; for(char c:s){ if(c=='('||c=='['||c=='{') st.push(c); else { if(st.empty()) return false; char top=st.top(); st.pop(); if((c==')'&&top!='(')||(c==']'&&top!='[')||(c=='}'&&top!='{')) return false; } } return ______; }</code></pre>",
           "options": [
             "A. true",
             "B. false",
@@ -6344,7 +6344,7 @@ const QUESTION_BANK = {
           "kp": "kp6_13",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设循环队列数组长度为 N=7，队空判断条件为 front==rear。入队和出队操作如下：\nconst int N = 7;\nint q[N];\nint front = 3, rear = 3;\nvoid enqueue(int x) { q[rear] = x; rear = (rear + 1) % N; }\nvoid dequeue() { front = (front + 1) % N; }\n依次执行：enqueue(10); enqueue(20); enqueue(30); dequeue(); enqueue(40); dequeue(); enqueue(50);\n最终 (front, rear) 的值是（  ）。",
+          "question": "假设循环队列数组长度为 N=7，队空判断条件为 front==rear。入队和出队操作如下：\nconst int N = 7;\nint q[N];\nint front = 3, rear = 3;\n<pre><code>void enqueue(int x) { q[rear] = x; rear = (rear + 1) % N; }\nvoid dequeue() { front = (front + 1) % N; }\n依次执行：enqueue(10); enqueue(20); enqueue(30); dequeue(); enqueue(40); dequeue(); enqueue(50);\n最终 (front, rear) 的值是（  ）。</code></pre>",
           "options": [
             "A. (5, 1)",
             "B. (4, 0)",

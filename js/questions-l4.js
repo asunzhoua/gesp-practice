@@ -704,7 +704,7 @@ const QUESTION_BANK = {
           "kp": "kp4_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码的描述中，正确的是（  ）。\nvoid n_chars(char c, int n) {\nwhile (n-- > 0) cout << c;\n}\nchar my_char = 'w';\nint times = 5;\nn_chars(my_char, times);",
+          "question": "下面代码的描述中，正确的是（  ）。\n<pre><code>void n_chars(char c, int n) {\nwhile (n-- > 0) cout << c;\n}\nchar my_char = 'w';\nint times = 5;\nn_chars(my_char, times);</code></pre>",
           "options": [
             "代码执行结束后，times 的值为 0",
             "n 是形参，times 是实参",
@@ -1171,7 +1171,7 @@ const QUESTION_BANK = {
           "kp": "kp4_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "运行如下代码会输出（  ）。\nint value = 100;\nvoid print1() {\nint value = 50;\ncout << value << \" \";\ncout << ::value << \" \";\n}\nvoid print2() {\ncout << value << \" \";\n}\nprint1();\nprint2();",
+          "question": "运行如下代码会输出（  ）。\nint value = 100;\n<pre><code>void print1() {\nint value = 50;\ncout << value << \" \";\ncout << ::value << \" \";\n}\nvoid print2() {\ncout << value << \" \";\n}\nprint1();\nprint2();</code></pre>",
           "options": [
             "100 100 100",
             "50 50 50",
@@ -2467,7 +2467,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定以下代码，执行上述代码后，变量 a 的值为（  ）。\nvoid func(int& x) { x = x * 2; }\nint a = 5;\nfunc(a);",
+          "question": "给定以下代码，执行上述代码后，变量 a 的值为（  ）。\n<pre><code>void func(int& x) { x = x * 2; }\nint a = 5;\nfunc(a);</code></pre>",
           "options": [
             "5",
             "10",
@@ -2563,7 +2563,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的函数接收一个行列的二维数组并输出其中元素，则横线上不能填写（  ）。\nvoid printArray(________) {\nfor (int i = 0; i < 3; ++i)\nfor (int j = 0; j < 4; ++j)\nstd::cout << arr[i][j] << \" \";\n}",
+          "question": "下面的函数接收一个行列的二维数组并输出其中元素，则横线上不能填写（  ）。\n<pre><code>void printArray(________) {\nfor (int i = 0; i < 3; ++i)\nfor (int j = 0; j < 4; ++j)\nstd::cout << arr[i][j] << \" \";\n}</code></pre>",
           "options": [
             "int arr[3][4]",
             "int arr[][4]",
@@ -2659,7 +2659,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面代码将二维数组arr 传递给函数f ，函数内部用arr[i][j] 访问元素，函数参数声明为int arr[][4] 是错误的。\nvoid f(int arr[][4], int rows) {\n// 访问 arr[i][j]\n}",
+          "question": "下面代码将二维数组arr 传递给函数f ，函数内部用arr[i][j] 访问元素，函数参数声明为int arr[][4] 是错误的。\n<pre><code>void f(int arr[][4], int rows) {\n// 访问 arr[i][j]\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -2697,7 +2697,7 @@ const QUESTION_BANK = {
           "kp": "kp4_04",
           "type": "judge",
           "difficulty": 1,
-          "question": "执行下面程序后，变量 a 的值会变成 15 。\nvoid add(int &x){\nx += 10;\n}\nint a = 5;\nadd(a);",
+          "question": "执行下面程序后，变量 a 的值会变成 15 。\n<pre><code>void add(int &x){\nx += 10;\n}\nint a = 5;\nadd(a);</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4172,7 +4172,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码执行以后输出的是（  ）。\nint fib(int n) {\nint i, f[n]={0, 1};\nfor(int i=2; i<=n; i++)\nf[i]=f[i-1]+f[i-2];\nreturn f[n];\n}",
+          "question": "下面C++代码执行以后输出的是（  ）。\n<pre><code>int fib(int n) {\nint i, f[n]={0, 1};\nfor(int i=2; i<=n; i++)\nf[i]=f[i-1]+f[i-2];\nreturn f[n];\n}</code></pre>",
           "options": [
             "0",
             "1",
@@ -4192,7 +4192,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++函数中采用的算法是（  ）。\nint fib(int n) {\nint i, f[n]={0, 1};\nfor(int i=2; i<=n; i++)\nf[i]=f[i-1]+f[i-2];\nreturn f[n];\n}",
+          "question": "下面C++函数中采用的算法是（  ）。\n<pre><code>int fib(int n) {\nint i, f[n]={0, 1};\nfor(int i=2; i<=n; i++)\nf[i]=f[i-1]+f[i-2];\nreturn f[n];\n}</code></pre>",
           "options": [
             "递推",
             "递归",
@@ -4288,7 +4288,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码采用递推算法来实现整数的阶乘，则横线上应填写（  ）。\nint factorial(int n) {\nint result = 1;\nfor (int i = 2; i <= n; i++) {\n________  // 在此处填入代码\n}\nreturn result;\n}",
+          "question": "下面代码采用递推算法来实现整数的阶乘，则横线上应填写（  ）。\n<pre><code>int factorial(int n) {\nint result = 1;\nfor (int i = 2; i <= n; i++) {\n________  // 在此处填入代码\n}\nreturn result;\n}</code></pre>",
           "options": [
             "result *= i;",
             "result += i;",
@@ -4326,7 +4326,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下代码用递推法求斐波那契数列的第 n 项，时间复杂度为指数级。\nint fibonacci(int n) {\nif (n == 0) return 0;\nif (n == 1) return 1;\nint f0 = 0, f1 = 1, current;\nfor (int i = 2; i <= n; i++) {\ncurrent = f1 + f2;\nf0 = f1; f1 = current;\n}\nreturn current;\n}",
+          "question": "以下代码用递推法求斐波那契数列的第 n 项，时间复杂度为指数级。\n<pre><code>int fibonacci(int n) {\nif (n == 0) return 0;\nif (n == 1) return 1;\nint f0 = 0, f1 = 1, current;\nfor (int i = 2; i <= n; i++) {\ncurrent = f1 + f2;\nf0 = f1; f1 = current;\n}\nreturn current;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4344,7 +4344,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码采用递推算法来计算斐波那契数列，则横线上应填写（  ）。\nint fib(int n) {\nif (n == 0 || n == 1) return n;\nint f1 = 0, f2 = 1, result = 0;\nfor (int i = 2; i <= n; i++) {\n________  // 在此处填入代码\n}\nreturn result;\n}",
+          "question": "下面代码采用递推算法来计算斐波那契数列，则横线上应填写（  ）。\n<pre><code>int fib(int n) {\nif (n == 0 || n == 1) return n;\nint f1 = 0, f2 = 1, result = 0;\nfor (int i = 2; i <= n; i++) {\n________  // 在此处填入代码\n}\nreturn result;\n}</code></pre>",
           "options": [
             "result = f1 + f2;\nf1 = f2;\nf2 = result;",
             "result += f1 + f2;\nf1 = f2;\nf2 = result;",
@@ -4382,7 +4382,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨正在爬楼梯，需要爬 n 阶才能到达楼顶。如果每次可以爬 1 个或 2 个台阶，下面代码采用递推算法来计算一共有多少种不同的方法可以爬到楼顶，则横线上应填写（  ）。\nint f(int n) {\nif (n == 1 || n == 2) return n;\nint f1 = 1, f2 = 2, res = 0;\nfor (int i = 3; i <= n; i++) {\n________  // 在此处填入代码\n}\nreturn res;\n}",
+          "question": "小杨正在爬楼梯，需要爬 n 阶才能到达楼顶。如果每次可以爬 1 个或 2 个台阶，下面代码采用递推算法来计算一共有多少种不同的方法可以爬到楼顶，则横线上应填写（  ）。\n<pre><code>int f(int n) {\nif (n == 1 || n == 2) return n;\nint f1 = 1, f2 = 2, res = 0;\nfor (int i = 3; i <= n; i++) {\n________  // 在此处填入代码\n}\nreturn res;\n}</code></pre>",
           "options": [
             "res += f1 + f2;\nf1 = f2;\nf2 = res;",
             "res = f1 + f2;\nf1 = f2;\nf2 = res;",
@@ -4440,7 +4440,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下程序中使用了递推方式计算阶乘（20），计算结果正确。\nint factorial(int n) {\nint res = 1;\nfor (int i = 0; i < n; ++i) {\nres *= i;\n}\nreturn res;\n}",
+          "question": "以下程序中使用了递推方式计算阶乘（20），计算结果正确。\n<pre><code>int factorial(int n) {\nint res = 1;\nfor (int i = 0; i < n; ++i) {\nres *= i;\n}\nreturn res;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4458,7 +4458,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨正在爬楼梯，需要 n 阶才能到达楼顶，每次可以爬 1 阶或 2 阶，求小杨有多少种不同的方法可以爬到楼顶，横线上应填写（  ）。\nint climbStairs(int n) {\nif (n <= 2) return n;\nint prev2 = 1;\nint prev1 = 2;\nint current = 0;\nfor (int i = 3; i <= n; ++i) {\n________________    // 此处填入代码\n}\nreturn current;\n}",
+          "question": "小杨正在爬楼梯，需要 n 阶才能到达楼顶，每次可以爬 1 阶或 2 阶，求小杨有多少种不同的方法可以爬到楼顶，横线上应填写（  ）。\n<pre><code>int climbStairs(int n) {\nif (n <= 2) return n;\nint prev2 = 1;\nint prev1 = 2;\nint current = 0;\nfor (int i = 3; i <= n; ++i) {\n________________    // 此处填入代码\n}\nreturn current;\n}</code></pre>",
           "options": [
             "prev2 = prev1; prev1 = current; current = prev1 + prev2;",
             "current = prev1 + prev2; prev2 = prev1; prev1 = current;",
@@ -4496,7 +4496,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定函数 climbStairs(int n) 的定义如下，则 climbStairs(5) 的返回的值是（  ）。\nint climbStairs(int n) {\nif(n <= 2) return n;\nint a = 1, b = 2;\nfor(int i = 3; i <= n; i++) {\nint temp = a + b;\na = b;\nb = temp;\n}\nreturn b;\n}",
+          "question": "给定函数 climbStairs(int n) 的定义如下，则 climbStairs(5) 的返回的值是（  ）。\n<pre><code>int climbStairs(int n) {\nif(n <= 2) return n;\nint a = 1, b = 2;\nfor(int i = 3; i <= n; i++) {\nint temp = a + b;\na = b;\nb = temp;\n}\nreturn b;\n}</code></pre>",
           "options": [
             "5",
             "8",
@@ -4554,7 +4554,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "执行 climb(6) 的返回值为（ ）。\nint climb(int n){\nif(n <= 2) return n;\nint a = 1, b = 2, c = 0;\nfor(int i = 3; i <= n; i++){\nc = a + b;\na = b;\nb = c;\n}\nreturn c;\n}",
+          "question": "执行 climb(6) 的返回值为（ ）。\n<pre><code>int climb(int n){\nif(n <= 2) return n;\nint a = 1, b = 2, c = 0;\nfor(int i = 3; i <= n; i++){\nc = a + b;\na = b;\nb = c;\n}\nreturn c;\n}</code></pre>",
           "options": [
             "8",
             "13",
@@ -4574,7 +4574,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面用递推方式计算斐波那契数列第 n 项的程序，时间复杂度是 O(2ⁿ) 。\nint fib(int n) {\nif (n <= 1) return n;\nint f0 = 0, f1 = 1, cur = 0;\nfor (int i = 2; i <= n; i++) {\ncur = f0 + f1;\nf0 = f1;\nf1 = cur;\n}\nreturn cur;\n}",
+          "question": "下面用递推方式计算斐波那契数列第 n 项的程序，时间复杂度是 O(2ⁿ) 。\n<pre><code>int fib(int n) {\nif (n <= 1) return n;\nint f0 = 0, f1 = 1, cur = 0;\nfor (int i = 2; i <= n; i++) {\ncur = f0 + f1;\nf0 = f1;\nf1 = cur;\n}\nreturn cur;\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -4592,7 +4592,7 @@ const QUESTION_BANK = {
           "kp": "kp4_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨的机器人正在能量踏板上跳跃，踏板编号为 1 到 n。跳到第 n 块踏板的方案数满足递推式 f(n)=f(n-1)+f(n-2)，若 f(1)=1、f(2)=2，则运行以下代码计算 jump(5) 的结果是（  ）。\nint jump(int n) {\nif (n <= 2) return n;\nint a = 1, b = 2, c = 0;\nfor (int i = 3; i <= n; i++) {\nc = a + b;\na = b;\nb = c;\n}\nreturn c;\n}",
+          "question": "小杨的机器人正在能量踏板上跳跃，踏板编号为 1 到 n。跳到第 n 块踏板的方案数满足递推式 f(n)=f(n-1)+f(n-2)，若 f(1)=1、f(2)=2，则运行以下代码计算 jump(5) 的结果是（  ）。\n<pre><code>int jump(int n) {\nif (n <= 2) return n;\nint a = 1, b = 2, c = 0;\nfor (int i = 3; i <= n; i++) {\nc = a + b;\na = b;\nb = c;\n}\nreturn c;\n}</code></pre>",
           "options": [
             "5",
             "8",
@@ -5146,7 +5146,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现了冒泡排序函数，则横线上应填写（  ）。\nint bubble_sort(vector<int> &arr) {\nfor (int i = arr.size() - 1; i > 0; i--) {\nbool flag = false;\n________ {  // 在此处填入代码\nif (arr[j] > arr[j + 1]) {\nswap(arr, i, j);\nflag = true;\n}\n}\nif (!flag) break;\n}\n}",
+          "question": "下面代码实现了冒泡排序函数，则横线上应填写（  ）。\n<pre><code>int bubble_sort(vector<int> &arr) {\nfor (int i = arr.size() - 1; i > 0; i--) {\nbool flag = false;\n________ {  // 在此处填入代码\nif (arr[j] > arr[j + 1]) {\nswap(arr, i, j);\nflag = true;\n}\n}\nif (!flag) break;\n}\n}</code></pre>",
           "options": [
             "for (int j = 0; j < arr.size() - 1; j++)",
             "for (int j = arr.size() - 1; j > 0; j--)",
@@ -5166,7 +5166,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现了插入排序函数（升序），则横线上应填写（  ）。\nvoid insertion_sort(vector<int> &nums) {\nfor (int i = 1; i < nums.size(); i++) {\nint base = nums[i], j = i - 1;\n________ {  // 在此处填入代码\nnums[j + 1] = nums[j];\nj--;\n}\nnums[j + 1] = base;\n}\n}",
+          "question": "下面代码实现了插入排序函数（升序），则横线上应填写（  ）。\n<pre><code>void insertion_sort(vector<int> &nums) {\nfor (int i = 1; i < nums.size(); i++) {\nint base = nums[i], j = i - 1;\n________ {  // 在此处填入代码\nnums[j + 1] = nums[j];\nj--;\n}\nnums[j + 1] = base;\n}\n}</code></pre>",
           "options": [
             "while (j >= 0 && nums[j] > base)",
             "while (j > 0 && nums[j] > base)",
@@ -5246,7 +5246,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现了插入排序函数，则横线上应填写（  ）。\nvoid insertion_sort(vector<int> &nums) {\nfor (int i = 1; i < nums.size(); i++) {\n________ {  // 在此处填入代码\nwhile (j >= 0 && nums[j] > base)\nnums[j + 1] = nums[j];\nj--;\n}\nnums[j + 1] = base;\n}\n}",
+          "question": "下面代码实现了插入排序函数，则横线上应填写（  ）。\n<pre><code>void insertion_sort(vector<int> &nums) {\nfor (int i = 1; i < nums.size(); i++) {\n________ {  // 在此处填入代码\nwhile (j >= 0 && nums[j] > base)\nnums[j + 1] = nums[j];\nj--;\n}\nnums[j + 1] = base;\n}\n}</code></pre>",
           "options": [
             "int base = nums[i], j = i - 1;",
             "int base = nums[i], j = i;",
@@ -5388,7 +5388,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "为了提高冒泡排序的效率，如果某轮“冒泡”中没有执行任何交换操作，说明数组已经完成排序，可直接返回结果，则两条横线上分别应该填写（  ）。\nvoid bubbleSortWithFlag(vector<int> &nums) {\nfor (int i = nums.size() - 1; i > 0; i--) {\nbool flag;\n________________    // 第一条横线\nfor (int j = 0; j < i; j++) {\nif (nums[j] > nums[j + 1]) {\nswap(nums[j], nums[j + 1]);\n___________________________    // 第二条横线\n}\n}\nif (!flag) break;\n}\n}",
+          "question": "为了提高冒泡排序的效率，如果某轮“冒泡”中没有执行任何交换操作，说明数组已经完成排序，可直接返回结果，则两条横线上分别应该填写（  ）。\n<pre><code>void bubbleSortWithFlag(vector<int> &nums) {\nfor (int i = nums.size() - 1; i > 0; i--) {\nbool flag;\n________________    // 第一条横线\nfor (int j = 0; j < i; j++) {\nif (nums[j] > nums[j + 1]) {\nswap(nums[j], nums[j + 1]);\n___________________________    // 第二条横线\n}\n}\nif (!flag) break;\n}\n}</code></pre>",
           "options": [
             "flag = false; flag = false",
             "flag = false; flag = true",
@@ -5450,7 +5450,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码试图实现选择排序，使其能对数组 nums 排序为升序，则横线上应分别填写（   ）。\nvoid selectionSort(vector<int>& nums) {\nint n = nums.size();\nfor (int i = 0; i < n - 1; ++i) {\nint minIndex = i;\nfor (int j = i + 1; j < n; ++j) {\nif ( __________ ) {     // 第一条横线\nminIndex = j;\n}\n}\n____________________; // 第二条横线\n}\n}",
+          "question": "下面代码试图实现选择排序，使其能对数组 nums 排序为升序，则横线上应分别填写（   ）。\n<pre><code>void selectionSort(vector<int>& nums) {\nint n = nums.size();\nfor (int i = 0; i < n - 1; ++i) {\nint minIndex = i;\nfor (int j = i + 1; j < n; ++j) {\nif ( __________ ) {     // 第一条横线\nminIndex = j;\n}\n}\n____________________; // 第二条横线\n}\n}</code></pre>",
           "options": [
             "nums[j] < nums[minIndex]; swap(nums[i], nums[minIndex])",
             "nums[j] > nums[minIndex]; swap(nums[i], nums[minIndex])",
@@ -5470,7 +5470,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序实现插入排序（升序排序），则横线上应分别填写（   ）。\nvoid insertionSort(int arr[], int n) {\nfor (int i = 1; i < n; i++) {\nint key = arr[i];\nint j = i - 1;\nwhile ( j >= 0 && ____________________ ) { // 第一条横线\narr[j + 1] = arr[j];\nj--;\n}\n____________________; // 第二条横线\n}\n}",
+          "question": "下面程序实现插入排序（升序排序），则横线上应分别填写（   ）。\n<pre><code>void insertionSort(int arr[], int n) {\nfor (int i = 1; i < n; i++) {\nint key = arr[i];\nint j = i - 1;\nwhile ( j >= 0 && ____________________ ) { // 第一条横线\narr[j + 1] = arr[j];\nj--;\n}\n____________________; // 第二条横线\n}\n}</code></pre>",
           "options": [
             "arr[j] > key; arr[j + 1] = key",
             "arr[j] < key; arr[j + 1] = key",
@@ -5550,7 +5550,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的函数 selectTopK() 实现从 n 个学生中选出前 k 名成绩最好的学生颁发奖学金（不需要对所有学生完全排序，只需要找出前 k 名），则横线上应填写（   ）。\nstruct Student { string name; int score; };\nvoid selectTopK(Student students[], int n, int k) {\nfor (int i = 0; i < k; i++) {\nint maxIdx = i;\nfor (____________________) {    // 此处填入代码\nif (students[j].score > students[maxIdx].score) {\nmaxIdx = j;\n}\n}\nif (maxIdx != i) {\nStudent temp = students[i];\nstudents[i] = students[maxIdx];\nstudents[maxIdx] = temp;\n}\n}\n}",
+          "question": "下面的函数 selectTopK() 实现从 n 个学生中选出前 k 名成绩最好的学生颁发奖学金（不需要对所有学生完全排序，只需要找出前 k 名），则横线上应填写（   ）。\nstruct Student { string name; int score; };\n<pre><code>void selectTopK(Student students[], int n, int k) {\nfor (int i = 0; i < k; i++) {\nint maxIdx = i;\nfor (____________________) {    // 此处填入代码\nif (students[j].score > students[maxIdx].score) {\nmaxIdx = j;\n}\n}\nif (maxIdx != i) {\nStudent temp = students[i];\nstudents[i] = students[maxIdx];\nstudents[maxIdx] = temp;\n}\n}\n}</code></pre>",
           "options": [
             "int j = 0; j < n; j++",
             "int j = i + 1; j < n; j++",
@@ -5570,7 +5570,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "某游戏的排行榜系统需要实时更新玩家分数。每次只有一个玩家的分数发生变化，排行榜已经是按分数降序排列的。现在需要将更新后的玩家调整到正确位置。下面的函数 updateRanking() 要实现上述功能，则两处横线上应分别填写（   ）。\nstruct Player { string name; int score; };\nvoid updateRanking(Player players[], int size, int playerIdx) {\nPlayer updatedPlayer = players[playerIdx];\nif (playerIdx > 0 && updatedPlayer.score > players[playerIdx - 1].score) {\nint i = playerIdx;\nwhile (____________________) {  // 第一条横线\nplayers[i] = players[i - 1];\ni--;\n}\nplayers[i] = updatedPlayer;\n}\nelse if (playerIdx < size - 1 && updatedPlayer.score < players[playerIdx + 1].score) {\nint i = playerIdx;\nwhile (____________________) {  // 第二条横线\nplayers[i] = players[i + 1];\ni++;\n}\nplayers[i] = updatedPlayer;\n}\n}",
+          "question": "某游戏的排行榜系统需要实时更新玩家分数。每次只有一个玩家的分数发生变化，排行榜已经是按分数降序排列的。现在需要将更新后的玩家调整到正确位置。下面的函数 updateRanking() 要实现上述功能，则两处横线上应分别填写（   ）。\nstruct Player { string name; int score; };\n<pre><code>void updateRanking(Player players[], int size, int playerIdx) {\nPlayer updatedPlayer = players[playerIdx];\nif (playerIdx > 0 && updatedPlayer.score > players[playerIdx - 1].score) {\nint i = playerIdx;\nwhile (____________________) {  // 第一条横线\nplayers[i] = players[i - 1];\ni--;\n}\nplayers[i] = updatedPlayer;\n}\nelse if (playerIdx < size - 1 && updatedPlayer.score < players[playerIdx + 1].score) {\nint i = playerIdx;\nwhile (____________________) {  // 第二条横线\nplayers[i] = players[i + 1];\ni++;\n}\nplayers[i] = updatedPlayer;\n}\n}</code></pre>",
           "options": [
             "i > 0 && updatedPlayer.score > players[i - 1].score ; i < size - 1 && updatedPlayer.score < players[i + 1].score",
             "i < size - 1 && updatedPlayer.score < players[i + 1].score ; i > 0 && updatedPlayer.score > players[i - 1].score",
@@ -5590,7 +5590,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "judge",
           "difficulty": 1,
-          "question": "下面这段代码实现了选择排序算法。\nvoid sort(int a[], int n) {\nfor (int i = 1; i < n; i++) {\nint x = a[i];\nint j = i - 1;\nwhile (j >= 0 && a[j] > x) {\na[j + 1] = a[j];\nj--;\n}\na[j + 1] = x;\n}\n}",
+          "question": "下面这段代码实现了选择排序算法。\n<pre><code>void sort(int a[], int n) {\nfor (int i = 1; i < n; i++) {\nint x = a[i];\nint j = i - 1;\nwhile (j >= 0 && a[j] > x) {\na[j + 1] = a[j];\nj--;\n}\na[j + 1] = x;\n}\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5628,7 +5628,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码试图把数组按升序进行“插入排序”，横线处应填写（ ）。\nvoid ins(int a[], int n){\nfor(int i = 1; i < n; i++){\nint key = a[i];\nint j = i-1;\nwhile(j >= 0 && __________){\na[j+1] = a[j];\nj--;\n}\na[j+1] = key;\n}\n}",
+          "question": "下面代码试图把数组按升序进行“插入排序”，横线处应填写（ ）。\n<pre><code>void ins(int a[], int n){\nfor(int i = 1; i < n; i++){\nint key = a[i];\nint j = i-1;\nwhile(j >= 0 && __________){\na[j+1] = a[j];\nj--;\n}\na[j+1] = key;\n}\n}</code></pre>",
           "options": [
             "a[j] < key",
             "a[j] > key",
@@ -5648,7 +5648,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下列函数实现排行榜中单个元素的位置调整（类似插入排序的相邻搬移）。当某玩家分数增加，需将其向前移动时，while 循环的条件应为（ ）。\nstruct Player{ int score; };\nvoid up(Player players[], int n, int idx){\nPlayer cur = players[idx];\nint i = idx;\nwhile( ____________________ ){\nplayers[i] = players[i-1];\ni--;\n}\nplayers[i] = cur;\n}",
+          "question": "下列函数实现排行榜中单个元素的位置调整（类似插入排序的相邻搬移）。当某玩家分数增加，需将其向前移动时，while 循环的条件应为（ ）。\nstruct Player{ int score; };\n<pre><code>void up(Player players[], int n, int idx){\nPlayer cur = players[idx];\nint i = idx;\nwhile( ____________________ ){\nplayers[i] = players[i-1];\ni--;\n}\nplayers[i] = cur;\n}</code></pre>",
           "options": [
             "i > 0 && cur.score > players[i-1].score",
             "i > 0 && cur.score < players[i-1].score",
@@ -5688,7 +5688,7 @@ const QUESTION_BANK = {
           "kp": "kp4_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码使用某种排序算法，将数组中的元素按从小到大排序。这段代码使用的排序算法是（  ）。\nvoid mystery_sort(double arr[], int n) {\nfor (int i = 0; i < n - 1; i++) {\nint minPos = i;\nfor (int j = i + 1; j < n; j++) {\nif (arr[j] < arr[minPos]) {\nminPos = j;\n}\n}\ndouble temp = arr[i];\narr[i] = arr[minPos];\narr[minPos] = temp;\n}\n}",
+          "question": "下面代码使用某种排序算法，将数组中的元素按从小到大排序。这段代码使用的排序算法是（  ）。\n<pre><code>void mystery_sort(double arr[], int n) {\nfor (int i = 0; i < n - 1; i++) {\nint minPos = i;\nfor (int j = i + 1; j < n; j++) {\nif (arr[j] < arr[minPos]) {\nminPos = j;\n}\n}\ndouble temp = arr[i];\narr[i] = arr[minPos];\narr[minPos] = temp;\n}\n}</code></pre>",
           "options": [
             "冒泡排序",
             "插入排序",
@@ -5865,7 +5865,7 @@ const QUESTION_BANK = {
           "kp": "kp4_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下代码，其时间复杂度为（  ）。\nint cellRecur(int n) {\nif (n == 1) return 1;\nreturn cellRecur(n - 1) + cellRecur(n - 1) + 1;\n}",
+          "question": "给定如下代码，其时间复杂度为（  ）。\n<pre><code>int cellRecur(int n) {\nif (n == 1) return 1;\nreturn cellRecur(n - 1) + cellRecur(n - 1) + 1;\n}</code></pre>",
           "options": [
             "O(n)",
             "O(2^n)",
@@ -5921,7 +5921,7 @@ const QUESTION_BANK = {
           "kp": "kp4_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下算法，其时间复杂度为（  ）。\nbool f(int arr[], int n, int target) {\nfor (int i = 0; i < (1 << n); i++) {\nint sum = 0;\nfor (int j = 0; j < n; j++) {\nif (i & (1 << j)) sum += arr[j];\n}\nif (sum == target) return true;\n}\nreturn false;\n}",
+          "question": "给定如下算法，其时间复杂度为（  ）。\n<pre><code>bool f(int arr[], int n, int target) {\nfor (int i = 0; i < (1 << n); i++) {\nint sum = 0;\nfor (int j = 0; j < n; j++) {\nif (i & (1 << j)) sum += arr[j];\n}\nif (sum == target) return true;\n}\nreturn false;\n}</code></pre>",
           "options": [
             "O(n^2)",
             "O(n x 2^n)",
@@ -5977,7 +5977,7 @@ const QUESTION_BANK = {
           "kp": "kp4_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下算法，其时间复杂度为（  ）。\nbool f(int arr[], int n, int target) {\nfor (int i = 0; i < n; i++) {\nint sum = 0;\nfor (int j = 0; j < n; j++) {\nif (i & (1 << j)) sum += arr[j];\n}\nif (sum == target) return true;\n}\nreturn false;\n}",
+          "question": "给定如下算法，其时间复杂度为（  ）。\n<pre><code>bool f(int arr[], int n, int target) {\nfor (int i = 0; i < n; i++) {\nint sum = 0;\nfor (int j = 0; j < n; j++) {\nif (i & (1 << j)) sum += arr[j];\n}\nif (sum == target) return true;\n}\nreturn false;\n}</code></pre>",
           "options": [
             "O(n)",
             "O(n²)",
@@ -5997,7 +5997,7 @@ const QUESTION_BANK = {
           "kp": "kp4_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下述斐波那契数列计算的时间复杂度是（   ）。\nint fibonacci(int n) {\nif (n == 0) return 0;\nif (n == 1) return 1;\nreturn fibonacci(n - 1) + fibonacci(n - 2);\n}",
+          "question": "下述斐波那契数列计算的时间复杂度是（   ）。\n<pre><code>int fibonacci(int n) {\nif (n == 0) return 0;\nif (n == 1) return 1;\nreturn fibonacci(n - 1) + fibonacci(n - 2);\n}</code></pre>",
           "options": [
             "O(n)",
             "O(n²)",
@@ -6057,7 +6057,7 @@ const QUESTION_BANK = {
           "kp": "kp4_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下算法，其时间复杂度为（  ）。\nbool f(int arr[], int n, int target) {\nfor (int i = 0; i < n; i++) {\nint sum = 0;\nfor (int j = 0; j < n; j++) {\nif (i & (1 << j)) sum += arr[j];\n}\nif (sum == target) return true;\n}\nreturn false;\n}",
+          "question": "给定如下算法，其时间复杂度为（  ）。\n<pre><code>bool f(int arr[], int n, int target) {\nfor (int i = 0; i < n; i++) {\nint sum = 0;\nfor (int j = 0; j < n; j++) {\nif (i & (1 << j)) sum += arr[j];\n}\nif (sum == target) return true;\n}\nreturn false;\n}</code></pre>",
           "options": [
             "O(n)",
             "O(n²)",

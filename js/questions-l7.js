@@ -1703,7 +1703,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 schedule 函数（按结束时间排序的活动选择贪心）的时间复杂度为(  )。\nint schedule(int n, activity* p) { sort(p,p+n,compare); int cnt=0,end=0; for(i=0;i<n;i++) if(p[i].start>=end){end=p[i].end;cnt++;} return cnt; }",
+          "question": "下面 schedule 函数（按结束时间排序的活动选择贪心）的时间复杂度为(  )。\n<pre><code>int schedule(int n, activity* p) { sort(p,p+n,compare); int cnt=0,end=0; for(i=0;i<n;i++) if(p[i].start>=end){end=p[i].end;cnt++;} return cnt; }</code></pre>",
           "options": [
             "O(n)",
             "O(log n)",
@@ -1723,7 +1723,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 search 函数（二分查找）的平均时间复杂度为(  )。\nint search(int n,int*p,int target){ int low=0,high=n; while(low<=high){ int middle=(low+high)/2; if(target==p[middle])return middle; else if(target>p[middle])low=middle+1; else high=middle-1; } return -1; }",
+          "question": "下面 search 函数（二分查找）的平均时间复杂度为(  )。\n<pre><code>int search(int n,int*p,int target){ int low=0,high=n; while(low<=high){ int middle=(low+high)/2; if(target==p[middle])return middle; else if(target>p[middle])low=middle+1; else high=middle-1; } return -1; }</code></pre>",
           "options": [
             "O(n)",
             "O(log n)",
@@ -1743,7 +1743,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 count_triple 函数的时间复杂度为(  )。\nint count_triple(int n){ int cnt=0; for(a=1;a<=n;a++)for(b=a;a+b<=n;b++)for(c=b;a+b+c<=n;c++) if(a*a+b*b==c*c)cnt++; return cnt; }",
+          "question": "下面 count_triple 函数的时间复杂度为(  )。\n<pre><code>int count_triple(int n){ int cnt=0; for(a=1;a<=n;a++)for(b=a;a+b<=n;b++)for(c=b;a+b+c<=n;c++) if(a*a+b*b==c*c)cnt++; return cnt; }</code></pre>",
           "options": [
             "O(n)",
             "O(n²)",
@@ -1879,7 +1879,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 count_triple 函数的时间复杂度为(  )。\nint count_triple(int n){ int cnt=0; for(a=1;a<=n;a++)for(b=a;a+b<=n;b++){ int c=sqrt(a*a+b*b); if(a+b+c>n)break; if(a*a+b*b==c*c)cnt++; } return cnt; }",
+          "question": "下面 count_triple 函数的时间复杂度为(  )。\n<pre><code>int count_triple(int n){ int cnt=0; for(a=1;a<=n;a++)for(b=a;a+b<=n;b++){ int c=sqrt(a*a+b*b); if(a+b+c>n)break; if(a*a+b*b==c*c)cnt++; } return cnt; }</code></pre>",
           "options": [
             "O(n)",
             "O(n²)",
@@ -1995,7 +1995,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 fib 函数的时间复杂度为(  )。\nint fib_rcd[MAX_N];\nint fib(int n){ if(n<=1)return 1; if(fib_rcd[n]>0)return fib_rcd[n]; return fib(n-1)+fib(n-2); }",
+          "question": "下面 fib 函数的时间复杂度为(  )。\nint fib_rcd[MAX_N];\n<pre><code>int fib(int n){ if(n<=1)return 1; if(fib_rcd[n]>0)return fib_rcd[n]; return fib(n-1)+fib(n-2); }</code></pre>",
           "options": [
             "O(n)",
             "O(2ⁿ)",
@@ -2113,7 +2113,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 init_sieve 函数的时间复杂度为(  )。\nvoid init_sieve(int n){ for(i=1;i<=n;i++)sieve[i]=i; for(i=2;i<=n;i++)for(j=i;j<=n;j+=i)sieve[j]--; }",
+          "question": "下面 init_sieve 函数的时间复杂度为(  )。\n<pre><code>void init_sieve(int n){ for(i=1;i<=n;i++)sieve[i]=i; for(i=2;i<=n;i++)for(j=i;j<=n;j+=i)sieve[j]--; }</code></pre>",
           "options": [
             "O(n)",
             "O(n log n)",
@@ -2385,7 +2385,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序（带记忆化的斐波那契）的时间复杂度为（  ）。\nint fib(int n){ if(n<=1)return n; if(rec_fib[n]==0)rec_fib[n]=fib(n-1)+fib(n-2); return rec_fib[n]; }",
+          "question": "下面程序（带记忆化的斐波那契）的时间复杂度为（  ）。\n<pre><code>int fib(int n){ if(n<=1)return n; if(rec_fib[n]==0)rec_fib[n]=fib(n-1)+fib(n-2); return rec_fib[n]; }</code></pre>",
           "options": [
             "O(2ⁿ)",
             "O(φⁿ)，φ=(√5-1)/2",
@@ -2405,7 +2405,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 search 函数（二分查找下界）的平均时间复杂度为(  )。\nint search(int n,int*p,int target){ int low=0,high=n; while(low<high){ int middle=(low+high)/2; if(target==p[middle])return middle; else if(target>p[middle])low=middle+1; else high=middle; } return -1; }",
+          "question": "下面 search 函数（二分查找下界）的平均时间复杂度为(  )。\n<pre><code>int search(int n,int*p,int target){ int low=0,high=n; while(low<high){ int middle=(low+high)/2; if(target==p[middle])return middle; else if(target>p[middle])low=middle+1; else high=middle; } return -1; }</code></pre>",
           "options": [
             "O(n)",
             "O(n log n)",
@@ -2425,7 +2425,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序（欧拉线性筛）的时间复杂度为（  ）。\nvoid sieve(){ for(n=2;n<=MAXN;n++){ if(!isPrime[n])primes[num++]=n; for(i=0;i<num && n*primes[i]<=MAXN;i++){ isPrime[n*primes[i]]=true; if(n%primes[i]==0)break; } } }",
+          "question": "下面程序（欧拉线性筛）的时间复杂度为（  ）。\n<pre><code>void sieve(){ for(n=2;n<=MAXN;n++){ if(!isPrime[n])primes[num++]=n; for(i=0;i<num && n*primes[i]<=MAXN;i++){ isPrime[n*primes[i]]=true; if(n%primes[i]==0)break; } } }</code></pre>",
           "options": [
             "O(n)",
             "O(n log n)",
@@ -2545,7 +2545,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序的时间复杂度为（  ）。\nint rec_fib[MAX_N];\nint fib(int n){ if(n<=1)return n; if(rec_fib[n]!=0)return rec_fib[n]; return fib(n-1)+fib(n-2); }",
+          "question": "下面程序的时间复杂度为（  ）。\nint rec_fib[MAX_N];\n<pre><code>int fib(int n){ if(n<=1)return n; if(rec_fib[n]!=0)return rec_fib[n]; return fib(n-1)+fib(n-2); }</code></pre>",
           "options": [
             "O(φⁿ)，φ=(√5+1)/2",
             "O(2ⁿ)",
@@ -2565,7 +2565,7 @@ const QUESTION_BANK = {
           "kp": "kp7_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面 init_sieve 函数的时间复杂度为(  )。\nvoid init_sieve(int n){ for(i=1;i<=n;i++)sieve[i]=i; for(i=2;i<=n;i++)for(j=i;j<=n;j+=i)sieve[j]--; }",
+          "question": "下面 init_sieve 函数的时间复杂度为(  )。\n<pre><code>void init_sieve(int n){ for(i=1;i<=n;i++)sieve[i]=i; for(i=2;i<=n;i++)for(j=i;j<=n;j+=i)sieve[j]--; }</code></pre>",
           "options": [
             "O(n)",
             "O(n log log n)",
@@ -3378,7 +3378,7 @@ const QUESTION_BANK = {
           "kp": "kp7_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的程序属于哪种算法？\nvoid queen(int n) { for(int i=0;i<8;i++){ pos[n]=i; ... 判断攻击 ... if(n==7)return; else queen(n+1);} }",
+          "question": "下面的程序属于哪种算法？\n<pre><code>void queen(int n) { for(int i=0;i<8;i++){ pos[n]=i; ... 判断攻击 ... if(n==7)return; else queen(n+1);} }</code></pre>",
           "options": [
             "贪心算法",
             "动态规划",
@@ -4892,7 +4892,7 @@ const QUESTION_BANK = {
           "kp": "kp7_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面程序片段主要体现的算法思想是（  ）。\nvoid dfs(int x,int y){ vis[x][y]=true; for(k=0;k<4;k++){ nx=x+dx[k]; ny=y+dy[k]; if(inside(nx,ny)&&a[nx][ny]==1&&!vis[nx][ny]) dfs(nx,ny); } }",
+          "question": "下面程序片段主要体现的算法思想是（  ）。\n<pre><code>void dfs(int x,int y){ vis[x][y]=true; for(k=0;k<4;k++){ nx=x+dx[k]; ny=y+dy[k]; if(inside(nx,ny)&&a[nx][ny]==1&&!vis[nx][ny]) dfs(nx,ny); } }</code></pre>",
           "options": [
             "泛洪算法",
             "二分查找",
@@ -5558,7 +5558,7 @@ const QUESTION_BANK = {
           "kp": "kp7_05",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定两个无向图 G1 和 G2，判断它们是否同构。下面程序中横线处应该给出的是（  ）。\nstring graphHash(vector<vector<int>>& graph){ ... for(neighbor: neighbors){ _______; } ... }",
+          "question": "给定两个无向图 G1 和 G2，判断它们是否同构。下面程序中横线处应该给出的是（  ）。\n<pre><code>string graphHash(vector<vector<int>>& graph){ ... for(neighbor: neighbors){ _______; } ... }</code></pre>",
           "options": [
             "hash += to_string(neighbor);",
             "hash += to_string(neighbors);",

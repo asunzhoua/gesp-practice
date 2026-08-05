@@ -256,7 +256,7 @@ const QUESTION_BANK = {
           "kp": "kp5_01",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码片段用于判断一个正整数是否为素数。请对以下代码进行修改，使其能正确实现相应功能。（ ）\nbool isPrime(int num) {\nif (num < 2) return false;\nfor (int i = 2; i * i < num; ++i)\nif (num % i == 0) return false;\nreturn true;\n}",
+          "question": "下面的代码片段用于判断一个正整数是否为素数。请对以下代码进行修改，使其能正确实现相应功能。（ ）\n<pre><code>bool isPrime(int num) {\nif (num < 2) return false;\nfor (int i = 2; i * i < num; ++i)\nif (num % i == 0) return false;\nreturn true;\n}</code></pre>",
           "options": [
             "A. num < 2 应该改为 num <= 2",
             "B. 循环条件 i * i < num 应该改为 i * i <= num",
@@ -477,7 +477,7 @@ const QUESTION_BANK = {
           "kp": "kp5_02",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码片段用于将两个高精度整数进行相加。请在横线处填入（ ），使其能正确实现相应功能。\nstring add(string num1, string num2) {\nstring result; int carry = 0;\nint i = num1.size()-1, j = num2.size()-1;\nwhile (i>=0 || j>=0 || carry) {\nint x = (i>=0)? num1[i--]-'0':0;\nint y = (j>=0)? num2[j--]-'0':0;\nint sum = x + y + carry;\ncarry = sum / 10;\n____________\n}\nreturn result;\n}",
+          "question": "下面的代码片段用于将两个高精度整数进行相加。请在横线处填入（ ），使其能正确实现相应功能。\n<pre><code>string add(string num1, string num2) {\nstring result; int carry = 0;\nint i = num1.size()-1, j = num2.size()-1;\nwhile (i>=0 || j>=0 || carry) {\nint x = (i>=0)? num1[i--]-'0':0;\nint y = (j>=0)? num2[j--]-'0':0;\nint sum = x + y + carry;\ncarry = sum / 10;\n____________\n}\nreturn result;\n}</code></pre>",
           "options": [
             "A. result = to_string(sum % 10) + result;",
             "B. result = to_string(carry % 10) + result;",
@@ -778,7 +778,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码片段用于在双向链表中删除一个节点。请在横线处填入（ ），使其能正确实现相应功能。\nvoid deleteNode(DoublyListNode*& head, int value) {\nDoublyListNode* current = head;\nwhile (current && current->val != value) current = current->next;\nif (current) {\nif (current->prev) {\n____________  // 在此处填入代码\n} else {\nhead = current->next;\n}\nif (current->next) current->next->prev = current->prev;\ndelete current;\n}\n}",
+          "question": "下面的代码片段用于在双向链表中删除一个节点。请在横线处填入（ ），使其能正确实现相应功能。\n<pre><code>void deleteNode(DoublyListNode*& head, int value) {\nDoublyListNode* current = head;\nwhile (current && current->val != value) current = current->next;\nif (current) {\nif (current->prev) {\n____________  // 在此处填入代码\n} else {\nhead = current->next;\n}\nif (current->next) current->next->prev = current->prev;\ndelete current;\n}\n}</code></pre>",
           "options": [
             "A. if (current->next != nullptr) current->next->prev = current->prev;",
             "B. current->prev->next = current->next;",
@@ -798,7 +798,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设给定链表为：head->1->2->3->4->5->nullptr，若调用 searchValue(head, 5)，函数返回值为（ ）。\nint searchValue(ListNode* head, int target) {\nwhile (head) {\nif (head->val == target) return 1;\nhead = head->next;\n}\nreturn 0;\n}",
+          "question": "假设给定链表为：head->1->2->3->4->5->nullptr，若调用 searchValue(head, 5)，函数返回值为（ ）。\n<pre><code>int searchValue(ListNode* head, int target) {\nwhile (head) {\nif (head->val == target) return 1;\nhead = head->next;\n}\nreturn 0;\n}</code></pre>",
           "options": [
             "A. 返回 1",
             "B. 返回 0",
@@ -856,7 +856,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "小杨想在如上题所述的双向链表中加入一首新歌曲。为了能快速找到该歌曲，他将其作为链表的第一首歌曲，则下面横线上应填入的代码为（  ）。\nvoid insert(dl_node *head, string my_song) {\np = new dl_node;\np->song = my_song;\np->prev = nullptr;\np->next = head;\nif (head != nullptr) { ____________ }  // 在此处填入代码\nhead = p;\n}",
+          "question": "小杨想在如上题所述的双向链表中加入一首新歌曲。为了能快速找到该歌曲，他将其作为链表的第一首歌曲，则下面横线上应填入的代码为（  ）。\n<pre><code>void insert(dl_node *head, string my_song) {\np = new dl_node;\np->song = my_song;\np->prev = nullptr;\np->next = head;\nif (head != nullptr) { ____________ }  // 在此处填入代码\nhead = p;\n}</code></pre>",
           "options": [
             "A. head->next->prev = p;",
             "B. head->next = p;",
@@ -1106,7 +1106,7 @@ const QUESTION_BANK = {
           "kp": "kp5_03",
           "type": "choice",
           "difficulty": 1,
-          "question": "假设双向循环链表包含头尾哨兵结点（不存储实际内容），分别为head和tail。下面代码实现了一个空的双向循环链表，横线上应填的最佳代码是( )。\nvoid InitLinkedList(LinkedList* list) {\nlist->head = new ListNode<T>;\nlist->tail = new ListNode<T>;\n____________  // 在此处填入代码\n};",
+          "question": "假设双向循环链表包含头尾哨兵结点（不存储实际内容），分别为head和tail。下面代码实现了一个空的双向循环链表，横线上应填的最佳代码是( )。\n<pre><code>void InitLinkedList(LinkedList* list) {\nlist->head = new ListNode<T>;\nlist->tail = new ListNode<T>;\n____________  // 在此处填入代码\n};</code></pre>",
           "options": [
             "A. list->head->prev = list->head; list->tail->prev = list->head;",
             "B. list->head->next = list->tail; list->tail->prev = list->head;",
@@ -1595,7 +1595,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "有关下面C++代码说法正确的是（ ）。\nint rc;\nint foo(int x, int y)\n{\nint r;\nif(y == 0)\nr = x;\nelse{\nr = foo(y, x % y);\nrc++;\n}\nreturn r;\n}",
+          "question": "有关下面C++代码说法正确的是（ ）。\nint rc;\n<pre><code>int foo(int x, int y)\n{\nint r;\nif(y == 0)\nr = x;\nelse{\nr = foo(y, x % y);\nrc++;\n}\nreturn r;\n}</code></pre>",
           "options": [
             "A. 如果x小于10，rc值也不会超过20",
             "B. foo可能无限递归",
@@ -1653,7 +1653,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面是根据欧几里得算法编写的函数，它计算的是与的（  ）。\nint gcd(int a, int b) {\nwhile (b != 0) { int temp = b; b = a % b; a = temp; }\nreturn a;\n}",
+          "question": "下面是根据欧几里得算法编写的函数，它计算的是与的（  ）。\n<pre><code>int gcd(int a, int b) {\nwhile (b != 0) { int temp = b; b = a % b; a = temp; }\nreturn a;\n}</code></pre>",
           "options": [
             "A. 最小公倍数",
             "B. 最大公共质因子",
@@ -1673,7 +1673,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "欧几里得算法还可以写成如下形式（递归版）。下面有关说法，错误的是（  ）。\nint gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }",
+          "question": "欧几里得算法还可以写成如下形式（递归版）。下面有关说法，错误的是（  ）。\n<pre><code>int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }</code></pre>",
           "options": [
             "A. 本题的gcd()实现为递归方式",
             "B. 本题的gcd()代码量少，更容易理解其辗转相除的思想",
@@ -1693,7 +1693,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "有如下函数fun ，则fun(20, 12) 的返回值为（  ）。\nint fun(int a, int b) {\nif (a % b == 0) return b;\nelse return fun(b, a % b);\n}",
+          "question": "有如下函数fun ，则fun(20, 12) 的返回值为（  ）。\n<pre><code>int fun(int a, int b) {\nif (a % b == 0) return b;\nelse return fun(b, a % b);\n}</code></pre>",
           "options": [
             "A. 20",
             "B. 12",
@@ -1713,7 +1713,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "两块长方形土地的长宽分别为24和36米，要将它们分成正方形的小块，使正方形的尺寸尽可能大。小杨采用如下的辗转相除函数gcd(24, 36)来求边长，则函数gcd调用顺序为（  ）。\nint gcd(int a, int b) {\nint big = a > b ? a : b;\nint small = a < b ? a : b;\nif (big % small == 0) return small;\nreturn gcd(small, big % small);\n}",
+          "question": "两块长方形土地的长宽分别为24和36米，要将它们分成正方形的小块，使正方形的尺寸尽可能大。小杨采用如下的辗转相除函数gcd(24, 36)来求边长，则函数gcd调用顺序为（  ）。\n<pre><code>int gcd(int a, int b) {\nint big = a > b ? a : b;\nint small = a < b ? a : b;\nif (big % small == 0) return small;\nreturn gcd(small, big % small);\n}</code></pre>",
           "options": [
             "A. gcd(24, 36)、gcd(24, 12)、gcd(12, 0)",
             "B. gcd(24, 36)、gcd(12, 24)、gcd(0, 12)",
@@ -1733,7 +1733,7 @@ const QUESTION_BANK = {
           "kp": "kp5_04",
           "type": "choice",
           "difficulty": 1,
-          "question": "用以下辗转相除法（欧几里得算法）求gcd(84, 60)的步骤中，第二步计算的数是（  ）。\nint gcd(int a, int b) {\nint big = a > b ? a : b;\nint small = a < b ? a : b;\nif (big % small == 0) return small;\nreturn gcd(small, big % small);\n}",
+          "question": "用以下辗转相除法（欧几里得算法）求gcd(84, 60)的步骤中，第二步计算的数是（  ）。\n<pre><code>int gcd(int a, int b) {\nint big = a > b ? a : b;\nint small = a < b ? a : b;\nif (big % small == 0) return small;\nreturn gcd(small, big % small);\n}</code></pre>",
           "options": [
             "A. 84和60",
             "B. 60和24",
@@ -2904,7 +2904,7 @@ const QUESTION_BANK = {
           "kp": "kp5_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于有序list的二分查找，有关说法错误的是（ ）。\nint _binarySearch(vector<int>lst, int Low, int High, int Target)\n{\nif (Low > High)\nreturn -1;\nint Mid = (Low + High) / 2;\nif (Target == lst[Mid])\nreturn Mid;\nelse if (Target < lst[Mid])\nreturn _binarySearch(lst, Low, Mid - 1, Target);\nelse\nreturn _binarySearch(lst, Mid + 1, High, Target);\n}\nint bSearch(vector<int>lst, int Val)\n{\nreturn _binarySearch(lst, 0, lst.size(), Val);\n}",
+          "question": "下面C++代码用于有序list的二分查找，有关说法错误的是（ ）。\n<pre><code>int _binarySearch(vector<int>lst, int Low, int High, int Target)\n{\nif (Low > High)\nreturn -1;\nint Mid = (Low + High) / 2;\nif (Target == lst[Mid])\nreturn Mid;\nelse if (Target < lst[Mid])\nreturn _binarySearch(lst, Low, Mid - 1, Target);\nelse\nreturn _binarySearch(lst, Mid + 1, High, Target);\n}\nint bSearch(vector<int>lst, int Val)\n{\nreturn _binarySearch(lst, 0, lst.size(), Val);\n}</code></pre>",
           "options": [
             "A. 代码采用二分法实现有序list的查找",
             "B. 代码采用分治算法实现有序list的查找",
@@ -3078,7 +3078,7 @@ const QUESTION_BANK = {
           "kp": "kp5_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定一个长度为n的有序数组nums（元素唯一），下面的函数返回target的索引。关于上述函数，描述不正确的是（  ）。\nint binarySearch(...) {\nif (left > right) return -1;\nint middle = left + (right - left) / 2;\nif (nums[middle] == target) return middle;\nelse if (nums[middle] < target) return binarySearch(..., middle+1, right);\nelse return binarySearch(..., left, middle-1);\n}",
+          "question": "给定一个长度为n的有序数组nums（元素唯一），下面的函数返回target的索引。关于上述函数，描述不正确的是（  ）。\n<pre><code>int binarySearch(...) {\nif (left > right) return -1;\nint middle = left + (right - left) / 2;\nif (nums[middle] == target) return middle;\nelse if (nums[middle] < target) return binarySearch(..., middle+1, right);\nelse return binarySearch(..., left, middle-1);\n}</code></pre>",
           "options": [
             "A. 函数采用二分查找，每次根据中点的元素值排除一半搜索区间",
             "B. 函数采用递归求解，每次问题的规模减小一半",
@@ -3174,7 +3174,7 @@ const QUESTION_BANK = {
           "kp": "kp5_07",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面代码实现了二分查找算法，在数组arr找到目标元素target的位置，则横线上能填写的最佳代码是（  ）。\nint binarySearch(int arr[], int left, int right, int target) {\nwhile (left <= right) {\n____________  // 在此处填入代码\nif (arr[mid] == target) return mid;\nelse if (arr[mid] < target) left = mid + 1;\nelse right = mid - 1;\n}\nreturn -1;\n}",
+          "question": "下面代码实现了二分查找算法，在数组arr找到目标元素target的位置，则横线上能填写的最佳代码是（  ）。\n<pre><code>int binarySearch(int arr[], int left, int right, int target) {\nwhile (left <= right) {\n____________  // 在此处填入代码\nif (arr[mid] == target) return mid;\nelse if (arr[mid] < target) left = mid + 1;\nelse right = mid - 1;\n}\nreturn -1;\n}</code></pre>",
           "options": [
             "A. int mid = left + (right - left) / 2;",
             "B. int mid = left;",
@@ -4270,7 +4270,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码以递归方式实现合并排序，并假设merge(int T[], int R[], int s, int m, int t)函数将有序（同样排序规则）的T[s..m]和T[m+1..t]归并到R[s..t]中。横线处应填上代码是( )。\nvoid mergeSort(int SList[], int TList[], int s, int t, int len)\n{\nif (s == t){\nTList[s] = SList[s];\nreturn;\n}\nint *T2 = new int[len]; // 保存中间结果\nint m = (s + t) / 2;\n_______________________________________________________________________________;\nmerge(T2, SList, s, m, t);\ndelete T2;\nreturn ;\n}",
+          "question": "下面C++代码以递归方式实现合并排序，并假设merge(int T[], int R[], int s, int m, int t)函数将有序（同样排序规则）的T[s..m]和T[m+1..t]归并到R[s..t]中。横线处应填上代码是( )。\n<pre><code>void mergeSort(int SList[], int TList[], int s, int t, int len)\n{\nif (s == t){\nTList[s] = SList[s];\nreturn;\n}\nint *T2 = new int[len]; // 保存中间结果\nint m = (s + t) / 2;\n_______________________________________________________________________________;\nmerge(T2, SList, s, m, t);\ndelete T2;\nreturn ;\n}</code></pre>",
           "options": [
             "A. mergeSort(SList, T2, s, m,len), mergeSort(SList, T2, m,t,len)",
             "B. mergeSort(SList, T2, s, m-1,len), mergeSort(SList, T2, m+1,t,len)",
@@ -4290,7 +4290,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++用于对lstA排序，使得偶数在前奇数在后，横线处应填入( )。\nbool isEven(int N)\n{\nreturn N % 2 == 0;\n}\nvoid swap(int &a, int &b)\n{\nint t;\nt=a,a=b,b=t;\nreturn;\n}\nvoid sortA(int lstA[], int n)\n{\nint i,j,t;\nfor (i = n-1; i > 0; i--)\nfor(j = 0; j < i; j++)\nif(__________________________)\nswap(lstA[j], lstA[j+1]);\nreturn;\n}",
+          "question": "下面的C++用于对lstA排序，使得偶数在前奇数在后，横线处应填入( )。\n<pre><code>bool isEven(int N)\n{\nreturn N % 2 == 0;\n}\nvoid swap(int &a, int &b)\n{\nint t;\nt=a,a=b,b=t;\nreturn;\n}\nvoid sortA(int lstA[], int n)\n{\nint i,j,t;\nfor (i = n-1; i > 0; i--)\nfor(j = 0; j < i; j++)\nif(__________________________)\nswap(lstA[j], lstA[j+1]);\nreturn;\n}</code></pre>",
           "options": [
             "A. !isEven(lstA[j]) && isEven(lstA[j+1])",
             "B. isEven(lstA[j]) && !isEven(lstA[j+1])",
@@ -4500,7 +4500,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "为了正确实现快速排序，下面横线上的代码应为（  ）。\nvoid qsort(vector<int>& arr, int left, int right) {\nint i=left, j=right, mid=(left+right)/2;\nint pivot = arr[mid];\ndo {\nwhile (arr[i] < pivot) i++;\nwhile (arr[j] > pivot) j--;\nif (i <= j) { swap(arr[i],arr[j]); i++; j--; }\n} ____________;  // 在此处填入代码\nif (left < j) qsort(arr, left, j);\nif (i < right) qsort(arr, i, right);\n}",
+          "question": "为了正确实现快速排序，下面横线上的代码应为（  ）。\n<pre><code>void qsort(vector<int>& arr, int left, int right) {\nint i=left, j=right, mid=(left+right)/2;\nint pivot = arr[mid];\ndo {\nwhile (arr[i] < pivot) i++;\nwhile (arr[j] > pivot) j--;\nif (i <= j) { swap(arr[i],arr[j]); i++; j--; }\n} ____________;  // 在此处填入代码\nif (left < j) qsort(arr, left, j);\nif (i < right) qsort(arr, i, right);\n}</code></pre>",
           "options": [
             "A. while (i <= mid)",
             "B. while (i < mid)",
@@ -4614,7 +4614,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "现在用如下代码来计算x^n（n个x相乘），其时间复杂度为（  ）。\ndouble quick_power(double x, unsigned n) {\nif (n == 0) return 1;\nif (n == 1) return x;\nreturn quick_power(x, n/2) * quick_power(x, n/2) * ((n & 1) ? x : 1);\n}",
+          "question": "现在用如下代码来计算x^n（n个x相乘），其时间复杂度为（  ）。\n<pre><code>double quick_power(double x, unsigned n) {\nif (n == 0) return 1;\nif (n == 1) return x;\nreturn quick_power(x, n/2) * quick_power(x, n/2) * ((n & 1) ? x : 1);\n}</code></pre>",
           "options": [
             "A. O(n)",
             "B. O(n^2)",
@@ -4864,7 +4864,7 @@ const QUESTION_BANK = {
           "kp": "kp5_09",
           "type": "choice",
           "difficulty": 1,
-          "question": "考虑以下C++代码实现的快速排序算法，将数据从小到大排序，则横线上应填的最佳代码是( )。\nint partition(vector<int>& arr, int low, int high) {\nint pivot = arr[high];\nint i = low - 1;\nfor (int j = low; j < high; j++) {\n____________  // 在此处填入代码\n}\nswap(arr[i + 1], arr[high]);\nreturn i + 1;\n}",
+          "question": "考虑以下C++代码实现的快速排序算法，将数据从小到大排序，则横线上应填的最佳代码是( )。\n<pre><code>int partition(vector<int>& arr, int low, int high) {\nint pivot = arr[high];\nint i = low - 1;\nfor (int j = low; j < high; j++) {\n____________  // 在此处填入代码\n}\nswap(arr[i + 1], arr[high]);\nreturn i + 1;\n}</code></pre>",
           "options": [
             "A. if (arr[j] > pivot) { i++; swap(arr[i], arr[j]); }",
             "B. if (arr[j] < pivot) { i++; swap(arr[i], arr[j]); }",
@@ -5587,7 +5587,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于求斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。下面有关说法错误的是( )。\nint fiboA(int N)\n{\nif (N == 1 || N == 2)\nreturn 1;\nreturn fiboA(N - 1) + fiboA(N - 2);\n}\nint fiboB(int N)\n{\nif (N == 1 || N == 2)\nreturn 1;\nint last2 = 1, last1 = 1;\nint nowVal = 0;\nfor (int i = 2; i < N; i++)\n{\nnowVal = last1 + last2;\nlast2 = last1;\nlast1 = nowVal;\n}\nreturn nowVal;\n}",
+          "question": "下面C++代码用于求斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。下面有关说法错误的是( )。\n<pre><code>int fiboA(int N)\n{\nif (N == 1 || N == 2)\nreturn 1;\nreturn fiboA(N - 1) + fiboA(N - 2);\n}\nint fiboB(int N)\n{\nif (N == 1 || N == 2)\nreturn 1;\nint last2 = 1, last1 = 1;\nint nowVal = 0;\nfor (int i = 2; i < N; i++)\n{\nnowVal = last1 + last2;\nlast2 = last1;\nlast1 = nowVal;\n}\nreturn nowVal;\n}</code></pre>",
           "options": [
             "A. fiboA()用递归方式，fiboB()循环方式",
             "B. fiboA()更加符合斐波那契数列的数学定义，直观易于理解，而fiboB()需要将数学定义转换为计算机程序实现",
@@ -5627,7 +5627,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "judge",
           "difficulty": 1,
-          "question": "以下C++代码能以递归方式实现斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。( )\nint Fibo(int N)\n{\nif (N == 1 || N == 2)\nreturn 1;\nelse\n{\nint m = fiboA(N - 1);\nint n = fiboB(N - 2);\nreturn m + n;\n}\n}",
+          "question": "以下C++代码能以递归方式实现斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。( )\n<pre><code>int Fibo(int N)\n{\nif (N == 1 || N == 2)\nreturn 1;\nelse\n{\nint m = fiboA(N - 1);\nint n = fiboB(N - 2);\nreturn m + n;\n}\n}</code></pre>",
           "options": [
             "正确",
             "错误"
@@ -5645,7 +5645,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的C++代码片段用于计算阶乘。请在横线处填入（ ），实现正确的阶乘计算。\nint factorial(int n) {\nif (n == 0 || n == 1) return 1;\nelse { ____________ }  // 在此处填入代码\n}",
+          "question": "下面的C++代码片段用于计算阶乘。请在横线处填入（ ），实现正确的阶乘计算。\n<pre><code>int factorial(int n) {\nif (n == 0 || n == 1) return 1;\nelse { ____________ }  // 在此处填入代码\n}</code></pre>",
           "options": [
             "A. return n * factorial(n - 1);",
             "B. return factorial(n - 1) / n;",
@@ -5665,7 +5665,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面的代码片段用于计算斐波那契数列。该代码的时间复杂度是（ ）。\nint fibonacci(int n) {\nif (n <= 1) return n;\nelse return fibonacci(n - 1) + fibonacci(n - 2);\n}",
+          "question": "下面的代码片段用于计算斐波那契数列。该代码的时间复杂度是（ ）。\n<pre><code>int fibonacci(int n) {\nif (n <= 1) return n;\nelse return fibonacci(n - 1) + fibonacci(n - 2);\n}</code></pre>",
           "options": [
             "A. O(1)",
             "B. O(n)",
@@ -5723,7 +5723,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码用于求斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。函数fibo()属于(  )。\nint fibo(int n) {\nif (n <= 0) return 0;\nif (n == 1 || n == 2) return 1;\nint a = 1, b = 1, next;\nfor (int i = 3; i <= n; i++) { next = a + b; a = b; b = next; }\nreturn next;\n}",
+          "question": "下面C++代码用于求斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。函数fibo()属于(  )。\n<pre><code>int fibo(int n) {\nif (n <= 0) return 0;\nif (n == 1 || n == 2) return 1;\nint a = 1, b = 1, next;\nfor (int i = 3; i <= n; i++) { next = a + b; a = b; b = next; }\nreturn next;\n}</code></pre>",
           "options": [
             "A. 枚举算法",
             "B. 贪心算法",
@@ -5743,7 +5743,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下函数：\nint fun(int n) {\nif (n == 1) return 1;\nif (n == 2) return 2;\nreturn fun(n - 2) - fun(n - 1);\n}\n则当 n=7 时，函数返回值为（  ）。",
+          "question": "给定如下函数：\n<pre><code>int fun(int n) {\nif (n == 1) return 1;\nif (n == 2) return 2;\nreturn fun(n - 2) - fun(n - 1);\n}\n则当 n=7 时，函数返回值为（  ）。</code></pre>",
           "options": [
             "A. 0",
             "B. 1",
@@ -5763,7 +5763,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "给定如下函数（函数功能同上题，增加输出打印）：\nint fun(int n) {\ncout << n << \" \";\nif (n == 1) return 1;\nif (n == 2) return 2;\nreturn fun(n - 2) - fun(n - 1);\n}\n则当 n=4 时，屏幕上输出序列为（  ）。",
+          "question": "给定如下函数（函数功能同上题，增加输出打印）：\n<pre><code>int fun(int n) {\ncout << n << \" \";\nif (n == 1) return 1;\nif (n == 2) return 2;\nreturn fun(n - 2) - fun(n - 1);\n}\n则当 n=4 时，屏幕上输出序列为（  ）。</code></pre>",
           "options": [
             "A. 4 3 2 1",
             "B. 1 2 3 4",
@@ -5783,7 +5783,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "对下面两个函数，说法错误的是（  ）。\nint sumA(int n) { int res=0; for (int i=1;i<=n;i++) res+=i; return res; }\nint sumB(int n) { if (n==1) return 1; int res = n + sumB(n-1); return res; }",
+          "question": "对下面两个函数，说法错误的是（  ）。\n<pre><code>int sumA(int n) { int res=0; for (int i=1;i<=n;i++) res+=i; return res; }\nint sumB(int n) { if (n==1) return 1; int res = n + sumB(n-1); return res; }</code></pre>",
           "options": [
             "A. sumA体现了迭代的思想",
             "B. SumB采用的是递归方式",
@@ -5803,7 +5803,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "当 n=7 时，下面函数的返回值为（  ）。\nint fun(int n) {\nif (n == 1) return 1;\nelse if (n >= 5) return n * fun(n - 2);\nelse return n * fun(n - 1);\n}",
+          "question": "当 n=7 时，下面函数的返回值为（  ）。\n<pre><code>int fun(int n) {\nif (n == 1) return 1;\nelse if (n >= 5) return n * fun(n - 2);\nelse return n * fun(n - 1);\n}</code></pre>",
           "options": [
             "A. 105",
             "B. 840",
@@ -5859,7 +5859,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "对下面两个函数，说法错误的是（  ）。\nint fibA(int n) { if (n<=1) return n; int f1=0,f2=1; for(...) {...} return f2; }\nint fibB(int n) { if (n<=1) return n; return fibB(n-1)+fibB(n-2); }",
+          "question": "对下面两个函数，说法错误的是（  ）。\n<pre><code>int fibA(int n) { if (n<=1) return n; int f1=0,f2=1; for(...) {...} return f2; }\nint fibB(int n) { if (n<=1) return n; return fibB(n-1)+fibB(n-2); }</code></pre>",
           "options": [
             "A. 两个函数的实现的功能相同",
             "B. fibA采用递推方式",
@@ -5935,7 +5935,7 @@ const QUESTION_BANK = {
           "kp": "kp5_10",
           "type": "choice",
           "difficulty": 1,
-          "question": "对下面两个函数，说法错误的是（  ）。\nint factorialA(int n) { if (n<=1) return 1; return n * factorialA(n-1); }\nint factorialB(int n) { if (n<=1) return 1; int res=1; for(int i=2;i<=n;i++) res *= n; return res; }",
+          "question": "对下面两个函数，说法错误的是（  ）。\n<pre><code>int factorialA(int n) { if (n<=1) return 1; return n * factorialA(n-1); }\nint factorialB(int n) { if (n<=1) return 1; int res=1; for(int i=2;i<=n;i++) res *= n; return res; }</code></pre>",
           "options": [
             "A. 两个函数的实现的功能相同",
             "B. 两个函数的时间复杂度均为O(n)",
@@ -6164,7 +6164,7 @@ const QUESTION_BANK = {
           "kp": "kp5_11",
           "type": "choice",
           "difficulty": 1,
-          "question": "下面C++代码中的isPrimeA()和isPrimeB()都用于判断参数N是否素数，有关其时间复杂度的正确说法是（ ）。\nbool isPrimeA(int N)\n{\nif (N < 2)\nreturn false;\nfor (int i = 2; i <= N / 2 ; i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}\nbool isPrimeB(int N)\n{\nif (N < 2)\nreturn false;\nfor (int i = 2; i <= sqrt(N); i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}",
+          "question": "下面C++代码中的isPrimeA()和isPrimeB()都用于判断参数N是否素数，有关其时间复杂度的正确说法是（ ）。\n<pre><code>bool isPrimeA(int N)\n{\nif (N < 2)\nreturn false;\nfor (int i = 2; i <= N / 2 ; i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}\nbool isPrimeB(int N)\n{\nif (N < 2)\nreturn false;\nfor (int i = 2; i <= sqrt(N); i++)\nif (N % i == 0)\nreturn false;\nreturn true;\n}</code></pre>",
           "options": [
             "A. isPrimeA()的最坏时间复杂度是O(N/2)，isPrimeB()的最坏时间复杂度是O(logN)，isPrimeA()优于isPrimeB()",
             "B. isPrimeA()的最坏时间复杂度是O(N/2)，isPrimeB()的最坏时间复杂度是O(√N)，isPrimeB()绝大多数情况下优于isPrimeA()",

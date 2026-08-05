@@ -622,6 +622,8 @@ function decodeHtmlEntities(s) {
 }
 function formatQuestionTitle(html) {
   if (!html) return '';
+  // Convert markdown code fences (``` or ```cpp / ```c++) to <pre><code> blocks
+  html = html.replace(/```(?:cpp|c\+\+|c)?\s*\n?([\s\S]*?)```/g, (m, code) => '<pre><code>' + code.trim() + '</code></pre>');
   let out = '';
   const parts = html.split(/<pre><code>([\s\S]*?)<\/code><\/pre>/);
   for (let i = 0; i < parts.length; i++) {
