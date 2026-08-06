@@ -6,7 +6,7 @@ const fs = require('fs');
 // { error, stdout, stderr } (never rejects). error.code/signal carry exit info.
 function runCmd(cmd, timeoutMs) {
   return new Promise((resolve) => {
-    exec(cmd, { timeout: timeoutMs, maxBuffer: 1024 * 1024 }, (error, stdout, stderr) => {
+    exec(cmd, { timeout: timeoutMs, maxBuffer: 1024 * 1024, shell: '/bin/bash' }, (error, stdout, stderr) => {
       resolve({ error, stdout: stdout || '', stderr: stderr || '' });
     });
   });

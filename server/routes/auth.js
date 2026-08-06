@@ -8,7 +8,30 @@ const router = express.Router();
 // Simple per-IP rate limiter for auth endpoints (login/register)
 const authHits = new Map();
 const AUTH_WINDOW = 60000;
-const AUTH_MAX = 10;
+const AUTH_MAX = 5;
+// Account-level lockout: username -> { count, lockedUntil }
+const failHits = new Map();
+const FAIL_MAX = 5;
+const LOCK_MS = 15 * 60 * 1000;
+const FAIL_CAP = 10000;
+function checkAccountLock(username) {
+  const rec = failHits.get(username);
+  if (!rec) return 0;
+  if (rec.lockedUntil && rec.lockedUntil > Date.now()) return rec.lockedUntil - Date.now();
+  return 0;
+}
+function recordFail(username) {
+  const rec = failHits.get(username) || { count: 0, lockedUntil: 0 };
+  rec.count += 1;
+  if (rec.count >= FAIL_MAX) { rec.lockedUntil = Date.now() + LOCK_MS; rec.count = 0; }
+  failHits.set(username, rec);
+  // Cap memory usage: evict oldest entry if map grows too large
+  if (failHits.size > FAIL_CAP) {
+    const oldest = failHits.keys().next().value;
+    failHits.delete(oldest);
+  }
+}
+function clearFails(username) { failHits.delete(username); }
 function authRateLimit(req, res, next) {
   const ip = req.ip;
   const now = Date.now();
@@ -27,6 +50,9 @@ setInterval(() => {
     const recent = hits.filter(t => now - t < AUTH_WINDOW);
     if (recent.length === 0) authHits.delete(ip);
     else authHits.set(ip, recent);
+  }
+  for (const [u, rec] of failHits) {
+    if (rec.lockedUntil && rec.lockedUntil < now && rec.count === 0) failHits.delete(u);
   }
 }, 300000);
 
@@ -65,11 +91,19 @@ router.post('/login', authRateLimit, (req, res) => {
     return res.status(400).json({ error: '请输入用户名和密码' });
   }
 
+  // Account-level lockout check (before verifying password)
+  const waitMs = checkAccountLock(username);
+  if (waitMs > 0) {
+    return res.status(429).json({ error: '该账号尝试次数过多，已暂时锁定，请稍后再试' });
+  }
+
   const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username);
   if (!user || !bcrypt.compareSync(password, user.password)) {
+    recordFail(username);
     return res.status(401).json({ error: '用户名或密码错误' });
   }
 
+  clearFails(username);
   const token = signToken(user);
   res.json({ token, user: { id: user.id, username: user.username, nickname: user.nickname, role: user.role, avatar: user.avatar || '😊' } });
 });
