@@ -281,19 +281,8 @@ async function renderDashboard() {
   kps8.forEach((k, i) => {
     const kpStat = stats.byKp.find(x => x.kp === k);
     const done = kpStat ? kpStat.answered : 0;
-    const correct = kpStat ? kpStat.correct : 0;
     const total = stats.kpCounts?.[k] || 0;
-    const pct = total > 0 ? Math.round(done / total * 100) : 0;
-    kpCards += `
-      <div class="kp-card animate-in ${pct >= 100 ? 'completed' : ''}" data-kp="${k}" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
-        <div class="kp-card-header">
-          <span class="kp-num">${kpLabelOf(k)}</span>
-          ${pct >= 100 ? '<span class="kp-star">⭐</span>' : `<span class="kp-progress-text">${pct}%</span>`}
-        </div>
-        <div class="kp-card-title">${KP_NAMES[k]}</div>
-        <div class="kp-progress-bar"><div class="kp-progress-fill" style="width:${pct}%"></div></div>
-        <div class="kp-card-stats">${done}/${total} 题</div>
-      </div>`;
+    kpCards += kpCardHtml(k, i, done, total);
   });
 
   // Review task card
@@ -651,19 +640,25 @@ function formatQuestionTitle(html) {
 /* ============================================================
    Practice
    ============================================================ */
-async function renderPracticeHome() {
-  const app = document.getElementById('app');
-  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">知识点练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
-  let stats = { byKp: [], kpCounts: {} };
-  try { stats = await API.getStats(currentLevel); } catch { /* fallback below: show list without progress */ }
-  const kps = levelKps(currentLevel);
-  let cards = '';
-  kps.forEach((k, i) => {
-    const total = stats.kpCounts?.[k] || 0;
-    const kpStat = (stats.byKp || []).find(x => x.kp === k);
-    const done = kpStat ? kpStat.answered : 0;
-    const pct = total > 0 ? Math.round(done / total * 100) : 0;
-    cards += `
+// Cached stats (60s TTL in sessionStorage) to avoid repeated fetches.
+async function getStatsCached(level) {
+  const key = 'stats_' + level;
+  try {
+    const hit = sessionStorage.getItem(key);
+    if (hit) {
+      const { t, d } = JSON.parse(hit);
+      if (Date.now() - t < 60000) return d;
+    }
+  } catch {}
+  const stats = await API.getStats(level);
+  try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d: stats })); } catch {}
+  return stats;
+}
+
+// Shared knowledge-point card (used by dashboard and practice home).
+function kpCardHtml(k, i, done, total) {
+  const pct = total > 0 ? Math.round(done / total * 100) : 0;
+  return `
       <div class="kp-card animate-in ${pct >= 100 ? 'completed' : ''}" data-kp="${k}" onclick="navigate('#/practice/${k}')" style="animation-delay:${i * 0.05}s">
         <div class="kp-card-header">
           <span class="kp-num">${kpLabelOf(k)}</span>
@@ -673,6 +668,20 @@ async function renderPracticeHome() {
         <div class="kp-progress-bar"><div class="kp-progress-fill" style="width:${pct}%"></div></div>
         <div class="kp-card-stats">${done}/${total} 题</div>
       </div>`;
+}
+
+async function renderPracticeHome() {
+  const app = document.getElementById('app');
+  app.innerHTML = `<div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">知识点练习</span></div><div class="text-center" style="padding:40px"><p class="text-muted">加载中...</p></div>`;
+  let stats = { byKp: [], kpCounts: {} };
+  try { stats = await getStatsCached(currentLevel); } catch { /* fallback below: show list without progress */ }
+  const kps = levelKps(currentLevel);
+  let cards = '';
+  kps.forEach((k, i) => {
+    const total = stats.kpCounts?.[k] || 0;
+    const kpStat = (stats.byKp || []).find(x => x.kp === k);
+    const done = kpStat ? kpStat.answered : 0;
+    cards += kpCardHtml(k, i, done, total);
   });
   app.innerHTML = `
     <div class="practice-nav"><a class="back-btn" href="javascript:void(0)" onclick="exitTo('#/')">← 返回</a><span style="font-weight:700">知识点练习</span></div>
