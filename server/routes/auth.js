@@ -67,6 +67,10 @@ router.post('/register', authRateLimit, (req, res) => {
   if (nickname.length > 20) {
     return res.status(400).json({ error: '昵称不超过20个字符' });
   }
+  // Reject XSS-relevant characters server-side (defense in depth; frontend also escapes)
+  if (/[<>"'&\\/]/.test(nickname)) {
+    return res.status(400).json({ error: '昵称包含不允许的字符' });
+  }
 
   const existing = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
   if (existing) {
